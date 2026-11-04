@@ -73,7 +73,13 @@ func Collect(root, branch string) (Output, error) {
 		}
 	}
 
-	var out Output
+	out := Output{
+		// Non-nil so --json emits [] rather than null for empty sections.
+		Issues:           []Issue{},
+		Obligations:      []Obligation{},
+		StaleReviews:     []StaleReview{},
+		BlockingFindings: []Blocking{},
+	}
 
 	for i := range recs {
 		r := &recs[i]
