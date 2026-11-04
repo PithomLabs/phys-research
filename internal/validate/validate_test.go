@@ -841,3 +841,210 @@ func TestSyntaxErrorLineReported(t *testing.T) {
 		t.Errorf("line number missing from error: %v", se)
 	}
 }
+
+// pinnedReviewRepo builds a source, a hypothesis referencing it, and returns
+// the root plus the digests a pinned review must record.
+func pinnedReviewRepo(t *testing.T) (root, hypDigest, srcDigest string) {
+	t.Helper()
+	root = t.TempDir()
+	writeRec(t, root, "research/sources/P-001.md", map[string]string{
+		"id": "P-001", "type": "source", "state": "open",
+	}, `# T
+
+## Bibliographic identity
+
+title: T
+authors: A
+doi: 10.1103/PhysRevLett.129.121102
+arxiv: 2209.15487v1
+sha256: `+strings.Repeat("a", 64)+`
+
+## Claims
+
+- WEP tested with Ti and Pt (locator: Eq. (1))
+`)
+	writeRec(t, root, "research/hypotheses/H-001.md", map[string]string{
+		"id": "H-001", "type": "hypothesis", "state": "open", "class": "physical",
+		"refs": "refs:\n  - relation: depends_on\n    id: P-001\n",
+	}, cleanPhysicalHypothesis())
+	hypDigest = digestOf(t, filepath.Join(root, "research", "hypotheses", "H-001.md"))
+	srcDigest = digestOf(t, filepath.Join(root, "research", "sources", "P-001.md"))
+	return root, hypDigest, srcDigest
+}
+
+// reviewBody renders a review of H-001 with the given input lines (each
+// already a complete "input: <ID> sha256:<hex>" line, newline-terminated).
+func reviewBody(hypDigest, inputLines string) string {
+	return `# T
+
+## Review target
+
+reviewed: H-001
+digest: sha256:` + hypDigest + `
+` + inputLines + `reviewer: adversary
+model: opencode/deepseek-v4.1-flash-free
+
+## Summary
+
+x
+
+## Blocking findings
+
+none
+
+## Nonblocking findings
+
+none
+
+## Evidential boundary
+
+checked structurally only
+`
+}
+
+func writeReview(t *testing.T, root, body string) {
+	t.Helper()
+	writeRec(t, root, "research/reviews/R-001.md", map[string]string{
+		"id": "R-001", "type": "review", "state": "open",
+	}, body)
+}
+
+func countSeverity(res Result, severity string) int {
+	n := 0
+	for _, f := range res.Findings {
+		if f.Severity == severity {
+			n++
+		}
+	}
+	return n
+}
+
+func TestPinnedReviewFreshNoFindings(t *testing.T) {
+	root, hyp, src := pinnedReviewRepo(t)
+	writeReview(t, root, reviewBody(hyp, "input: P-001 sha256:"+src+"\n"))
+
+	res, err := Run(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, f := range res.Findings {
+		t.Errorf("unexpected finding: [%s] %s: %s", f.Severity, f.Rule, f.Message)
+	}
+	if res.Errors != 0 || res.Warnings != 0 {
+		t.Errorf("errors = %d, warnings = %d, want 0/0", res.Errors, res.Warnings)
+	}
+}
+
+func TestPinnedReviewChangedInputIsStale(t *testing.T) {
+	root, hyp, src := pinnedReviewRepo(t)
+	writeReview(t, root, reviewBody(hyp, "input: P-001 sha256:"+src+"\n"))
+
+	// Only the material input changes; the reviewed target is untouched.
+	path := filepath.Join(root, "research", "sources", "P-001.md")
+	data, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, append(data, []byte("\n- an added claim (locator: p. 2)\n")...), 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	res, err := Run(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !findRule(res, "stale", "material input P-001") {
+		t.Errorf("changed material input not reported stale: %+v", res.Findings)
+	}
+	if res.Errors == 0 {
+		t.Error("stale material input must be an error")
+	}
+}
+
+func TestPinnedReviewUnknownInputIsError(t *testing.T) {
+	root, hyp, _ := pinnedReviewRepo(t)
+	writeReview(t, root, reviewBody(hyp, "input: P-999 sha256:"+strings.Repeat("b", 64)+"\n"))
+
+	res, err := Run(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !findRule(res, "stale", "material input P-999") {
+		t.Errorf("unresolvable material input not reported: %+v", res.Findings)
+	}
+	if res.Errors == 0 {
+		t.Error("an unresolvable material input must be an error")
+	}
+}
+
+func TestMalformedInputLineIsError(t *testing.T) {
+	root, hyp, _ := pinnedReviewRepo(t)
+	writeReview(t, root, reviewBody(hyp, "input: P-001\n"))
+
+	res, err := Run(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !findRule(res, "review", "malformed material input line") {
+		t.Errorf("malformed input line not reported: %+v", res.Findings)
+	}
+	if res.Errors == 0 {
+		t.Error("a malformed input line must be an error")
+	}
+}
+
+func TestLegacyReviewWarnsButIsNotStale(t *testing.T) {
+	root, hyp, _ := pinnedReviewRepo(t)
+	// No input lines at all: R-001's shape. Correct target digest.
+	writeReview(t, root, reviewBody(hyp, ""))
+
+	res, err := Run(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if res.Errors != 0 {
+		t.Errorf("errors = %d, want 0 (legacy reviews are not stale): %+v", res.Errors, res.Findings)
+	}
+	legacy := 0
+	for _, f := range res.Findings {
+		if strings.Contains(f.Message, "LEGACY_UNPINNED") {
+			legacy++
+			if f.Severity != SeverityWarning {
+				t.Errorf("LEGACY_UNPINNED severity = %s, want warning", f.Severity)
+			}
+		}
+		if f.Rule == "stale" {
+			t.Errorf("legacy review must not be stale: %+v", f)
+		}
+	}
+	if legacy != 1 || res.Warnings != 1 {
+		t.Errorf("legacy findings = %d, warnings = %d, want exactly 1 each: %+v", legacy, res.Warnings, res.Findings)
+	}
+}
+
+func TestTargetOnlyChangeStillStale(t *testing.T) {
+	root, hyp, src := pinnedReviewRepo(t)
+	writeReview(t, root, reviewBody(hyp, "input: P-001 sha256:"+src+"\n"))
+
+	// Only the reviewed target changes.
+	path := filepath.Join(root, "research", "hypotheses", "H-001.md")
+	data, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, append(data, []byte("\n?  an added obligation\n")...), 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	res, err := Run(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !findRule(res, "stale", "STALE: reviewed digest") {
+		t.Errorf("target-only change not reported stale: %+v", res.Findings)
+	}
+	// The input itself did not change: no input finding.
+	if findRule(res, "stale", "material input") {
+		t.Errorf("unchanged input wrongly reported: %+v", res.Findings)
+	}
+}

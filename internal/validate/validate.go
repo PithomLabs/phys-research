@@ -417,24 +417,23 @@ func validateCheckProfiles(r *store.Record, add func(rule, severity, file string
 // validateReviews enforces review provenance: target existence, digest
 // match (staleness), and reviewer identity fields.
 func validateReviews(recs []store.Record, byID map[string][]*store.Record, root string, add func(rule, severity, file string, line int, msg string)) {
+	lookup := func(id string) (*store.Record, bool) {
+		l := byID[id]
+		if len(l) == 0 {
+			return nil, false
+		}
+		return l[0], true
+	}
+
 	for i := range recs {
 		r := &recs[i]
 		if r.ParseErr != nil || r.Header.Type != record.TypeReview {
 			continue
 		}
-		lines := strings.Split(string(r.Body), "\n")
-		var reviewed, digest string
-		var reviewedLine, digestLine int
 		var reviewerOK, modelOK bool
-		for i, ln := range lines {
+		for _, ln := range strings.Split(string(r.Body), "\n") {
 			trimmed := strings.TrimSpace(ln)
 			switch {
-			case strings.HasPrefix(trimmed, "reviewed:") && reviewed == "":
-				reviewed = strings.TrimSpace(strings.TrimPrefix(trimmed, "reviewed:"))
-				reviewedLine = r.BodyLine + i
-			case strings.HasPrefix(trimmed, "digest:") && digest == "":
-				digest = strings.TrimSpace(strings.TrimPrefix(trimmed, "digest:"))
-				digestLine = r.BodyLine + i
 			case strings.HasPrefix(trimmed, "reviewer:"):
 				reviewerOK = valueOK(strings.TrimSpace(strings.TrimPrefix(trimmed, "reviewer:")))
 			case strings.HasPrefix(trimmed, "model:"):
@@ -442,40 +441,30 @@ func validateReviews(recs []store.Record, byID map[string][]*store.Record, root 
 			}
 		}
 
-		if reviewed == "" {
-			add("review", SeverityError, r.Rel, 0, "review must record 'reviewed: <hypothesis id>'")
-		}
 		if !reviewerOK {
 			add("review", SeverityError, r.Rel, 0, "review must record a non-placeholder 'reviewer:' identity")
 		}
 		if !modelOK {
 			add("review", SeverityError, r.Rel, 0, "review must record a non-placeholder 'model:' (self-reported)")
 		}
-		if digest == "" || !strings.HasPrefix(digest, "sha256:") || !hex64Re.MatchString(strings.TrimPrefix(digest, "sha256:")) {
-			add("review", SeverityError, r.Rel, 0, "review must record 'digest: sha256:<64 hex>' of the reviewed version")
-		}
 
-		if reviewed == "" {
-			continue
-		}
-		targets, ok := byID[reviewed]
-		if !ok || len(targets) == 0 {
-			add("review", SeverityError, r.Rel, reviewedLine,
-				fmt.Sprintf("reviewed target %s not found", reviewed))
-			continue
-		}
-		target := targets[0]
-		if target.Header.Type != record.TypeHypothesis {
-			add("review", SeverityError, r.Rel, reviewedLine,
-				fmt.Sprintf("reviewed target %s is a %s; reviews target hypotheses", reviewed, target.Header.Type))
-			continue
-		}
-		if strings.HasPrefix(digest, "sha256:") && hex64Re.MatchString(strings.TrimPrefix(digest, "sha256:")) {
-			want := "sha256:" + target.Digest
-			if digest != want {
-				add("stale", SeverityError, r.Rel, digestLine,
-					fmt.Sprintf("STALE: reviewed digest %s does not match current %s (sha256:%s); write a new review",
-						digest, target.Header.ID, target.Digest))
+		prov := store.ParseReview(r)
+		if prov.Reviewed == "" {
+			add("review", SeverityError, r.Rel, 0, "review must record 'reviewed: <hypothesis id>'")
+		} else if target, ok := lookup(prov.Reviewed); ok && target.Header.Type != record.TypeHypothesis {
+			// Structural rule, not a freshness question: reviews target
+			// hypotheses. Nothing below is reported for such a review.
+			add("review", SeverityError, r.Rel, prov.ReviewedLine,
+				fmt.Sprintf("reviewed target %s is a %s; reviews target hypotheses", prov.Reviewed, target.Header.Type))
+		} else {
+			// Freshness comes from the single shared rule so that this
+			// command and `physctl status` can never disagree.
+			issues, unpinned := prov.ReviewIssues(lookup)
+			for _, is := range issues {
+				add(is.Rule(), SeverityError, r.Rel, is.Line, is.Message())
+			}
+			if unpinned {
+				add("review", SeverityWarning, r.Rel, 0, store.LegacyUnpinnedWarning)
 			}
 		}
 	}

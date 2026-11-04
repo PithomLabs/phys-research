@@ -112,21 +112,21 @@ func Collect(root, branch string) (Output, error) {
 		}
 
 		if h.Type == record.TypeReview {
-			reviewed, digest := reviewTarget(r)
-			if reviewed == "" {
+			prov := store.ParseReview(r)
+			if prov.Reviewed == "" {
 				continue
 			}
-			target, ok := byID[reviewed]
-			if !ok {
-				out.StaleReviews = append(out.StaleReviews, StaleReview{
-					ID: h.ID, Reviewed: reviewed, File: r.Rel, Reason: "reviewed target no longer exists",
-				})
-				continue
-			}
-			if digest != "sha256:"+target.Digest {
-				out.StaleReviews = append(out.StaleReviews, StaleReview{
-					ID: h.ID, Reviewed: reviewed, File: r.Rel, Reason: "target changed since review (digest mismatch)",
-				})
+			// One shared freshness rule with the validate command.
+			issues, _ := prov.ReviewIssues(func(id string) (*store.Record, bool) {
+				rec, ok := byID[id]
+				return rec, ok
+			})
+			if len(issues) > 0 {
+				for _, is := range issues {
+					out.StaleReviews = append(out.StaleReviews, StaleReview{
+						ID: h.ID, Reviewed: prov.Reviewed, File: r.Rel, Reason: is.Reason(),
+					})
+				}
 				continue
 			}
 			// Non-"none" blocking finding lines.
@@ -181,19 +181,6 @@ func Collect(root, branch string) (Output, error) {
 		return out.BlockingFindings[i].Line < out.BlockingFindings[j].Line
 	})
 	return out, nil
-}
-
-// reviewTarget extracts the `reviewed:` and `digest:` lines.
-func reviewTarget(r *store.Record) (reviewed, digest string) {
-	for _, ln := range strings.Split(string(r.Body), "\n") {
-		t := strings.TrimSpace(ln)
-		if reviewed == "" && strings.HasPrefix(t, "reviewed:") {
-			reviewed = strings.TrimSpace(strings.TrimPrefix(t, "reviewed:"))
-		} else if digest == "" && strings.HasPrefix(t, "digest:") {
-			digest = strings.TrimSpace(strings.TrimPrefix(t, "digest:"))
-		}
-	}
-	return reviewed, digest
 }
 
 // Text renders the human-readable report.

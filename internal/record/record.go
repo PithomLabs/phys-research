@@ -127,8 +127,11 @@ func Create(root string, opts Options) (Created, error) {
 		return Created{}, errors.New("--review is only valid for --type review")
 	}
 
-	// Resolve the review target and its current digest before allocating.
+	// Resolve the review target, its current digest, and every material
+	// input before allocating an ID. A review must never be written while
+	// missing one of its sources.
 	reviewDigest := ""
+	var reviewInputs []store.PinnedInput
 	if opts.Type == TypeReview {
 		recs, err := store.Load(root)
 		if err != nil {
@@ -148,6 +151,10 @@ func Create(root string, opts Options) (Created, error) {
 			return Created{}, fmt.Errorf("review target %q is a %s, not a hypothesis", opts.Review, target.Header.Type)
 		}
 		reviewDigest = target.Digest
+		reviewInputs, err = materialInputs(root, target, recs)
+		if err != nil {
+			return Created{}, err
+		}
 	}
 
 	for attempt := 0; attempt < 1000; attempt++ {
@@ -156,7 +163,7 @@ func Create(root string, opts Options) (Created, error) {
 			return Created{}, err
 		}
 		rel := expectedRel(opts.Type, id)
-		data := render(opts, id, reviewDigest)
+		data := render(opts, id, reviewDigest, reviewInputs)
 		err = writeNew(filepath.Join(root, filepath.FromSlash(rel)), data)
 		if err == nil {
 			return Created{ID: id, Rel: rel}, nil
@@ -218,6 +225,90 @@ func expectedRel(typ, id string) string {
 	return DirByType[typ] + "/" + id + ".md"
 }
 
+// TypeByPrefix maps an ID prefix letter back to its record type.
+var TypeByPrefix = func() map[string]string {
+	m := map[string]string{}
+	for typ, p := range PrefixByType {
+		m[p] = typ
+	}
+	return m
+}()
+
+// materialInputs returns the one-hop neighbours of target in both directions
+// (AGENTS.md review pinning rule), excluding review records, with each
+// neighbour's current digest, sorted by ID for deterministic output.
+//
+// It fails loudly rather than skipping: a review that appeared complete while
+// missing one of its sources is exactly the provenance failure this exists to
+// prevent (plan4.md, safeguard 5).
+func materialInputs(root string, target *store.Record, recs []store.Record) ([]store.PinnedInput, error) {
+	want := map[string]bool{}
+	for _, ref := range target.Header.Refs {
+		want[ref.ID] = true
+	}
+	for i := range recs {
+		r := &recs[i]
+		if r.ParseErr != nil || r.Header.ID == target.Header.ID {
+			continue
+		}
+		for _, ref := range r.Header.Refs {
+			if ref.ID == target.Header.ID {
+				want[r.Header.ID] = true
+				break
+			}
+		}
+	}
+	delete(want, target.Header.ID)
+
+	byID := map[string]*store.Record{}
+	for i := range recs {
+		if recs[i].ParseErr == nil && recs[i].Header.ID != "" {
+			if _, dup := byID[recs[i].Header.ID]; !dup {
+				byID[recs[i].Header.ID] = &recs[i]
+			}
+		}
+	}
+
+	var out []store.PinnedInput
+	for id := range want {
+		rec, ok := byID[id]
+		if !ok {
+			return nil, diagnoseInput(root, recs, id)
+		}
+		if rec.Header.Type == TypeReview {
+			continue // excluded from the material-input rule by definition
+		}
+		out = append(out, store.PinnedInput{ID: id, Digest: rec.Digest})
+	}
+	sort.Slice(out, func(i, j int) bool { return out[i].ID < out[j].ID })
+	return out, nil
+}
+
+// diagnoseInput explains why a material input could not be resolved,
+// distinguishing "the file is broken" from "there is no such record".
+func diagnoseInput(root string, recs []store.Record, id string) error {
+	if !IDPattern.MatchString(id) {
+		return fmt.Errorf("material input %q is not a valid record ID", id)
+	}
+	typ, ok := TypeByPrefix[id[:1]]
+	if !ok {
+		return fmt.Errorf("material input %q is not a valid record ID", id)
+	}
+	rel := expectedRel(typ, id)
+	for i := range recs {
+		if recs[i].Rel == rel {
+			if recs[i].ParseErr != nil {
+				return fmt.Errorf("material input %s could not be parsed: %v", id, recs[i].ParseErr)
+			}
+			break
+		}
+	}
+	if _, err := os.Stat(filepath.Join(root, filepath.FromSlash(rel))); err == nil {
+		return fmt.Errorf("material input %s exists but could not be read as a record", id)
+	}
+	return fmt.Errorf("material input %s not found", id)
+}
+
 // writeNew writes data to path atomically without replacing an existing
 // file: a temp file in the same directory is linked into place (O_EXCL
 // semantics), and falls back to O_CREATE|O_EXCL where hard links are
@@ -272,7 +363,7 @@ func writeNew(path string, data []byte) error {
 }
 
 // render builds the complete record file: frontmatter then body.
-func render(opts Options, id, reviewDigest string) []byte {
+func render(opts Options, id, reviewDigest string, inputs []store.PinnedInput) []byte {
 	var b strings.Builder
 	b.WriteString("---\n")
 	fmt.Fprintf(&b, "id: %s\n", id)
@@ -294,11 +385,11 @@ func render(opts Options, id, reviewDigest string) []byte {
 		}
 	}
 	b.WriteString("---\n\n")
-	b.WriteString(template(opts, id, reviewDigest))
+	b.WriteString(template(opts, id, reviewDigest, inputs))
 	return []byte(b.String())
 }
 
-func template(opts Options, id, reviewDigest string) string {
+func template(opts Options, id, reviewDigest string, inputs []store.PinnedInput) string {
 	title := opts.Title
 	if title == "" {
 		title = "Untitled"
@@ -400,12 +491,19 @@ sha256: <SHA-256 of the exact file examined; the file itself is never committed>
 `, title)
 
 	case TypeReview:
+		// Pin every material input's exact version (AGENTS.md review
+		// pinning rule). Nothing is omitted: materialInputs already failed
+		// if any neighbour could not be read or parsed.
+		var inputBlock strings.Builder
+		for _, in := range inputs {
+			fmt.Fprintf(&inputBlock, "\ninput: %s sha256:%s", in.ID, in.Digest)
+		}
 		return fmt.Sprintf(`# %s
 
 ## Review target
 
 reviewed: %s
-digest: sha256:%s
+digest: sha256:%s%s
 reviewer: adversary (OpenCode agent role)
 model: <self-reported model id used for this review>
 
@@ -436,7 +534,7 @@ none
 remains unresolved. No global correct/incorrect verdict, and nothing
 called "verified" beyond the checks actually performed
 (MRC_REVIEW_PROTOCOL.md §8).>
-`, title, opts.Review, reviewDigest)
+`, title, opts.Review, reviewDigest, inputBlock.String())
 
 	case TypeEvidence:
 		return fmt.Sprintf(`# %s

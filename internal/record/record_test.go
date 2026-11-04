@@ -1,6 +1,8 @@
 package record
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -11,6 +13,17 @@ import (
 	"github.com/PithomLabs/phys-research/internal/frontmatter"
 	"github.com/PithomLabs/phys-research/internal/store"
 )
+
+// fileDigest returns the SHA-256 hex of a file, matching store.Record.Digest.
+func fileDigest(t *testing.T, root, rel string) string {
+	t.Helper()
+	raw, err := os.ReadFile(filepath.Join(root, filepath.FromSlash(rel)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	sum := sha256.Sum256(raw)
+	return hex.EncodeToString(sum[:])
+}
 
 func tempRoot(t *testing.T) string {
 	t.Helper()
@@ -257,7 +270,7 @@ func TestTemplatesContainRequiredSections(t *testing.T) {
 			name += "/" + tc.opts.Class
 		}
 		t.Run(name, func(t *testing.T) {
-			body := template(tc.opts, "X-001", "deadbeef")
+			body := template(tc.opts, "X-001", "deadbeef", nil)
 			for _, s := range tc.sections {
 				if !strings.Contains(body, s) {
 					t.Errorf("template for %s missing %q", name, s)
@@ -300,4 +313,195 @@ func sorted(ids []string) bool {
 		}
 	}
 	return true
+}
+
+// buildGraph creates the canonical one-hop graph used by the material-input
+// tests: P-001 (source), I-001 (issue → P-001), H-001 (hypothesis → I-001,
+// P-001) and E-001 (evidence → H-001).
+func buildGraph(t *testing.T) string {
+	t.Helper()
+	root := tempRoot(t)
+	if _, err := Create(root, Options{Type: TypeSource, Title: "Source"}); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := Create(root, Options{Type: TypeIssue, Title: "Issue",
+		Refs: []frontmatter.Ref{{Relation: "motivated_by", ID: "P-001"}}}); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := Create(root, Options{Type: TypeHypothesis, Title: "Hyp", Class: "physical",
+		Refs: []frontmatter.Ref{{Relation: "addresses", ID: "I-001"}, {Relation: "depends_on", ID: "P-001"}}}); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := Create(root, Options{Type: TypeEvidence, Title: "Ev",
+		Refs: []frontmatter.Ref{{Relation: "supports", ID: "H-001"}}}); err != nil {
+		t.Fatal(err)
+	}
+	return root
+}
+
+func TestReviewTemplatePinsMaterialInputs(t *testing.T) {
+	root := buildGraph(t)
+	c, err := Create(root, Options{Type: TypeReview, Title: "R", Review: "H-001"})
+	if err != nil {
+		t.Fatalf("create review: %v", err)
+	}
+	raw, err := os.ReadFile(filepath.Join(root, filepath.FromSlash(c.Rel)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	body := string(raw)
+
+	hDigest := fileDigest(t, root, "research/hypotheses/H-001.md")
+	if !strings.Contains(body, "reviewed: H-001") {
+		t.Errorf("review does not record its target:\n%s", body)
+	}
+	if !strings.Contains(body, "digest: sha256:"+hDigest) {
+		t.Errorf("review does not record digest sha256:%s:\n%s", hDigest, body)
+	}
+
+	// One input line per one-hop neighbour (both directions, reviews
+	// excluded), sorted by ID, each pinning that file's exact bytes.
+	want := []string{
+		"input: E-001 sha256:" + fileDigest(t, root, "research/evidence/E-001.md"),
+		"input: I-001 sha256:" + fileDigest(t, root, "research/issues/I-001.md"),
+		"input: P-001 sha256:" + fileDigest(t, root, "research/sources/P-001.md"),
+	}
+	lines := strings.Split(body, "\n")
+	var got []string
+	digestAt, reviewerAt := -1, -1
+	for i, ln := range lines {
+		switch {
+		case strings.HasPrefix(ln, "input: "):
+			got = append(got, ln)
+		case strings.HasPrefix(ln, "digest: sha256:"):
+			digestAt = i
+		case strings.HasPrefix(ln, "reviewer:"):
+			reviewerAt = i
+		}
+	}
+	if len(got) != len(want) {
+		t.Fatalf("input lines = %v, want %v", got, want)
+	}
+	for i := range want {
+		if got[i] != want[i] {
+			t.Errorf("input line %d = %q, want %q", i, got[i], want[i])
+		}
+	}
+	// Ordering: inputs sit between the digest and the reviewer identity.
+	digestOff := strings.Index(body, "digest: sha256:")
+	reviewerOff := strings.Index(body, "reviewer:")
+	firstInputOff := strings.Index(body, want[0])
+	lastInputOff := strings.Index(body, want[len(want)-1])
+	if digestAt < 0 || reviewerAt < 0 || digestOff < 0 || reviewerOff < 0 ||
+		!(digestOff < firstInputOff && lastInputOff < reviewerOff) {
+		t.Errorf("input lines are not placed between digest and reviewer (digest line %d, reviewer line %d)", digestAt, reviewerAt)
+	}
+}
+
+func TestCreateReviewFailsOnMissingMaterialInput(t *testing.T) {
+	root := tempRoot(t)
+	// H-001 declares a neighbour that does not exist anywhere.
+	if _, err := Create(root, Options{Type: TypeHypothesis, Title: "H", Class: "physical",
+		Refs: []frontmatter.Ref{{Relation: "depends_on", ID: "P-999"}}}); err != nil {
+		t.Fatal(err)
+	}
+	_, err := Create(root, Options{Type: TypeReview, Title: "R", Review: "H-001"})
+	if err == nil {
+		t.Fatal("review creation must fail when a material input cannot be read")
+	}
+	if !strings.Contains(err.Error(), "material input P-999 not found") {
+		t.Errorf("diagnostic = %q, want an explicit 'material input P-999 not found'", err)
+	}
+	entries, _ := os.ReadDir(filepath.Join(root, "research", "reviews"))
+	if len(entries) != 0 {
+		t.Errorf("a review file was written despite the failure: %v", entries)
+	}
+}
+
+func TestCreateReviewFailsOnUnparsableMaterialInput(t *testing.T) {
+	root := tempRoot(t)
+	// P-001 exists but its frontmatter is rejected by the parser.
+	path := filepath.Join(root, "research", "sources", "P-001.md")
+	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, []byte("---\nid: P-001\ncolor: red\n---\n\n# broken\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := Create(root, Options{Type: TypeHypothesis, Title: "H", Class: "physical",
+		Refs: []frontmatter.Ref{{Relation: "depends_on", ID: "P-001"}}}); err != nil {
+		t.Fatal(err)
+	}
+	_, err := Create(root, Options{Type: TypeReview, Title: "R", Review: "H-001"})
+	if err == nil {
+		t.Fatal("review creation must fail when a material input cannot be parsed")
+	}
+	if !strings.Contains(err.Error(), "material input P-001 could not be parsed") {
+		t.Errorf("diagnostic = %q, want an explicit 'could not be parsed'", err)
+	}
+	entries, _ := os.ReadDir(filepath.Join(root, "research", "reviews"))
+	if len(entries) != 0 {
+		t.Errorf("a review file was written despite the failure: %v", entries)
+	}
+}
+
+func TestReviewNeighbourExcludedFromMaterialInputs(t *testing.T) {
+	root := buildGraph(t)
+	// An earlier review declaring a header ref at H-001: excluded by rule,
+	// and its presence must not fail creation of the next review.
+	if _, err := Create(root, Options{Type: TypeReview, Title: "R1", Review: "H-001",
+		Refs: []frontmatter.Ref{{Relation: "challenges", ID: "H-001"}}}); err != nil {
+		t.Fatalf("create first review: %v", err)
+	}
+	c, err := Create(root, Options{Type: TypeReview, Title: "R2", Review: "H-001"})
+	if err != nil {
+		t.Fatalf("create second review: %v", err)
+	}
+	raw, err := os.ReadFile(filepath.Join(root, filepath.FromSlash(c.Rel)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	body := string(raw)
+	if strings.Contains(body, "input: R-001") {
+		t.Errorf("a review neighbour must be excluded from material inputs:\n%s", body)
+	}
+	for _, id := range []string{"E-001", "I-001", "P-001"} {
+		if !strings.Contains(body, "input: "+id+" sha256:") {
+			t.Errorf("material input %s missing:\n%s", id, body)
+		}
+	}
+}
+
+func TestMaterialInputsBothDirections(t *testing.T) {
+	target := &store.Record{
+		Rel:    "research/hypotheses/H-001.md",
+		Header: frontmatter.Header{ID: "H-001", Type: TypeHypothesis, Refs: []frontmatter.Ref{{Relation: "addresses", ID: "I-001"}, {Relation: "depends_on", ID: "P-001"}}},
+		Digest: "hh",
+	}
+	recs := []store.Record{
+		*target,
+		{Rel: "research/sources/P-001.md", Header: frontmatter.Header{ID: "P-001", Type: TypeSource}, Digest: "pp"},
+		{Rel: "research/issues/I-001.md", Header: frontmatter.Header{ID: "I-001", Type: TypeIssue, Refs: []frontmatter.Ref{{Relation: "motivated_by", ID: "P-001"}}}, Digest: "ii"},
+		{Rel: "research/evidence/E-001.md", Header: frontmatter.Header{ID: "E-001", Type: TypeEvidence, Refs: []frontmatter.Ref{{Relation: "supports", ID: "H-001"}}}, Digest: "ee"},
+		{Rel: "research/reviews/R-001.md", Header: frontmatter.Header{ID: "R-001", Type: TypeReview, Refs: []frontmatter.Ref{{Relation: "challenges", ID: "H-001"}}}, Digest: "rr"},
+		{Rel: "research/issues/I-002.md", Header: frontmatter.Header{ID: "I-002", Type: TypeIssue}, Digest: "nn"}, // unrelated
+	}
+
+	got, err := materialInputs(t.TempDir(), target, recs)
+	if err != nil {
+		t.Fatalf("materialInputs: %v", err)
+	}
+	want := []store.PinnedInput{
+		{ID: "E-001", Digest: "ee"},
+		{ID: "I-001", Digest: "ii"},
+		{ID: "P-001", Digest: "pp"},
+	}
+	if len(got) != len(want) {
+		t.Fatalf("inputs = %+v, want %+v", got, want)
+	}
+	for i := range want {
+		if got[i] != want[i] {
+			t.Errorf("input %d = %+v, want %+v", i, got[i], want[i])
+		}
+	}
 }

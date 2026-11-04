@@ -8,6 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/PithomLabs/phys-research/internal/validate"
 )
 
 // digestOf returns the SHA-256 hex of a file, matching store.Record.Digest.
@@ -224,4 +226,259 @@ func TestNoReviewsNoStaleOrBlocking(t *testing.T) {
 	if !strings.Contains(text, "(none)") {
 		t.Errorf("empty sections should say (none):\n%s", text)
 	}
+}
+
+// pinnedRepo builds a hypothesis plus a review that pins both the target
+// digest and one material input (P-001). It returns the root and the input
+// line recorded in the review.
+func pinnedRepo(t *testing.T) (root, inputLine string) {
+	t.Helper()
+	root = t.TempDir()
+	writeRec(t, root, "research/sources/P-001.md",
+		"id: P-001\ntype: source\nstate: open\n",
+		"# P-001\n\n## Bibliographic identity\n\nx\n\n## Claims\n\n- c (locator: p.1)\n")
+	writeRec(t, root, "research/hypotheses/H-001.md",
+		"id: H-001\ntype: hypothesis\nstate: open\nclass: physical\n",
+		"# H-001\n\nclaim wep_prediction: under WEP, eta(Ti,Pt) = 0\n\n## Falsification condition\n\nx\n")
+	hypSum := digestOf(t, filepath.Join(root, "research", "hypotheses", "H-001.md"))
+	srcSum := digestOf(t, filepath.Join(root, "research", "sources", "P-001.md"))
+	inputLine = "input: P-001 sha256:" + srcSum
+	writeRec(t, root, "research/reviews/R-001.md",
+		"id: R-001\ntype: review\nstate: open\n",
+		"# R-001\n\n## Review target\n\nreviewed: H-001\ndigest: sha256:"+hypSum+"\n"+inputLine+"\nreviewer: adversary\nmodel: m\n\n## Blocking findings\n\nnone\n\n## Nonblocking findings\n\nnone\n\n## Evidential boundary\n\nx\n")
+	return root, inputLine
+}
+
+func TestPinnedReviewNotStaleWhileUnchanged(t *testing.T) {
+	root, _ := pinnedRepo(t)
+	out, err := Collect(root, "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(out.StaleReviews) != 0 {
+		t.Errorf("fully pinned fresh review reported stale: %+v", out.StaleReviews)
+	}
+}
+
+func TestStaleWhenOnlyInputChange(t *testing.T) {
+	root, _ := pinnedRepo(t)
+
+	// The reviewed target is untouched; only a material input changes.
+	path := filepath.Join(root, "research", "sources", "P-001.md")
+	data, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, append(data, []byte("\nchanged after review\n")...), 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	out, err := Collect(root, "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(out.StaleReviews) != 1 {
+		t.Fatalf("stale reviews = %+v, want exactly 1 when only an input changed", out.StaleReviews)
+	}
+	got := out.StaleReviews[0]
+	if got.ID != "R-001" || got.Reviewed != "H-001" {
+		t.Errorf("stale entry = %+v, want R-001 reviewing H-001", got)
+	}
+	if !strings.Contains(got.Reason, "material input P-001") {
+		t.Errorf("reason = %q, must name the changed material input", got.Reason)
+	}
+	text := Text(out)
+	if !strings.Contains(text, "R-001") || !strings.Contains(text, "material input P-001") {
+		t.Errorf("text report does not name the stale review and input:\n%s", text)
+	}
+}
+
+func TestStaleWhenOnlyTargetChange(t *testing.T) {
+	root, _ := pinnedRepo(t)
+
+	path := filepath.Join(root, "research", "hypotheses", "H-001.md")
+	data, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, append(data, []byte("\nchanged after review\n")...), 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	out, err := Collect(root, "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(out.StaleReviews) != 1 {
+		t.Fatalf("stale reviews = %+v, want exactly 1", out.StaleReviews)
+	}
+	if !strings.Contains(out.StaleReviews[0].Reason, "target changed since review") {
+		t.Errorf("reason = %q, want the target-digest reason", out.StaleReviews[0].Reason)
+	}
+}
+
+func TestLegacyReviewIsNotStale(t *testing.T) {
+	root, _ := pinnedRepo(t)
+	// Strip the input line: the review pins only its target (R-001's shape).
+	path := filepath.Join(root, "research", "reviews", "R-001.md")
+	data, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	stripped := strings.Replace(string(data), "input: P-001 sha256:"+digestOf(t, filepath.Join(root, "research", "sources", "P-001.md"))+"\n", "", 1)
+	if stripped == string(data) {
+		t.Fatal("test setup: input line not found to strip")
+	}
+	if err := os.WriteFile(path, []byte(stripped), 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	out, err := Collect(root, "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(out.StaleReviews) != 0 {
+		t.Errorf("a legacy (unpinned) review must not be stale: %+v", out.StaleReviews)
+	}
+}
+
+// TestStatusAndValidateAgree is safeguard 6: both commands call the single
+// shared freshness rule, so a changed target or a changed material input is
+// STALE in both — and neither reports a legacy (unpinned) review stale.
+func TestStatusAndValidateAgree(t *testing.T) {
+	staleInValidate := func(root string) []string {
+		t.Helper()
+		res, err := validate.Run(root)
+		if err != nil {
+			t.Fatal(err)
+		}
+		var out []string
+		for _, f := range res.Findings {
+			if f.Rule == "stale" {
+				out = append(out, f.Message)
+			}
+		}
+		return out
+	}
+
+	t.Run("unchanged pinned review", func(t *testing.T) {
+		root, _ := pinnedRepo(t)
+		if got := staleInValidate(root); len(got) != 0 {
+			t.Errorf("validate reports stale: %v", got)
+		}
+		out, err := Collect(root, "")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(out.StaleReviews) != 0 {
+			t.Errorf("status reports stale: %+v", out.StaleReviews)
+		}
+	})
+
+	t.Run("only an input changed", func(t *testing.T) {
+		root, _ := pinnedRepo(t)
+		path := filepath.Join(root, "research", "sources", "P-001.md")
+		data, err := os.ReadFile(path)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(path, append(data, []byte("\nchanged\n")...), 0o644); err != nil {
+			t.Fatal(err)
+		}
+
+		got := staleInValidate(root)
+		if len(got) == 0 {
+			t.Error("validate must report the changed material input stale")
+		}
+		named := false
+		for _, m := range got {
+			if strings.Contains(m, "material input P-001") {
+				named = true
+			}
+		}
+		if !named {
+			t.Errorf("validate messages do not name the input: %v", got)
+		}
+
+		out, err := Collect(root, "")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(out.StaleReviews) == 0 {
+			t.Fatal("status must report the changed material input stale")
+		}
+		named = false
+		for _, s := range out.StaleReviews {
+			if strings.Contains(s.Reason, "material input P-001") {
+				named = true
+			}
+		}
+		if !named {
+			t.Errorf("status reasons do not name the input: %+v", out.StaleReviews)
+		}
+	})
+
+	t.Run("only the target changed", func(t *testing.T) {
+		root, _ := pinnedRepo(t)
+		path := filepath.Join(root, "research", "hypotheses", "H-001.md")
+		data, err := os.ReadFile(path)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(path, append(data, []byte("\nchanged\n")...), 0o644); err != nil {
+			t.Fatal(err)
+		}
+
+		if got := staleInValidate(root); len(got) == 0 {
+			t.Error("validate must report the changed target stale")
+		}
+		out, err := Collect(root, "")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(out.StaleReviews) == 0 {
+			t.Error("status must report the changed target stale")
+		}
+	})
+
+	t.Run("legacy review is stale in neither", func(t *testing.T) {
+		root, _ := pinnedRepo(t)
+		path := filepath.Join(root, "research", "reviews", "R-001.md")
+		data, err := os.ReadFile(path)
+		if err != nil {
+			t.Fatal(err)
+		}
+		srcSum := digestOf(t, filepath.Join(root, "research", "sources", "P-001.md"))
+		stripped := strings.Replace(string(data), "input: P-001 sha256:"+srcSum+"\n", "", 1)
+		if stripped == string(data) {
+			t.Fatal("test setup: input line not found to strip")
+		}
+		if err := os.WriteFile(path, []byte(stripped), 0o644); err != nil {
+			t.Fatal(err)
+		}
+
+		if got := staleInValidate(root); len(got) != 0 {
+			t.Errorf("validate must not report a legacy review stale: %v", got)
+		}
+		res, err := validate.Run(root)
+		if err != nil {
+			t.Fatal(err)
+		}
+		legacyWarnings := 0
+		for _, f := range res.Findings {
+			if strings.Contains(f.Message, "LEGACY_UNPINNED") {
+				legacyWarnings++
+			}
+		}
+		if legacyWarnings != 1 {
+			t.Errorf("legacy warnings = %d, want exactly 1: %+v", legacyWarnings, res.Findings)
+		}
+		out, err := Collect(root, "")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(out.StaleReviews) != 0 {
+			t.Errorf("status must not report a legacy review stale: %+v", out.StaleReviews)
+		}
+	})
 }
