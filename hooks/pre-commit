@@ -1,0 +1,28 @@
+#!/bin/sh
+# Defense-in-depth convenience hook ONLY.
+#
+# This hook is NOT the human scientific-acceptance boundary. An agent with
+# shell access can edit this file, set core.hooksPath, or unset the
+# environment variable it checks. The real boundary is documented in
+# AGENTS.md: remote branch protection on `accepted` plus acceptance
+# credentials that agents do not possess. If no protected remote exists,
+# the acceptance merge is performed from a separate human-controlled
+# clone or environment.
+#
+# This hook exists to catch accidental direct commits onto `accepted`
+# during ordinary local work.
+
+branch=$(git symbolic-ref --short HEAD 2>/dev/null) || exit 0
+
+if [ "$branch" = "accepted" ]; then
+  if [ "${PHYS_HUMAN_MERGE:-}" = "1" ]; then
+    exit 0
+  fi
+  echo "pre-commit: refusing to commit directly on 'accepted'." >&2
+  echo "accepted is the human-controlled branch. Perform acceptance" >&2
+  echo "merges from a separate, credential-separated environment" >&2
+  echo "(see AGENTS.md, 'Scientific acceptance boundary')." >&2
+  exit 1
+fi
+
+exit 0

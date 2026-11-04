@@ -1,0 +1,14 @@
+# Developer-local Go workspace (see AGENTS.md "Local test workspace").
+# Deliberately untracked: machine-specific relative paths must not become
+# a repository dependency. physctl check reports UNAVAILABLE without it.
+/go.work
+/go.work.sum
+
+# Binaries
+/bin/
+/physctl
+
+# Paper PDFs are never committed. The source record carries a SHA-256
+# of the exact file examined instead.
+paper-cache/
+*.pdf
