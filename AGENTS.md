@@ -140,18 +140,40 @@ hold free-form human-authored sketches (never parsed as records).
 - **derivation** — `## Premises`, `## Dependencies`,
   `## Intermediate results`, `## Mathematical rules`, `## Obligations`.
 - **review** — `## Review target` containing `reviewed: <ID>`,
-  `digest: sha256:<64 hex>`, `reviewer: ...`, `model: ...`; plus
+  `digest: sha256:<64 hex>`, one `input: <ID> sha256:<64 hex>` line per
+  material input (written by `physctl new --type review`, never by hand),
+  `reviewer: ...`, `model: ...`; plus
   `## Blocking findings` and `## Nonblocking findings` headings, and a
   closing `## Evidential boundary` paragraph.
 
 ### 6.5 Reviews are append-only
 
 A review is created once (by `physctl new --type review --review <ID>`,
-which records the target's SHA-256) and never edited. If the target
-hypothesis changes, the digest no longer matches, the review is reported
-**stale**, and a new review must be written. The Adversary never modifies
-the hypothesis it reviews. Reviewer identity and model are self-reported
-metadata, not authenticated claims.
+which records the target's SHA-256) and never edited.
+
+The review also pins the exact version of every **material input**: the
+one-hop neighbours of the reviewed hypothesis in both directions (records
+it references, and records referencing it), excluding review records. For
+H-001 these are P-001, I-001 and E-001. Each appears as an `input:` line
+carrying that file's SHA-256.
+
+Creation never silently skips a material input: if a neighbour cannot be
+read or parsed, `physctl new --type review` fails with an explicit
+diagnostic (`material input X not found` / `could not be parsed`) and
+writes no file. A review must not appear complete while missing one of
+its sources.
+
+Freshness is one rule shared by `physctl validate` and `physctl status`.
+If the target digest **or** any material-input digest no longer matches,
+the review is reported **stale** in both commands, naming the changed
+record, and a new review must be written. A review that records no
+`input:` lines at all (created before this rule existed) is reported
+`LEGACY_UNPINNED` — a warning with exit 0, never described as fully
+fresh: it remains a valid historical review of the exact target version
+it examined, whose original source context was not pinned.
+
+The Adversary never modifies the hypothesis it reviews. Reviewer identity
+and model are self-reported metadata, not authenticated claims.
 
 ## 7. Phys-Pseudo discipline
 
