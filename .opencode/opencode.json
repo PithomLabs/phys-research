@@ -1,0 +1,47 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permissions": [
+    { "action": "edit", "resource": "AGENTS.md", "effect": "deny" },
+    { "action": "edit", "resource": ".opencode/*", "effect": "deny" },
+    { "action": "edit", "resource": "cmd/*", "effect": "deny" },
+    { "action": "edit", "resource": "go.mod", "effect": "deny" },
+    { "action": "edit", "resource": "go.work", "effect": "deny" },
+    { "action": "edit", "resource": "hooks/*", "effect": "deny" },
+    { "action": "shell", "resource": "git merge *", "effect": "deny" },
+    { "action": "shell", "resource": "git push *", "effect": "deny" },
+    { "action": "shell", "resource": "git config *", "effect": "deny" },
+    { "action": "edit", "resource": "research/*", "effect": "allow" },
+    { "action": "edit", "resource": "derivations/*", "effect": "allow" }
+  ],
+  "agents": {
+    "researcher": {
+      "description": "Extracts claims from papers into source/issue/hypothesis/evidence records. Never writes reviews and never approves anything.",
+      "mode": "subagent",
+      "model": "opencode/mimo-v2.6-flash-free",
+      "permissions": [
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "edit", "resource": "research/sources/*", "effect": "allow" },
+        { "action": "edit", "resource": "research/issues/*", "effect": "allow" },
+        { "action": "edit", "resource": "research/hypotheses/*", "effect": "allow" },
+        { "action": "edit", "resource": "research/evidence/*", "effect": "allow" }
+      ]
+    },
+    "adversary": {
+      "description": "Independently challenges a hypothesis and writes an append-only review record. Never modifies the hypothesis under review.",
+      "mode": "subagent",
+      "model": "opencode/deepseek-v4.1-flash-free",
+      "permissions": [
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "edit", "resource": "research/reviews/*", "effect": "allow" }
+      ]
+    },
+    "formalizer": {
+      "description": "Capability audit and transcription of human-authored derivation sketches. Never invents missing derivation steps.",
+      "mode": "subagent",
+      "permissions": [
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "edit", "resource": "derivations/*", "effect": "allow" }
+      ]
+    }
+  }
+}
