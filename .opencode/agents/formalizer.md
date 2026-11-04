@@ -10,39 +10,17 @@ permissions:
     effect: allow
 ---
 
-You are the Formalizer role for this repository.
+<!-- OpenCode adapter for the Formalizer role. Execution config only.
+     Canonical role methodology: agents/formalizer.md (platform-neutral).
+     Read that file plus AGENTS.md and docs/AGENT_CONTRACT.md first. -->
 
-Read `AGENTS.md` first and obey it, and read
-`/home/chaschel/Documents/go/phys-trace/DERIVATION_SPEC_GUIDELINES.md` §9 and
-§10 before claiming any capability exists.
+OpenCode execution notes for the Formalizer role:
 
-Hard limits:
-
-- You may create and edit ONLY `derivations/*` records and free-form
-  sketches under `derivations/*/`. You may not edit anything under
-  `research/`.
-- You may not invent a missing derivation step. If a step is absent from the
-  human-authored sketch, record it as an unresolved obligation under
-  `## Obligations` and stop.
-- You may not certify correctness. `physctl validate` is structural only,
-  and `physctl check` runs only allowlisted tests of the existing Phys
-  infrastructure. Neither establishes mathematical correctness.
-
-How to work:
-
-1. Perform the capability audit of DERIVATION_SPEC_GUIDELINES.md §9 first:
-   identify exactly which PhysMath/PhysLib rules the sketch needs and whether
-   each one actually exists. A missing capability is reported as
-   `UNAVAILABLE`, never as a pass.
-2. Transcribe the human's sketch into `## Premises`, `## Dependencies`,
-   `## Intermediate results`, `## Mathematical rules` (exact rule identities
-   such as DIFFERENTIATE-001) and `## Obligations`.
-3. Declare check profiles only from the allowlist under `## Checks`
-   (`- profile: <name>`), and only those backed by real infrastructure.
-   Run them with `physctl check derivations/<file>` and record the actual
-   outcome.
-4. Per §10, an independent oracle is required: a result transcribed from the
-   same source it is meant to confirm is not independent evidence.
-
-Report what you transcribed, which capabilities were UNAVAILABLE, and which
-obligations remain. Never report a derivation as proved.
+- Run as an OpenCode subagent with the permissions above; the permission
+  block is enforced by OpenCode, not by prose. (No model pin: uses the
+  session default.)
+- `physctl check` needs the untracked local `go.work` described in
+  AGENTS.md §10; without it, report UNAVAILABLE with the exact reason.
+- All methodology (capability audit, transcription rules, independent
+  oracle) comes from `agents/formalizer.md`. If this adapter and the
+  canonical file disagree, the canonical file wins; report the discrepancy.

@@ -363,7 +363,7 @@ func validateSource(r *store.Record, add func(rule, severity, file string, line 
 		loc := strings.TrimSpace(ln[idx+len("locator:"):])
 		loc = strings.TrimSuffix(loc, ")")
 		loc = strings.TrimSpace(loc)
-		if valueOK(loc) && !placeholderRe.MatchString(loc) {
+		if isValidLocator(loc) {
 			withLocator++
 		}
 	}
@@ -384,6 +384,52 @@ func valueOK(v string) bool {
 		return false
 	}
 	return !placeholderRe.MatchString(v) && !strings.Contains(v, "TODO")
+}
+
+// isValidLocator validates that a locator is semantically meaningful.
+// It rejects empty strings, placeholders like "p.", "Eq.", "Fig.", "Sec.",
+// but allows legitimate named sections like "Abstract", "Introduction",
+// "Conclusion", "Section 3", "Equation (2)", "Figure 1", "Table 1", etc.
+func isValidLocator(loc string) bool {
+	if !valueOK(loc) {
+		return false
+	}
+	// Reject placeholder-like locators that are just a prefix with no content
+	// e.g., "p.", "Eq.", "Fig.", "Sec.", "Table", "Figure", "Equation"
+	// but allow "Eq. (1)", "Fig. 1", "Sec. 3", "Section 2", "p. 1", etc.
+	placeholderPrefixes := []string{"p.", "eq.", "fig.", "sec.", "table", "figure", "equation", "section", "appendix"}
+	lower := strings.ToLower(loc)
+	for _, p := range placeholderPrefixes {
+		if lower == p {
+			return false
+		}
+		// Check if the locator is just the prefix followed by only whitespace/punctuation
+		prefixWithSpace := p + " "
+		if strings.HasPrefix(lower, prefixWithSpace) {
+			// Check if there's meaningful content after the prefix
+			rest := strings.TrimSpace(loc[len(prefixWithSpace):])
+			// Check if rest contains alphanumeric (meaningful content)
+			hasAlphaNum := false
+			for _, r := range rest {
+				if (r >= 'a' && r <= 'z') || (r >= 'A' && r <= 'Z') || (r >= '0' && r <= '9') {
+					hasAlphaNum = true
+					break
+				}
+			}
+			if !hasAlphaNum {
+				return false
+			}
+		}
+	}
+	// Must contain at least one alphanumeric character
+	hasAlphaNum := false
+	for _, r := range loc {
+		if (r >= 'a' && r <= 'z') || (r >= 'A' && r <= 'Z') || (r >= '0' && r <= '9') {
+			hasAlphaNum = true
+			break
+		}
+	}
+	return hasAlphaNum
 }
 
 // validateCheckProfiles verifies declared derivation check profiles against

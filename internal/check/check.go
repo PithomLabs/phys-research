@@ -254,6 +254,20 @@ func resolveModule(goWork, modulePath string) (string, error) {
 	}
 
 	for _, dir := range candidates {
+		// Resolve to absolute path and verify it's within the workspace root
+		absDir, err := filepath.Abs(dir)
+		if err != nil {
+			continue
+		}
+		absBase, err := filepath.Abs(base)
+		if err != nil {
+			continue
+		}
+		// Verify the resolved directory is within the workspace root
+		rel, err := filepath.Rel(absBase, absDir)
+		if err != nil || strings.HasPrefix(rel, "..") {
+			continue // Path escapes workspace root
+		}
 		gomod := filepath.Join(dir, "go.mod")
 		gd, err := os.ReadFile(gomod)
 		if err != nil {
@@ -262,7 +276,7 @@ func resolveModule(goWork, modulePath string) (string, error) {
 		for _, ln := range strings.Split(string(gd), "\n") {
 			if strings.HasPrefix(ln, "module ") {
 				if strings.TrimSpace(strings.TrimPrefix(ln, "module ")) == modulePath {
-					return dir, nil
+					return absDir, nil
 				}
 			}
 		}

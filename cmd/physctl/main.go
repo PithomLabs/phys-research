@@ -1,5 +1,7 @@
 // Command physctl is the deterministic tooling layer of the phys-research
-// workbench: five commands only (new, status, refs, validate, check).
+// workbench: record commands (new, status, refs, validate, check), paper
+// acquisition (paper search|related|fetch|extract) and distribution checks
+// (dist check-tar|check-staged).
 //
 // It is not an agent, not a scheduler and not a scientific authority.
 // Structural validation never establishes mathematical or physical
@@ -17,7 +19,9 @@ import (
 	"strings"
 
 	"github.com/PithomLabs/phys-research/internal/check"
+	"github.com/PithomLabs/phys-research/internal/distrib"
 	"github.com/PithomLabs/phys-research/internal/frontmatter"
+	"github.com/PithomLabs/phys-research/internal/paper"
 	"github.com/PithomLabs/phys-research/internal/record"
 	"github.com/PithomLabs/phys-research/internal/refs"
 	"github.com/PithomLabs/phys-research/internal/status"
@@ -34,6 +38,12 @@ Usage:
   physctl refs     <ID> [--depth N] [--in] [--json]
   physctl validate [--json]
   physctl check    [<profile> | derivations/<file> | <derivation-id>] [--json]
+  physctl paper search --query <q> [--limit N] [--json]
+  physctl paper related <paperID> [--limit N] [--json]
+  physctl paper fetch --version v1 <paperID>
+  physctl paper extract --version v1 <paperID>
+  physctl dist check-tar <tarball> [--json]
+  physctl dist check-staged --dir <dir> --manifest <file> --base <file> [--ignore <rel,rel>] [--json]
 
 Exit codes: 0 clean/pass, 1 findings or test failures,
 2 usage errors or unavailable capabilities.
@@ -61,6 +71,10 @@ func run(args []string, stdout, stderr io.Writer) int {
 		return cmdValidate(args[1:], stdout, stderr)
 	case "check":
 		return cmdCheck(args[1:], stdout, stderr)
+	case "paper":
+		return cmdPaper(args[1:], stdout, stderr)
+	case "dist":
+		return cmdDist(args[1:], stdout, stderr)
 	case "-h", "--help", "help":
 		fmt.Fprint(stdout, usage)
 		return 0
@@ -396,6 +410,105 @@ func reportResults(stdout, stderr io.Writer, results []check.Result, jsonOut boo
 	return 0
 }
 
+func cmdDist(args []string, stdout, stderr io.Writer) int {
+	if len(args) == 0 {
+		fmt.Fprintln(stderr, "physctl dist: requires a subcommand (check-tar, check-staged)")
+		return 2
+	}
+	switch args[0] {
+	case "check-tar":
+		return cmdDistCheckTar(args[1:], stdout, stderr)
+	case "check-staged":
+		return cmdDistCheckStaged(args[1:], stdout, stderr)
+	default:
+		fmt.Fprintf(stderr, "physctl dist: unknown subcommand %q\n", args[0])
+		return 2
+	}
+}
+
+// cmdDistCheckTar validates a distribution tarball before extraction.
+// Exit 0: clean (entries listed); 1: violations; 2: usage or IO errors.
+func cmdDistCheckTar(args []string, stdout, stderr io.Writer) int {
+	fs := flag.NewFlagSet("check-tar", flag.ContinueOnError)
+	fs.SetOutput(stderr)
+	jsonOut := fs.Bool("json", false, "machine-readable output")
+	if err := fs.Parse(args); err != nil {
+		return 2
+	}
+	if fs.NArg() != 1 {
+		fmt.Fprintln(stderr, "physctl dist check-tar: exactly one tarball path is required")
+		return 2
+	}
+	entries, err := distrib.ValidateTar(fs.Arg(0))
+	if err != nil {
+		if os.IsNotExist(err) || strings.Contains(err.Error(), "read tar") {
+			fmt.Fprintf(stderr, "physctl dist check-tar: %v\n", err)
+			return 2
+		}
+		if *jsonOut {
+			writeJSON(stdout, map[string]any{"ok": false, "violation": err.Error()})
+		} else {
+			fmt.Fprintf(stdout, "REJECTED: %v\n", err)
+		}
+		return 1
+	}
+	if *jsonOut {
+		return writeJSON(stdout, map[string]any{"ok": true, "entries": entries})
+	}
+	fmt.Fprintf(stdout, "OK: %d entries\n", len(entries))
+	for _, e := range entries {
+		fmt.Fprintf(stdout, "  %s\n", e)
+	}
+	return 0
+}
+
+// cmdDistCheckStaged verifies an assembled staging tree against a payload
+// manifest and the base listing it was assembled over.
+// Exit 0: verified; 1: mismatch; 2: usage or IO errors.
+func cmdDistCheckStaged(args []string, stdout, stderr io.Writer) int {
+	fs := flag.NewFlagSet("check-staged", flag.ContinueOnError)
+	fs.SetOutput(stderr)
+	dir := fs.String("dir", "", "staging tree to verify")
+	manifest := fs.String("manifest", "", "payload manifest file")
+	base := fs.String("base", "", "base listing file (one path per line)")
+	ignore := fs.String("ignore", "", "comma-separated relative paths to excuse (e.g. go.work)")
+	jsonOut := fs.Bool("json", false, "machine-readable output")
+	if err := fs.Parse(args); err != nil {
+		return 2
+	}
+	if *dir == "" || *manifest == "" || *base == "" {
+		fmt.Fprintln(stderr, "physctl dist check-staged: --dir, --manifest and --base are required")
+		return 2
+	}
+	mdata, err := os.ReadFile(*manifest)
+	if err != nil {
+		fmt.Fprintf(stderr, "physctl dist check-staged: read manifest: %v\n", err)
+		return 2
+	}
+	bdata, err := os.ReadFile(*base)
+	if err != nil {
+		fmt.Fprintf(stderr, "physctl dist check-staged: read base list: %v\n", err)
+		return 2
+	}
+	var ignoreList []string
+	if *ignore != "" {
+		ignoreList = strings.Split(*ignore, ",")
+	}
+	if err := distrib.VerifyStaged(*dir, mdata, bdata, ignoreList); err != nil {
+		if *jsonOut {
+			writeJSON(stdout, map[string]any{"ok": false, "violation": err.Error()})
+		} else {
+			fmt.Fprintf(stdout, "REJECTED: %v\n", err)
+		}
+		return 1
+	}
+	if *jsonOut {
+		return writeJSON(stdout, map[string]any{"ok": true})
+	}
+	fmt.Fprintln(stdout, "OK: staged tree verified")
+	return 0
+}
+
 func orNone(list []string) string {
 	if len(list) == 0 {
 		return "(none)"
@@ -411,4 +524,168 @@ func writeJSON(w io.Writer, v any) int {
 		return 2
 	}
 	return 0
+}
+
+func cmdPaper(args []string, stdout, stderr io.Writer) int {
+	if len(args) == 0 {
+		fmt.Fprintln(stderr, "physctl paper: requires a subcommand (search, related, fetch, extract)")
+		return 2
+	}
+	switch args[0] {
+	case "search":
+		return cmdPaperSearch(args[1:], stdout, stderr)
+	case "related":
+		return cmdPaperRelated(args[1:], stdout, stderr)
+	case "fetch":
+		return cmdPaperFetch(args[1:], stdout, stderr)
+	case "extract":
+		return cmdPaperExtract(args[1:], stdout, stderr)
+	default:
+		fmt.Fprintf(stderr, "physctl paper: unknown subcommand %q\n", args[0])
+		return 2
+	}
+}
+
+func cmdPaperSearch(args []string, stdout, stderr io.Writer) int {
+	fs := flag.NewFlagSet("search", flag.ContinueOnError)
+	fs.SetOutput(stderr)
+	query := fs.String("query", "", "search query")
+	limit := fs.Int("limit", 10, "max results (1-30)")
+	jsonOut := fs.Bool("json", false, "machine-readable output")
+	if err := fs.Parse(args); err != nil {
+		return 2
+	}
+	if *query == "" {
+		fmt.Fprintln(stderr, "physctl paper search: --query required")
+		return 2
+	}
+	if *limit < 1 || *limit > 30 {
+		fmt.Fprintln(stderr, "physctl paper search: --limit must be 1-30")
+		return 2
+	}
+	results, err := paperSearch(*query, *limit)
+	if err != nil {
+		fmt.Fprintf(stderr, "physctl paper search: %v\n", err)
+		return 2
+	}
+	if *jsonOut {
+		enc := json.NewEncoder(stdout)
+		enc.SetIndent("", "  ")
+		enc.Encode(results)
+		return 0
+	}
+	fmt.Fprintf(stdout, "Results (%d) for %q\n", len(results), *query)
+	for _, r := range results {
+		fmt.Fprintf(stdout, "  [%s] %s\n", r.SourceType, r.PaperID)
+		fmt.Fprintf(stdout, "         %s\n", r.Title)
+		if r.DOI != "" {
+			fmt.Fprintf(stdout, "         DOI: %s\n", r.DOI)
+		}
+		if r.IsOA {
+			fmt.Fprintf(stdout, "         open-access: yes\n")
+		}
+	}
+	return 0
+}
+
+func cmdPaperRelated(args []string, stdout, stderr io.Writer) int {
+	fs := flag.NewFlagSet("related", flag.ContinueOnError)
+	fs.SetOutput(stderr)
+	limit := fs.Int("limit", 10, "max results (1-30)")
+	jsonOut := fs.Bool("json", false, "machine-readable output")
+	if err := fs.Parse(args); err != nil {
+		return 2
+	}
+	if fs.NArg() != 1 {
+		fmt.Fprintln(stderr, "physctl paper related: exactly one paper ID required")
+		return 2
+	}
+	if *limit < 1 || *limit > 30 {
+		fmt.Fprintln(stderr, "physctl paper related: --limit must be 1-30")
+		return 2
+	}
+	results, err := paperRelated(fs.Arg(0), "references", *limit)
+	if err != nil {
+		fmt.Fprintf(stderr, "physctl paper related: %v\n", err)
+		return 2
+	}
+	if *jsonOut {
+		enc := json.NewEncoder(stdout)
+		enc.SetIndent("", "  ")
+		enc.Encode(results)
+		return 0
+	}
+	fmt.Fprintf(stdout, "Related papers (%d):\n", len(results))
+	for _, r := range results {
+		fmt.Fprintf(stdout, "  [%s] %s (%s)\n", r.SourceType, r.PaperID, r.Title)
+	}
+	return 0
+}
+
+func cmdPaperFetch(args []string, stdout, stderr io.Writer) int {
+	fs := flag.NewFlagSet("fetch", flag.ContinueOnError)
+	fs.SetOutput(stderr)
+	version := fs.String("version", "v1", "version label")
+	if err := fs.Parse(args); err != nil {
+		return 2
+	}
+	if fs.NArg() != 1 {
+		fmt.Fprintln(stderr, "physctl paper fetch: exactly one paper ID required")
+		return 2
+	}
+	root, err := findRoot()
+	if err != nil {
+		fmt.Fprintf(stderr, "physctl paper fetch: %v\n", err)
+		return 2
+	}
+	paperID := fs.Arg(0)
+	// Use arXiv download URL for arXiv IDs; for other IDs, attempt search-based URL.
+	downloadURL := fmt.Sprintf("https://arxiv.org/pdf/%s.pdf", paperID)
+	sourceURL := fmt.Sprintf("https://arxiv.org/abs/%s", paperID)
+	cached, err := paper.Fetch(root, paperID, *version, sourceURL, downloadURL)
+	if err != nil {
+		fmt.Fprintf(stderr, "physctl paper fetch: %v\n", err)
+		if strings.Contains(err.Error(), "UNAVAILABLE") {
+			return 2
+		}
+		return 1
+	}
+	fmt.Fprintf(stdout, "Fetched %s version %s (sha256:%s)\n", cached.PaperID, cached.Version, cached.SHA256PDF)
+	return 0
+}
+
+func cmdPaperExtract(args []string, stdout, stderr io.Writer) int {
+	fs := flag.NewFlagSet("extract", flag.ContinueOnError)
+	fs.SetOutput(stderr)
+	version := fs.String("version", "v1", "version label")
+	if err := fs.Parse(args); err != nil {
+		return 2
+	}
+	if fs.NArg() != 1 {
+		fmt.Fprintln(stderr, "physctl paper extract: exactly one paper ID required")
+		return 2
+	}
+	root, err := findRoot()
+	if err != nil {
+		fmt.Fprintf(stderr, "physctl paper extract: %v\n", err)
+		return 2
+	}
+	err = paper.Extract(root, fs.Arg(0), *version)
+	if err != nil {
+		fmt.Fprintf(stderr, "physctl paper extract: %v\n", err)
+		if strings.Contains(err.Error(), "UNAVAILABLE") {
+			return 2
+		}
+		return 1
+	}
+	fmt.Fprintf(stdout, "Extracted %s version %s: %s\n", fs.Arg(0), *version, paper.FullTextPath(root, fs.Arg(0), *version))
+	return 0
+}
+
+func paperSearch(query string, maxResults int) ([]paper.SearchResult, error) {
+	return paper.Search(query, maxResults)
+}
+
+func paperRelated(paperID, direction string, maxResults int) ([]paper.SearchResult, error) {
+	return paper.Related(paperID, direction, maxResults)
 }

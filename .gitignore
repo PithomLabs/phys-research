@@ -12,3 +12,6 @@
 # of the exact file examined instead.
 paper-cache/
 *.pdf
+
+# Runtime rate-limiter state from physctl paper commands (local only).
+.ratelimit/

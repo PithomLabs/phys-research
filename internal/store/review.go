@@ -104,6 +104,11 @@ type ReviewIssue struct {
 // historical review of the exact target version it examined whose original
 // source context was not pinned; it is NOT stale and must never be described
 // as fully fresh.
+//
+// Malformed input lines (missing digest, invalid format) are reported as
+// errors (IssueInputMalformed), not as legacy unpinned reviews. A review
+// with no input lines at all is LEGACY_UNPINNED (warning). A review with
+// malformed inputs is corrupt and produces errors, not a legacy warning.
 func (p ReviewProvenance) ReviewIssues(lookup func(id string) (*Record, bool)) (issues []ReviewIssue, unpinned bool) {
 	unpinned = len(p.Inputs) == 0
 

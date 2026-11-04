@@ -136,6 +136,170 @@ func TestCreateOverwriteRefused(t *testing.T) {
 	}
 }
 
+func TestCreatePreservesUnownedFiles(t *testing.T) {
+	root := tempRoot(t)
+	sentinels := map[string]string{
+		"research/sources/KEEP.md":  "another agent's source",
+		"research/issues/KEEP.md":   "another agent's issue",
+		"derivations/D-999.md":      "another agent's derivation",
+		"research/proposed/KEEP.md": "proposed-version area",
+		"docs/notes.md":             "human notes",
+	}
+	for rel, content := range sentinels {
+		p := filepath.Join(root, filepath.FromSlash(rel))
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(p, []byte(content), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	for _, typ := range []string{TypeSource, TypeIssue, TypeHypothesis, TypeEvidence, TypeDerivation} {
+		opts := Options{Type: typ, Title: "probe"}
+		if typ == TypeHypothesis {
+			opts.Class = "physical"
+		}
+		if _, err := Create(root, opts); err != nil {
+			t.Fatalf("create %s: %v", typ, err)
+		}
+	}
+	for rel, content := range sentinels {
+		got, err := os.ReadFile(filepath.Join(root, filepath.FromSlash(rel)))
+		if err != nil {
+			t.Fatalf("sentinel %s unreadable: %v", rel, err)
+		}
+		if string(got) != content {
+			t.Errorf("sentinel %s changed: %q", rel, got)
+		}
+	}
+}
+
+func TestCreateRunDir(t *testing.T) {
+	root := tempRoot(t)
+	rel, err := CreateRunDir(root, "muse", "2026-11-05T01-00")
+	if err != nil {
+		t.Fatalf("fresh run dir: %v", err)
+	}
+	if rel != "research/proposed/muse/2026-11-05T01-00" {
+		t.Errorf("got rel %q", rel)
+	}
+	if fi, err := os.Stat(filepath.Join(root, filepath.FromSlash(rel))); err != nil || !fi.IsDir() {
+		t.Fatalf("run dir not created: %v", err)
+	}
+	// Reuse of the same run-id must fail explicitly and keep the original.
+	if _, err := CreateRunDir(root, "muse", "2026-11-05T01-00"); err == nil {
+		t.Fatal("reused run-id must fail, never silently share the directory")
+	} else if !strings.Contains(err.Error(), "never reuse") {
+		t.Errorf("error must name the no-reuse rule, got: %v", err)
+	}
+	// Distinct runs and agents coexist.
+	if _, err := CreateRunDir(root, "muse", "2026-11-05T02-00"); err != nil {
+		t.Errorf("second run: %v", err)
+	}
+	if _, err := CreateRunDir(root, "codex", "2026-11-05T01-00"); err != nil {
+		t.Errorf("second agent: %v", err)
+	}
+	// Traversal and multi-segment identifiers are rejected.
+	for _, bad := range []string{"..", ".", "../x", "a/b", "", "has space"} {
+		if _, err := CreateRunDir(root, "muse", bad); err == nil {
+			t.Errorf("run-id %q must be rejected", bad)
+		}
+		if _, err := CreateRunDir(root, bad, "r1"); err == nil {
+			t.Errorf("agent-id %q must be rejected", bad)
+		}
+	}
+}
+
+func TestCreateRunDirRefusesSymlinkParent(t *testing.T) {
+	root := tempRoot(t)
+	// Victim space: codex owns a run directory with content.
+	victim, err := CreateRunDir(root, "codex", "r1")
+	if err != nil {
+		t.Fatal(err)
+	}
+	canary := filepath.Join(root, filepath.FromSlash(victim), "canary.md")
+	if err := os.WriteFile(canary, []byte("codex data"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	// Attacker plants research/proposed/muse as a symlink into codex space.
+	link := filepath.Join(root, "research", "proposed", "muse")
+	if err := os.Symlink(filepath.Join(root, "research", "proposed", "codex"), link); err != nil {
+		t.Fatal(err)
+	}
+	_, err = CreateRunDir(root, "muse", "r1")
+	if err == nil {
+		t.Fatal("planted symlink parent must be refused, creation succeeded")
+	}
+	if !strings.Contains(err.Error(), "symlink") {
+		t.Errorf("error must name the symlink refusal, got: %v", err)
+	}
+	got, rerr := os.ReadFile(canary)
+	if rerr != nil || string(got) != "codex data" {
+		t.Fatal("victim content disturbed by the refused creation")
+	}
+	if _, serr := os.Lstat(filepath.Join(root, "research", "proposed", "codex", "r1", "r1")); !os.IsNotExist(serr) {
+		t.Error("refused creation leaked a directory into victim space")
+	}
+}
+
+func TestCreateRunDirRefusesSymlinkLeaf(t *testing.T) {
+	root := tempRoot(t)
+	parent := filepath.Join(root, "research", "proposed", "muse")
+	if err := os.MkdirAll(parent, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Symlink("elsewhere", filepath.Join(parent, "r1")); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := CreateRunDir(root, "muse", "r1"); err == nil {
+		t.Fatal("symlink at the run destination must be refused")
+	}
+}
+
+func TestCreateRunDirConcurrentSameID(t *testing.T) {
+	root := tempRoot(t)
+	const n = 8
+	var wg sync.WaitGroup
+	errs := make([]error, n)
+	for i := 0; i < n; i++ {
+		wg.Add(1)
+		go func(i int) {
+			defer wg.Done()
+			_, errs[i] = CreateRunDir(root, "muse", "r1")
+		}(i)
+	}
+	wg.Wait()
+	wins := 0
+	for _, err := range errs {
+		if err == nil {
+			wins++
+		} else if !strings.Contains(err.Error(), "already exists") {
+			t.Fatalf("loser error must report the existing directory, got: %v", err)
+		}
+	}
+	if wins != 1 {
+		t.Fatalf("exactly one racer must win, got %d", wins)
+	}
+}
+
+func TestCreateRunDirDotConventions(t *testing.T) {
+	root := tempRoot(t)
+	// Leading-dot IDs are rejected (hidden-directory ambiguity); interior
+	// consecutive dots are ordinary filename characters, not traversal.
+	if _, err := CreateRunDir(root, "muse", ".run"); err == nil {
+		t.Error("leading-dot run-id must be rejected")
+	}
+	if _, err := CreateRunDir(root, ".agent", "r1"); err == nil {
+		t.Error("leading-dot agent-id must be rejected")
+	}
+	if _, err := CreateRunDir(root, "muse", "a..b"); err != nil {
+		t.Errorf("interior dots are not traversal, got: %v", err)
+	}
+	if _, err := CreateRunDir(root, "muse", "run."); err != nil {
+		t.Errorf("trailing dot is a legal filename character, got: %v", err)
+	}
+}
+
 func TestCreateValidation(t *testing.T) {
 	root := tempRoot(t)
 	cases := []struct {

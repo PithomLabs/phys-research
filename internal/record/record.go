@@ -7,12 +7,14 @@ package record
 import (
 	"errors"
 	"fmt"
+	"math/rand"
 	"os"
 	"path/filepath"
 	"regexp"
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/PithomLabs/phys-research/internal/frontmatter"
 	"github.com/PithomLabs/phys-research/internal/store"
@@ -157,7 +159,7 @@ func Create(root string, opts Options) (Created, error) {
 		}
 	}
 
-	for attempt := 0; attempt < 1000; attempt++ {
+	for attempt := 0; ; attempt++ {
 		id, err := nextID(root, prefix)
 		if err != nil {
 			return Created{}, err
@@ -169,11 +171,14 @@ func Create(root string, opts Options) (Created, error) {
 			return Created{ID: id, Rel: rel}, nil
 		}
 		if errors.Is(err, os.ErrExist) {
+			// Exponential backoff with jitter to reduce contention
+			baseDelay := time.Duration(1<<min(attempt, 10)) * time.Millisecond
+			jitter := time.Duration(rand.Int63n(int64(baseDelay)))
+			time.Sleep(baseDelay + jitter)
 			continue // raced with another writer; rescan for the next ID
 		}
 		return Created{}, err
 	}
-	return Created{}, errors.New("could not allocate an ID after repeated collisions")
 }
 
 // nextID returns the lowest unused ID of the form PREFIX-NNN by scanning
@@ -223,6 +228,103 @@ func nextID(root, prefix string) (string, error) {
 // expectedRel is the canonical location for a record of the given type.
 func expectedRel(typ, id string) string {
 	return DirByType[typ] + "/" + id + ".md"
+}
+
+// ProposedDir is the research-relative root for proposed record revisions.
+// Tooling never scans it (see store.RecordDirs), so proposals cannot disturb
+// validation; a human promotes a proposal by review.
+const ProposedDir = "research/proposed"
+
+// runIDPattern admits only single-segment, filesystem-safe identifiers.
+var runIDPattern = regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._-]*$`)
+
+// CreateRunDir creates research/proposed/<agentID>/<runID>/ for one agent
+// run and returns its repository-relative path. Parent directories are
+// created as needed, but the run directory itself must not exist: reuse of
+// a run-id fails explicitly so separate runs never share a destination.
+//
+// Path safety: every operation is anchored to the repository root and each
+// traversed component must be a real directory — a planted symlink anywhere
+// in the chain is refused deterministically, and the created leaf is
+// re-verified before success is returned. Residual limitation: the Go
+// standard library offers no atomic symlink-proof mkdirat, so an attacker
+// with write access to this checkout who wins a microsecond race against
+// the verification could still redirect one creation. That threat requires
+// in-checkout write access, which the worktree model already denies to
+// other agents (see docs/AGENT_CONTRACT.md); it is documented here rather
+// than claimed fixed.
+func CreateRunDir(root, agentID, runID string) (string, error) {
+	for name, v := range map[string]string{"agent id": agentID, "run id": runID} {
+		if v == "." || v == ".." || !runIDPattern.MatchString(v) {
+			return "", fmt.Errorf("invalid %s %q (single path segment, letters/digits/dot/underscore/dash)", name, v)
+		}
+	}
+	rt, err := os.OpenRoot(root)
+	if err != nil {
+		return "", err
+	}
+	defer rt.Close()
+	chain := []string{"research", ProposedDir, ProposedDir + "/" + agentID}
+	for _, p := range chain {
+		if err := ensureRealDir(rt, p); err != nil {
+			return "", err
+		}
+	}
+	leaf := ProposedDir + "/" + agentID + "/" + runID
+	if err := rt.Mkdir(leaf, 0o755); err != nil {
+		if os.IsExist(err) {
+			return "", fmt.Errorf("run directory %s already exists; choose a new run-id, never reuse one", leaf)
+		}
+		return "", err
+	}
+	// Post-verify the chain and the leaf. On failure, best-effort remove
+	// the leaf and report; never return a reused or unverified directory.
+	if err := verifyRunDir(rt, leaf, chain); err != nil {
+		_ = rt.Remove(leaf)
+		return "", err
+	}
+	return leaf, nil
+}
+
+// ensureRealDir creates name when missing and requires it to be a real
+// directory afterwards. Symlinks are refused without being followed.
+func ensureRealDir(rt *os.Root, name string) error {
+	if err := rt.Mkdir(name, 0o755); err != nil && !os.IsExist(err) {
+		return err
+	}
+	fi, err := rt.Lstat(name)
+	if err != nil {
+		return err
+	}
+	if fi.Mode()&os.ModeSymlink != 0 {
+		return fmt.Errorf("refusing to traverse symlink at %s", name)
+	}
+	if !fi.IsDir() {
+		return fmt.Errorf("%s exists and is not a directory", name)
+	}
+	return nil
+}
+
+// verifyRunDir re-checks that the chain holds no symlinks and the leaf is
+// a real directory, defeating anything planted before creation completed.
+func verifyRunDir(rt *os.Root, leaf string, chain []string) error {
+	for _, p := range chain {
+		fi, err := rt.Lstat(p)
+		if err != nil {
+			return fmt.Errorf("post-create verification failed at %s: %w", p, err)
+		}
+		if fi.Mode()&os.ModeSymlink != 0 || !fi.IsDir() {
+			return fmt.Errorf("post-create verification failed: %s changed during creation", p)
+		}
+	}
+	fi, err := rt.Lstat(leaf)
+	if err != nil {
+		return fmt.Errorf("post-create verification failed at %s: %w", leaf, err)
+	}
+	if fi.Mode()&os.ModeSymlink != 0 || !fi.IsDir() {
+		return fmt.Errorf("post-create verification failed: %s is not a new directory", leaf)
+	}
+	return nil
 }
 
 // TypeByPrefix maps an ID prefix letter back to its record type.
@@ -504,7 +606,7 @@ sha256: <SHA-256 of the exact file examined; the file itself is never committed>
 
 reviewed: %s
 digest: sha256:%s%s
-reviewer: adversary (OpenCode agent role)
+reviewer: adversary (coding-agent role; record the actual platform)
 model: <self-reported model id used for this review>
 
 ## Summary

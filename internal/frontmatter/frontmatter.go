@@ -278,7 +278,11 @@ func cleanValue(v string, abs int) (string, error) {
 		if len(v) < 2 || v[len(v)-1] != q {
 			return "", &SyntaxError{Line: abs, Msg: "malformed quoted value"}
 		}
-		return v[1 : len(v)-1], nil
+		unquoted := v[1 : len(v)-1]
+		if strings.Contains(unquoted, "\t") {
+			return "", &SyntaxError{Line: abs, Msg: "tab characters are not allowed in quoted values"}
+		}
+		return unquoted, nil
 	}
 	return v, nil
 }

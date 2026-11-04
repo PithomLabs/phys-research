@@ -1,7 +1,10 @@
 package main
 
 import (
+	"archive/tar"
 	"bytes"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"os"
 	"os/exec"
@@ -355,4 +358,70 @@ must be declared explicitly before evaluation. The 2022 published value keeps
 stat (2.3e-15) and syst (1.5e-15) separate; combining them in quadrature
 gives approximately 2.7e-15, but that combination is a declared choice, not
 a published number.`)
+}
+
+func TestCLIDistChecks(t *testing.T) {
+	bin := buildBin(t)
+	work := t.TempDir()
+
+	writeFile := func(rel, body string) {
+		p := filepath.Join(work, filepath.FromSlash(rel))
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(p, []byte(body), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	writeTar := func(name string, entries map[string]string) string {
+		p := filepath.Join(work, name)
+		f, err := os.Create(p)
+		if err != nil {
+			t.Fatal(err)
+		}
+		defer f.Close()
+		tw := tar.NewWriter(f)
+		defer tw.Close()
+		for ename, body := range entries {
+			if err := tw.WriteHeader(&tar.Header{Name: ename, Mode: 0o644, Size: int64(len(body))}); err != nil {
+				t.Fatal(err)
+			}
+			if _, err := tw.Write([]byte(body)); err != nil {
+				t.Fatal(err)
+			}
+		}
+		return p
+	}
+
+	clean := writeTar("clean.tar", map[string]string{"docs/n.md": "n"})
+	evil := writeTar("evil.tar", map[string]string{"../escape.md": "x"})
+
+	if code, out := cli(t, bin, work, "dist", "check-tar", clean); code != 0 {
+		t.Errorf("check-tar clean: exit %d\n%s", code, out)
+	}
+	if code, out := cli(t, bin, work, "dist", "check-tar", evil); code != 1 {
+		t.Errorf("check-tar evil: exit %d, want 1\n%s", code, out)
+	}
+	if code, _ := cli(t, bin, work, "dist", "check-tar", filepath.Join(work, "missing.tar")); code != 2 {
+		t.Errorf("check-tar missing: exit %d, want 2", code)
+	}
+
+	// Staged-tree check: payload manifest over one file, base listing empty.
+	writeFile("stage/p.md", "payload")
+	sum := sha256.Sum256([]byte("payload"))
+	writeFile("payload.sha256", hex.EncodeToString(sum[:])+"  p.md\n")
+	writeFile("base.list", "")
+	stage := filepath.Join(work, "stage")
+	manifest := filepath.Join(work, "payload.sha256")
+	base := filepath.Join(work, "base.list")
+	if code, out := cli(t, bin, work, "dist", "check-staged", "--dir", stage, "--manifest", manifest, "--base", base); code != 0 {
+		t.Errorf("check-staged clean: exit %d\n%s", code, out)
+	}
+	writeFile("stage/p.md", "tampered")
+	if code, out := cli(t, bin, work, "dist", "check-staged", "--dir", stage, "--manifest", manifest, "--base", base); code != 1 {
+		t.Errorf("check-staged tampered: exit %d, want 1\n%s", code, out)
+	}
+	if code, _ := cli(t, bin, work, "dist", "check-staged", "--dir", stage); code != 2 {
+		t.Errorf("check-staged missing flags: exit %d, want 2", code)
+	}
 }
