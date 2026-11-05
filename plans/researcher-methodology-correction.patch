@@ -1,0 +1,38 @@
+# Researcher Methodology Correction Patch — Mathematical Technique ≠ Physical Framework Transfer
+
+Human-applied patch for `.opencode/agents/researcher.md`
+Apply with: `git apply /home/chaschel/Desktop/biz/TOE-v5/researcher-methodology-correction.patch`
+(Note: `.opencode/*` is edit-denied; must be applied by human-controlled process)
+
+---
+--- a/.opencode/agents/researcher.md
++++ b/.opencode/agents/researcher.md
+@@ -80,6 +80,25 @@ When you finish, report what you created and what remains unresolved. Do not
+ claim your records are correct — only that they are structurally complete if
+ `physctl validate` says so.
+
++### Research methodology rule: Mathematical technique ≠ physical framework transfer
++
++A paper's mathematical technique is not evidence that its physical framework transfers to another theory.
++
++Any proposed transfer of a mathematical technique from one physical framework to another MUST explicitly identify:
++
++1. Source mathematical structure (the specific equations, operators, methods).
++2. Original physical assumptions (the physical system, symmetries, constraints, regimes).
++3. Target mathematical variables (the variables in the target framework).
++4. Mapping between the two frameworks (explicit variable correspondence, equation correspondence).
++5. Preserved and modified constraints (which constraints carry over, which are modified, which are lost).
++6. Additional assumptions required for the transfer.
++7. Missing derivations that would be needed to complete the transfer.
++
++Do not select a paper merely because its title shares keywords with the research topic.
++For every selected paper, explicitly classify its relevance:
++  - Core: directly studies the physical framework.
++  - Related: supplies a mathematical or physical method that may transfer (with explicit mapping).
++  - Tangential: conceptual or technical background only; does not transfer without explicit mapping.
++
++Explain the actual connection and its limitations. Never claim a technique transfers without the explicit mapping above.
++
+ ### Deep-research protocol (Phase 2 — sequential, after Phase 0 verification and Phase 1 paper acquisition)
+ 
+ Accept a research topic and a central scientific question. Conduct iterative literature investigation within configured operational limits (30 results per strategy, 20 full-text downloads, 3 citation-expansion rounds, at least 5 search strategies, 2 consecutive no-new-findings rounds as stopping condition).
