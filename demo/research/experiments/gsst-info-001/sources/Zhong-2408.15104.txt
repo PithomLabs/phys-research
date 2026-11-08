@@ -1,0 +1,1493 @@
+                                          Prepared for submission to JHEP
+
+
+
+
+                                          Probing the Page transition via approximate
+                                          quantum error correction
+arXiv:2408.15104v3 [hep-th] 19 Jan 2025
+
+
+
+
+                                          Haocheng Zhonga,b
+                                          a
+                                              Shing-Tung Yau Center of Southeast University, Nanjing 210096, China
+                                          b
+                                              School of Physics, Southeast University, Nanjing 211189, China
+
+                                              E-mail: zhonghaocheng@outlook.com
+
+                                          Abstract: In recent years, there is a huge progress in understanding the black hole infor-
+                                          mation problem, and the key is that the black hole entropy of radiation should be calculated
+                                          by the island formula, which describes the Page curve to ensure the unitarity of black hole
+                                          evaporation. In the paper, we find that the black hole evaporation interpreted by the is-
+                                          land formula can be understood in the language of approximate quantum error correction.
+                                          Furthermore, the Page transition, as a special property of the Page curve, should be under-
+                                          stood as the property of approximate quantum error correction itself, i.e. a general class of
+                                          quantum systems under certain conditions from approximate quantum error correction can
+                                          also exhibit phenomenon similar to the Page transition.
+Contents
+
+1 Introduction                                                                                            1
+
+2 Preliminaries                                                                                           4
+  2.1 Notation                                                                                            4
+  2.2 Quantum channel                                                                                     4
+  2.3 Approximate quantum error correction                                                                5
+  2.4 The reconstruction theorem                                                                          7
+
+3 Modeling black hole evaporation                                                                         9
+  3.1 AQEC as a probe for the Page transition                                                            11
+  3.2 Threshold of the Page transition                                                                   13
+
+4 Discussions                                                                                           14
+
+A Proof of the reconstruction theorem                                                                   16
+
+
+
+
+1       Introduction
+
+The black hole information paradox [1–4] refers to the conflict between two fundamental
+principles of physics: general relativity and quantum mechanics. The paradox gained sig-
+nificant attention when Stephen Hawking proposed in the 1970s that black holes could emit
+radiation now known as Hawking radiation which would imply that black holes slowly lose
+mass and eventually evaporate entirely [5, 6]. However, the radiation emitted by black holes
+appears to be random and independent of the information initially contained within them,
+which raises questions about the fate of the information that fell into the black hole. On the
+other hand, quantum mechanics states that information cannot be destroyed, and it must be
+conserved over time, which are the requirements of unitarity of quantum mechanics. This
+implies that information about an object that falls into a black hole should somehow be
+preserved rather than lost. This contradiction between the predictions of general relativity
+and quantum mechanics is what constitutes the black hole information paradox.
+     The key to the paradox is that unitarity requires the fine-grained entropy1 of radiation
+to satisfy the Page curve [18, 19] if a black hole is formed by a pure state, contradicting
+Hawking’s calculation that the entropy of radiation should increase monotonically. The
+entropy of radiation S(ρR ), where ρR is the density matrix of radiation, should increase
+to reach a maximum value and then decrease back to zero. At early time of black hole,
+    1
+     Here we are referring to the von Neumann entropy, which is a valid measure of entanglement between
+systems, but it is only valid when the total system is pure. When the total system is mixed, many quantities
+are proposed to replace the role of von Neumann entropy to measure entanglement, e.g. the reflected entropy
+[7], the balanced partial entanglement [8–10] from partial entanglement entropy [11–17].
+
+
+
+
+                                                   –1–
+radiation starts such that the entropy increases. However, purity of the initial state should
+be preserved under unitary process which ensures that the entropy should become zero
+when the black hole finally evaporates. The argument involves a critical point called the
+Page time denoted by tP age at which stage the trend of the entropy of radiation turns, and
+we call the transition as the Page transition.
+    In recent years, huge progress [3, 20–23] has been made which claims the entropy
+of radiation should be calculated by the island formula. To be specific, we consider a
+configuration at a fixed time slice as illustrated in Fig 1. The spatial region is divided into
+three subregions: I, B, R where I denotes the island 2 which is located near the black hole,
+and R represents a non-gravitational region3 where observers within collects the radiation
+from the black hole horizon, and B is compliment of the other two. The entropy of radiation
+should then be calculated by
+                                                                      
+                                              Area(X)
+                      S(ρR ) = min extX                 + Sbulk (ρ̃I∪R )                  (1.1)
+                                                 4G
+
+where ρR denotes the reduced density matrix of R defined by tracing out degrees of freedom
+on I ∪ B in the complete quantum gravity description, and ρ̃I∪R denotes the reduced
+density matrix of I ∪ R defined by tracing out degrees of freedom on B in the semi-classical
+description, and X denotes the entangling surface between I and B. The condition ”extX ”
+says that X should be chosen such that the sum of two terms on the right-hand side should
+be extremized under infinitesimal configuration perturbation of X, in which case X is called
+the quantum extremal surface (QES). The condition “min” says that if there exists multiple
+QES’s, we choose the one which minimizes the sum of terms on the right-hand side.
+
+
+
+
+Figure 1. At a fixed time slice, the spatial region (a Cauchy slice) containing a black hole is
+divided into three subregions: I, B, R with X being the entangling surface between I and B. The
+left endpoint of I refers to the singularity of the black hole and the right endpoint of R refers to
+the spatial infinity.
+
+     Does the island formula (1.1) satisfy the Page curve? One can argue [3, 4, 21, 22] that
+the island formula can be understood as a competition of two saddle-point solutions of the
+extremal condition in the gravitation path integral description: the vanishing island and
+the non-vanishing island with X slightly deviated from the black hole horizon, then (1.1)
+   2
+     For island defined in other theories, one can see for example [24–27] for holographic BCFT, [28–31] for
+holographic Weyl transformed CFT, and see [32–40] for an incomplete list of recent developments.
+   3
+     or in the semi-classical description where we can consider effective field theory in the curved spacetime.
+
+
+
+
+                                                    –2–
+can be equivalently formulated into
+                                            island
+                              S(ρR ) = min{SR         no−island
+                                                   , SR         }                         (1.2)
+
+The two terms on the right-hand side of (1.2) behave very differently as illustrated in Fig 3.
+SRno−island
+             increases monotonically with time, which coincides with Hawking’s calculation,
+while SR island decreases monotonically after the formation of X, which is slightly later than
+the formation of black hole, capturing the thermodynamic properties of the black hole.
+These two solutions are course-grained, i.e. the entropy of radiation as the fine-grained
+entropy is then upper-bounded by the two solutions such that it does follow the property
+of the Page curve. For more discussions about black hole information paradox, one is
+encouraged to consult [4].
+     Several comments can be made from the above description:
+
+   • Before tP age , the island does not contribute to S(ρR ), but the island itself does exist.
+     To repraise, no island has been observed from the viewpoint of observers in R.
+
+   • After tP age , the island appears from the viewpoint of observers in R.
+
+   • The Page transition can now be understood as the emergence of the island from the
+     viewpoint of observers in R.
+
+     These comments are the starting points of the paper. Later we will see that motivated
+by the ideas above, the Page transition can be understood via the notion of approximate
+quantum error correction (AQEC) from quantum information theory, and more importantly,
+it is the property of AQEC itself. In other words, there can be a Page transition, which
+exhibits the emergence of an island from the viewpoint of some local observers, for a general
+class of quantum systems which obey some criteria of AQEC. For relevant applications to
+black hole information paradox via the language of quantum information, one can consult
+[41–47].
+     Roughly speaking, whether the island is visible for observers in R is related to the
+notion of reconstruction inside the island. Parallely to the information paradox, a series of
+work [48–51] constitutes a theorem, which we call the reconstruction theorem. The theorem
+is originally proved for explaining the problem of bulk reconstruction in AdS/CFT, see
+for example [52] for introduction, but the proof itself is based on notions of quantum
+information, and later we will argue that it is applicable for the black hole reconstruction
+problem. What the theorem can do is to translate the reconstruction criterion into several
+equivalent statements, and amazingly, one of which is closely related to AQEC. Later in
+the paper we will directly examine that the black hole evaporation explained by the island
+formula (1.1) can be interpreted as some AQEC process. More importantly, this AQEC
+process is independent of whether a black hole exists hence the process describing Page
+transition can be applied to more generic situations. The rest of paper aims at solidating
+the claim more formally.
+     The paper is organized as follows. In section 2, we introduce some notions from quan-
+tum information, namely quantum channel, (approximate) quantum error correction and
+
+
+
+
+                                            –3–
+the reconstruction theorem, forming the basics for the paper. In section 3, which is the
+main part of the paper, we examine the relation between black hole evaporation and ap-
+proximate quantum error correction. We end with section 4 where we give a proposal for
+our generalization and discuss some related aspects. In appendix A we present a proof for
+the reconstruction theorem for readers who are interested.
+
+2     Preliminaries
+
+2.1    Notation
+Before we begin, we need to clarify our notations and conventions. We use H to denote
+the Hilbert space of a system in the relevant content, and the set of linear operators acting
+on H is denoted as L(H). The set of density matrices in H is denoted as s(H) ⊂ L(H).
+If a system is labeled by a letter, e.g. A, then we write HA as the corresponding Hilbert
+space and |A| as the dimension of HA . States and operators on HA are also labeled with a
+subscript, e.g. |ψ⟩A ∈ HA , OA ∈ L(HA ). The product sign ⊗ denotes either tensor product
+for states, e.g. |ψ⟩ ⊗ |ϕ⟩, or Kronecker product for operators, e.g. OA ⊗ IB where I is
+the identity. For abbreviation, we will simplify them as |ψ⟩|ϕ⟩ and OA respectively, but
+sometimes we will keep the sign explicit to remind the readers. Whether OA is an operator
+on HA or a larger space should be distinguished by the states it acts on.
+
+2.2    Quantum channel
+We first introduce the notion of quantum channel. The content is based on [53] which
+readers are encouraged to consult for more detailed discussions.
+Definition 2.1. Given two systems A, B, a quantum channel N from A to B is a lin-
+ear, completely positive and trace-preserving (CPTP) map from density matrices to density
+matrices:
+                                    N : s(HA ) → s(HB )
+                                                                                    (2.1)
+                                            ρA 7→ ρB
+    Linearity is to make sure that an ensemble maps to another ensemble with the same
+probability distribution, i.e.
+                                   N (pi ρi ) = pi N (ρi )                       (2.2)
+Trace-preserving ensures that an operator with unital trace gets mapped to another operator
+with unital trace, and a map between operators is positive if it sends a positive semi-definite
+operator to another positive semi-definite operator. Both properties should be required
+because density matrices are semi-definite and have unital trace by definition. Instead of
+positivity, we require a stronger condition called completely positivity:
+
+                       N ⊗ IE : ρA ⊗ σE 7→ ρB ⊗ σE ,     ∀σE ∈ s(HE )                     (2.3)
+
+is positive for any auxiliary system E. Practically speaking, completely positivity is to
+ensure that the channel works suitably even though the system is coupled with environment,
+which is usually the case in an actual computation process.
+    Two examples of quantum channel are useful in the paper:
+
+
+
+
+                                            –4–
+      • For any unitary U ∈ L(H), there exists a quantum channel NU from H to itself:
+
+                                         NU : s(H) → s(H)
+                                                                                         (2.4)
+                                                   ρ 7→ U ρU †
+
+
+      • For any isometry V : HA → HB ⊗ HE , there exists a quantum channel NV from A
+        to B:
+                                 NV : s(HA ) → s(HB )
+                                                                               (2.5)
+                                         ρA 7→ TrE V ρA V †
+
+        where “isometry” means V † V = IA and V V † = ΠBE , i.e. projection onto V (HA ) ⊂
+        HB ⊗ H E .
+
+     In fact, for any quantum channel N there exists an isometry V satisfying (2.5), which
+is also called the isometric dilation of N , if a suitable auxiliary system E is chosen [53].
+     One important feature of quantum channel is that, the relative entropy monotonically
+decreases under a quantum channel, which is described as follows,
+
+Theorem 2.2. Let N be a quantum channel from system A to system B, then we have
+
+                          S(ρ|σ) ≥ S(N (ρ)|N (σ)),      ∀ρ, σ ∈ s(HA )                   (2.6)
+
+where S(ρ|σ) is the relative entropy between ρ and σ (likewise for S(N (ρ)|N (σ))).
+
+2.3     Approximate quantum error correction
+
+Our next important notion is the quantum error correction (QEC), which is to protect
+computing process against errors (or noise) which may affect the outcome of computation.
+One basic idea is encoding the system into a larger one such that the original information
+can be protected when the enlarged system is only partly affected. One is encouraged to
+consult [54, 55] for a general introduction.
+     We now introduce one QEC example for comprehension: the three-qutrit code [56], to
+illustrate the ideas of QEC. Suppose Alice wants to send Bob a state based on a qutrit:
+
+                                                               2
+                                                               X
+                            |ψ⟩ = a0 |0⟩ + a1 |1⟩ + a2 |2⟩ =         ai |i⟩              (2.7)
+                                                               i=0
+
+If Bob’s apparatus can not get access to one qutrit, then since the state is based on one
+qutrit, he can no longer receive the information, i.e. the qutrit is erased from Bob’s view-
+point. A better idea is that Alice should send a three-qutrit state instead of a single qutrit
+state:
+                                              2
+                                              X
+                                       |ψ̃⟩ =    ai |ĩ⟩                                 (2.8)
+                                                i=0
+
+
+
+
+                                              –5–
+where we define a set of new bases,
+                                      1
+                                0⟩ = √ (|000⟩ + |111⟩ + |222⟩)
+                               |e
+                                       3
+                                      1
+                                1⟩ = √ (|012⟩ + |120⟩ + |201⟩)
+                               |e                                                       (2.9)
+                                       3
+                                      1
+                                2⟩ = √ (|021⟩ + |102⟩ + |210⟩).
+                               |e
+                                       3
+which spans the three-dimensional subspace of the total three-qutrit space H, and we call
+it the code subspace denoted by Hcode ⊂ H. Nows if Alice sends this alternative state |ψ̃⟩ to
+Bob, and we assume that Bob still can not get access to one of the three qutrits. Without
+loss of generality, we assume that it is the third qutrit which is erased. Bob can access to
+the first two qutrits, and he should implement the following operation U12 to the first two
+qutrits:
+                             |00⟩ 7→ |00⟩ |11⟩ 7→ |01⟩ |22⟩ 7→ |02⟩
+                             |01⟩ 7→ |12⟩ |12⟩ 7→ |10⟩ |20⟩ 7→ |11⟩                   (2.10)
+                             |02⟩ 7→ |21⟩ |10⟩ 7→ |22⟩ |21⟩ 7→ |20⟩
+which “transforms” the new basis into the original basis as follows,
+                                  (U12 ⊗ I3 ) |ei⟩ = |i⟩ ⊗ |χ⟩                          (2.11)
+where |χ⟩ = √13 (|00⟩ + |11⟩ + |22⟩). Therefore, when Bob applies U12 to |ψ̃⟩, he finds that
+
+                                  (U12 ⊗ I3 ) |ψ⟩
+                                               e = |ψ⟩ ⊗ |χ⟩                            (2.12)
+i.e. Bob can apply U12 to |ψ̃⟩ then read the first qutrit to receive the original information
+|ψ⟩! The process is what we mean by error correction: we encode our information into a
+large system (|ψ⟩ 7→ |ψ̃⟩) then use U12 to recover the original information against the erasure
+of the third qutrit. Note that there exists permutation symmetry between qutrits in Hcode ,
+which ensures that U23 , U31 also exist, i.e. Bob can recover the original information against
+the erasure of the first qutrit or the second qutrit as well.
+     Formally, we consider a logical space or code (sub)space Hcode which contains the true
+degrees of freedom of the system, and a physical space Hphys describing the system redun-
+dantly such that Hcode ⊂ Hphys , which we call the subspace description. Equivalently, if
+we regard Hcode and Hphys as two independent spaces, i.e. Hcode is not regarded as the
+subspace of Hphys , then the encoding process is manifested by an isometric coding:
+                                      V : Hcode → Hphys                                 (2.13)
+which can induce a quantum channel from the code space to the physical space. We call it
+the encoding description. In the case of the three-qutrit code, the isometric coding is given
+by
+                                     1
+                              0⟩ 7→ √ (|000⟩ + |111⟩ + |222⟩)
+                             |e
+                                      3
+                                     1
+                              1⟩ 7→ √ (|012⟩ + |120⟩ + |201⟩)
+                             |e                                                        (2.14)
+                                      3
+                                     1
+                              2⟩ 7→ √ (|021⟩ + |102⟩ + |210⟩).
+                             |e
+                                      3
+
+
+
+
+                                             –6–
+which one can compare with (2.9) described by the subspace description.
+     After encoding, the protected information will go through some latent errors or noise,
+and we still need to recover and decode the outcome to receive the information. The whole
+process is illustrated in Fig 2 where we use a quantum channel N to represent encoding and
+noise, and another quantum channel R, which is called the recovery channel, to represent
+recovery and decoding. If the whole process is qualified to be a good QEC code, we expect
+that
+                              ρ̃ ≡ (R ◦ N )(ρ) ≈ ρ, ∀ρ ∈ s(Hcode )                   (2.15)
+
+
+
+
+Figure 2. Extracted from [53]. Quantum error correction can be realized by a series of quantum
+channels, where N represents encoding and noise, and R represents recovery and decoding.
+
+    We say N is reversible if R exists, and is exactly reversible if the equality holds in
+(2.15). How do we know if a channel is exactly reversible or not? There is a theorem due
+to Petz & Ohya [57] which can be demonstrated as follows,
+
+Theorem 2.3. A quantum channel N : s(HA ) → s(HB ) is exactly reversible if and only if
+
+                           S(ρ|σ) = S(N (ρ)|N (σ)),    ∀ρ, σ ∈ s(HA )                  (2.16)
+
+Furthermore, the Petz map:
+                                 h                     i
+            Pσ,N : γ 7→ σ 1/2 N † N (σ)−1/2 γ N (σ)−1/2 σ 1/2 ,         ∀γ ∈ s(HB )    (2.17)
+
+is the recovery channel:
+                               (Pσ,N ◦ N )(ρ) = ρ,    ∀ρ ∈ s(HA )                      (2.18)
+
+     Practically, it is very hard for a quantum channel to be reversible exactly, so we need
+a criterion for a channel to be reversible in an approximate sense. Due to theorem 2.2 and
+theorem 2.3, we say that N is only approximately reversible if and only if
+
+                                 S(ρ|σ) − S(N (ρ)|N (σ)) < δ                           (2.19)
+
+for some infinitesimal positive δ. The procedure described in Fig 2 together with (2.19)
+constitute the notion of approximate quantum error correction (AQEC), see [58] and also
+earlier works [59–61].
+
+2.4   The reconstruction theorem
+The theorem in this section collects results from a series of work [48–51], and our setup is
+essentially the same as the theorem 3.1 in [50]. Additional to notations in section 2.1, we
+use Hcode to denote the code space of the system and the “tilde” symbol is used for states
+in the code space, e.g. |ψ̃⟩ ∈ Hcode and for operators acting on Hcode , e.g. Õ ∈ L(Hcode ).
+
+
+
+
+                                             –7–
+Theorem 2.4. Given a finite-dimensional system H which is decomposed into two parts
+H = HA ⊗HĀ and a code space Hcode with condition dimHcode ≤ |A|, the isometric encoding
+V : Hcode → H induces a quantum channel:
+                                                                 
+                  N : s(Hcode ) → s(HA ), ρ̃ 7→ ρA ≡ TrĀ V ρ̃V †                 (2.20)
+
+then the following statements are equivalent:
+
+  1. Given ρ̃ ∈ s(Hcode ), we have4
+
+                                              S(ρA ) = LA + S(ρ̃)                                   (2.21)
+
+        where LA is some constant.
+
+  2. Given two density matrices ρ̃, σ̃ ∈ s(Hcode ), we have
+
+                                              S(ρA |σA ) = S(ρ̃|σ̃)                                 (2.22)
+
+  3. For any operator Õ ∈ L(Hcode ), there exists an operator OA ∈ L(HA ) such that
+
+                                      OA V |ψ̃⟩ = V Õ|ψ̃⟩,   ∀|ψ̃⟩ ∈ Hcode                         (2.23)
+
+     The theorem is originally proved for reinterpreting finite-dimensional holographic mod-
+els into a set of equivalent statements. In holographic theories [63], statement 1 and state-
+ment 2 correspond to the RT formula or the QES formula [64–67], and the JLMS formula
+[68] respectively. The condition dimHcode ≤ |A| of the theorem says that if we expect the
+code space is reconstructable from A, then A must contain at least the same information of
+the code space such that the dimension of A is at least equal to the dimension of the code
+space. By “the code space is reconstructable from A” we mean that if one manipulates some
+degrees of freedom on a known region A, we are able to know how an unknown region, which
+is the code space in this case, reacts. This statement indicates that there exists a dictionary
+between operators on the two relevant regions, which is exactly the physical interpretation
+of statement 3 in the theorem. In the context of holography, this interprets the so-called
+GKP-W dictionary [69, 70] which relates bulk operators and boundary operators.
+     In the paper, we do not need the holographic interpretation of the theorem because we
+expect that the island formula (1.1) describing the black hole evaporation holds generally,
+and we will use the theorem to model the black hole evaporation without holographic de-
+scription in the next subsection. Essentially, the theorem itself is proved purely from the
+quantum information perspective and is not necessarily related to holography. Nevertheless
+to say, readers are encouraged to gain more insights from discussions involving holography.
+To this purpose, we give a proof of a slightly different version of the reconstruction theo-
+rem in appendix A, which is more closely related to holographic models like AdS3 /CFT2
+correspondence. For a more accessible introduction, one can consult [52, 71].
+  4
+      Here we drop the familiar coefficient 4G1N because it can be regarded absorbed by the area term.
+
+
+
+
+                                                   –8–
+3       Modeling black hole evaporation
+
+In this section we argue that the reconstruction theorem is applicable to the black hole
+evaporation. We first compare the theorem 2.4 with the island formula:
+                                                                 
+                                          Area(X)
+                     S(ρR ) = min extX             + Sbulk (ρ̃I∪R )                (3.1)
+                                             4G
+then we find that when a non-vanishing X is already specified, the island formula in the
+island phase, i.e. S(ρR ) = SR island = Area(X) + S(ρ̃
+                                           4G         I∪R ) with a non-vanishing island I after
+the Page time, has the same form as (2.21) in statement 1. Motivated by this observation,
+we can identify the region R in the formula as the region A in the theorem 2.4. What
+follows is that, we can further regard the “semi-classical” space Hsc where ρ̃I∪R operates
+on as the code space Hcode , and the “complete quantum gravity” space Hqg , which includes
+quantum gravitational effects, as the physical space H in the theorem 2.4.
+     To verify if the above identification works, we notice that the only condition for theorem
+2.4 is dim Hcode ≤ |A|, so we only need to verify the corresponding spaces satisfy the relation
+as well. We first notice that Hqg contains more information than Hsc because the latter is
+a semi-classical approximation of the former, i.e. Hsc ,→ Hqg . When referring to setup in
+Fig 1, we notice that the spaces satisfy
+                                 qg
+                                HR  ,→ Hqg ,      sc
+                                                 HR  ,→ Hsc = HB
+                                                               sc    sc
+                                                                  ⊗ HI∪R                  (3.2)
+         qg
+where HR    denotes partial contribution from degrees of freedom in R to the total space Hqg
+               sc ), and we need to clarify our notation for “I ∪ R” which we use to denote
+(likewise for HR
+that degrees of freedom in I and degrees of freedom in R are not independent. The physical
+interpretation of this constraint is that the radiation of black hole is “entangled” with the
+island. An intuitive explanation is that when we discuss quantum theory in gravitational
+background, vacuum fluctuates even in the region around the black hole horizon, which
+looks “normal” as the usual spacetime when considering small enough region. If a pair of
+entangled particles emerges, with one of which appearing inside the horizon and the other
+one appearing outside, the inside particle will remain inside forever, which is believed to be
+the source of the island I, while the outside particle will radiate outwards and then finally
+be observed by observers in R. This correlation necessarily sets the number of degrees of
+freedom describing I combined with R to be exactly equal to that of R5 :
+                                                 sc
+                                            dim HI∪R        sc
+                                                     = dim HR                             (3.3)
+
+     Besides, we only consider the non-gravitational degrees of freedom within the combined
+space, which is due to the fact that the second term in the island formula is calculated in the
+semi-classical regime. i.e. it is computed in the curved but non-gravitational background.
+Therefore, the number of degrees of freedom describing R in the semi-classical description
+is less than that in the complete quantum gravity description:
+                                                            qg
+                                                  sc
+                                             dim HR  < dim HR                             (3.4)
+    5
+        We can regard such correlation between I and R as a coding relation [72].
+
+
+
+
+                                                     –9–
+then combining (3.3) and (3.4) implies
+                                                     qg
+                                          sc
+                                     dim HI∪R < dim HR                                    (3.5)
+
+as required by the theorem 2.4 after making the following identifications:
+                                                              qg
+                         H ∼ Hqg ,             sc
+                                      Hcode ∼ HI∪R ,    HA ∼ HR
+                                                      sc         qg                       (3.6)
+                       ⇒ dim Hcode ≤ |A|     ∼   dim HI∪R < dim HR
+
+    After verifying that the theorem 2.4 can be applied to the island formula, we now have
+statement 1 in the theorem after (3.6), such that the following statements hold simultane-
+ously according to the theorem:
+
+   • (Statement A) Given ρ̃, σ̃ on Hsc : S(ρR |σR ) = S(ρ̃I∪R |σ̃I∪R )
+
+   • (Statement B) Given ÕI∪R ∈ L(HI∪R
+                                    sc ): ∃O ⇒ O V |ϕ̃⟩ = V Õ
+                                            R   R              I∪R |ϕ̃⟩
+
+     To convince the readers and also as a calculation warm-up, we now show how to derive
+the statement A from the island formula (3.1) in the island phase, then the statement B
+is straightforward from applying the theorem 2.4. The derivation basically follows [49, 68].
+We start with
+                      S(σR ) = S(σ̃I∪R ) + LX = S(σ̃I∪R ) + (Trσ̃)LX                  (3.7)
+where the constant LX denotes the area term and we use the fact that a density matrix
+has unital trace, i.e. Trσ̃ = 1. We arbitrarily perturbate σ̃ to first order:
+                                                         
+                      TrR (δσR KRσ
+                                   ) = TrI∪R δσ̃I∪R K̃I∪R
+                                                       σ
+                                                            + (Trδσ̃)LX         (3.8)
+
+where KRσ is the modular Hamiltonian for the density matrix σ defined by K σ ≡ − log σ
+                                                             R             R           R
+                   σ , and we have used the fact that perturbation of the von Neumann
+and likewise for K̃I∪R
+entropy S(ρ) with respect to the density matrix is given by
+
+                  δS(ρ) ≡ S(ρ + δρ) − S(ρ) ≈ −Tr (δρ log ρ) ≡ Tr (δρK ρ )                 (3.9)
+
+such that the LHS of (3.7) becomes the LHS of (3.8) and likewise for the first terms of the
+RHS of (3.7) and (3.8).
+    Both sides of (3.8) are now linear in the infinitesimal entries of δσ̃, which can be
+integrated from zero to ρ̃:
+                                                          
+                          TrR (ρR KR
+                                   σ
+                                     ) = TrI∪R ρ̃I∪R K̃I∪R
+                                                       σ
+                                                             + LX                    (3.10)
+
+where the term “integration from zero to ρ̃” is to denote integrating the infinitesimal entries
+of δσ̃ to be the entries of ρ̃. Now (3.10) implies
+                                                                    
+                                             σ
+   S(ρ̃I∪R |σ̃I∪R ) − S(ρR |σR ) = −TrR (ρR KR ) + TrI∪R ρ̃I∪R K̃I∪R
+                                                                  σ
+                                                                       + S(ρR ) − S(ρ̃I∪R )
+                              =0
+                                                                                        (3.11)
+
+
+
+
+                                            – 10 –
+where the first equality makes use of the definition of the relative entropy and the second
+one uses (3.7) and (3.10), completing our derivation to the first statement.
+     The statement A is exactly the criterion for the quantum channel N : s(HI∪R      sc ) →
+     qg
+s(HR ) to be exactly reversible in the language of AQEC. The statement B says that the
+island I is reconstructable from R. Combining the two we find that observers in R do
+“observe” the island in this exactly-reversible case. But what if N is not exactly reversible?
+It is indeed the case for the island formula before the Page time. As we have discussed, the
+following two cases are possible when N is not exactly reversible:
+
+      • If S(ρ̃I∪R |σ̃I∪R )−S(ρR |σR ) < δ, then there exist an operator OR such that OR V |ϕ̃⟩ ≈
+        V ÕI∪R |ϕ̃⟩, i.e. observers in R approximately observe the island.
+
+      • If S(ρ̃I∪R |σ̃I∪R ) − S(ρR |σR ) <
+                                         /δ, then we have OR V |ϕ̃⟩ =
+                                                                    ̸ V ÕI∪R |ϕ̃⟩, i.e. observers in
+        R do not observe the island.
+
+We can see that the difference of relative entropies S(ρ̃I∪R |σ̃I∪R ) − S(ρR |σR ) can be used to
+characterize the appearance of OR , i.e. a phase transition from “phase without the existence
+of OR ” to “phase with the existence of OR ”, at the critical point S(ρ̃I∪R |σ̃I∪R )−S(ρR |σR ) =
+δ. Could it describe the Page transition? If true, we expect that the black hole evaporation
+satisfies                                                  
+                                                           > δ, if t < tP age
+                                                           
+                                                           
+                  S(ρ̃I∪R (t)|σ̃I∪R (t)) − S(ρR (t)|σR (t)) = δ, if t = tP age             (3.12)
+                                                           
+                                                           ≤ δ, if t > t
+                                                           
+                                                                              P age
+
+for some threshold value δ.
+
+3.1     AQEC as a probe for the Page transition
+Now we are ready to model black hole evaporation by proving that (3.12) holds. We rewrite
+the island formula as
+                           S(ρR ) = min{SR island    no−island
+                                                  , SR         }                   (3.13)
+
+where SRisland = S(ρ̃
+                     I∪R ) + LX and here I denotes the non-vanishing island solution. We
+further define
+                                  ∆S ≡ SR island
+                                                 − S(ρR )                          (3.14)
+
+Note that (3.14) is a function of time t via the state ρ(t) describing the black hole during
+the evaporation process, and (3.14) is non-vanishing and monotonically decreasing before
+tP age , then vanishes after tP age :
+                             (                                 (
+                              > 0, if t < tP age       dS(t)    < 0, if t < tP age
+                     ∆S(t)                         ,                                          (3.15)
+                              = 0, if t ≥ tP age        dt      = 0, if t ≥ tP age
+
+as illustrated in Fig 3. Now our strategy is to rewrite
+
+                              ∆Srel (ρ̃|σ̃) ≡ S(ρ̃I∪R |σ̃I∪R ) − S(ρR |σR )                   (3.16)
+
+
+
+
+                                                 – 11 –
+                                             no−island                                          island
+Figure 3. The vanishing island solution SR             and the non-vanishing island solution SR
+are presented by the blue line and the red line respectively. The entropy of radiation S(ρR ) follows
+                                                                                          island
+the Page curve presented by the orange line. ∆S, defined by the difference between SR             and
+S(ρR ), is non-vanishing and monotonically decreasing before tP age , and then vanishes after tP age .
+
+
+in terms of ∆S such that the property of ∆S can be adopted. According to the definition
+(3.14) of ∆S:
+                            S(ρR ) = S(ρ̃I∪R ) + LX − ∆S(ρ̃)                     (3.17)
+from which we regard ∆S as the perturbation of the entropy of radiation around the non-
+vanishing island solution. Since ∆S vanishes after tP age , ∆Srel also vanishes according to
+our previous island phase calculation, then we only need to examine if
+                                           lim ∆Srel → 0                                       (3.18)
+                                         t→t−
+                                            P age
+
+before the Page time. To verify, we start with
+                                S(σR ) = S(σ̃I∪R ) + LX − ∆S(σ̃)                               (3.19)
+and we perturbate σ̃ to first order:
+                                                    
+                  TrR (δσR KR
+                            σ
+                              ) = TrI∪R δσ̃I∪R K̃I∪R
+                                                 σ
+                                                       + Trδσ̃LX − δ∆S(σ̃)                     (3.20)
+where δ∆S(σ̃) ≡ ∆S(σ̃ + δσ̃) − ∆S(σ̃). Integrating δσ̃ from zero to ρ̃:
+                                                          Z ρ̃
+                TrR (ρR KR ) = TrI∪R ρ̃I∪R K̃I∪R + LX −
+                          σ                   σ
+                                                                 δ∆S(σ̃)                       (3.21)
+                                                                      0
+and then expanding ∆Srel (ρ̃|σ̃):
+                                                           
+        ∆Srel (ρ̃|σ̃) = −TrR (ρR KR σ
+                                      ) + TrI∪R ρ̃I∪R K̃I∪R
+                                                        σ
+                                                              + S(ρR ) − S(ρ̃I∪R )
+                        Z ρ̃                                                                   (3.22)
+                      =      δ∆S(σ̃) − ∆S(ρ̃)
+                         0
+
+
+
+
+                                               – 12 –
+where the second equality uses (3.17) and (3.21). The final expression is positive which
+is guaranteed by the theorem 2.2, and can be regarded as a sum of ∆S’s with different
+variables because basically integration is an infinite sum of the integrand, with each terms
+vanishing at tP age according to (3.15). We therefore conclude that the criterion (3.18) holds
+indeed.
+
+3.2     Threshold of the Page transition
+In fact, different states result in different geometries in gravitational theory, hence we
+have different geometric configurations for ρ̃ and σ̃ (i.e. X {ρ} ̸= X {σ} in Fig 1 where
+the superscript denotes which density matrix is associated) which may result in the non-
+vanishing threshold value. During the verification in the last section we implicitly assume
+that the Hilbert space factorization Hsc = HB         I∪R is the same for different density
+                                                sc ⊗ Hsc
+
+matrices, which is not necessarily true. Meanwhile, if two density matrices give two hugely
+different Hilbert space factorizations will make our derivation in the last section no longer
+valid.
+     Therefore, one additional constraint should be manually added:
+
+      • Two different density matrices which we choose to calculate the relative entropy should
+        correspond to black holes with the same macroscopic quantities.
+
+     To be specific, when we calculate ∆rel S, we can only choose density matrices from
+s(Hmacro,{ℓ} ) ⊂ s(Hsc ) where the subscript “macro” denotes that the states within give
+the same macroscopic quantities and “{ℓ}” collectively specifies all possible macroscopic
+quantities. The constraint is natural because for observers localized in R, they should
+only observe the macroscopic quantities while the microscopic details are still hidden inside
+the horizon. The constraint results in the fact that the two density matrices we choose
+should approximately give the same radius of black hole horizon, which further implies that
+X {ρ} ≈ X {σ} as the QES is slightly deviated from the horizon. The other consequence
+is that the black holes for two density matrices should be formed in the same time. As
+a counter example, two same-size black holes with one of which being in the early time
+of evaporation while the other being in the later time of evaporation have vastly different
+entropies of radiation, because the former do not have island contribution while the latter
+does.
+     After carefully specifying which configuration we are considering in the above calcula-
+tion, one can perform a similar procedure in the last subsection to show that after tP age we
+have
+                      {ρ}   {σ}          {ρ}   {σ}
+  ∆Srel (ρ̃|σ̃) ≡ S(ρ̃I∪R |σ̃I∪R ) − S(ρR |σR ) = δ1 (ρ̃, σ̃) + δ2 (ρ̃, σ̃),   ρ̃, σ̃ ∈ s(Hmacro,{ℓ} )
+                                                                                                 (3.23)
+where
+                                       {ρ}     {σ}        {σ}   {σ}
+                       δ1 (ρ̃, σ̃) ≡ S(ρ̃I∪R |σ̃I∪R ) − S(ρ̃I∪R |σ̃I∪R ),                       (3.24)
+                                                                           
+                                          {ρ}         {ρ}          {σ}    {σ}
+                       δ2 (ρ̃, σ̃) ≡ S(ρ̃I∪R ) + LX − S(ρ̃I∪R ) + LX                            (3.25)
+
+
+
+
+                                                 – 13 –
+According to our constraint that X {ρ} ≈ X {σ} , δ1 (ρ̃, σ̃) is an infinitesimal value. As for
+δ2 (ρ̃, σ̃), we recognize that the term inside round bracket is exactly what is extremized by
+QES in (1.1). Therefore, δ2 (ρ̃, σ̃) is only non-vanishing in second order of configuration
+perturbation. The threshold value can now be chosen by maximizing δ1 (ρ̃, σ̃) + δ2 (ρ̃, σ̃)
+among all ρ̃, σ̃ ∈ s(Hmacro,{ℓ} ) and among all Hilbert spaces with different macroscopic
+quantities:
+                    δ ≡ maxρ̃,σ̃,{ℓ} (δ1 (ρ̃, σ̃) + δ2 (ρ̃, σ̃)) , ρ̃, σ̃ ∈ s(Hmacro,{ℓ} ) (3.26)
+which concludes our proof for (3.12) to be held.
+
+4       Discussions
+
+In the paper, we have verified that the black hole evaporation does satisfy the criterion
+(2.19) of AQEC after the Page time hence the island emerges from the viewpoint of outside
+observers, and we have also calculated the threshold value of AQEC criterion for black hole
+evaporation. There are two aspects we would like to emphasize:
+
+        • Gravity plays “almost” no role.
+
+        • Our definition of the Page transition requires the notion of local observers.
+
+     The first statement may be a bit misleading. By it we mean that gravity only manifests
+itself in two ways. The first one gives the area term in (1.1) while the statement 1 in recon-
+struction theorem 2.4 allows arbitrary value of LA 6 , i.e. it can vanish, which corresponds
+to the non-gravitational cases. The other one is that the Hilbert space of I combined with
+R has both gravitational and non-gravitational contributions while the second term in the
+island formula (1.1) only consider the non-gravitational part. Recall that in using the re-
+construction theorem 2.4 we need to ensure that the dimension of the code space should be
+less than or equal to |A|, and the latter constraint that only the non-gravitational part is
+considered is not necessary for the theorem to be applicable to the black hole evaporation,
+because the constraint (3.3) between I and R already ensures that the theorem 2.4 works.
+     The second statement requires the locality of observers. By “locality” we mean that
+observers are only able to access degrees of freedom of some certain subregions, while any
+other subregion which is space-like separated to the accessible subregion is blind to those
+observers. For example, provided a density matrix ρ describing the whole system in the
+setup of Fig 1, observers located in R can only read or manipulate degrees of freedom in
+R. Therefore, when observers located in R measure the state, they only observe the reduce
+density matrix ρR ≡ TrR̄ ρ rather than ρ. A consequence is that when observers in R talk
+about von Neuman entropy, they can only refer to S(ρR ) rather than S(ρ) of the total state,
+and then according to the reconstruction theorem 2.4, observers located in R only observe
+the existence of island when an island is needed to correctly calculate the entropy S(ρR ).
+In the case of black hole evaporation, what we focus on is the entropy of radiation, which
+is only accessible to observers in R. Besides, the requirement for locality is manifest when
+    6
+    It is pointed out in [73] that LA corresponds to the entropy of a maximally mixed state in gauge
+theories, which applies to gravity with diffeomorphism being the corresponding gauge symmetry.
+
+
+
+
+                                               – 14 –
+we try to use the statement 3 in the reconstruction theorem 2.4, where in the case of black
+hole evaporation we have ∃OR ⇒ OR V |ϕ̃⟩ = V ÕI∪R |ϕ̃⟩ for any given ÕI∪R ∈ L(HI∪R  sc ).
+
+The reconstruction from operators on R requires manipulation of degrees of freedom on R
+hence the locality condition is necessary.
+      Motivated by these arguments, we make the following generalization,
+
+Proposal 4.1. For a general system HI ⊗HB ⊗HR as in Fig 1, if applying some parameter-
+dependent constraints on I from R results in
+                                                               
+                                                               > δ,   if s < sp
+                                                               
+                                                               
+                   S(ρ̃I∪R (s)|σ̃I∪R (s)) − S(ρR (s)|σR (s))    = δ,   if s = sp            (4.1)
+                                                               
+                                                               
+                                                               ≤ δ,   if s > sp
+
+for some threshold value δ, then the system possesses a transition which accounts for the
+emergence of the island at the critical point s = sp , from the viewpoint of observers in R.
+
+     The parameter s characterizes the evolution of the system, and in the case of black
+hole evaporation it corresponds to time t. The parameter-dependent constraints on I from
+R are required to set |I ∪ R| ≤ |R| as s evolves, with the condition that the less-than sign
+only holds when other constraints are manually added, e.g. issues involving gravity. When
+the condition (4.1) is satisfied due to such constraints, then according to the reconstruction
+theorem 2.4 we have ∃OR ⇒ OR V |ϕ̃⟩ ≈ V ÕI∪R |ϕ̃⟩ for any given ÕI∪R ∈ L(HI∪R ) only
+after the critical point s = sp . Therefore, the system in this case, with or without gravity,
+exhibits a transition from a vanishing island state to a non-vanishing island state, which
+can be measured by calculating the von Neumann entropy over R.
+     It is explained that the constraint on I from R is the origin for the island in [30, 72],
+where authors consider a coding relation |i⟩R ⇒ |f (i)⟩I which projects out certain states in
+the original Hilbert space, resulting in Hilbert space reduction 7 which claims to give a general
+version of the island formula. To be specific, when one actually computes the gravitational
+path integral by using the Replica trick [74] to calculate the black hole entropy of radiation,
+the constraint on I from R sets the boundary conditions for I when the boundary conditions
+for R are set. Therefore, additional gluing of I over replicas gives a twist operator asserted
+at the location of X, which contributes the area term to the island formula. However,
+the claim only discussed how the island modifies the entropy over a single time-slice. The
+mechanism of a transition from non-island phase to island phase during the evolution of the
+system was left as an unsolved problem, and authors in [30, 72] suspected that there should
+exist more yet-to-known constraints to make the mechanism manifest. Our proposal 4.1
+solves this problem and the condition (4.1) is exactly the requirement for such transition
+to exist.
+
+  7
+   In the language of QEC, such Hilbert space reduction is exactly the encoding V : Hcode → H with
+Hcode being the Hilbert space after reduction and V being the embedding mapping.
+
+
+
+
+                                             – 15 –
+Acknowledgments
+
+The author would like to thank Zhenbin Yang, Qiang Wen, Mingshuai Xu for helpful
+discussions. This work was supported by SEU Innovation Capability Enhancement Plan
+for Doctoral Students (Grant No. CXJH_SEU 24137).
+
+
+A     Proof of the reconstruction theorem
+
+In this appendix we prove a slightly different version of the reconstruction theorem in section
+2.4. Besides that, instead of proving the three statements in theorem 2.4 to be equivalent,
+we also enlarge the theorem to include five statements. For simplicity in notations, we will
+use the subspace description that the code space is regarded as the subspace of the physical
+space, i.e. Hcode ⊂ Hphys .
+
+Theorem A.1. Given a finite-dimensional system H which is decomposed into two parts
+H = HA ⊗ HĀ , and a code subspace Hcode ⊆ H which is decomposed as Hcode = Ha ⊗ Hā
+with conditions |a| ≤ |A| and |ā| ≤ Ā , then we can make the following decomposition
+HA = HA1 ⊗ HA2 ⊕ HA3 and HĀ = HĀ1 ⊗ HĀ2 ⊕ HĀ3 with |a| = |A1 | and |ā| = Ā1 .
+We write the orthonormal basis of Ha as |ĩ⟩a , i = 1, . . . , |a| and |j̃⟩ā , j = 1, . . . , |ā| for Hā .
+Similarly, we use |i⟩A1 , |j⟩Ā1 for orthonormal basis of HA1 , HĀ1 respectively. The following
+statements are equivalent:
+
+               ˜ ≡ |ĩ⟩a |j̃⟩ā , there exists a unitary operator UA ∈ L(HA ) and a set of
+    1. Define |ij⟩
+       orthonormal states |χj ⟩A2 Ā ∈ HA2 Ā such that
+
+                                            ˜ = UA |i⟩A1 |χj ⟩A Ā                                    (A.1)
+                                                                         
+                                           |ij⟩                2
+
+
+
+
+       Similarly, there exists a unitary operator UĀ ∈ L(HĀ ) and a set of orthonormal states
+       |χ̄i ⟩Ā2 A ∈ HĀ2 A such that
+
+                                            ˜ = UĀ |j⟩Ā |χ̄i ⟩Ā A                                  (A.2)
+                                                                         
+                                           |ij⟩          1        2
+
+
+
+                            ˜ ij|˜ as the density matrix on Hcode where pij satisfies
+                   P                                                                  P
+    2. Define ρ̃ ≡ i,j pij |ij⟩⟨                                                       ij pij =
+       1, then for ρ̃A ≡ TrĀ ρ̃ and ρ̃a ≡ Trā ρ̃, we have the following relation
+
+                                             S(ρ̃A ) = LA + S(ρ̃a )                                   (A.3)
+
+       Likewise for ρ̃Ā ≡ TrA ρ̃ and ρ̃ā ≡ Tra ρ̃, we have
+
+                                             S(ρ̃Ā ) = LĀ + S(ρ̃ā )                                (A.4)
+
+       and more importantly,
+                                                    LA = LĀ                                          (A.5)
+
+
+
+
+                                                  – 16 –
+  3. Given two density matrices ρ̃, σ̃ on Hcode , their reduced density matrices ρ̃A ≡ TrĀ ρ̃, ρ̃a ≡
+     Trā ρ̃, σ̃A ≡ TrĀ σ̃, σ̃a ≡ Trā σ̃ satisfy
+
+                                          S(ρ̃A |σ̃A ) = S(ρ̃a |σ̃a )                       (A.6)
+
+     and likewise for ρ̃Ā ≡ TrA ρ̃, ρ̃ā ≡ Tra ρ̃, σ̃Ā ≡ TrA σ̃, σ̃ā ≡ Tra σ̃,
+
+                                          S(ρ̃Ā |σ̃Ā ) = S(ρ̃ā |σ̃ā )                   (A.7)
+
+  4. Given any state |ϕ̃⟩ ∈ Hcode and an operator Õa ∈ L(Ha ), we have
+
+                                 ⟨ϕ̃|[Õa , XĀ ]|ϕ̃⟩ = 0,     ∀XĀ ∈ L(HĀ )               (A.8)
+
+     Likewise for an operator Õā ∈ L(Hā ),
+
+                                 ⟨ϕ̃|[Õā , XA ]|ϕ̃⟩ = 0,     ∀XA ∈ L(HA )                 (A.9)
+
+  5. For any operator Õa ∈ L(Ha ), there exists an operator OA ∈ L(HA ) such that
+
+                                    OA |ψ̃⟩ = Õa |ψ̃⟩,      ∀|ψ̃⟩ ∈ Hcode                (A.10)
+
+     Likewise for any operator Õā ∈ L(Hā ), there exists an operator OĀ ∈ L(HĀ ) such
+     that
+                               OĀ |ψ̃⟩ = Õā |ψ̃⟩, ∀|ψ̃⟩ ∈ Hcode                 (A.11)
+
+     Comparing to the theorem 2.4, we can see that this theorem further divides the code
+subspace into two parts: a, ā, with a being reconstructable from A and ā being recon-
+structable from Ā. In describing holography as in Fig 4, Hcode is the Hilbert space of AdS3
+and H is the Hilbert space of CFT2 . If the CFT2 is divided into two subregions: A, Ā,
+the so-called subregion duality tells us that there exists a RT curve γA which divides the
+bulk region into two which correspond to the entanglement wedges of boundary subregions,
+denoted by a, ā. Furthermore, a, ā are reconstructable from A, Ā respectively.
+     The additional statement 1 in the theorem is analogous to (2.11) in the three-qutrit
+example, which reminds us that we are doing QEC. The additional statement 4 also have
+its holographic interpretation, which is related to a puzzle called radial commutativity.
+Radial commutativity states that all local boundary operators should commute with bulk
+operators, and it is a puzzle because the statement seems to imply that all bulk operators
+should be trivial according to the time slice axiom [52] which is a variational version of
+Schur’s lemma. However, this implication only holds when the local boundary operators
+and the bulk operators act on the same Hilbert space. As implicitly indicated in the
+statement 4, the commutation relations for bulk operators hold for the subspace Hcode
+while the boundary operators are defined on H, hence solving the puzzle.
+     Our proof will be given as follows: (1) ⇒ (2) ⇒ (3) ⇒ (4) ⇒ (1) which put the first
+four statements in an equal footing, then we prove (1) ⇒ (5) ⇒ (4) to include statement
+(5). The proof is based on [49, 50, 56]. One can analogously prove the theorem 2.4 by
+considering only the “a” part of the code space.
+
+
+
+
+                                                – 17 –
+Figure 4. A time slice for AdS3 /CFT2 . The boundary region is divided in two parts: subregion A
+represented by red solid line, and its complementary Ā represented by black solid line. RT curve
+γA is represented by the red dashed line, and the entanglement wedges of A and Ā are denoted by
+a and ā respectively.
+
+
+Proof.     • (1) ⇒ (2): Given (A.1) and (A.2), acting UA† , UĀ† on |ij⟩
+                                                                     ˜ gives
+                                                                           
+                     UA† UĀ† |ij⟩
+                               ˜ = |i⟩A1 U † |χj ⟩A Ā = |j⟩Ā U † |χ̄i ⟩Ā A
+                                          Ā       2          1   A        2
+                                                                                                    (A.12)
+
+      Compare the last two results we find that there must exists |χ⟩A2 Ā2 , |χ̄⟩A2 Ā2 which
+      satisfy
+                   UĀ† |χj ⟩A2 Ā = |j⟩Ā1 |χ⟩A2 Ā2 , UA† |χ̄i ⟩Ā2 A = |i⟩A1 |χ̄⟩A2 Ā2 (A.13)
+      which further implies
+
+                        UA† UĀ† |ij⟩
+                                  ˜ = |i⟩A1 |j⟩Ā |χ⟩A Ā = |j⟩Ā |i⟩A1 |χ̄⟩A Ā
+                                                 1    2 2        1           2 2
+                                                                                                    (A.14)
+
+      i.e. in fact we have |χ⟩A2 Ā2 = |χ̄⟩A2 Ā2 such that (A.1) can be simplified as
+                                       ˜ = UA UĀ |ij⟩A Ā |χ⟩A Ā                                  (A.15)
+                                                                       
+                                      |ij⟩               1 1       2 2
+
+
+      where |ij⟩A1 Ā1 ≡ |i⟩A1 |j⟩Ā1 , then for ρ̃ ≡ i,j pij |ij⟩⟨
+                                                               ˜ ij|˜ we have
+                                                     P
+
+                                   ρ̃ = UA UĀ ρA1 Ā1 ⊗ χA2 Ā2 UA† UĀ†                           (A.16)
+                                                                 
+
+      where we define
+                                X
+                    ρA1 Ā1 ≡         pij |ij⟩A1 Ā1 ⟨ij|A1 Ā1 ,   χA2 Ā2 ≡ |χ⟩A2 Ā2 ⟨χ|A2 Ā2   (A.17)
+                                i,j
+
+      Now the reduced density matrix ρ̃A ≡ TrĀ ρ̃ becomes
+                                   h                                  i
+                         ρ̃A = TrĀ UA UĀ ρA1 Ā1 ⊗ χA2 Ā2 UA† UĀ†
+                                                             
+                                   h                       i
+                             = TrĀ UA ρA1 Ā1 ⊗ χA2 Ā2 UA†
+                                                                                                    (A.18)
+                             = UA TrĀ ρA1 Ā1 ⊗ χA2 Ā2 UA†
+                                                        
+
+                                      = UA (ρA1 ⊗ χA2 ) UA†
+
+
+
+
+                                                     – 18 –
+  where ρA1 ≡ TrĀ1 ρA1 Ā1 = i pi |i⟩A1 ⟨i|A1 , pi ≡ j pij and χA2 ≡ TrĀ2 χA2 Ā2 . We
+                              P                      P
+
+  then can calculate the corresponding entropy by using (A.18):
+                                     
+      S(ρ̃A ) = S UA (ρA1 ⊗ χA2 ) UA† = S (ρA1 ⊗ χA2 ) = S(ρA1 ) + S(χA2 )        (A.19)
+  where the second equality makes use of the fact the von Neumann entropy is invariant
+  under unitary transformations. Notice that ρ̃a ≡ Trā ρ̃ = i pi |ĩ⟩a ⟨ĩ|a has exactly the
+                                                             P
+
+  same eigenvalues as ρA1 = i pi |i⟩A1 ⟨i|A1 such that
+                            P
+                                         X
+                            S(ρA1 ) = −      pi log pi = S(ρ̃a )                      (A.20)
+                                               i
+
+  Therefore, after identifying S(χA2 ) as LA we obtain
+                                      S(ρ̃A ) = LA + S(ρ̃a )                             (A.21)
+  and likewise for ρ̃Ā ≡ TrA ρ̃ and ρ̃ā ≡ Tra ρ̃, we have
+                                      S(ρ̃Ā ) = LĀ + S(ρ̃ā )                          (A.22)
+  where LĀ = S(χĀ2 ), χĀ2 ≡ TrA2 χA2 Ā2 . Notice that χA2 Ā2 = |χ⟩A2 Ā2 ⟨χ|A2 Ā2 is a pure
+  state on A2 Ā2 by definition, then we know that S(χĀ2 ) = S(χA2 ), or equivalently,
+                                            LA = LĀ                                     (A.23)
+
+• (2) ⇒ (3): This part follows the same idea in [49, 68]. Before we start, we recall how
+  von Neumann entropy varies when we perturb the density matrix:
+                         δS(ρ) ≡ S(ρ + δρ) − S(ρ) ≈ −Tr (δρ log ρ)                       (A.24)
+  Now we can proceed. Given a density matrix σ̃ on Hcode and its reduced density
+  matrices σ̃A , σ̃a , using (A.3) we have
+                                 S(σ̃A ) = Tra (σ̃a LA ) + S(σ̃a )                       (A.25)
+  where we use Tra σ̃a = 1 and promote LA to an operator of the form LA Ia ∈ L(Ha ).
+  Now we expand in terms of σ̃ in first order:
+                                           h                i
+                        TrA δσ̃A K̃A
+                                   σ
+                                       = Tra δσ̃a K̃aσ + LA Ia               (A.26)
+
+  where K̃A σ = − log σ̃ and K̃ σ = − log σ̃ are modular Hamiltonians. Both sides are
+                        A       a           a
+  linear in δσ̃ such that we can integrate it to ρ̃:
+                              h                i           
+             TrA ρ̃A K̃A
+                       σ
+                           = Tra ρ̃a K̃aσ + LA Ia = Tra ρ̃a K̃aσ + LA          (A.27)
+
+  Now with (A.3) we find that
+                                                   
+                       S(ρ̃A |σ̃A ) = TrA ρ̃A K̃A σ
+                                                      − S(ρ̃A )
+                                                 
+                                    = Tra ρ̃a K̃aσ + LA − (LA + S(ρ̃a ))
+                                                 
+                                    = Tra ρ̃a K̃aσ − S(ρ̃a )
+                                  = S(ρ̃a |σ̃a )
+
+
+
+
+                                           – 19 –
+  Similarly, we also have
+
+                                    S(ρ̃Ā |σ̃Ā ) = S(ρ̃ā |σ̃ā )               (A.28)
+
+• (3) ⇒ (4): The relative entropy vanishes if and only if the two density matrices
+  coincide, so if provided (A.7), we are given a condition that
+
+                                     ρ̃Ā = σ̃Ā ⇔ ρ̃ā = σ̃ā                    (A.29)
+
+  Let us consider a state |ϕ̃⟩ ∈ Hcode and a Hermitian operator Õa ∈ L(Ha ), we can
+  construct a new state |ψ̃⟩ as follows,
+
+                                         |ψ̃⟩ ≡ eiÕa s |ϕ̃⟩                      (A.30)
+
+  for some real constant s. We now define two density matrices on Hcode :
+
+                                  σ̃ ≡ |ψ̃⟩⟨ψ̃|,      ρ̃ ≡ |ϕ̃⟩⟨ϕ̃|               (A.31)
+
+  then we have
+
+                                σ̃ā = Tra |ψ̃⟩⟨ψ̃|
+                                            h                       i
+                                     = Tra eiÕa s |ϕ̃⟩⟨ϕ̃|e−iÕa s
+                                   = Tra |ϕ̃⟩⟨ϕ̃|
+                                   = ρ̃ā
+
+  By condition (A.29), we must have
+
+                                             ρ̃Ā = σ̃Ā                          (A.32)
+
+  which further implies
+
+                      TrĀ (ρ̃Ā XĀ ) = TrĀ (σ̃Ā XĀ ) , ∀XĀ ∈ L(HĀ )        (A.33)
+                                                               
+                    ⇒ TrAĀ |ϕ̃⟩⟨ϕ̃|XĀ = TrAĀ |ψ̃⟩⟨ψ̃|XĀ                       (A.34)
+                    ⇒ ⟨ϕ̃|XĀ |ϕ̃⟩ = ⟨ψ̃|XĀ |ψ̃⟩                                 (A.35)
+
+  For infinitesimal λ, we expand the right-hand side of the last result in first order to
+  obtain
+                           ⟨ϕ̃|[Õa , XĀ ]|ϕ̃⟩ = 0, ∀XĀ ∈ L(HĀ )                (A.36)
+  Notice that the above derivation requires Õa to be Hermitian, but any operator can
+  be rewritten as a complex linear combination of Hermitian operators as follows,
+
+                                        Õa + Õa†    Õa − Õa†
+                                Õa =              +i                             (A.37)
+                                            2             2i
+              †             †
+                          −Õa
+  where Õa +2 Õa and Õa2i   are both Hermitian. Therefore, it is suffice to derive our
+  result by using Hermitian operators only.
+
+
+
+
+                                            – 20 –
+  Similarly, if we start with (A.6), we will obtain
+
+                            ⟨ϕ̃|[Õā , XA ]|ϕ̃⟩ = 0,   ∀XA ∈ L(HA )                   (A.38)
+
+  for any operator Õā ∈ L(Hā ).
+
+• (4) ⇒ (1): Before our proof, we outline our strategy. We first introduce two auxiliary
+  systems R, R̄ with |R| = |a| , R̄ = |ā| and a state |ϕ⟩ ∈ HR ⊗ HR̄ ⊗ Hcode ⊆
+  HR ⊗ HR̄ ⊗ H defined by
+
+                                        1    X
+                               |ϕ⟩ ≡ q                       ˜
+                                                 |i⟩R |j⟩R̄ |ij⟩                       (A.39)
+                                      |R| R̄ i,j
+
+  Next we introduce a set of orthonormal states |χj ⟩A2 Ā ∈ HA2 Ā and |χ⟩R̄A2 Ā ≡
+  q1      |j⟩R̄ |χj ⟩A2 Ā , then we define a state |ϕ′ ⟩ ∈ HR ⊗ HR̄ ⊗ H by
+       P
+   |R̄| j
+
+                 1    X                                  1 X
+      |ϕ′ ⟩ ≡ q           |i⟩R |j⟩R̄ |i⟩A1 |χj ⟩A2 Ā = p      |i⟩R |i⟩A1 |χ⟩R̄A2 Ā   (A.40)
+               |R| R̄ i,j                                |R| i
+
+  These two states corresponds to two pure density matrices ρ ≡ |ϕ⟩⟨ϕ|, ρ′ ≡ |ϕ′ ⟩⟨ϕ′ |.
+  To prove that there exists a unitary operator UA ∈ L(HA ) such that
+
+                                      ˜ = UA |i⟩A1 |χj ⟩A Ā                           (A.41)
+                                                               
+                                     |ij⟩                2
+
+
+  we can instead define ρR̄RĀ = TrA ρ then try to prove that
+
+                                          TrA ρ′ = ρR̄RĀ                              (A.42)
+
+  which tells us that ρ′ , ρ are both purifications of ρR̄RĀ . Two different purifications
+  differ by a unitary transformation, i.e. there exist a unitary UA ∈ L(HA ) such that
+
+                       |ϕ⟩ = UA |ϕ′ ⟩             ˜ = UA |i⟩A1 |χj ⟩A Ā               (A.43)
+                                                                           
+                                          ⇒      |ij⟩                2
+
+
+  which will end the proof.
+  We digress a bit to mention a useful statement. It is possible to find an alternative
+  operator which acts on different space but still does the same work as the original
+  one. To be more specific, consider a bipartite system XY with an arbitrary state
+  |ψ⟩ ∈ HX ⊗ HY which is in general of the form
+
+                                        |ψ⟩ = C ab |a⟩X |b⟩Y                           (A.44)
+
+  where |a⟩X , |b⟩Y represents bases in respective spaces and Einstein summation is un-
+  derstood. Suppose we have operators OX ∈ HX , OY ∈ HY which satisfy
+
+                                         OX |ψ⟩ = OY |ψ⟩                               (A.45)
+
+
+
+
+                                           – 21 –
+i.e. they are identical when acting on states in |ψ⟩ ∈ HX ⊗ HY . We would like to see
+how the components of the two operators are related. We further assume that
+                                   ca
+                        OX |a⟩X = OX  |c⟩X ,       OY |b⟩Y = OYdb |d⟩X            (A.46)
+
+where OX
+       ca , O db are constants. We then have
+             Y
+
+                        OX |ψ⟩ = C ab OX
+                                       ca
+                                          |c⟩X |b⟩Y
+                   = OY |ψ⟩ = C ab OYdb |a⟩X |d⟩Y = C ca OYba |c⟩X |b⟩Y
+
+After modifying dummy indices, we obtain
+                                       ca ab
+                                      OX C = C ca OYba                            (A.47)
+
+or in matrix notation
+                                         OX C = COYT                              (A.48)
+This result tells us that how we can find a new operator which acts on the comple-
+mentary space but does the same work as the given one.
+Now back to our business. Given (A.8) for an arbitrary operator Õa ∈ L(Ha ), we
+have:
+                       ˜ Õa , XĀ ]|ij⟩
+                     ⟨ij|[           ˜ = 0, ∀XĀ ∈ L(HĀ )               (A.49)
+By the statement we just mentioned, we can find an alternative operator OR which
+satisfies
+                                OR |ϕ⟩ = Õa |ϕ⟩                          (A.50)
+such that
+                                     ⟨ϕ|[OR , XĀ ]|ϕ⟩ = 0                        (A.51)
+We can further introduce an operator acting on different space in the above equality:
+
+                           ⟨ϕ|[OR , XĀ YR̄ ]|ϕ⟩ = 0,        ∀YR̄ ∈ HR̄           (A.52)
+
+because YR̄ commutes with both OR and XĀ . It implies that
+
+                   TrR̄RĀ (ρR̄RĀ [OR , XĀ YR̄ ]) = Tr (ρ[OR , XĀ YR̄ ])
+                                                        = ⟨ϕ|[OR , XĀ YR̄ ]|ϕ⟩
+                                                        =0
+
+where we define ρ = |ϕ⟩⟨ϕ| and ρR̄RĀ = TrA ρ. Rearranging left-hand side gives
+
+                 TrR̄RĀ (ρR̄RĀ OR XĀ YR̄ ) = TrR̄RĀ (ρR̄RĀ XĀ YR̄ OR )
+                                                = TrR̄RĀ (OR ρR̄RĀ XĀ YR̄ )
+
+which further implies
+
+                          [ρR̄RĀ , OR ⊗ IR̄Ā ] = 0,      ∀Õa ∈ L(Ha )          (A.53)
+
+
+
+
+                                         – 22 –
+  It constraints ρR̄RĀ to be of the form
+
+                                     ρR̄RĀ = IR ⊗ MR̄Ā                             (A.54)
+
+  where MR̄Ā is an operator to be determined. We note that
+                                                                           1
+                   ρR̄Ā = TrR ρR̄RĀ = |R| MR̄Ā       ⇒       MR̄Ā =      ρ       (A.55)
+                                                                          |R| R̄Ā
+
+  such that
+                                                                 1
+                             ρR̄RĀ = ρR ⊗ ρR̄Ā ,      ρR ≡        IR               (A.56)
+                                                                |R|
+  As for ρ′ , we can directly compute its trace over A:
+                                   1 X
+                           ρ′ =        (|i⟩R ⟨j|R ) ⊗ (|i⟩A1 ⟨j|A1 ) ⊗ χ             (A.57)
+                                  |R|
+                                      i,j
+
+                      ⇒ TrA ρ′ = ρR ⊗ TrA2 χ                                         (A.58)
+
+  where χ ≡ |χ⟩R̄A2 Ā ⟨χ|R̄A2 Ā . If we compare it with (A.56), we find that condition
+  (A.42) now reduces to
+                                         TrA2 χ = ρR̄Ā                           (A.59)
+  i.e. χ is a purification of ρR̄Ā by introducing A2 . Now our goal becomes proving that
+  purifying ρR̄Ā by A2 is possible, which is true as long as |A2 | ≥ rank(ρR̄Ā ).
+  Notice that (A.56) tells us that
+
+                   rank(ρR̄RĀ ) = rank(ρR )rank(ρR̄Ā ) = |R| rank(ρR̄Ā )          (A.60)
+
+  Since ρ can be regarded as a purification of ρR̄RĀ , we must have
+
+                            |A| ≥ rank(ρR̄RĀ ) = |R| rank(ρR̄Ā )                   (A.61)
+
+  Also by assumption |A| = |A1 | |A2 | and |R| = |a| = |A1 |, we further have
+
+                     |A1 | |A2 | ≥ |A1 | rank(ρR̄Ā ) ⇒ |A2 | ≥ rank(ρR̄Ā )         (A.62)
+
+  Therefore, it is possible to purify ρR̄Ā by subsystem A2 , which concludes our proof,
+  and we can prove (A.2) in exactly the same way.
+
+• (1) ⇒ (5): Here we give a constructive proof. For any operator Õa ∈ L(Ha ), it is
+  defined by what it can do to the basis, i.e.
+
+                                       Õa |ĩ⟩a ≡ Oaji |j̃⟩a                        (A.63)
+
+  where Oaji are some constants. We then introduce another operator OA1 ∈ L(HA1 )
+  by using the same coefficients:
+
+                                     OA1 |i⟩A1 ≡ Oaji |j⟩A1                          (A.64)
+
+
+
+
+                                            – 23 –
+     which can always be done because we assume |A1 | = |a|. Finally, given (A.1) we
+     define
+                                    OA ≡ UA OA1 UA†                           (A.65)
+
+     which satisfies:
+
+                                      ˜ = UA OA1 U † UA |i⟩A1 |χj ⟩A Ā
+                                                                              
+                                  OA |ij⟩            A
+                                                                      2
+                                          = UA OA1 |i⟩A1 |χj ⟩A2 Ā
+                                          = Oaki UA |k⟩A1 |χj ⟩A2 Ā
+                                                                     
+
+                                                  ˜
+                                          = Oki |kj⟩
+                                                a
+                                                  ˜
+                                           = Õa |ij⟩
+
+     which further implies (A.10), and the same procedure works for (A.11).
+
+   • (5) ⇒ (4): The proof is straightforward. Given (A.10), we have
+
+                        ⟨ϕ̃|[Õa , XĀ ]|ϕ̃⟩ = ⟨ϕ̃|[OA , XĀ ]|ϕ̃⟩ = 0,   ∀XĀ ∈ L(HĀ )   (A.66)
+
+     where the last equality holds because OA and XĀ acts on different spaces. The same
+     procedure works for (A.9).
+
+
+
+References
+
+ [1] S.D. Mathur, The Information paradox: A Pedagogical introduction, Class. Quant. Grav. 26
+     (2009) 224001 [0909.1038].
+ [2] A. Almheiri, D. Marolf, J. Polchinski and J. Sully, Black Holes: Complementarity or
+     Firewalls?, JHEP 02 (2013) 062 [1207.3123].
+ [3] G. Penington, Entanglement Wedge Reconstruction and the Information Paradox, JHEP 09
+     (2020) 002 [1905.08255].
+ [4] A. Almheiri, T. Hartman, J. Maldacena, E. Shaghoulian and A. Tajdini, The entropy of
+     Hawking radiation, Rev. Mod. Phys. 93 (2021) 035002 [2006.06872].
+ [5] S.W. Hawking, Particle Creation by Black Holes, Commun. Math. Phys. 43 (1975) 199.
+ [6] S.W. Hawking, Breakdown of Predictability in Gravitational Collapse, Phys. Rev. D 14
+     (1976) 2460.
+ [7] S. Dutta and T. Faulkner, A canonical purification for the entanglement wedge cross-section,
+     JHEP 03 (2021) 178 [1905.00577].
+ [8] Q. Wen, Balanced Partial Entanglement and the Entanglement Wedge Cross Section, JHEP
+     04 (2021) 301 [2103.00415].
+ [9] H.A. Camargo, P. Nandy, Q. Wen and H. Zhong, Balanced partial entanglement and mixed
+     state correlations, SciPost Phys. 12 (2022) 137 [2201.13362].
+[10] Q. Wen and H. Zhong, Covariant entanglement wedge cross-section, balanced partial
+     entanglement and gravitational anomalies, SciPost Phys. 13 (2022) 056 [2205.10858].
+
+
+
+
+                                                    – 24 –
+[11] J. Lin, Y. Lu and Q. Wen, Geometrizing the partial entanglement entropy: from PEE threads
+     to bit threads, JHEP 2024 (2024) 191 [2311.02301].
+[12] J. Lin, Y. Lu and Q. Wen, Partial entanglement network and bulk geometry reconstruction in
+     AdS/CFT, 2401.07471.
+[13] Q. Wen, Entanglement contour and modular flow from subset entanglement entropies, JHEP
+     05 (2020) 018 [1902.06905].
+[14] Q. Wen, Formulas for Partial Entanglement Entropy, Phys. Rev. Res. 2 (2020) 023170
+     [1910.10978].
+[15] M. Han and Q. Wen, Entanglement entropy from entanglement contour: higher dimensions,
+     SciPost Phys. Core 5 (2022) 020 [1905.05522].
+[16] Q. Wen, Towards the generalized gravitational entropy for spacetimes with non-Lorentz
+     invariant duals, JHEP 01 (2019) 220 [1810.11756].
+[17] Q. Wen, Fine structure in holographic entanglement and entanglement contour, Phys. Rev. D
+     98 (2018) 106004 [1803.05552].
+[18] D.N. Page, Information in black hole radiation, Phys. Rev. Lett. 71 (1993) 3743
+     [hep-th/9306083].
+[19] D.N. Page, Time Dependence of Hawking Radiation Entropy, JCAP 09 (2013) 028
+     [1301.4995].
+[20] A. Almheiri, R. Mahajan, J. Maldacena and Y. Zhao, The Page curve of Hawking radiation
+     from semiclassical geometry, JHEP 03 (2020) 149 [1908.10996].
+[21] G. Penington, S.H. Shenker, D. Stanford and Z. Yang, Replica wormholes and the black hole
+     interior, JHEP 03 (2022) 205 [1911.11977].
+[22] A. Almheiri, T. Hartman, J. Maldacena, E. Shaghoulian and A. Tajdini, Replica Wormholes
+     and the Entropy of Hawking Radiation, JHEP 05 (2020) 013 [1911.12333].
+[23] A. Almheiri, N. Engelhardt, D. Marolf and H. Maxfield, The entropy of bulk quantum fields
+     and the entanglement wedge of an evaporating black hole, JHEP 12 (2019) 063 [1905.08762].
+[24] T. Takayanagi, Holographic Dual of BCFT, Phys. Rev. Lett. 107 (2011) 101602 [1105.5165].
+[25] M. Fujita, T. Takayanagi and E. Tonni, Aspects of AdS/BCFT, JHEP 11 (2011) 043
+     [1108.5152].
+[26] K. Suzuki and T. Takayanagi, BCFT and Islands in two dimensions, JHEP 06 (2022) 095
+     [2202.08462].
+[27] J. Sully, M. Van Raamsdonk and D. Wakeham, BCFT entanglement entropy at large central
+     charge and the black hole interior, JHEP 03 (2021) 167 [2004.13088].
+[28] A. Chandra, Z. Li and Q. Wen, Entanglement islands and cutoff branes from path-integral
+     optimization, JHEP 07 (2024) 069 [2402.15836].
+[29] J. Lin, Y. Lu and Q. Wen, Cutoff brane vs the Karch-Randall brane: the fluctuating case,
+     JHEP 06 (2024) 017 [2312.03531].
+[30] D. Basu, J. Lin, Y. Lu and Q. Wen, Ownerless island and partial entanglement entropy in
+     island phases, SciPost Phys. 15 (2023) 227 [2305.04259].
+[31] Q. Wen, M. Xu and H. Zhong, Partial entanglement entropy threads in island phase,
+     2408.13535.
+
+
+
+
+                                             – 25 –
+[32] F. Deng, Y.-S. An and Y. Zhou, JT gravity from partial reduction and defect extremal
+     surface, JHEP 02 (2023) 219 [2206.09609].
+[33] H. Geng, A. Karch, C. Perez-Pardavila, S. Raju, L. Randall, M. Riojas et al.,
+     Jackiw-Teitelboim Gravity from the Karch-Randall Braneworld, Phys. Rev. Lett. 129 (2022)
+     231601 [2206.04695].
+[34] H. Geng, Replica Wormholes and Entanglement Islands in the Karch-Randall Braneworld,
+     2405.14872.
+[35] R.-X. Miao, Entanglement island versus massless gravity, Eur. Phys. J. C 84 (2024) 123
+     [2212.07645].
+[36] H. Geng and A. Karch, Massive islands, JHEP 09 (2020) 121 [2006.02438].
+[37] H. Geng, Revisiting Recent Progress in the Karch-Randall Braneworld, 2306.15671.
+[38] F. Omidi, Entropy of Hawking radiation for two-sided hyperscaling violating black branes,
+     JHEP 04 (2022) 022 [2112.05890].
+[39] A. Roy Chowdhury, A. Saha and S. Gangopadhyay, Role of mutual information in the Page
+     curve, Phys. Rev. D 106 (2022) 086019 [2207.13029].
+[40] A. Roy Chowdhury, A. Saha and S. Gangopadhyay, Mutual information of subsystems and
+     the Page curve for the Schwarzschild–de Sitter black hole, Phys. Rev. D 108 (2023) 026003
+     [2303.14062].
+[41] P. Hayden and G. Penington, Approximate Quantum Error Correction Revisited: Introducing
+     the Alpha-Bit, Commun. Math. Phys. 374 (2020) 369 [1706.09434].
+[42] P. Hayden and G. Penington, Learning the Alpha-bits of Black Holes, JHEP 12 (2019) 007
+     [1807.06041].
+[43] C.-F. Chen, G. Penington and G. Salton, Entanglement Wedge Reconstruction using the Petz
+     Map, JHEP 01 (2020) 168 [1902.02844].
+[44] A.R. Brown, H. Gharibyan, G. Penington and L. Susskind, The Python’s Lunch: geometric
+     obstructions to decoding Hawking radiation, JHEP 08 (2020) 121 [1912.00228].
+[45] C. Akers, N. Engelhardt, G. Penington and M. Usatyuk, Quantum Maximin Surfaces, JHEP
+     08 (2020) 140 [1912.02799].
+[46] C. Akers, N. Engelhardt, D. Harlow, G. Penington and S. Vardhan, The black hole interior
+     from non-isometric codes and complexity, 2207.06536.
+[47] C. Akers and G. Penington, Quantum minimal surfaces from quantum error correction,
+     SciPost Phys. 12 (2022) 157 [2109.14618].
+[48] A. Almheiri, X. Dong and D. Harlow, Bulk Locality and Quantum Error Correction in
+     AdS/CFT, JHEP 04 (2015) 163 [1411.7041].
+[49] X. Dong, D. Harlow and A.C. Wall, Reconstruction of Bulk Operators within the
+     Entanglement Wedge in Gauge-Gravity Duality, Phys. Rev. Lett. 117 (2016) 021601
+     [1601.05416].
+[50] D. Harlow, The Ryu–Takayanagi Formula from Quantum Error Correction, Commun. Math.
+     Phys. 354 (2017) 865 [1607.03901].
+[51] H. Kamal and G. Penington, The Ryu-Takayanagi Formula from Quantum Error Correction:
+     An Algebraic Treatment of the Boundary CFT, 1912.02240.
+
+
+
+
+                                             – 26 –
+[52] D. Harlow, TASI Lectures on the Emergence of Bulk Physics in AdS/CFT, PoS TASI2017
+     (2018) 002 [1802.01040].
+[53] A. Chatwin-Davies, Modave Lectures on Quantum Information: An Introduction to Channels
+     and Applications to Black Holes and AdS/CFT, PoS Modave 2020 (2021) 003
+     [2102.02066].
+[54] M.A. Nielsen and I.L. Chuang, Quantum computation and quantum information, .
+[55] J. Preskill, “Lecture notes.” http://theory.caltech.edu/ preskill/ph229/, 1997.
+[56] A. Almheiri, X. Dong and D. Harlow, Bulk locality and quantum error correction in
+     AdS/CFT, Journal of High Energy Physics 2015 (2015) .
+[57] M. Ohya and D. Petz, Quantum entropy and its use, Springer Science & Business Media
+     (2004).
+[58] M. Junge, R. Renner, D. Sutter, M.M. Wilde and A. Winter, Universal recovery maps and
+     approximate sufficiency of quantum relative entropy, Annales Henri Poincaré 19 (2018) 2955.
+[59] H. Barnum and E. Knill, Reversing quantum dynamics with near-optimal quantum and
+     classical fidelity, 2000.
+[60] F. HIAI, M. MOSONYI, D. PETZ and C. BÉNY, QUANTUM f-DIVERGENCES AND
+     ERROR CORRECTION, Reviews in Mathematical Physics 23 (2011) 691.
+[61] P. Mandayam and H.K. Ng, Towards a unified framework for approximate quantum error
+     correction, Physical Review A 86 (2012) .
+[62] J. Cotler, P. Hayden, G. Penington, G. Salton, B. Swingle and M. Walter, Entanglement
+     wedge reconstruction via universal recovery channels, Physical Review X 9 (2019) .
+[63] J.M. Maldacena, The Large N limit of superconformal field theories and supergravity, Adv.
+     Theor. Math. Phys. 2 (1998) 231 [hep-th/9711200].
+[64] S. Ryu and T. Takayanagi, Holographic derivation of entanglement entropy from AdS/CFT,
+     Phys. Rev. Lett. 96 (2006) 181602 [hep-th/0603001].
+[65] V.E. Hubeny, M. Rangamani and T. Takayanagi, A Covariant holographic entanglement
+     entropy proposal, JHEP 07 (2007) 062 [0705.0016].
+[66] T. Faulkner, A. Lewkowycz and J. Maldacena, Quantum corrections to holographic
+     entanglement entropy, JHEP 11 (2013) 074 [1307.2892].
+[67] N. Engelhardt and A.C. Wall, Quantum Extremal Surfaces: Holographic Entanglement
+     Entropy beyond the Classical Regime, JHEP 01 (2015) 073 [1408.3203].
+[68] D.L. Jafferis, A. Lewkowycz, J. Maldacena and S.J. Suh, Relative entropy equals bulk relative
+     entropy, JHEP 06 (2016) 004 [1512.06431].
+[69] E. Witten, Anti-de Sitter space and holography, Adv. Theor. Math. Phys. 2 (1998) 253
+     [hep-th/9802150].
+[70] S.S. Gubser, I.R. Klebanov and A.M. Polyakov, Gauge theory correlators from noncritical
+     string theory, Phys. Lett. B 428 (1998) 105 [hep-th/9802109].
+[71] J. Pollack, P. Rall and A. Rocchetto, Understanding holographic error correction via unique
+     algebras and atomic examples, JHEP 06 (2022) 056 [2110.14691].
+[72] D. Basu, Q. Wen and S. Zhou, Entanglement Islands from Hilbert Space Reduction,
+     2211.17004.
+
+
+
+
+                                              – 27 –
+[73] C. Akers and P. Rath, Holographic Renyi Entropy from Quantum Error Correction, JHEP
+     05 (2019) 052 [1811.05171].
+[74] A. Lewkowycz and J. Maldacena, Generalized gravitational entropy, JHEP 08 (2013) 090
+     [1304.4926].
+
+
+
+
+                                          – 28 –
+

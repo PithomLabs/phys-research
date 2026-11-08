@@ -1,0 +1,14 @@
+go 1.25.7
+
+// Preflight (Step 9): per-model workspace following the
+// phys-demo/problem_8a precedent (committed go.work per model area).
+// Absolute paths are required: this module lives under TOE-v6, outside
+// /home/chaschel/Documents/go, so no relative use-path can resolve.
+// Only phys-artifact + phys-math are used: the fixture represents
+// QSG-T001 content at the representation layer and must not import
+// GR-closed framework categories (phys-lib/gr) for QFT content.
+use (
+	.
+	/home/chaschel/Documents/go/phys-artifact
+	/home/chaschel/Documents/go/phys-math
+)

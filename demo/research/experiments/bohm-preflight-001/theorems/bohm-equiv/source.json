@@ -1,0 +1,8 @@
+{
+  "source": {
+    "arxiv_id": "math-ph/0406030",
+    "journal_ref": "Commun. Math. Phys. 258 (2005) 349-365",
+    "scope_note": "global existence + a.s. equivariance import (B7); local chain derived in audit docs 01-03",
+    "representation": "TOE-v6/research/experiments/bohm-preflight-001/audit/01-premises-assumptions.md, 02-continuity-derivation.md, 03-flow-equivariance.md"
+  }
+}

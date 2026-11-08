@@ -1,0 +1,2354 @@
+
+
+The Page curve of Hawking radiation from semiclassical geometry
+
+Skip to main content
+
+Report GitHub Issue
+
+×
+
+Title:
+
+Content selection saved. Describe the issue below:
+
+Description:
+
+Submit without GitHub
+
+Submit in GitHub
+
+ 
+Why HTML?
+
+Report Issue
+
+ 
+
+Back to Abstract
+
+Download PDF
+
+ 
+
+Contents
+
+Reading mode
+
+Colour theme
+
+Abstract
+
+1 
+Introduction
+
+2 
+Two-dimensional gravity with holographic matter
+
+2.1 
+Two-dimensional black hole coupled to a bath
+
+2.2 
+Quantum extremal surfaces become ordinary RT/HRT surfaces
+
+3 
+Entanglement wedges for evaporating black holes and Hawking radiation
+
+3.1 
+Late time entanglement wedges
+
+3.1.1 
+Entanglement wedge of the black hole at late times
+
+3.1.2 
+Entanglement wedge of the radiation at late times
+
+3.2 
+Early time entanglement wedges
+
+3.2.1 
+The decoupled state
+
+3.2.2 
+Coupling the black hole and the bath CFT
+
+3.2.3 
+A slightly more precise picture for the entropy of radiation
+
+3.3 
+The Page curve
+
+4 
+A new rule for computing the entropy when gravitational systems are involved
+
+5 
+Conclusions
+
+References
+
+    License: arXiv.org perpetual non-exclusive license
+  
+
+arXiv:1908.10996v2 [hep-th] 04 Nov 2019
+
+The Page curve of Hawking radiation 
+
+  
+
+from semiclassical geometry
+
+Ahmed Almheiri,
+1
+ Raghu Mahajan,
+1,2
+ Juan Maldacena,
+1
+ and Ying Zhao
+1
+
+1
+Institute for Advanced Study, Princeton, NJ 08540, USA
+
+2
+Jadwin Hall, Princeton University, Princeton, NJ 08540, USA
+
+almheiri@ias.edu, raghu_m@princeton.edu, malda@ias.edu, zhaoying@ias.edu
+
+Dedicated to the memory of Steven S. Gubser
+
+Contents
+
+1 
+Introduction
+
+2 
+Two-dimensional gravity with holographic matter
+
+2.1 
+Two-dimensional black hole coupled to a bath
+
+2.2 
+Quantum extremal surfaces become ordinary RT/HRT surfaces
+
+3 
+Entanglement wedges for evaporating black holes and Hawking radiation
+
+3.1 
+Late time entanglement wedges
+
+3.1.1 
+Entanglement wedge of the black hole at late times
+
+3.1.2 
+Entanglement wedge of the radiation at late times
+
+3.2 
+Early time entanglement wedges
+
+3.2.1 
+The decoupled state
+
+3.2.2 
+Coupling the black hole and the bath CFT
+
+3.2.3 
+A slightly more precise picture for the entropy of radiation
+
+3.3 
+The Page curve
+
+4 
+A new rule for computing the entropy when gravitational systems are involved
+
+5 
+Conclusions
+
+References
+
+Abstract
+
+We consider a gravity theory coupled to matter, where the matter has a higher-dimensional holographic dual.
+In such a theory, finding quantum extremal surfaces becomes equivalent to finding the RT/HRT surfaces in the higher-dimensional theory.
+Using this we compute the entropy of Hawking radiation and argue that it follows the Page curve, as suggested by recent computations of the entropy and entanglement wedges for old black holes.
+The higher-dimensional geometry connects the radiation to the black hole interior in the spirit of ER=EPR.
+The black hole interior then becomes part of the entanglement wedge of the radiation.
+Inspired by this, we propose a new rule for computing the entropy of quantum systems entangled with gravitational systems which involves searching for “islands” in determining the entanglement wedge.
+
+1 
+Introduction
+
+The central question of the information paradox 
+[
+1
+, 
+2
+]
+ is whether the process of formation and evaporation of a black hole can be described in a unitary fashion.
+In particular, unitarity implies that the von Neumann entropy of the Hawking radiation should initially rise but then fall back down, following the so called “Page curve” 
+[
+3
+, 
+4
+]
+.
+If we replace a black hole by its dual quantum mechanical description, via AdS/CFT, we know that this happens.
+However, one would like to understand how it happens from the gravity point of view.
+In gravitational theories we now have formulas that compute von Neumann entropies: the Ryu-Takayanagi formula and its extentions 
+[
+5
+, 
+6
+, 
+7
+]
+.
+Indeed, interesting recent work 
+[
+8
+, 
+9
+]
+ addressed the closely related problem of studying the evolution of the von Neumann entropy of an evaporating black hole via the minimal quantum extremal surface (QES) prescription of 
+[
+7
+]
+.
+(A QES is a surface that extremizes the generalized entropy functional.)
+This amounted to locating and tracking the minimal QES in the evaporating black hole spacetime as a function of boundary time.
+
+The main result of 
+[
+8
+, 
+9
+]
+ was that, for an old black hole, past the Page time, the QES is located just behind the event horizon, which thereby excludes most of the interior from the entanglement wedge of the boundary.
+This is in contrast to the situation at early times, where the minimal QES is the trivial surface, and hence the entanglement wedge for a black hole that forms in a pure state includes all of the interior.
+For such a black hole, the von Neumann (or fine-grained) entropy increases due to the early Hawking radiation, giving the initial rise of the Page curve, and then decreases once the entanglement wedge moves out to the near horizon region.
+The early growth of the boundary entropy is related to the growth of the entropy of the quantum fields inside the black hole, which is manifest using the nice slices picture of 
+[
+10
+, 
+11
+]
+.
+At the Page time, once this region is removed form the entanglement wedge, the entropy can start decreasing.
+
+If we assume that the combined state of the black hole and Hawking radiation is pure, then a Page curve for one implies a Page curve for the other.
+However, this would amount to assuming away the information paradox, and therefore a more direct argument for the Page curve of the radiation is desirable.
+In 
+[
+9
+]
+ the entropy of the Hawking radiation was computed in the semiclassical limit and was found to not have a Page curve, reproducing Hawking’s original result of information loss.
+(See also 
+[
+12
+]
+ for similar calculations in the CGHS model.)
+As discussed in 
+[
+8
+]
+ and briefly alluded to in 
+[
+9
+, 
+13
+]
+, there is perhaps a way to argue that the QES of the Hawking radiation coincides with that of the black hole.
+
+In this paper, we argue that this is the case by considering an evaporating black hole in a gravitational theory with holographic matter.
+Namely, we consider a gravity theory with matter described by a quantum field theory that itself has a higher dimensional gravity dual.
+This allows us to compute the entropy of Hawking radiation holographically.
+In this case, the prescription of extremizing the generalized entropy in 
+[
+7
+]
+ is equivalent, at leading order, to the standard RT/HRT prescription 
+[
+5
+, 
+6
+]
+ of extremizing the area.
+
+The upshot is that the minimization condition in the RT/HRT formula in the higher-dimensional holographic dual ensures that the minimal surfaces of the evaporating black hole and the Hawking radiation must coincide.
+The entropy of the radiation computed in this way follows the Page curve, rising initially at early times and then decreasing after the Page time due to the phase transition between two surfaces.
+This is the same transition discussed in the computations of the von Neumann entropy of the black hole in 
+[
+8
+, 
+9
+]
+.
+
+A crucial point is that the region deep inside the black hole interior is connected to the radiation via the extra dimension.
+Therefore, when we search for the minimal QES, we can end up with an entanglement wedge for the radiation that reaches all the way into the interior of the black hole, which is in fact what happens after the Page time.
+This geometric connection is related to the entanglement between the Hawking radiation and the interior modes of the quantum matter.
+We can view this extra dimension as an example of a geometric connection between the radiation and the black hole interior, a realization of ER=EPR 
+[
+14
+, 
+15
+]
+ idea (see also 
+[
+16
+, 
+17
+]
+).
+Our analysis in this paper is restricted to the case of a two-dimensional theory of gravity coupled to a two-dimensional conformal field theory, since in this case the three-dimensional gravity dual is very simple, but we expect that the results should generalize without much change to higher dimensions.
+
+This holographic example suggests a new rule for computing von Neumann entropies of quantum systems entangled with quantum fields in a gravitational theory.
+This new rule allows for the inclusion of new “quantum extremal islands” which are regions in the gravitational theory that contain matter entangled with the external quantum system.
+Including these islands can result in a penalty due to their areas, but they can also give larger “savings” by reducing the bulk entropy piece of the generalized entropy.
+See also 
+[
+13
+, 
+8
+]
+ for motivation of this new rule.
+
+This paper is organized as follows.
+In Section 
+2
+, we discuss theories of gravity coupled to holographic matter and their bulk interpretation.
+We focus on a two-dimensional gravity theory coupled to conformal matter, which itself has a three-dimensional dual.
+In Section 
+3
+, we discuss quantum extremal surfaces and entanglement wedges for an evaporating two-dimensional black hole.
+We discuss the computation of the entropy of the radiation and the black hole, and explain how the Page curve arises.
+Finally, in Section 
+4
+ we discuss a new rule for computing entropies and entanglement wedges for systems entangled with a gravity theory.
+Conclusions are presented in Section 
+5
+.
+
+2 
+Two-dimensional gravity with holographic matter
+
+Consider a general two-dimensional theory of gravity.
+The Einstein-Hilbert term in two dimensions is purely topological, but it contributes a constant term to the total entropy of the system.
+Nontrivial gravitational dynamics arise when we add an extra ‘‘dilaton’’
+1
+1
+
+1
+
+            
+            
+            
+          In this context, the dilaton should really be called an “entropion”.
+ field 
+$\phi$
+, and consider the general action
+
+$I_{\text{grav}}[g^{(2)}_{ij},\phi]=\int d^{2}y\sqrt{-g}\,\left(\frac{1}{16\pi G_{N}^{(2)}}\,\phi R^{(2)}+U(\phi)\right),$
+
+(1)
+
+where we have absorbed a possible purely Einstein-Hilbert term by a shift of 
+$\phi$
+.
+Adding matter to this system, which is taken to be a CFT
+2
+ with some fields collectively denoted by 
+$\chi$
+, we consider the total action
+
+$I[g^{(2)}_{ij},\phi,\chi]=I_{\text{grav}}[g^{(2)}_{ij},\phi]+I_{\text{CFT}}[g^{(2)}_{ij},\chi]\,.$
+
+(2)
+
+We take this CFT
+2
+ to have a three-dimensional holographic dual.
+To justify working in the semiclassical limit in the 2d theory, and to ensure that we have a large-radius dual in 3d, we require that the central charge of the CFT
+2
+ satisfies 
+$1\ll c\ll\frac{\phi}{4G_{N}^{(2)}}$
+.
+2
+2
+
+2
+
+            
+            
+            
+          In certain theories corresponding to near-extremal black holes, we also require that 
+$c\ll\frac{\phi-\phi_{0}}{4G_{N}^{(2)}}$
+, where the 
+$\phi_{0}$
+ piece corresponds to the extremal entropy.
+
+In addition, to have an Einstein gravity dual we need that the CFT is suitably strongly coupled.
+
+First, let us think about this CFT
+2
+ on a fixed background metric 
+$g^{(2)}_{ij}$
+.
+Its three-dimensional dual has a two-dimensional boundary, where the metric obeys the boundary condition
+
+$\left.g^{(3)}_{ij}\right|_{\rm bdy}=\frac{1}{\epsilon^{2}}\,g_{ij}^{(2)}\,.$
+
+(3)
+
+Here 
+$i,j$
+ are indices along the boundary (see figure 
+1
+), and 
+$\epsilon$
+ is a short-distance cutoff.
+According to the usual rules of AdS/CFT 
+[
+18
+, 
+19
+, 
+20
+]
+, a 3d theory with the boundary metric fixed to be 
+$g_{ij}^{(2)}$
+ is dual to a CFT
+2
+ described by the action 
+$I_{\text{CFT}}[\chi;g^{(2)}_{ij}]$
+.
+The extrinsic curvature of the two-dimensional boundary is related to the stress tensor of the CFT 
+[
+21
+]
+.
+
+Next, in order to find the three-dimensional dual to the full action (
+2
+), we start from the geometry of the previous paragraph,
+add a scalar field 
+$\phi$
+ that lives on the 2d boundary with the action (
+1
+), and integrate over 
+$\phi$
+ and 
+$g^{(2)}_{ij}$
+.
+The three-dimensional bulk metric is locally AdS
+3
+, with a boundary at a finite location where the 2d theory with with action (
+1
+) lives.
+We emphasize that unlike usual AdS/CFT, 
+$g^{(2)}_{ij}$
+ is also integrated over.
+This is essentially identical to the Randall-Sundrum model 
+[
+22
+]
+, and the dynamical boundary brane is called the “Planck” brane in that paper (for the relationship of the Randall-Sundrum model to holography, see e.g. 
+[
+23
+]
+).
+
+Figure 1: 
+On the left, we have a 2d dilaton-gravity theory coupled to a matter CFT
+2
+.
+The fields of the matter CFT
+2
+ are denoted collectively by 
+$\chi$
+, and this CFT
+2
+ is assumed to be holographic.
+On the right, we display a 3d geometry obtained by replacing the matter CFT
+2
+ with its 3d dual.
+This is a version of the Randall-Sundrum setup 
+[
+22
+, 
+23
+]
+.
+On the 2d boundary of this 3d geometry, we have the dilaton-gravity action.
+The boundary fields 
+$\phi$
+ and 
+$g_{ij}^{(2)}$
+ are also integrated over in the functional integral.
+
+The embedding of the Planck brane in AdS
+3
+ is determined by using the two-dimensional metric and stress tensor profile from the solution of (
+2
+).
+Let us describe this in detail.
+Imagine that we have a 2d gravity solution with some profile for the 2d metric and stress tensor
+
+$ds^{2}=-e^{2\rho(y)}dy^{+}dy^{-}\,,\quad T_{y^{+}y^{+}}(y^{+})\quad\text{and}\quad T_{y^{-}y^{-}}(y^{-})\,.$
+
+(4)
+
+Here the stress tensor is measured in the flat metric 
+$ds^{2}=-dy^{+}dy^{-}$
+.
+The full stress tensor in the original metric (
+4
+) also contains terms coming from derivatives of 
+$\rho(y)$
+ which can easily be obtained from the conformal anomaly.
+
+It is useful to introduce the coordinate transformations 
+$w^{+}(y^{+})$
+ and 
+$w^{-}(y^{-})$
+ that make the stress tensor vanish locally.
+These are obtained by solving the equations
+
+$T_{y^{+}y^{+}}=-{\frac{c}{24\pi}}\{w^{+},y^{+}\}\,,\qquad T_{y^{-}y^{-}}=-{\frac{c}{24\pi}}\{w^{-},y^{-}\}\,,$
+
+(5)
+
+where 
+$\{f(y),y\}=\frac{f^{\prime\prime\prime}}{f^{\prime}}-\frac{3}{2}\left(\frac{f^{\prime\prime}}{f^{\prime}}\right)^{2}$
+ is the usual Schwarzian derivative.
+3
+3
+
+3
+
+            
+            
+            
+          Note that our convention for the transformation law of the holomorphic stress tensor is 
+$w^{\prime}(y)^{2}\,T(w)=T(y)+\frac{c}{24\pi}\{w,y\}$
+, which differs from 
+[
+24
+]
+ by the sign of the Schwarzian term and the normalization of the stress tensor.
+The relation between holomorphic Euclidean coordinates and Lorentzian lightcone coordinates is 
+$y^{+}\to\overline{y}$
+ and 
+$y^{-}\to-y$
+.
+
+The 
+$w^{\pm}$
+ coordinates have the property that the stress tensor vanishes in the corresponding flat metric, obtained after a Weyl transformation from (
+4
+):
+
+$\displaystyle ds^{2}=-dw^{+}dw^{-}\,,\qquad T_{w^{+}w^{+}}=T_{w^{-}w^{-}}=0.$
+
+(6)
+
+We therefore observe that the solution (
+4
+) is related to the vacuum solution on flat space (
+6
+) by a combination of Weyl and coordinate transformations.
+
+This determines the location of the Planck brane in the 
+$w^{\pm}$
+ coordinates in following way 
+[
+25
+]
+.
+The vacuum of the holographic CFT
+2
+ has pure AdS
+3
+ as its associated bulk dual
+
+$ds^{2}=\frac{-dw^{+}dw^{-}+dz_{w}^{2}}{z_{w}^{2}}\,.$
+
+(7)
+
+The stress tensor components 
+$T_{w^{+}w^{+}}$
+ and 
+$T_{w^{-}w^{-}}$
+ vanish for a suface of constant 
+$z_{w}$
+.
+Therefore, we expect that the geometry near the Planck brane looks similar to (
+7
+).
+The condition we need to impose is that the induced metric on the brane is fixed by (
+4
+) and (
+3
+), which gives
+
+$\displaystyle-{dw^{+}dw^{-}\over z_{w}^{2}}=-\frac{1}{\epsilon^{2}}\,e^{2\rho(y)}dy^{+}dy^{-}\,.$
+
+(8)
+
+This locates the Planck brane at
+
+$\displaystyle z_{w}=\epsilon\ e^{-\rho(y)}\sqrt{{dw^{+}\over dy^{+}}{dw^{-}\over dy^{-}}}\,.$
+
+(9)
+
+After obtaining this we can check that the usual formula for the stress tensor in terms of the extrinsic curvature 
+[
+21
+]
+ gives the one we started in (
+4
+).
+These formulas show that once we know the two-dimensional dynamics, given by (
+4
+), we can easily find the embedding of the 2d geometry into the 3d one.
+
+The computation of the RT/HRT surfaces is particularly simple in the 
+$(w^{+},w^{-},z_{w})$
+ coordinates.
+We should emphasize that more details about the state of the conformal field theory are encoded deeper into the three-dimensional geometry.
+In other words, the RT/HRT surfaces used to compute the various entropies live in a geometry that is not necessarily the same as (
+7
+) deeper in the interior, and their areas can depend on the detailed geometry that we encounter in the interior.
+
+2.1 
+Two-dimensional black hole coupled to a bath
+
+Consider a black hole in the two-dimensional theory (
+2
+), which we allow to evaporate into an external ‘bath’.
+For simplicity, we take the bath to be the same CFT
+2
+ as the matter sector in (
+2
+), but now living on a rigid flat space; see figure 
+2
+.
+We can think of this setup as a toy model for the case where the dilaton becomes extremely large in some region of the geometry, so that we can neglect backreaction effects and think of the matter as living on a fixed, non-dynamical background.
+
+We will mostly be interested in the case where the 2d gravitational theory has AdS
+2
+ asymptotics.
+Prior to coupling in the bath, the matter CFT on this AdS
+2
+ spacetime is defined with a conformal boundary condition at the asymptotic AdS
+2
+ boundary.
+Prior to the coupling, the bath CFT is also defined on the half line.
+Coupling the two systems amounts to joining them at their boundaries, allowing them to freely exchange stress energy.
+Defining 
+$\sigma_{y}=(y^{+}-y^{-})/2$
+, positive and negative values of 
+$\sigma_{y}$
+ correspond to points in the bath and the AdS
+2
+ systems, respectively.
+
+Figure 2: 
+We sketch three different pictures of the same system.
+The first is a 2d dilaton-gravity theory, plus a matter CFT
+2
+, coupled to a bath consisting of the same CFT
+2
+.
+This CFT
+2
+ is assumed to have a holographic dual.
+The second is 3d gravity, where we replace the CFT
+2
+ by its holographic dual.
+It contains a dynamical boundary metric on the Planck brane.
+More details about the state of the CFT are encoded deeper inside the 3d geometry.
+The third is the fully quantum mechanical description, where we replace the 2d gravity+matter theory by its quantum mechanical dual. This quantum mechanical system lives at the boundary of the bath CFT.
+In all cases, the thick dot represents the point 
+$\sigma_{y}=0$
+.
+
+This combined system has three alternative descriptions that are useful, see figure 
+2
+.
+
+2d-Gravity:
+
+A two-dimensional gravity-plus-matter theory living on 
+$\sigma_{y}<0$
+ coupled to a two-dimensional field theory living on 
+$\sigma_{y}>0$
+.
+
+3d-Gravity:
+
+A three-dimensional gravity theory in AdS
+3
+ with a dynamical boundary (Planck brane) on part of the space (
+$\sigma_{y}<0$
+), and with a rigid boundary on the rest (
+$\sigma_{y}>0$
+).
+
+QM:
+
+A two-dimensional CFT on the half-line 
+$\sigma_{y}>0$
+ with some non-conformal boundary degrees of freedom at 
+$\sigma_{y}=0$
+.
+
+The first description is the one we have already described in detail.
+In the second description, which involves three-dimensional gravity, we replace the CFT
+2
+ by its three-dimensional dual.
+This 3d dual has a Planck brane with dynamical gravity on part of the space (
+$\sigma_{y}<0$
+) and the usual UV boundary on the rest of the space (
+$\sigma_{y}>0$
+).
+
+In the third, fully quantum-mechanical description with no gravity, we replace the 2d black hole by its quantum-mechanical dual (assuming that it has one).
+Then we have a CFT
+2
+ living on a half-line coupled to a quantum mechanical system living at 
+$\sigma_{y}=0$
+.
+In other words, in the case where the 2d gravity has AdS
+2
+ asymptotics, we want to imagine that the entire 2d theory (
+2
+) arises as the holographic dual of a 
+$(0+1)$
+-dimensional (nonconformal) quantum-mechanical system.
+After coupling the nearly AdS
+2
+ gravity theory to the bath CFT, we get a CFT on the half-line coupled to a holographic quantum-mechanical system on its boundary, as shown in figure 
+2
+.
+A higher dimensional version of this set up and its gravity interpretation was discussed in 
+[
+26
+]
+.
+
+The story so far has been for an evaporating black hole in a general 2d gravity theory with AdS
+2
+ asymptotics, coupled to a non-gravitational bath.
+This formalism can be directly applied to the case considered in 
+[
+9
+]
+ by specializing to Jackiw-Teitelboim gravity, with the only difference being that we consider matter composed of a holographic CFT
+2
+, rather than general matter.
+Using their solution for the dynamics of the 2d model, we can follow the simple steps outlined above to find the embedding of the Planck brane and the bath UV brane in the 3d geometry.
+
+2.2 
+Quantum extremal surfaces become ordinary RT/HRT surfaces
+
+In the two-dimensional gravity theory, we can compute the fine-grained entropy of its quantum-mechanical boundary theory using the prescription of extremizing the generalized entropy 
+[
+7
+]
+.
+This involves first constructing a quantity similar to the generalized entropy
+
+$\displaystyle S_{\mathrm{gen}}(y)=\frac{\phi(y)}{4G_{N}^{(2)}}+S_{\mathrm{Bulk}\text{-}2d}[{\cal I}_{y}]\,.$
+
+(10)
+
+Here 
+$y$
+ is a point in the two-dimensional bulk and 
+${\cal I}_{y}$
+ is an interval from the point 
+$y$
+ to the boundary of the two-dimensional space (or to some region far away where the dilaton is very large and the theory is very weakly coupled).
+The quantity 
+$S_{\mathrm{Bulk}\text{-}2d}[\mathcal{I}_{y}]$
+
+is the bulk von Neumann entropy of this interval.
+This bulk entropy includes the entropy coming from the bulk matter fields 
+$\chi$
+, and also the entropy due to quantum fluctuations of 
+$\phi$
+ and 
+$g_{ij}^{(2)}$
+.
+Note also that 
+$\phi(y)=\text{Area}^{(2)}$
+; in two dimensions, the area of a point is the coefficient of the curvature term in (
+1
+).
+Figure 
+3
+(a) shows a slice of the 2d theory including its boundary dual system and indicates where 
+$S_{\text{gen}}$
+ is evaluated.
+
+(a)                                                   (b)
+
+Figure 3: 
+(a) We have shown, from the 2d perspective, the two contributions 
+$\frac{\phi(y)}{4G_{N}^{(2)}}$
+ and 
+$S_{\text{Bulk-2d}}[\mathcal{I}_{y}]$
+ to 
+$S_{\text{gen}}(y)$
+ from equation (
+10
+). (b) Since the matter CFT
+2
+ is holographic, the quantity 
+$S_{\mathrm{Bulk}\text{-}2d}[{\cal I}_{y}]$
+ can be computed using a 3d RT formula.
+
+Once we construct 
+$S_{\text{gen}}(y)$
+ as in (
+10
+), we are instructed to extremize it over the choice of the point 
+$y$
+.
+And finally, we take the minimum over all such extrema.
+The point 
+$(y_{e}^{+},y_{e}^{-})$
+ that results from this is called the quantum extremal “surface.”
+
+The contribution of the CFT
+2
+ fields 
+$\chi$
+ to 
+$S_{\mathrm{Bulk}\text{-}2d}[\mathcal{I}_{y}]$
+ dominates over contributions from the quantum fluctuations of 
+$\phi$
+ and 
+$g_{ij}^{(2)}$
+, since we are assuming that the CFT
+2
+ has a large number of degrees of freedom.
+Furthermore, since the CFT
+2
+ has a holographic dual, the contribution of the 
+$\chi$
+ fields to the entropy can be computed to leading order using the RT/HRT formula 
+[
+5
+, 
+6
+]
+.
+This involves finding a minimal or an extremal surface 
+$\Sigma_{y}$
+ in the three-dimensional geometry.
+
+The extremal surface 
+$\Sigma_{y}$
+ is here just an interval and is shown in blue in figure 
+3
+(b).
+We therefore have
+
+$\displaystyle S_{\mathrm{gen}}(y)={\phi(y)\over 4G_{N}^{(2)}}+S_{\mathrm{Bulk}\text{-}2d}[\mathcal{I}_{y}]~\approx~{\phi(y)\over 4G_{N}^{(2)}}+{\mathrm{Area}^{(3)}[\Sigma_{y}]\over 4G_{N}^{(3)}}\,.$
+
+(11)
+
+We used a 
+$\approx$
+ sign because we are neglecting the contributions from the quantum fluctuations of 
+$\phi$
+ and 
+$g_{ij}^{(2)}$
+, and also dropping the subleading 3d bulk entanglement entropy terms.
+
+The extremization of generalized entropy in 2d is equivalent to the standard RT/HRT area extremization in the 3d with a dynamical brane.
+In other words, we look for an area-extremizing surface in 3d with an endpoint on the Planck brane.
+This “area” has a contribution coming from the length of the line 
+$\Sigma_{y}$
+ as well as a contribution from the dilaton 
+$\phi$
+ at the Planck brane, see figure 
+3
+.
+We are instructed to extremize the whole thing, which involves also the position of the point 
+$(y^{+},y^{-})$
+ on the Planck brane.
+Of course, this observation lends further support to the notion that quantum extremal surfaces are computing von Neuman entropies 
+[
+7
+]
+, since in this setup it reduces to the simpler RT/HRT proposal in three dimensions. This discussion generalizes naturally to higher dimensions.
+
+3 
+Entanglement wedges for evaporating black holes and Hawking radiation
+
+In this section we review the quantum extremal surfaces found in 
+[
+9
+]
+ for black holes in JT gravity that evaporate into a non-gravitational bath, and present their corresponding three-dimensional picture.
+Our discussion will be out of time order, we will first discuss the late time picture, past the so called “Page time” and then discuss the picture for early times.
+We do this because the late time picture is less dependent on the detailed formation history of the black hole.
+It is also the more surprising one, because the entanglement wedge of the radiation will be found to 
+contain
+ the region inside the black hole.
+In two dimensions, this region is manifestly disconnected from the radiation, but we show that it is connected to the radiation through the third dimension.
+
+3.1 
+Late time entanglement wedges
+
+3.1.1 
+Entanglement wedge of the black hole at late times
+
+We start by recalling the position of the quantum extremal surface of the black hole at late times found in 
+[
+8
+, 
+9
+]
+.
+The idea is to consider a subsystem that includes the black hole, or more precisely, the whole gravity region.
+From the point of view of the QM description, we imagine that we take a small interval 
+$[0,\sigma_{0}]$
+ where 
+$\sigma_{0}$
+ is very small, but it includes the quantum-mechanical degrees of freedom at the boundary of the CFT.
+We do this at some late time 
+$t=(y^{+}+y^{-})/2$
+.
+See figure 
+4
+.
+
+Figure 4: 
+
+The entanglement wedge for the black hole at late times.
+We show a spatial slice 
+$\Sigma_{\text{Late}}$
+ at some late time that passes through the quantum extremal surface, (see also figure 
+5
+).
+In the leftmost picture, we have drawn 
+$\Sigma_{\text{Late}}$
+ in the 2d geometry.
+The middle picture is a spatial slice of the three dimensional geometry that ends on 
+$\Sigma_{\rm Late}$
+ and contains the RT/HRT surface, the pink region being the entanglement wedge.
+In the rightmost picture, we have an interval that contains the left boundary and whose entropy we are trying to compute.
+
+Figure 5: 
+The spacetime diagram describing the coupling of the black hole to the bath, the energy pulse coming from the moment they are coupled, the formation of the black hole and its subsequent evaporation. We pick some late time nice slice 
+$\Sigma_{\text{Late}}$
+ and we compute the entanglement wedge for what is to the left of 
+$\sigma_{0}$
+. This contains only a portion of the time slice in the interior. We have also displayed the Wheeler de Witt patch, or causal domain of dependence that describes the full entanglement wedge. 
+
+The final conclusion of 
+[
+8
+, 
+9
+]
+ is that the quantum extremal surface is at a point 
+$(y^{+}_{e},y^{-}_{e})$
+ that lies behind the horizon and is such that a past directed light ray from it would reach the AdS
+2
+ boundary at about a scrambling time earlier than the time 
+$t$
+ at which we are computing the entropy,
+
+$\displaystyle y_{e}^{+}=t-{1\over 2\pi T(t)}\log{S_{\text{Bek}}(T(t))-S_{0}\over c}+\ldots\,.$
+
+(12)
+
+See figure 
+5
+.
+Here 
+$T(t)$
+ is the temperature of the black hole at time 
+$t$
+, 
+$S_{0}$
+ is the extremal entropy (which is assumed to be small), and 
+$S_{\text{Bek}}(T)$
+ is the Bekenstein-Hawking entropy for a black hole of temperature 
+$T$
+.
+The entanglement wedge is just the causal domain of a spacelike slice going from 
+$(t,\sigma_{0})$
+ to 
+$(y^{+}_{e},y^{-}_{e})$
+.
+This implies that the computation of the bulk entanglement entropy is just that of an interval.
+The answer is slightly nontrivial because the stress tensor is nonzero once we take into account the effects of Hawking radiation,
+4
+4
+
+4
+
+                
+                
+                
+              In fact, the state at late times is essentially what is called the Unruh vacuum which contains no incoming radiation but contains outgoing radiation.
+ and hence the map 
+$w^{\pm}(y^{\pm})$
+ determined from (
+5
+) is nontrivial.
+In the 
+$w^{\pm}$
+ coordinates, we are just considering an interval in ordinary flat space, and the nontrivial part of the entropy comes from the dependence of the cutoff 
+$z_{w}$
+ on the length of the interval (
+9
+).
+
+As shown in 
+[
+8
+, 
+9
+]
+,
+this leads to an entropy for the black hole of the from
+
+$S_{\rm Black~Hole}(t)=S_{\text{Bek}}(T(t))+{\rm logs}\,,$
+
+(13)
+
+where 
+$T(t)$
+ is the approximate black hole temperature at time 
+$t$
+.
+The “logs” denote terms that are logarithmic in the black hole entropy of the initial state.
+Note that this entropy is decreasing with time because the temperature is decreasing.
+
+3.1.2 
+Entanglement wedge of the radiation at late times
+
+Now we consider the entropy of the radiation.
+More precisely, we compute the entropy of the state in the bath CFT outside some point 
+$\sigma_{0}$
+, the complement of the interval that we considered for the black hole in the previous subsection, see figure 
+6
+ right.
+
+Figure 6: 
+The analog of figure 
+4
+ for the late time entanglement wedge of the 
+radiation
+.
+The rightmost picture depicts the interval whose entropy is being considered.
+The leftmost picture depicts 
+$\Sigma_{\text{Late}}$
+ in the 2d gravity picture.
+There is an entanglement island, disconnected from the region where the radiation lives.
+The middle picture depicts the 3d version, the blue region being the entanglement wedge.
+
+Figure 7: 
+ Spacetime diagram for the formation and evaporation of the black hole. We consider the entanglement wedges of the radiation. The “island” is the left wedge, which is disconnected from the right one. 
+
+At first sight this seems straightforward to compute.
+We start from the entire slice and simply trace out everything that is outside the region under consideration.
+This would reproduce the computation in 
+[
+2
+]
+ which results in an entropy that continues to grow past the Page time.
+On the other hand, since the entanglement wedge of the black hole covers only a portion of the interior, it is tempting to think that the rest of the interior should belong to to the entanglement wedge of the radiation 
+[
+8
+, 
+9
+, 
+13
+]
+.
+This seems surprising from the two-dimensional point of view where the interior is disconnected from the outside, forming a disconnected ‘island’, see figure 
+6
+ left.
+
+When we think about this problem from the three-dimensional point of view we find that the region in the interior is actually connected to the exterior, see figure 
+6
+ middle.
+If we compute the entropy in the outside CFT by using the standard RT/HRT formula, which instructs us to find the minimal extremal surface, candidate surfaces can end on the Planck brane.
+In fact, the extremal surface is essentially the same one as the one we found for the black hole, up to possible IR contributions depending on the precise initial state which not important conceptually, and will be discussed later.
+
+This connection through the extra dimensions can be viewed as a realization of the ER=EPR idea that the radiation would be connected to the interior of the black hole.
+5
+5
+
+5
+
+                
+                
+                
+              In 
+[
+14
+]
+ a picture of an “octopus” was drawn, that was because the radiation was divided into different parts. Something similar would be the case here too if we were to divide up the radiation in the bath.
+
+The extra dimension provides a “bridge” that connects the “island” to the “mainland”, the mainland being the CFT interval whose entropy we are computing.
+
+The crucial point is that the interior region, which in the two-dimensional picture is disconnected from the outside radiation, is actually connected through the extra dimension. We expect that this should be a feature of any situation where we have a black hole coupled to holographic matter, even in higher dimensions, 
+$d>2$
+.
+6
+6
+
+6
+
+                
+                
+                
+              Higher dimensional black holes in Randall-Sundrum have a variety of phases 
+[
+27
+, 
+28
+, 
+29
+, 
+30
+]
+ and only in some cases do they evaporate at leading order.
+
+This was already suggested as the right prescription on the basis of unitarity in 
+[
+13
+, 
+8
+]
+. The argument we gave using the holographic example allows us to 
+derive
+ this fact from the usual rules of RT/HRT surfaces and entanglement wedges. Of course this derivation relies on the assumed correctness of the RT/HRT formula for computing von Neumann entropies.
+
+3.2 
+Early time entanglement wedges
+
+We consider the setup in 
+[
+9
+]
+ that starts from a low temperature black hole, initially decoupled from the bath.
+The coupling between the black hole and the bath is turned on at 
+$t=0$
+.
+In order to describe the three-dimensional geometry, we will need some preliminaries.
+Many of these points are not essential for the main point of our paper, so the reader who finds them confusing can jump to the next subsection.
+
+3.2.1 
+The decoupled state
+
+Suppose that we have a two-dimensional conformal field theory with a simple, Cardy conformal boundary condition 
+[
+31
+]
+.
+This type of boundary does not carry any energy, so that 
+$T_{++}=T_{--}$
+ at the boundary.
+The holographic dual of such a boundary condition corresponds to a brane in AdS
+3
+ with extrinsic curvature proportional to the metric.
+The metric will be (
+7
+) with boundary at 
+$\sigma_{w}=(w^{+}-w^{-})/2=0$
+.
+We will call such a brane a “Cardy” brane.
+For simplicity, we consider a brane that goes straight down at 
+$\sigma_{w}=0$
+ in the bulk, see figure 
+8
+.
+This brane contains no dilaton or any Ricci curvature term on its surface.
+7
+7
+
+7
+
+                
+                
+                
+              In principle, the Cardy brane could also go down at an angle, due to a nonzero tension, and it could also contain an Einstein term which is topological. Such terms lead to a nonzero boundary entropy 
+[
+32
+]
+, see 
+[
+33
+]
+.
+
+Consider an initial state where the bath and black hole are decoupled.
+This means that the CFT will have a boundary condition, which is taken to be the conformal boundary condition described above.
+The holographic dual consists of two disconnected geometries, see figure 
+8
+.
+
+Figure 8: 
+The decoupled black hole (on the left) and the bath CFT (on the right). We have shown a constant time slice in the 3d geometry. The thick vertical lines are the “Cardy” branes, which are the holographic dual of conformal boundary conditions.
+
+3.2.2 
+Coupling the black hole and the bath CFT
+
+We now consider coupling the two systems.
+(See 
+[
+34
+, 
+35
+, 
+36
+, 
+37
+, 
+38
+, 
+39
+]
+ for studies of local quenches in two-dimensional CFTs.)
+If we were to suddenly couple them at 
+$t=0$
+, we would get an infinite pulse of energy.
+Instead we imagine that we couple them over some time 
+$\Delta t$
+.
+The state that we get after this will have a pulse of energy of the order 
+$E\propto{c\over\Delta t}$
+.
+An approximate form for the state can be obtained by considering the Euclidean problem, joining it suddenly and then evolving in Euclidean time for an amount 
+$\Delta t$
+.
+
+This leads to a Lorentzian 3d geometry such that, at 
+$t=0$
+, the Cardy brane is situated somewhere in the bulk, displaced away from the physical boundary towards the AdS
+3
+ interior.
+Its precise shape depends on the coordinates used, but a sketch can be seen in figure 
+9
+(a).
+As time progresses, this brane falls deeper towards the interior of AdS
+3
+ and becomes more distant from the physical boundary.
+
+Figure 9: 
+We show the profile of the simple boundary brane in the bulk at 
+$t=0$
+.
+At later times it falls in, in the sense that the physical distance to the boundary increases.
+We have also shown the black hole entanglement wedges.
+Where we assumed we started from a black hole at at low temperature where the initial horizon is located where we indicated. The pink region is the entanglement wedge of the black hole, while the complementary blue region is the entanglement wedge of the bath.
+
+We consider an initial black hole which is at a very low (but nonzero) temperature, much lower than the temperature of the black hole that results after the energy pulse falls in.
+The entanglement wedge goes very close to the original horizon (the horizon before the energy pulse comes in), and the entanglement wedge of the black hole contains most of the region associated to the black hole, see figure 
+9
+(a).
+
+As time progresses, the topology of the figure 
+9
+(a) stays similar, but as the brane falls deeper into the bulk, its distance from the boundary increases, leading to a growing entropy, as shown in figure 
+9
+(b).
+This growing entropy can be physically interpreted as the building up of entanglement between the Hawking modes escaping into the bath and their partners trapped behind the event horizon.
+This entropy is equal to the entropy of the radiation and goes as
+
+$S_{\rm Black~Hole}(t)\sim S_{\rm Rad}(t)=\frac{\pi c}{6}\int_{0}^{t}dt^{\prime}\,T(t^{\prime})=2S^{i}_{\text{Bek}}(1-e^{-{\kappa\over 2}t})\,,$
+
+(14)
+
+where 
+$T(t^{\prime})$
+ is the temperature at time 
+$t^{\prime}$
+.
+Here 
+$S^{i}_{\text{Bek}}$
+ is the coarse-grained Bekenstein-Hawking entropy of the black hole that forms after the pulse falls in.
+Denoting its temperature by 
+$T_{i}$
+, we find that 
+$T(t)\sim T_{i}e^{-{\kappa\over 2}t}$
+ due to black hole evaporation 
+[
+40
+]
+.
+Here 
+$\kappa$
+ is proportional to 
+$c$
+ and also to the effective gravitational coupling of the 2d gravity theory, see 
+[
+9
+]
+ for details.
+
+The important point about (
+14
+) is that it rises continuously and it saturates at twice the initial black hole entropy.
+In the context of figure (
+9
+) this means that we can neglect the contribution of the leftmost RT/HRT surface that ends at the original horizon.
+The factor of two in (
+14
+) arises because the Hawking radiation is not adiabatic and it generates coarse grained entropy 
+[
+4
+]
+ (see also 
+[
+8
+]
+).
+
+3.2.3 
+A slightly more precise picture for the entropy of radiation
+
+Having specified the initial state in more detail, we can be slightly more precise about the entropy of radiation at late times.
+There are a couple of new contributions.
+
+First, the initial state had some entropy, 
+$S_{0}$
+, associated to the horizon of the original low-temperature black hole.
+We are imagining that 
+$S_{0}$
+ is much smaller than the Bekenstein-Hawking entropy 
+$S^{i}_{\text{Bek}}$
+ of the black hole created by the pulse of energy.
+Nevertheless, this implies that, to the left of the “island”, there is also a piece of the RT/HRT surface associated with this original horizon, see figure 
+10
+ middle.
+
+Figure 10: 
+An improved version of figure 
+6
+ showing the entanglement wedge of the radiation including a contribution from the initial black hole horizon, and a contribution from the IR cutoff in the CFT.
+Both these contributions are smaller than 
+$S^{i}_{\text{Bek}}$
+.
+
+In addition, we can consider radiation as living in a finite interval 
+$[\sigma_{0},\sigma_{\text{IR}}]$
+ where 
+$\sigma_{\text{IR}}$
+ is big enough to contain the entire Hawking radiation, in particular, larger than the total evaporation time.
+Then there is a second surface that ends on this endpoint and goes to the “Cardy” brane.
+See figure 
+10
+.
+This surface gives rise to a relatively small entropy proportional to 
+${c\over 6}\log\sigma_{\text{IR}}\ll S^{i}_{\rm Bek}$
+.
+
+3.3 
+The Page curve
+
+The Page time 
+[
+3
+]
+ is defined to be the time where the increasing early-time form of the entropy (
+14
+) is equal to the decreasing late-time one (
+13
+), and the entanglement wedge undergoes a transition.
+The minimality condition in the RT/HRT prescription leads to the entropy of the radiation reaching a maximum and then decreasing, see figure 
+11
+.
+(Recall that we are assuming that 
+$S_{0}\ll S^{i}_{\rm Bek}$
+.)
+Both surfaces exist on either side of the transition, it is just that they may not be the minimal ones.
+
+Figure 11: 
+Sketch of the entropy of the radiation, computed using the early time surface and the late time one.
+We are assuming that 
+$S_{0}\ll S^{i}_{\text{Bek}}$
+.
+There is a transition between the two at the Page time.
+Here 
+$\kappa$
+ is proportional to 
+$c$
+ and also to the effective gravitational coupling of the 2d gravity theory.
+
+Note that in the case that the extremal entropy 
+$S_{0}$
+ is not negligible, then the minimization process could be different.
+For example, if we had 
+$S_{0}\gg S^{i}_{\rm Bek}$
+, then the entropy of the radiation will take the short time form for all times.
+The reason is that we need to pay a 
+$2S_{0}$
+ price to create the “island” (becasue of the two endpoints of the island), and this is not favorable when 
+$S_{0}$
+ is large.
+However, if we keep feeding the black hole with pure matter while the black hole evaporates, eventually the radiation will become entropic enough that it will be worth paying the 
+$2S_{0}$
+ price for the island.
+
+4 
+A new rule for computing the entropy when gravitational systems are involved
+
+The calculation of the Page curve using the three-dimensional geometry that we discussed above looks fairly natural from the three-dimensional point of view.
+It does not look very different from other examples where the entanglement wedge extends beyond the causal wedge.
+
+However it looks surprising from the purely two-dimensional point of view.
+There, we have a hybrid system consisting of a black hole coupled to a CFT on a half line.
+If we want to compute the entropy of a region in the CFT, then we are strongly tempted to do what Hawking did 
+[
+2
+]
+
+and restrict attention to the region of the CFT, without including anything else.
+However, the holographic computation suggests that we should also include the interior region.
+
+This suggests that we should introduce a new rule when we compute entropies in effective theories involving gravity.
+If we consider a state in a quantum field theory that is entangled with some other system that lives in a gravity theory, then we should use the RT/HRT/EW method and include all possible “islands” that could extremize the entropy.
+When we include such an island we will often have to pay a price due to the boundary area of the island, the area term in the gravity theory.
+However, there can be situations where the quantum system is entangled with fields inside a closed universe, or the interior of a black hole that has evaporated completely.
+In such cases we do not have to pay an area price because we could, in principle, take the whole space.
+
+The prescription is that the actual entropy of some region 
+$A$
+ in a quantum field theory is given by extremizing a generalized entropy-like functional over islands 
+${\cal I}_{g}$
+ followed by a minimization over all extrema:
+
+$S(A)=\underset{{\cal I}_{g}}{\rm Min}\,\underset{{\cal I}_{g}}{\rm Ext}\left[S_{\rm eff}(A\cup{{\cal I}_{g}})+{\text{Area}[{\partial{\cal I}_{g}}]\over 4G_{N}}\right]\,,$
+
+(15)
+
+where 
+$\text{Area}[{\partial{\cal I}_{g}}]$
+ is the area of boundary of the island. The subscript in 
+$S_{\text{eff}}$
+ reminds us that we are computing the entropy of the state in semi-classical gravity.
+We call the islands 
+${\cal I}_{g}$
+ that extremize this functional 
+quantum extremal islands
+.
+The area contribution form the boundary of the island can be zero if it includes a whole closed universe.
+We imagine minimizing over all possible regions 
+${{\cal I}_{g}}$
+ that could reduce the bulk term for the entropy and also include the areas of such regions, see figure 
+12
+.
+The subscript in 
+${{\cal I}_{g}}$
+ reminds us that this is an island in a gravity theory.
+
+Figure 12: 
+On the left side we have a quantum system, 
+$A$
+, entangled with quantum fields living in a dynamical geometry, which we take to have one spatial dimension. The rule is that we can consider islands, labelled here as blue regions 
+${\cal I}_{g}$
+. In (a) the region 
+${\cal I}_{g}$
+ is a portion of the whole geometry which has a boundary with area 
+$\text{Area}(\partial{\cal I}_{g})$
+. In (b) region 
+${\cal I}_{g}$
+ is the whole universe and it has zero area.
+
+We should emphasize that this is a rule in the effective field theory.
+If we have the complete and exact state in the quantum system 
+$A$
+, then we simply use the usual formula for computing the entropy, namely 
+$S(A)=-\text{Tr}(\rho_{A}\log\rho_{A})$
+, where 
+$\rho_{A}$
+ is the density matrix of 
+$A$
+ in the exact quantum theory.
+On the other hand, in the new rule (
+15
+) we have a state 
+$\rho^{\rm eff}_{A\cup{{\cal I}_{g}}}$
+ which is a semiclassical gravity state.
+
+Note, in particular, that we cannot “forget” how we obtained the state.
+When we obtained it using a gravity theory, we should also compute its entropy using the gravity formula (
+15
+).
+The system 
+$A$
+ could be a simple spin chain.
+But if we obtained the state in this spin chain by collecting Hawking radiation from a black hole, we should still include the interior in computing the entropy.
+If we solved the black hole evolution exactly and we give the exact state in the spin chain, then we can use the standard von Neumann formula for the entropy of this spin chain.
+We can also view the geometry as part of the specification of the state and therefore we need to use the proper RT/HRT/EW prescription to compute its entropy.
+
+Another perspective is the following.
+If we have a configuration that has a quantum system in one region of space and has dynamical gravity in some other region of space, even to compute the entropy of the quantum system, we should still use the rules for gravity theories.
+In other words, if we transfer the Hawking radiation to a set of spins, using the gravity theory, then the combined configuration of spins and black hole spacetime is the full state. When we compute the density matrix we need to follow the rules of gravity to find the entanglement wedge of the spins and its corresponding entropy.
+The full configuration can be thought of as a tensor network preparing the state of the spins 
+[
+41
+]
+[
+42
+]
+.
+So, when we compute the entropy we need to take into account the full network.
+More precisely, the entanglement displayed in figure 
+12
+ should be viewed as internal links in that tensor network.
+
+If the whole computation occurs in a holographic theory, such as in the usual Engenhardt-Wall 
+[
+7
+]
+ quantum extremal surface prescription, then islands should also be allowed in the bulk when we perform the search for a minimal extremal surface.
+
+Notice that the size of the island can be very large, even if the entanglement is relatively small.
+So, this new rule says, for example, that if we have a single spin-
+$1/2$
+ particle entangled with another spin-
+$1/2$
+ particle in a very large closed universe which is otherwise in a pure state (its total bulk entropy arises only due to the spin half particle), then the entanglement wedge of the original spin half particle includes the whole closed universe, see figure 
+12
+(b).
+Now, this is surprising because the whole closed universe could be in different pure states.
+However, if we do not know which pure state we have, and we want to include those alternatives, we generate a mixed state and therefore the entropy inside this universe increases and we would not get that the entanglement wedge of the outside spin includes the whole universe.
+In other words, this formula is not saying that we can learn about the state of the whole closed universe by just looking at a single spin-1/2 particle.
+Note that by this rule, the entanglement wedge could potentially also include a whole set of additional closed universes in pure states, but which would not contribute to the generalized entropy at all, and we continue to not learn anything about them.
+
+It is possible that there is also an exact description of the gravity theory where (
+15
+) is exact.
+(As discussed in 
+[
+8
+]
+, such a description might involve something similar to a final state projection 
+[
+43
+]
+.)
+We are calling (
+15
+) as an effective prescription, because in general, we can only view the gravity theory as an effective field theory.
+It is of course very interesting that gravity still knows about the fine-grained von Neumann entropy of the state.
+We can view this as evidence that there is some bulk theory that contains the precise information about the state.
+
+Notice that this set of ideas is also connected to the Bekenstein area bound in an interesting way.
+The Bekenstein bound says that the entropy of a region bounded by some surface 
+$\mathcal{S}$
+ should be smaller than the area of 
+$\mathcal{S}$
+.
+This bound is clearly violated if we consider 
+$\mathcal{S}$
+ to be the horizon of an old evaporating black hole and use semiclassical reasoning.
+However, in such situations when the bound is violated, we expect that there is a nontrivial quantum extremal surface 
+$\mathcal{E}$
+ inside 
+$\mathcal{S}$
+, and now the 
+$S_{bulk}$
+ term should only contain the entropy between 
+$\mathcal{E}$
+ and 
+$\mathcal{S}$
+, instead of the entropy of the entire region bounded by 
+$\mathcal{S}$
+.
+The entanglement wedge thus might be smaller than the entire region inside 
+$\mathcal{S}$
+, and the large entropy remains outside the entanglement wedge.
+This suggests a modified version of the Bekenstein bound stating that:
+
+The generalized entropy of the entanglement wedge inside a region with boundary 
+${\cal S}$
+ should be less than 
+${\rm Area}({\cal S})/(4G_{N})$
+.
+
+Let us discuss this in more detail.
+This statement presumes that we can consider an arbitrary surface 
+$\mathcal{S}$
+ and view it as being a holographic-type boundary where a quantum system lives.
+Then we consider a candidate quantum extremal surface 
+$\mathcal{E}$
+ inside the region bounded by 
+$\mathcal{S}$
+.
+This modified bound would then follow simply from the minimization prescription, if we extremize over the choice of 
+$\mathcal{E}$
+.
+This is due to the fact that a very “thin” entanglement wedge, where 
+$\mathcal{E}$
+ almost coincides with 
+$\mathcal{S}$
+, would be an example of the surfaces over which we are extremizing.
+Since it is very thin, it does not capture any bulk entropy, and thus the generalized entropy functional evaluates to 
+$\text{Area}(\mathcal{S})/(4G_{N})$
+ on this very thin entanglement wedge.
+Therefore, the true minimal extremal surface should have smaller generalized entropy.
+
+We should emphasize how surprising the RT/HRT/EW formulas are 
+[
+5
+, 
+6
+, 
+7
+]
+.
+They claim that we can compute the fine-grained entropy just by looking at the effective gravity theory.
+This is surprising because one might expect that we need some knowledge that goes beyond the effective field theory (the details of the UV completion of the theory, for example) in order to compute the fine-grained entropy.
+It is expected that if one wanted to compute detailed matrix elements of the density matrix, then we would need to have an accuracy of order 
+$e^{-S}$
+, where 
+$S$
+ is the black hole entropy.
+Such computations are expected to be very sensitive to the microscopic details of the theory. They are also likely to involve other topologies, as in the long time discussion in 
+[
+44
+, 
+45
+]
+.
+However just the effective field theory is smart enough to know about the correct entropy of Hawking radiation.
+One simply has to apply the correct prescription for its entropy!
+8
+8
+
+8
+
+            
+            
+            
+          Progress on a direct derivation of (
+15
+) has been reported in 
+[
+46
+, 
+47
+]
+.
+
+5 
+Conclusions
+
+To summarize,
+we have considered the computation of the entropy of Hawking radiation for an evaporating black hole.
+We studied a two-dimensional black hole coupled to a two-dimensional matter CFT, where this matter CFT has a holographic dual.
+In this case, the quantum extremal surface prescription of 
+[
+7
+]
+ reduces to the usual RT/HRT 
+[
+5
+, 
+6
+]
+ prescription in the bulk geometry.
+When interpreted in terms of the two-dimensional theory, the entanglement wedge has an “island” in the black hole interior.
+The appearance of this island was previously noted in the computation of the entanglement wedge of the black hole in 
+[
+8
+, 
+9
+]
+.
+This island is connected to the exterior, where radiation lives, by the extra dimension of the holographic theory.
+One can view the resulting geometry as a particular realization of the ER=EPR 
+[
+14
+, 
+15
+]
+ idea (see also 
+[
+16
+, 
+17
+]
+).
+
+The radiation is described by a density matrix living in an ordinary quantum field theory without gravity.
+So in principle, we can compute its entropy using the standard formula 
+$S=-\text{Tr}(\rho\log\rho)$
+.
+This presumes that we know the state 
+$\rho$
+ precisely enough.
+If the final state was obtained via the evaporation of a black hole, or some other process involving gravity, then, when we trace out the rest in the semiclassical approximation, we do not get a precise enough approximation for 
+$\rho$
+.
+In fact, we would get the standard Hawking answer 
+[
+2
+]
+.
+However, the full geometry 
+does
+ contain enough information to compute the fine-grained entropy, but perhaps not enough to compute the precise individual matrix elements of the density matrix.
+For this, one needs to make up a new rule for how to compute entropies for quantum systems that are entangled with gravitational systems.
+We need to consider the addition of “islands” and use the quantum extremal surface prescription 
+[
+5
+, 
+6
+, 
+7
+]
+ to find the precise shape for the island.
+
+The case with holographic matter that we have considered here makes this new rule plausible.
+But we expect it to hold even in cases where matter is given by free fields which do not have a standard Einstein gravity dual.
+
+Given the existence of these islands, it would be interesting to see whether there exists a method to extract the information contained within them that has a clear bulk interpretation, in the spirit of what was discussed for the Hayden-Preskill problem 
+[
+48
+]
+ in 
+[
+49
+, 
+50
+]
+.
+
+Notice that these islands, together with a suitable statement about entanglement wedge reconstruction, suggests a degree of non-locality for the theory. So it would be interesting to understand better how it is compatible with ordinary local gravitational bulk physics.
+
+Note that for the CGHS model
+
+[
+51
+, 
+52
+, 
+53
+, 
+54
+, 
+12
+]
+, which is asymptotically flat, we expect a very similar story. We need to compute the entropy of radiation in the asymptotic region, where the dilaton is very large. Again we expect the development of an island in the black hole interior. In the case that the matter is a CFT with a holographic dual, the island is connected to the radiation through the extra dimension.
+
+Finally, even though we restricted our analysis to the simple case of two dimensions, we expect that the results should be similar in higher dimensions when we have a gravity theory in 
+$d$
+ dimensions which contains matter that is holographically dual to a 
+$(d+1)$
+-dimensional geometry.
+
+Acknowledgments
+
+We would like to thank Netta Engelhardt, Daniel Harlow, Andreas Karch, Donald Marolf, Henry Maxfield, Geoffrey Penington, Steve Shenker, Douglas Stanford, Sandip Trivedi, and Edward Witten for useful conversations.
+A.A. is supported by funds from the Ministry of Presidential Affairs, UAE.
+R.M. is supported by US Department of Energy grant No. DE-SC0016244.
+The work of R.M. was performed in part at the Aspen Center for Physics, which is supported by National Science Foundation grant PHY-1607611.
+J.M. is supported in part by U.S. Department of Energy grant DE-SC0009988 and by the Simons Foundation grant 385600.
+Y.Z. is supported by the Simons foundation through the It from Qubit Collaboration.
+
+References
+
+[1]
+
+S. W. Hawking, “Particle Creation by Black Holes,” 
+Commun.
+Math. Phys.
+ 
+43
+, 199–220 (1975)
+
+[2]
+
+S. W. Hawking, “Breakdown of Predictability in Gravitational
+Collapse,” 
+Phys. Rev.
+ 
+D14
+, 2460–2473 (1976)
+
+[3]
+
+Don N. Page, “Information in black hole radiation,” 
+Phys. Rev. Lett.
+ 
+71
+, 3743–3746 (1993), 
+arXiv:hep-th/9306083 [hep-th]
+
+[4]
+
+Don N. Page, “Time Dependence of Hawking Radiation Entropy,” 
+JCAP
+ 
+1309
+, 028 (2013), 
+arXiv:1301.4995 [hep-th]
+
+[5]
+
+Shinsei Ryu and Tadashi Takayanagi, “Holographic derivation of entanglement entropy
+from AdS/CFT,” 
+Phys. Rev. Lett.
+ 
+96
+, 181602 (2006), 
+arXiv:hep-th/0603001
+[hep-th]
+
+[6]
+
+Veronika E. Hubeny,
+Mukund Rangamani, and Tadashi Takayanagi, “A Covariant holographic entanglement entropy
+proposal,” 
+JHEP
+ 
+07
+, 062 (2007), 
+arXiv:0705.0016 [hep-th]
+
+[7]
+
+Netta Engelhardt and Aron C. Wall, “Quantum Extremal Surfaces: Holographic
+Entanglement Entropy beyond the Classical Regime,” 
+JHEP
+ 
+01
+, 073 (2015), 
+arXiv:1408.3203 [hep-th]
+
+[8]
+
+Geoffrey Penington, “Entanglement Wedge Reconstruction and the
+Information Paradox,” (2019), 
+arXiv:1905.08255 [hep-th]
+
+[9]
+
+Ahmed Almheiri, Netta Engelhardt, Donald Marolf, and Henry Maxfield, “The entropy of bulk quantum fields and the
+entanglement wedge of an evaporating black hole,” (2019), 
+arXiv:1905.08762 [hep-th]
+
+[10]
+
+Joseph Polchinski, “String theory and black hole complementarity,” in 
+Future perspectives in string theory.
+Proceedings, Conference, Strings’95, Los Angeles, USA, March 13-18, 1995
+ (1995) pp. 417–426, 
+arXiv:hep-th/9507094 [hep-th]
+
+[11]
+
+Samir D. Mathur, “The Information paradox: A Pedagogical
+introduction,” 
+Strings, Supergravity and Gauge Theories.
+Proceedings, CERN Winter School, CERN, Geneva, Switzerland, February 9-13
+2009
+, 
+Class. Quant.
+Grav.
+ 
+26
+, 224001 (2009), 
+arXiv:0909.1038 [hep-th]
+
+[12]
+
+Thomas M. Fiola, John Preskill, Andrew Strominger, and Sandip P. Trivedi, “Black hole thermodynamics and information loss in
+two-dimensions,” 
+Phys. Rev.
+ 
+D50
+, 3987–4014 (1994), 
+arXiv:hep-th/9403137 [hep-th]
+
+[13]
+
+Patrick Hayden and Geoffrey Penington, “Learning the Alpha-bits of Black Holes,” (2018), 
+arXiv:1807.06041 [hep-th]
+
+[14]
+
+Juan Maldacena and Leonard Susskind, “Cool horizons for entangled black holes,” 
+Fortsch. Phys.
+ 
+61
+, 781–811 (2013), 
+arXiv:1306.0533
+[hep-th]
+
+[15]
+
+Juan Maldacena, “Spacetime from entanglement,”  (2015), talk at KITP, August 20, 2013
+
+[16]
+
+Leonard Susskind, “The Transfer of Entanglement: The Case for
+Firewalls,” (2012), 
+arXiv:1210.2098 [hep-th]
+
+[17]
+
+Kyriakos Papadodimas and Suvrat Raju, “An Infalling Observer in AdS/CFT,” 
+JHEP
+ 
+10
+, 212 (2013), 
+arXiv:1211.6767 [hep-th]
+
+[18]
+
+Juan Maldacena, “The Large N limit of superconformal field
+theories and supergravity,” 
+Int. J. Theor. Phys.
+ 
+38
+, 1113–1133 (1999), 
+arXiv:hep-th/9711200 [hep-th]
+
+[19]
+
+Edward Witten, “Anti-de Sitter space and holography,” 
+Adv. Theor. Math.
+Phys.
+ 
+2
+, 253–291 (1998), 
+arXiv:hep-th/9802150
+[hep-th]
+
+[20]
+
+S. S. Gubser, Igor R. Klebanov, and Alexander M. Polyakov, “Gauge theory correlators from noncritical string
+theory,” 
+Phys. Lett.
+ 
+B428
+, 105–114 (1998), 
+arXiv:hep-th/9802109 [hep-th]
+
+[21]
+
+Vijay Balasubramanian and Per Kraus, “A Stress tensor for Anti-de Sitter gravity,” 
+Commun. Math. Phys.
+ 
+208
+, 413–428 (1999), 
+arXiv:hep-th/9902121 [hep-th]
+
+[22]
+
+Lisa Randall and Raman Sundrum, “An Alternative to compactification,” 
+Phys. Rev. Lett.
+ 
+83
+, 4690–4693 (1999), 
+arXiv:hep-th/9906064 [hep-th]
+
+[23]
+
+Steven S. Gubser, “AdS/CFT and gravity,” 
+Phys. Rev.
+ 
+D63
+, 084017 (2001), 
+arXiv:hep-th/9912001
+[hep-th]
+
+[24]
+
+J. Polchinski, 
+String theory. Vol.
+1: An introduction to the bosonic string
+, Cambridge Monographs on
+Mathematical Physics (Cambridge University Press, 2007) ISBN 9780511252273, 9780521672276,
+9780521633031
+
+[25]
+
+Maximo Banados, “Three-dimensional quantum geometry and black
+holes,” 
+Trends in theoretical physics II. Proceedings,
+2nd La Plata Meeting, Buenos Aires, Argentina, November 29-December 4,
+1998
+, 
+AIP Conf. Proc.
+ 
+484
+, 147–169 (1999), 
+arXiv:hep-th/9901148 [hep-th]
+
+[26]
+
+Andreas Karch and Lisa Randall, “Locally localized gravity,” 
+Superstrings. Proceedings, International
+Conference, Strings 2000, Ann Arbor, USA, July 10-15, 2000
+, 
+JHEP
+ 
+05
+, 008 (2001), 
+arXiv:hep-th/0011156
+[hep-th]
+
+[27]
+
+Veronika E. Hubeny,
+Donald Marolf, and Mukund Rangamani, “Hawking radiation in large N strongly-coupled
+field theories,” 
+Class. Quant.
+Grav.
+ 
+27
+, 095015 (2010), 
+arXiv:0908.2270 [hep-th]
+
+[28]
+
+Pau Figueras and Toby Wiseman, “Gravity and large black holes in Randall-Sundrum
+II braneworlds,” 
+Phys. Rev. Lett.
+ 
+107
+, 081101 (2011), 
+arXiv:1105.2558 [hep-th]
+
+[29]
+
+Jorge E. Santos and Benson Way, “Black Funnels,” 
+JHEP
+ 
+12
+, 060 (2012), 
+arXiv:1208.6291 [hep-th]
+
+[30]
+
+Jorge E. Santos and Benson Way, “Black Droplets,” 
+JHEP
+ 
+08
+, 072 (2014), 
+arXiv:1405.2078 [hep-th]
+
+[31]
+
+John L. Cardy, “Boundary Conditions, Fusion Rules and the
+Verlinde Formula,” 
+Nucl. Phys.
+ 
+B324
+, 581–596 (1989)
+
+[32]
+
+Ian Affleck and Andreas W. W. Ludwig, “Universal noninteger ’ground state degeneracy’ in
+critical quantum systems,” 
+Phys. Rev. Lett.
+ 
+67
+, 161–164 (1991)
+
+[33]
+
+Tadashi Takayanagi, “Holographic Dual of BCFT,” 
+Phys. Rev. Lett.
+ 
+107
+, 101602 (2011), 
+arXiv:1105.5165 [hep-th]
+
+[34]
+
+Tarek Anous, Thomas Hartman, Antonin Rovai, and Julian Sonner, “Black Hole Collapse in the 1/c Expansion,” 
+JHEP
+ 
+07
+, 123 (2016), 
+arXiv:1603.04856
+[hep-th]
+
+[35]
+
+Pasquale Calabrese and John Cardy, “Entanglement and correlation functions following
+a local quench: a conformal field theory approach,” 
+J. Stat. Mech.
+ 
+0710
+, P10004 (2007), 
+arXiv:0708.3750
+[quant-ph]
+
+[36]
+
+Pasquale Calabrese and John Cardy, “Entanglement entropy and conformal field
+theory,” 
+J. Phys.
+ 
+A42
+, 504005 (2009), 
+arXiv:0905.4013
+[cond-mat.stat-mech]
+
+[37]
+
+Curtis T. Asplund and Alice Bernamonti, “Mutual information after a local quench in
+conformal field theory,” 
+Phys. Rev.
+ 
+D89
+, 066015 (2014), 
+arXiv:1311.4173 [hep-th]
+
+[38]
+
+Pawel Caputa, Tokiro Numasawa, Teppei Shimaji, Tadashi Takayanagi, and Zixia Wei, “Double Local Quenches in 2D CFTs and
+Gravitational Force,” (2019), 
+arXiv:1905.08265 [hep-th]
+
+[39]
+
+Teppei Shimaji, Tadashi Takayanagi, and Zixia Wei, “Holographic Quantum Circuits from
+Splitting/Joining Local Quenches,” 
+JHEP
+ 
+03
+, 165 (2019), 
+arXiv:1812.01176
+[hep-th]
+
+[40]
+
+Julius Engelsöy,
+Thomas G. Mertens, and Herman Verlinde, “An investigation of AdS
+2
+ backreaction and
+holography,” 
+JHEP
+ 
+07
+, 139 (2016), 
+arXiv:1606.03438
+[hep-th]
+
+[41]
+
+Brian Swingle, “Entanglement Renormalization and Holography,” 
+Phys. Rev.
+ 
+D86
+, 065007 (2012), 
+arXiv:0905.1317
+[cond-mat.str-el]
+
+[42]
+
+Thomas Hartman and Juan Maldacena, “Time Evolution of Entanglement Entropy from Black
+Hole Interiors,” 
+JHEP
+ 
+05
+, 014 (2013), 
+arXiv:1303.1080 [hep-th]
+
+[43]
+
+Gary T. Horowitz and Juan Maldacena, “The Black hole final state,” 
+JHEP
+ 
+02
+, 008 (2004), 
+arXiv:hep-th/0310281
+[hep-th]
+
+[44]
+
+Phil Saad, Stephen H. Shenker, and Douglas Stanford, “A semiclassical ramp in SYK and in gravity,” (2018), 
+arXiv:1806.06840 [hep-th]
+
+[45]
+
+Phil Saad, Stephen H. Shenker, and Douglas Stanford, “JT gravity as a matrix integral,” (2019), 
+arXiv:1903.11115 [hep-th]
+
+[46]
+
+Geoffrey Penington, “Entanglement Wedge Reconstruction and the
+Information Paradox,” Talk at QIQG5, August 2019 at UC
+Davis.
+
+[47]
+
+Ahmed Almheiri, “A Semi-Classical Page Curve for the Hawking
+Radiation,” Talk at QIQG5, August 2019 at UC Davis.
+
+[48]
+
+Patrick Hayden and John Preskill, “Black holes as mirrors: Quantum information in
+random subsystems,” 
+JHEP
+ 
+09
+, 120 (2007), 
+arXiv:0708.4025 [hep-th]
+
+[49]
+
+Ping Gao, Daniel Louis Jafferis, and Aron Wall, “Traversable Wormholes via a Double Trace
+Deformation,” 
+JHEP
+ 
+12
+, 151 (2017), 
+arXiv:1608.05687
+[hep-th]
+
+[50]
+
+Juan Maldacena, Douglas Stanford, and Zhenbin Yang, “Diving into traversable wormholes,” 
+Fortsch. Phys.
+ 
+65
+, 1700034 (2017), 
+arXiv:1704.05333
+[hep-th]
+
+[51]
+
+Curtis G. Callan,
+Jr., Steven B. Giddings, Jeffrey A. Harvey, and Andrew Strominger, “Evanescent black holes,” 
+Phys. Rev.
+ 
+D45
+, R1005 (1992), 
+arXiv:hep-th/9111056
+[hep-th]
+
+[52]
+
+Jorge G. Russo, Leonard Susskind, and Larus Thorlacius, “Black hole evaporation in (1+1)-dimensions,” 
+Phys. Lett.
+ 
+B292
+, 13–18 (1992), 
+arXiv:hep-th/9201074 [hep-th]
+
+[53]
+
+Jorge G. Russo, Leonard Susskind, and Larus Thorlacius, “The Endpoint of Hawking radiation,” 
+Phys. Rev.
+ 
+D46
+, 3444–3449 (1992), 
+arXiv:hep-th/9206070 [hep-th]
+
+[54]
+
+Andrew Strominger, “Les Houches lectures on black holes,” in 
+NATO Advanced Study Institute: Les Houches
+Summer School, Session 62: Fluctuating Geometries in Statistical Mechanics
+and Field Theory Les Houches, France, August 2-September 9, 1994
+ (1994) 
+arXiv:hep-th/9501071 [hep-th]
+
+    Experimental support, please
+    
+view the build logs
+
+    for errors. Generated by
+    
+
+        L
+        
+A
+
+        T
+        
+E
+
+xml
+
+.
+  
+
+Instructions for reporting errors
+
+We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+      support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+      methods listed below:
+
+Click the "Report Issue" 
+(
+
+)
+ button, located in the page header.
+
+Tip:
+ You can select the relevant text first, to include it in your report.
+
+Our team has already identified 
+the following issues
+. We appreciate your time reviewing and reporting rendering errors we
+      may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+      should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+      all.
+
+Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a 
+list of packages that need conversion
+, and welcome 
+developer contributions
+.
+
+        We gratefully acknowledge support from our 
+major funders
+,
+        
+member institutions
+, 
+,
+        and all contributors.
+      
+
+About
+ 
+·
+
+Help
+ 
+·
+
+Contact
+ 
+·
+
+Subscribe
+ 
+·
+
+Copyright
+ 
+·
+
+Privacy
+ 
+·
+
+Accessibility
+ 
+·
+
+Operational Status
+ (opens in new tab)
+

@@ -1,0 +1,13 @@
+go 1.25.7
+
+// Standalone Bohmian-equivariance evidence module (plan7.1 Step 4).
+// Follows the qsg-t001 precedent: absolute use-paths (this module lives
+// under TOE-v6, outside /home/chaschel/Documents/go), read-only use of
+// the shared phys-artifact + phys-math checkouts. Nothing in this
+// module may write to the shared repos; the Bohmian fixture imports
+// only the representation layer, never phys-lib theory content.
+use (
+	.
+	/home/chaschel/Documents/go/phys-artifact
+	/home/chaschel/Documents/go/phys-math
+)

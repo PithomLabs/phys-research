@@ -1,0 +1,107 @@
+{
+  "source_mapping": [
+    {
+      "source_eq": "02:C",
+      "source_quantity": "continuity_residual",
+      "meaning": "continuity residual d_t rho + d_q j on test pairs; zero for solution pair, pinned nonzero for non-solution pair; traveling pair verified by point substitution",
+      "defining_relation": "Res = Simp(d_t(R^2) + d_q(R^2 d_q S))",
+      "fixture_ref": "Res1Ref, Res2Ref, Res4Ref",
+      "dependencies": [
+        "Rho1Ref",
+        "DtRho1Ref",
+        "DqS1Ref",
+        "J1Ref",
+        "DqJ1Ref",
+        "Rho2Ref",
+        "DtRho2Ref",
+        "DqS2Ref",
+        "J2Ref",
+        "DqJ2Ref",
+        "Rho4Ref",
+        "DtRho4Ref",
+        "DqS4Ref",
+        "J4Ref",
+        "DqJ4Ref"
+      ]
+    },
+    {
+      "source_eq": "02:j-def",
+      "source_quantity": "current_assembly",
+      "meaning": "j = rho d_q S in test units",
+      "defining_relation": "J = Simp(Rho * DqS)",
+      "fixture_ref": "J1Ref, J2Ref, J3Ref, J4Ref",
+      "dependencies": [
+        "Rho1Ref",
+        "DqS1Ref",
+        "Rho2Ref",
+        "DqS2Ref",
+        "Rho3Ref",
+        "Rho4Ref",
+        "DqS4Ref"
+      ]
+    },
+    {
+      "source_eq": "03:guide",
+      "source_quantity": "guidance_quotient",
+      "meaning": "v = j rho^-1 with recorded NEQ(rho,0)",
+      "defining_relation": "GuideRel EQ(v, j rho^-1) + rhoNNonzero conditions",
+      "fixture_ref": "Guide1RelRef, Guide2RelRef, Guide3RelRef, V1Ref, V2Ref, V3Ref, Guide4RelRef, V4Ref",
+      "dependencies": [
+        "J1Ref",
+        "Rho1Ref",
+        "rho1Nonzero",
+        "J2Ref",
+        "Rho2Ref",
+        "rho2Nonzero",
+        "J3Ref",
+        "Rho3Ref",
+        "rho3Nonzero",
+        "J4Ref",
+        "Rho4Ref",
+        "rho4Nonzero"
+      ]
+    },
+    {
+      "source_eq": "fixture:product-rule",
+      "source_quantity": "product_rule_identity",
+      "meaning": "manual product-rule assembly pinned alongside executed d_q j2 (linkage executed; agreement hand-derived)",
+      "defining_relation": "PRRel EQ(simp-staged executed, manual); EQ rests on hand proof",
+      "fixture_ref": "PRRelRef",
+      "dependencies": [
+        "DqJ2SRef"
+      ]
+    },
+    {
+      "source_eq": "03:T",
+      "source_quantity": "pushforward_transport",
+      "meaning": "transport equation (represented relation; not derived)",
+      "defining_relation": "PushRel EQ(pushRho0, rhoT) opaque",
+      "fixture_ref": "PushRelRef",
+      "dependencies": []
+    },
+    {
+      "source_eq": "03:E-loc",
+      "source_quantity": "equivariance_claim",
+      "meaning": "(E-loc) claim (represented; not derived)",
+      "defining_relation": "EquivRel EQ(pushRho0, rhoT) opaque",
+      "fixture_ref": "EquivRelRef",
+      "dependencies": []
+    },
+    {
+      "source_eq": "03:flow",
+      "source_quantity": "flow_ode",
+      "meaning": "flow ODE (LHS represented; existence not derived)",
+      "defining_relation": "FlowRel EQ(dQdt, vFlow) opaque",
+      "fixture_ref": "FlowRelRef",
+      "dependencies": []
+    },
+    {
+      "source_eq": "01:S1",
+      "source_quantity": "configuration_chart",
+      "meaning": "1D line chart (fragment of R^{3N})",
+      "defining_relation": "CoordinateSystem dim 1 over [q]",
+      "fixture_ref": "ChartRef",
+      "dependencies": []
+    }
+  ]
+}

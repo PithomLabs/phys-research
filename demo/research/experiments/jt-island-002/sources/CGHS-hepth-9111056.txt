@@ -1,0 +1,653 @@
+                                                                                                            UCSB-TH-91-54
+                                                                                                            EFI-91-67
+                                                                                                            PUPT-1294
+                                                                                                            hepth@xxx–9111056
+
+
+
+
+                                                              Evanescent Black Holes
+arXiv:hep-th/9111056v1 28 Nov 1991
+
+
+
+
+                                                       Curtis G. Callan, Jr.,∗ Steven B. Giddings,†‡
+
+                                                      Jeffrey A. Harvey,# and Andrew Strominger†♮
+
+
+                                                                              Abstract
+                                          A renormalizable theory of quantum gravity coupled to a dilaton and conformal matter
+                                     in two space-time dimensions is analyzed. The theory is shown to be exactly solvable
+                                     classically. Included among the exact classical solutions are configurations describing the
+                                     formation of a black hole by collapsing matter. The problem of Hawking radiation and
+                                     backreaction of the metric is analyzed to leading order in a 1/N expansion, where N is the
+                                     number of matter fields. The results suggest that the collapsing matter radiates away all of
+                                     its energy before an event horizon has a chance to form, and black holes thereby disappear
+                                     from the quantum mechanical spectrum. It is argued that the matter asymptotically
+                                     approaches a zero-energy “bound state” which can carry global quantum numbers and
+                                     that a unitary S-matrix including such states should exist.
+
+
+                                         ∗
+                                           Department of Physics, Princeton University, Princeton, NJ 08544
+                                         Internet: cgc@pupphy.princeton.edu
+                                         †
+                                           Department of Physics, University of California, Santa Barbara, CA 93106
+                                         ‡
+                                           Internet: giddings@denali.physics.ucsb.edu
+                                         ♮
+                                           Bitnet: andy@voodoo
+                                         #Enrico Fermi Institute, University of Chicago, 5640 Ellis Avenue,
+                                         Chicago, IL 60637 Internet: harvey@curie.uchicago.edu
+
+
+
+
+                                     11/91
+     Following his ground-breaking work [1] on black hole evaporation, Hawking [2] argued
+that the process of formation and subsequent evaporation of a black hole is not governed
+by the usual laws of quantum mechanics: rather, pure states evolve into mixed states [3].
+This conjecture is hard to check in detail because of the many degrees of freedom and
+inherent complexity of the process in four spacetime dimensions. It would be useful to
+have a toy model in which greater analytic control is possible.
+     In this paper we investigate such a model. It is a consistent, renormalizable theory
+of quantum gravity in two spacetime dimensions coupled to conformal matter. It contains
+black hole solutions as well as Hawking radiation, and is exactly soluble at the classical
+level. As we shall see, the theory is just complicated enough to enable one to ask the
+interesting questions concerning black hole evaporation, yet simple enough to obtain some
+answers.
+     We begin with the action in two spacetime dimensions
+
+                       1        √ 
+                         Z
+                            d2 x −g e−2φ (R + 4(∇φ)2 + 4λ2 ) − 12 (∇f )2
+                                                                         
+                 S=                                                                    (1)
+                      2π
+
+where g, φ and f are the metric, dilaton, and matter fields, respectively, and λ2 is a
+cosmological constant. This action arises as the effective action describing the radial modes
+of extremal dilatonic black holes in four or higher dimensions[4,5,6]1 ; it is also closely
+related to the spacetime action for c = 1 noncritical strings. However, these connections
+need not concern us here; the theory defined by the action (1) is of interest in its own right
+as a renormalizable theory of two dimensional “dilaton gravity” coupled to matter.
+     The quantization of related theories of 2D gravity has been considered in [7]. Gravi-
+tational collapse in related theories has been studied in [8]. The black hole solution of (1)
+in the absence of matter has appeared previously [9] as a low-energy approximation to an
+exact solution of string theory.
+     The classical theory described by (1) is most easily analyzed in conformal gauge
+
+                                        g+− = − 12 e2ρ
+                                                                                             (2)
+                                        g−− = g++ = 0
+
+where x± = (x0 ± x1 ). The metric equations of motion then reduce to
+                                                2
+                       T++ = e−2φ 4∂+ ρ∂+ φ − 2∂+ φ + 21 ∂+ f ∂+ f = 0
+                                                   
+
+                                                2
+                       T−− = e−2φ 4∂− ρ∂− φ − 2∂− φ + 12 ∂− f ∂− f = 0
+                                                   
+                                                                                             (3)
+                       T+− = e−2φ 2∂+ ∂− φ − 4∂+ φ∂− φ − λ2 e2ρ = 0 .
+                                                               
+
+
+The dilaton and matter equations are
+
+                        −4∂+ ∂− φ + 4∂+ φ∂− φ + 2∂+ ∂− ρ + λ2 e2ρ = 0                        (4)
+  1
+      In the context of superstrings f does not have the usual dilaton coupling because it arises
+from a Ramond-Ramond field.
+
+                                                1
+                                        ∂+ ∂− f = 0 .                                   (5)
+     The general solution of the dilaton, matter, and T+− equations (which do not involve
+f ) may be expressed in terms of two free fields
+
+                                 w = w+ (x+ ) + w− (x− )
+                                                                                        (6)
+                                  u = u+ (x+ ) + u− (x− )
+
+as
+                                 e−2φ = u − h+ h−
+                                                                                        (7)
+                                 e−2ρ = e−w (u − h+ h− )
+where
+                                                        ±
+                                                    Zx
+                                   h± (x± ) = λ             ew± .                       (8)
+
+The matter equation of course implies
+
+                                 f = f+ (x+ ) + f− (x− ) .                              (9)
+
+The remaining constraint equations T++ = T−− = 0 may then be solved for u in terms of
+f± and w± . The general solution is
+
+                              M
+                                        Z           Z
+                                             w±
+                         u± =   −1          e               e−w± ∂± f ∂± f.           (10)
+                              2λ 2
+
+where M is an integration constant.
+     We now consider solutions with f = 0, which implies that one can set u = M/λ.
+Conformal gauge leaves unfixed the conformal subgroup of diffeomorphisms. This gauge
+freedom can be fixed (on-shell) by setting w = 0. The general f = 0 solution is then
+
+                                          M
+                                  e−2φ =     − λ2 x+ x−
+                                           λ                                          (11)
+                                        = e−2ρ
+
+up to constant translations of x. It is readily seen [6] that for M 6= 0, this corresponds
+to the r − t plane of the of the higher dimensional black holes of [4,5] near the extremal
+limit, or to the two dimensional black hole solution of [9], with M the black hole mass. It
+is not immediately apparent that the parameter M corresponds to the black hole mass.
+This can be verified by a calculation of the ADM mass for this configuration as described
+in [9] or by a calculation of the Bondi mass as is done later in this paper. For M = 0
+one can introduce coordinates in which the metric is flat and the dilaton field φ is linear
+in the spatial coordinate. This “linear dilaton” vacuum has appeared in previous studies
+of lower-dimensional string theories and also corresponds to extremal higher-dimensional
+black holes.
+
+                                                2
+                                                   Singularity
+
+
+                          +
+                      I
+                          L                                                            I+
+                                                                                           R
+
+
+
+
+                                                   no
+                                                 iz
+                                              or
+                                             H
+                                   Linear
+
+
+
+
+                                                                  f−
+          0                                                                                           oo
+
+
+
+
+                                                                     w
+                                                                    av
+                                                                         e
+                                            Dilaton
+                                                                                       +
+                                                                                   x
+               −a 2                                                                    0
+                                                      Vacuum
+
+                              I−                                             I−
+                              L                                              R
+
+                 x−                                                                        +
+                                                                                    x
+
+
+                                                      − oo   0
+
+    From the above we may expect that any matter perturbation of the linear dilaton
+vacuum will result in the formation of a black hole. To see that this is indeed the case
+                  Figure 1. An incoming f−wave in classical  − dilaton gravity
+consider the example  of an fashock-wave
+                  produces     black hole traveling in the xregion)
+                                          metric (shaded       direction
+                                                                    with with
+                                                                         a    magnitude a
+described by the stress tensor
+                  horizon  and singularity.
+                                     1
+                                       ∂ f ∂+ f = aδ(x+ − x+
+                                     2 +                   0) .                                (12)
+
+One then finds in the gauge w = 0 that
+
+                   e−2ρ = e−2φ = −a(x+ − x+     +   +      2 + −
+                                          0 )Θ(x − x0 ) − λ x x .                              (13)
+
+For x+ < x+                                                          +     +
+             0 , this is simply the linear dilaton vacuum while for x > x0 it is identical
+                             +                  −       2
+to a black hole of mass ax0 λ after shifting x by a/λ . The two solutions are are joined
+along the f -wave. The Penrose diagram for this spacetime is depicted in Figure 1.
+      The fact that any f -wave, no matter how weak, produces a black hole of course implies
+that weak field perturbation theory breaks down. The reason for this is simple. From (1)
+it is evident that the weak field expansion parameter is proportional to eφ . Equation (13)
+
+                                                  3
+shows that this parameter becomes arbitrarily large close to IL± or to the singularity and
+that the weak field expansion diverges in this region.
+     This has a higher dimensional interpretation as follows [5]. When (1) is taken as an
+effective field theory for higher-dimensional dilatonic black holes, the 2D linear dilaton
+vacuum corresponds to the infinite throat in the extremal black hole solutions. The center
+of the black hole is at x+ x− = 0. An arbitrarily small infalling matter wave then produces
+a non-extremal black hole with an event horizon and a singularity.
+     So far the discussion has been purely classical. As a first step towards including
+quantum effects, we now compute the Hawking radiation in the fixed background geometry
+(11). This can be computed exactly for the collapsing f -wave because of the elegant relation
+[10] between Hawking radiation and the trace anomaly for 2D conformal matter coupled
+to gravity.
+     The calculation and its physical interpretation is clearest in coordinates where the
+                                       ±
+metric is asymptotically constant on IR  . We thus set
+                                                +
+                                             eλσ = λx+
+                                                −              a                              (14)
+                                        e−λσ = −λx− −            .
+                                                               λ
+
+This preserves the conformal gauge (2) and gives for the new metric
+                                        (             −
+                               2ρ           [1 + λa eλσ ]−1 ,           if σ + < σ0+ ;
+                   −2g+− = e        =                   −   + +                               (15)
+                                            [1 + λa eλ(σ −σ +σ0 ) ]−1   if σ + > σ0+
+
+                   +                                                               f
+with λx+ 0 = e
+                λσ0
+                    . By the standard one-loop anomaly argument, the trace T+−          of the
+stress tensor is proportional to the curvature scalar which is, in these coordinates, just the
+laplacian of ρ. The result is2
+                                      f        1
+                                   hT+−  i = − ∂+ ∂− ρ .                                  (16)
+                                              12
+One can then integrate the equations of conservation of T f to infer the following one-loop
+                  f        f
+contributions to T++ and T−−  :
+
+                            f         1             2
+                                                      ρ + t+ (σ + ) ,
+                                                                   
+                          hT++ i=−      ∂+ ρ∂+ ρ − ∂+
+                                     12                                                       (17)
+                            f         1             2
+                                                      ρ + t− (σ − ) .
+                                                                   
+                          hT−− i = −    ∂− ρ∂− ρ − ∂−
+                                     12
+
+The functions of integration t± must be fixed by boundary conditions. For the collapsing
+f -wave, T f should vanish identically in the linear dilaton region, and there should be no
+
+  2
+      It is assumed that the functional measure for the matter fields is defined with the metric g.
+One could imagine using instead the (flat) metric e−2φ g, in which case there would be no Hawking
+radiation.
+
+                                                      4
+                          −
+incoming radiation along IR  except for the classical f -wave at σ0+ . Using the formula for
+ρ, this implies
+                                        −λ2                 −
+                      t+ = 0,     t− =       [1 − (1 + aeλσ /λ)−2 ].                    (18)
+                                          4
+                                                                                    +
+The stress tensor is now completely determined, and one can read off its values on IR by
+                  +
+taking the limit σ → ∞:
+                             f               f
+                           hT++ i→0        hT+− i→0
+                                      "                  #
+                             f     λ2
+                                                1                                         (19)
+                           hT−− i→     1−             2   .
+                                   48     1 + aeλσ− /λ
+
+                          f                                              +
+The limiting value of T−−    is the flux of f-particle energy across IR    . In the far past of
+  +
+IR   (σ − → −∞) this flux vanishes exponentially while, as the horizon is approached,
+it approaches the constant value λ2 /48. This is nothing but Hawking radiation. The
+surprising result that the Hawking radiation rate is asymptotically independent of mass
+has been found in other studies of two-dimensional gravity.
+      The total energy lost by the collapsing f -wave at some value of retarded time σ − can
+                                                           +
+be estimated by integrating the outgoing flux along IR        up to σ − . If the total radiated
+                                               +
+flux is computed by integrating along all of IR  , an infinite answer is obtained, because the
+outgoing flux approaches a steady state at late retarded times. This is obviously nonsense
+— the black hole cannot lose more mass than it possesses. This nonsensical answer is, of
+course, a result of the fact that we have neglected the backreaction of the radiation on
+the collapsing f -wave. As a first step toward analyzing the backreaction, it is useful to
+estimate, to leading order in the mass, the retarded time at which the integrated energy of
+                              +
+the Hawking radiation on IR     equals the initial mass ax+ 0 λ of the incoming f -wave. This
+is given by
+                                                      +
+                                        −λσ −    e−λσ0
+                                       e      =         .                                  (20)
+                                                   24
+By this time, Hawking radiation has backscattered all the energy of the incoming f -wave
+                        +
+into outgoing flux on IR   .
+      Unfortunately this picture cannot yet be taken seriously because the turn-around
+point at which all the energy has backscattered has coordinates (σ0+ , σ0+ + (log 24)/λ). The
+value of the dilaton at this point is from (13) for small mass
+
+                                                   1
+                                         e−2φ =                                           (21)
+                                                  24
+
+independent of σ0+ or a. As we have stated, eφ is the loop expansion parameter for dilaton
+gravity. Since this parameter is not small at the turn-around point, our one-loop calculation
+of the Hawking flux breaks down before the f -wave fully backscatters.
+     The situation can be remedied by proliferating the number of matter fields. This
+introduces a new small expansion parameter into the theory: 1/N , where N is the (large)
+number of matter fields [11]. For N matter fields the Hawking flux is N times as great
+
+                                              5
+and one finds that the f -wave has completely backscattered by (σ0+ , σ0+ + (log 24/N )/λ).
+For large N , the value of the dilaton at this point is
+
+                                                     N
+                                            e−2φ =                                           (22)
+                                                     24
+
+which indeed corresponds to weak coupling. This suggests that, for large N, the essential
+physics of Hawking radiation backreaction takes place in a weak coupling regime and should
+be amenable to a semiclassical treatment. In what follows, we will present some proposals
+for the development of such a fully consistent treatment of the scattering problem, along
+with some informed conjectures about the form of the solution.
+     In a systematic expansion in N1 , one must include the one-loop matter-induced con-
+tribution to the gravitational effective action at the same order as the classical action
+(1). This incorporates both Hawking radiation and backreaction. Because of the way
+the dilaton varies with position, there is a region in spacetime where the O(N ) one-loop
+matter-induced gravitational action is of the same order as the strictly classical part and
+the loop coupling constant is nonetheless small. As described above, it is precisely in this
+region where the essential backreaction physics will occur and a semiclassical treatment of
+the proper action should give meaningful answers. To leading order in N1 , and in conformal
+gauge, the quantum effective action to be solved is
+
+                         1
+                               Z       h
+                    SN =           d2 σ e−2φ (−2∂+ ∂− ρ + 4∂+ φ∂− φ − λ2 e2ρ )
+                         π
+                               N                                                             (23)
+                               X                N        i
+                        − 12       ∂+ fi ∂− fi + ∂+ ρ∂− ρ .
+                               i=1
+                                                12
+
+The last term is the Liouville term induced by the N matter fields and the conformal
+gauge constraints (the T±± equations of (3)) are modified by its presence in a way which
+will shortly be made explicit3 . We have also tuned the coefficient of the possible Liouville
+cosmological constant (to be distinguished from the classical “dilatonic” cosmological con-
+stant λ) to zero. In a slight abuse of terminology, we nevertheless refer to the dynamics
+governed by the last term in (23) as Liouville gravity. Solving the quantum theory to
+leading order in N1 is equivalent to solving the classical theory described by SN .
+     Unlike S0 , it does not appear possible to solve SN exactly, though it may be possible
+to solve the equations numerically. At present the best we can do is make the following
+educated guess about the evolution of an incoming f -wave. Consider a quantization of
+the system defined on null surfaces Σ(σ − ) of constant σ − . The light-cone Hamiltonian P−
+evolves the system in the direction of increasing σ − . The charges P± are not separately
+conserved because translation invariance is spontaneously broken. The combination H =
+P+ + P− generates an unbroken symmetry and is conserved for spacelike surfaces. In fact
+
+  3
+      In a systematic quantum treatment of this action one will find, at subleading order in 1/N ,
+that the N in (23) is shifted by the ghost and gravity measures in order to maintain a net central
+charge c = 26.
+
+                                                 6
+there are in general two conserved quantities, given by boundary terms at the two spatial
+infinities. For the null surfaces Σ, the eigenvalue M (σ − ) of H is given by a boundary term
+      +
+on IR   (assuming the boundary term on IL− vanishes) and is called the Bondi mass. The
+                                                                                  +
+Bondi mass is not conserved because radiation energy can leak out onto IR           .
+                                          −
+      Now consider an initial state at σ = −∞ describing an incoming f1 -wave as in (12),
+with the other N −1 f ’s set to zero. In addition it is useful to let thisR wave be characterized
+by the non-anomalous, left-moving global conserved charge Q1L = dσ + ∂+ f1 . Near σ − =
+−∞, e−2φ is very large and the extra Liouville term may therefore be neglected in the
+description of the incoming state on Σ(−∞), which is essentially described by (13). As
+                            −
+σ − increases away from IR    , M (σ − ) will decrease. From the point of view of the quantum
+effective action SN , this is not due to Hawking radiation, but is simply a consequence of
+the extra Liouville term. As σ − → +∞, it is plausible that M (σ − ) decreases to zero.
+However, the state on Σ(σ − ) can not revert to the linear dilaton vacuum on IL+ because
+it carries the conserved charge Q1L .
+      The picture can thus be summarized as follows. A state with non-zero charge Q1L
+                                          −
+and Bondi energy is incoming from IR         . As it evolves it loses its energy, but retains its
+charge. Asymptotically it approaches a zero-energy state with charge Q1L on IL+ . This is
+illustrated in Figure 2.
+      This picture can be corroborated by direct analysis of the Bondi energy associated
+with data on a null surface Σ corresponding to a charged f -wave. Such data must satisfy
+the null constraint equations:
+
+                                                     2
+                      0 = T++ = e−2φ (4∂+ φ∂+ ρ − 2∂+  φ) + 12 ∂+ f ∂+ f
+                                N               2
+                                                  ρ + t+ (σ + )
+                                                                
+                              −     ∂+ ρ∂+ ρ − ∂+
+                                12                                                          (24)
+                      0 = T+− = e−2φ (2∂+ ∂− φ − 4∂+ φ∂− φ − λ2 e2ρ )
+                                    N
+                                −      ∂+ ∂− ρ .
+                                    12
+
+The extra function t+ appearing in T++ is in agreement with (17) and is a consequence
+of the anomalous transformation law for T++ . t+ is coordinate dependent and must be
+fixed by boundary conditions, as in (18). The linear dilaton configuration remains as the
+vacuum solution of the full leading N theory:
+
+                                       ρ=0
+                                      fi = 0                                                (25)
+                                            λ
+                                       φ = − (σ + − σ − ).
+                                            2
+                                                                                   +
+The Bondi energy may then be defined for configurations which approach (25) on IR     (i.e.
+the configuration must not only be asymptotically flat, but presented in an asymptotically
+Minkowskian coordinate system). It is given by the surface term which must be added
+to the integral of T++ + T+− over Σ to obtain the generator of time translations. This
+
+                                                   7
+                           +
+                       I
+                           L                                                                   I+
+                                                                                                   R
+
+
+
+                                    Liouville                  Dilaton
+
+
+          0                                                                                               oo
+
+
+
+                                                               f−
+                                                                w
+                                                                  av
+                                                                    e
+                                      Region                   Region                 +
+                                                                                  x
+                                                                                      0
+
+                               I−                                                         I−
+                               L                                                          R
+                  x−                                                                           x
+                                                                                                   +
+
+
+
+                                                − oo       0
+canonical procedure yields
+                   Figure 2. An incoming f−wave in quantum dilaton gravity
+                                            −
+                   eventually   propagates
+                       M (σ − ) = 2eλ(σ −σ )into
+                                       +
+                                              (λδρthe
+                                                   + ∂region dominated by
+                                                       + δφ − ∂− δφ)
+                   Liouville gravity, for which the curvature is constrained to                    (26)
+                   vanish and+allNexcitations
+                                     (∂− δρ − ∂+have
+                                                 δρ) zero energy.
+                                  12
+
+where δρ and δφ, are the asymptotically vanishing deviations of ρ and φ from (25), and
+                                               +
+the right hand side is to be evaluated on IR     . The first “dilaton” term was obtained in
+reference [9]. The term proportional to N , arising from matter quantum effects, actually
+vanishes due to the boundary conditions (25). A modified formula is required in coordinate
+systems (such as in (11)) for which the fields do not asymptotically approach (25).
+     Let us first consider the energy, evaluated on a surface Σ, of a small amplitude f1 -wave
+packet localized in the ‘dilaton region’ where e−2φ is very large, i.e. at very large σ + − σ − .
+
+                                                8
+Then the Liouville terms proportional to N may be neglected in solving the constraints.
+M will be given as before by the integrated value of 21 ∂+ f1 ∂+ f1 times the x+ coordinate
+of the center of the wave packet.
+     Now, however, consider the case where the f1 wave-packet is localized on Σ in the
+‘Liouville region’ where e−2φ is very small. The dilaton gravity term is then very small, and
+the action governing ρ and f 4 reduces to Liouville gravity coupled to conformal matter:
+
+                                                                    N
+                                                                                       !
+                                  1                N
+                                      Z                            X
+                   SN (large φ) =         d2 σ                   1
+                                                      ∂+ ρ∂− ρ − 2     ∂+ f i ∂− f i       (27)
+                                  π                12              i=1
+
+with constraints
+                                          N
+                                          X
+                          0 = T++ = 12           ∂+ f i ∂+ f i
+                                           i=1
+                                    N               2                                      (28)
+                                                      ρ + t+ (σ + )
+                                                                    
+                                    −   ∂+ ρ∂+ ρ − ∂+
+                                    12
+                                      N
+                          0 = T+− = − ∂+ ∂− ρ .
+                                      12
+The T+− constraint implies that the spacetime is in fact flat. The Bondi energy of (26)
+reduces to its Liouville piece
+
+                                                 N
+                                 M (σ − ) =         (∂− δρ − ∂+ δρ) .                      (29)
+                                                 12
+Since there is no invariant one can associate to a flat metric one would expect this expres-
+sion to vanish. That it does can be seen from direct evaluation of (29): if ρ approaches zero
+     +
+on IR  as required by the boundary conditions (25), the derivatives of ρ and consequently
+M must also vanish. Thus all asymptotically flat states of Liouville gravity plus matter
+have zero energy.
+     We now have a plausible global picture of the scattering process. The linear dilaton
+                                                                                           N
+vacuum is divided into two regions characterized by e−2φ large or small compared to 12       .
+                                     −2φ    N
+This dividing line is timelike. For e    ≫ 12 , the dynamics are essentially that of classical
+                                                    N
+dilaton gravity coupled to matter. For e−2φ ≪ 12      , one has Liouville gravity coupled to
+                                            −
+matter. An incoming f1 wave-packet on IR begins in the dilaton gravity region where it
+has non-zero Bondi energy. However, it eventually crosses into the Liouville region, where
+all excitations have zero energy. By energy conservation, all of the initial energy of the
+                                            +
+wavepacket must have radiated away to IR      . There is no indication of an event horizon
+               5
+or singularity : in the region where the singularity occurs in the classical solution, the
+  4
+      The dynamics of φ are roughly governed by the free field ψ = e−φ . However it is not clear
+what range should be taken for ψ.
+  5
+      In two dimensions, unlike in higher dimensions, we know of no local notion of an appar-
+ent horizon. Global event horizons exist as usual when the spacetime is singular or otherwise
+incomplete.
+
+                                                     9
+quantum dynamics are governed by Liouville gravity (with no cosmological constant) in
+which the curvature is required to vanish. One expects, therefore, a unitary S-matrix
+evolving from I − to I + . One would hope to extract information about this S-matrix from
+a semiclassical treatment of the large-N action (23).
+     While we find this picture compelling, we emphasize that it must at present be re-
+garded as speculative. We have not shown that an incoming f -wave does not in fact
+produce a singularity, or even that the large N equations of motion give a well-defined
+evolution. One might try to substantiate our speculations by doing weak field perturba-
+tion theory in the amplitude of the f -wave. However preliminary calculations indicate that
+weak field perturbation theory breaks down near the boundary of the dilaton and Liouville
+regions: the second-order perturbation is divergent. Thus in order to settle the question a
+non-perturbative analysis of the large N theory (23) is probably needed6 .
+     In conclusion we have analyzed the process of black hole formation and evaporation,
+including backreaction, in the 1/N expansion of a two-dimensional model. A set of equa-
+tions describing the process were found, but have so far not been solved. A qualitative
+analysis suggests that in this model would-be black holes in fact evaporate before an event
+horizon or singularity has a chance to form. Thus there is no indication that pure states
+evolve into mixed states. The implications of our results for four-dimensional black holes
+remain to be explored.
+
+                                  Acknowledgements
+     We are grateful to S. Hawking, G. Horowitz, J. Preskill and R. Wald for useful dis-
+cussions. After completion of this work we learned that some aspects of this theory have
+been considered by E. and H. Verlinde.
+     This work was supported in part by DOE grant DE-AC02-84-1553, DOE grant DE-
+AT03-76ER70023, and NSF grant PHY90-00386. S.B.G. also acknowledges the support
+of NSF PYI grant PHY-9157463 and J.A.H. acknowledges the support of NSF PYI grant
+PHY-9196117.
+
+
+
+
+  6
+      Of course a singularity at large N does not imply a singularity of the full quantum theory
+since the 1/N expansion breaks down as soon as fields grow to order N .
+
+                                               10
+                                       References
+
+ [1] S. W. Hawking, “Particle creation by black holes,” Comm. Math. Phys. 43 (1975)
+     199.
+ [2] S.W. Hawking, “Breakdown of Predictability in Gravitational Collapse,” Phys. Rev.
+     D14 (1976) 2460.
+ [3] For a recent review, see R. Wald’s 1991 Erice lectures , “Black Hole Thermodynamics”,
+     University of Chicago preprint (1991).
+ [4] G.W. Gibbons, “Antigravitating black hole solitons with scalar hair in N=4 super-
+     gravity,” Nucl. Phys. B207 (1982) 337;
+     G.W. Gibbons and K. Maeda, “Black holes and membranes in higher-dimensional
+     theories with dilaton fields,” Nucl. Phys. B298 (1988) 741
+ [5] D. Garfinkle, G. Horowitz, and A. Strominger, “Charged black holes in string theory,”
+     Phys. Rev. D43 (1991) 3140;
+     G. Horowitz and A. Strominger, “ Black strings and p-branes,” Nucl. Phys. B360
+     (1991) 197.
+ [6] S.B. Giddings and A. Strominger, “Exact black fivebranes in critical superstring the-
+     ory,” Phys. Rev. Lett. 67 (1991) 2930.
+ [7] R. Jackiw, “Liouville field theory: a two-dimensional model for gravity?,” in Quantum
+     Theory of Gravity, S. Christensen, ed. (Hilger, Bristol U.K. 1984) ;
+     A.H. Chamseddine, “A solution to two dimensional quantum gravity. Non-critical
+     strings” Phys. Lett. B256 (1991) 379.
+ [8] R.B. Mann, “Lower dimensional gravity,” Waterloo preprint WATPHYS-TH-91-07,
+     to appear in Proc. of 4th Canadian Conf. on General Relativity and Relativistic As-
+     trophysics, Winnipeg, Canada.
+ [9] E. Witten, “On string theory and black holes,” Phys. Rev. D44 (1991) 314.
+[10] S. M. Christensen and S. A. Fulling, “Trace anomalies and the Hawking effect,” Phys.
+     Rev. D15 (1977) 2088.
+[11] E. Tomboulis, “1/N expansion and renormalization in quantum gravity,” Phys. Lett.
+     B70 (1977) 361.
+
+
+
+
+                                            11
+

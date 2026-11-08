@@ -1,0 +1,1016 @@
+                                                        Models of AdS2 Backreaction and Holography
+
+                                                                               Ahmed Almheiri1
+                                                                    Stanford Institute for Theoretical Physics
+                                                                   Department of Physics, Stanford University
+                                                                              Stanford, CA 94305
+arXiv:1402.6334v3 [hep-th] 12 Aug 2015
+
+
+
+
+                                                                             Department of Physics
+                                                                             University of California
+                                                                            Santa Barbara, CA 93106
+
+
+                                                                               Joseph Polchinski2
+                                                                      Kavli Institute for Theoretical Physics
+                                                                             University of California
+                                                                        Santa Barbara, CA 93106-4030
+
+
+
+
+                                                                                     Abstract
+                                                   We develop models of 1+1 dimensional dilaton gravity describing flows to AdS2
+                                               from higher dimensional AdS and other spaces. We use these to study the effects of
+                                               backreaction on holographic correlators. We show that this scales as a relevant effect
+                                               at low energies, for compact transverse spaces. We also discuss effects of matter loops,
+                                               as in the CGHS model.
+
+
+
+
+                                         1
+                                             almheiri@stanford.edu
+                                         2
+                                             joep@kitp.ucsb.edu
+Contents
+1 Introduction                                                                                  1
+
+2 AdS2 back-reaction models                                                                     2
+    2.1   The models . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     2
+    2.2   Conformal gauge . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      3
+    2.3   Static vacuum solutions . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      4
+
+3 The λ = 0, U (Φ) = C − AΦ2 model                                                              6
+    3.1   Vacuum solutions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     6
+    3.2   Solutions with matter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    8
+    3.3   Backreaction in AdS2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     9
+
+4 Scalar field holography                                                                       9
+
+5 The black hole and matter in equilibrium                                                      14
+    5.1   Backreaction of matter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    14
+    5.2   The renormalized stress tensor . . . . . . . . . . . . . . . . . . . . . . . . . .    15
+    5.3   Thermodynamic quantities . . . . . . . . . . . . . . . . . . . . . . . . . . . .      17
+
+6 Discussion                                                                                    19
+
+
+
+
+1     Introduction
+Many holographic theories flow to an AdS2 × X geometry in the infrared. For example, this
+is true for Reissner-Norstrom black holes [1], and correspondingly for a large class of finite
+density systems [2] (see [3] for a recent review of applications). The AdS2 /CF T1 system is
+rather exotic, in that only the time coordinate transforms under scaling. The case that X is
+compact is particularly problematic, for a number of reasons. One is that the backreaction
+is so strong that the theory has no excitations [4]. This raises a puzzle, in that holographic
+calculations of correlators seem to give typical conformal behaviors (t−t0 )−2∆ : how can there
+be nontrivial time-dependence in a system that has no finite energy states?
+   In order to investigate this we develop a class of toy models in which the backreaction
+problem can be studied. These are similar in spirit to the CGHS model [5]. They are inspired
+
+                                                 1
+by the dimensional reduction of the magnetic AdS2 vacua studied in Refs. [6, 7, 9], which
+flows from AdS4 in the UV to AdS2 in the IR. In Sec. 2 we introduce the models and study
+some general features, including their static solutions and asymptotic behaviors. In Sec. 3
+we focus on a special case which is simple enough to solve completely at the classical level.
+This model flows from a conformal Lifshitz behavior in the UV to AdS2 in the IR. The
+UV geometry regulates the backreaction and allows finite energy states. We then study the
+response of the geometry to an infalling matter pulse. In Sec. 4 we use this system as a toy
+model of holography, calculating the 2- and 4-point functions at leading order in 1/N . We
+find that the IR behavior of the 4-point function is not conformal, but actually relevant: the
+backreaction makes this symmetry anomalous, at least in its action on finite energy states.
+Thus, for compact X it appears that the conformal low energy sector consists only of the
+zero energy states, as emphasized in Ref. [10].1 In Sec. 5 we include quantum effects in the
+large-N approximation as is done in the CGHS model [5]. We discuss puzzles regarding the
+density of states.
+
+
+2         AdS2 back-reaction models
+2.1        The models
+We will consider the family of 1+1 dimensional models
+                                1 √  2
+                        L=          −g Φ R + λ(∇Φ)2 − U (Φ) ,                          (2.1)
+                             16πG
+characterized by the parameter λ and the potential U (Φ). Here 1/G is proportional to V ,
+the volume of X. More general models of dilaton gravity are reviewed in Refs. [11, 12]. The
+Weyl transformation
+                                     gab → gab Φ−α/2                                   (2.2)
+shifts
+                                 λ → λ−α,          U (Φ) → Φ−α/2 U (Φ) .                                (2.3)
+Thus λ can be set to zero without loss of generality; we denote the resulting potential by
+U0 (Φ) = Φ−λ/2 U (Φ). The field Φ will still have a kinetic term from Φ2 R. Note that we are
+neglecting a possible anomaly in the Weyl transformation, as appropriate for the classical
+considerations of §2-4. In §5 we will return to this issue.
+        Some examples are
+    1
+    Compact X also brings in the possibility of AdS2 fragmentation [4]. This is usually an issue for X = S 2 ;
+we are imagining that X = T 2 , as would arise from compactification of a condensed matter system. Note
+that the fragmentation geometry is intrinsically four-dimensional and would not be seen in a two-dimensional
+reduction.
+
+                                                      2
+    • The CGHS model [5]: λ = 4, U (Φ) = −AΦ2 , A > 0. This is obtained via dimensional
+      reduction in the throat limit of near extremal dilatonic black holes in four or five
+      dimensions [13].
+
+    • Magnetic branes [6, 7, 9]: λ = 2, U (Φ) = B 2 /Φ2 − AΦ2 , A > 0. This system arises by
+      turning on a Kaluza-Klein magnetic field in the near-horizon N -M2 brane geometry,
+      with the possibility of an additional Zk orbifolding. This admits a rich phase structure
+      as a function of N and k. The geometry interpolates from AdS4 in the UV and
+      AdS2 × R2 in the IR. The two-dimensional model is obtained by reduction of the
+      metric
+                                ds24 = gµν dxµ dxν + Φ2 (x)(dy12 + dy22 ) .              (2.4)
+
+    • A toy model: λ = 0, U (Φ) = C − AΦ2 , A > 0, C > 0. This does not arise from any
+      particular reduction, but has the convenient properties that its dynamics is classically
+      solvable and it has a solution that interpolates between a conformal Lifshitz spacetime
+      in the UV and AdS2 in the IR.
+
+       As in the CGHS model, we will also add matter fields f ,
+                                               1 √
+                                     Lf =          −g Ω(Φ)(∇f )2 .                                        (2.5)
+                                             32πG
+For fields moving freely in the higher dimensional spacetime, the factor Ω(Φ) arises from the
+volume of the transverse dimensions. For simplicity we will focus on models with Ω = 1.2
+For now we take a single matter field, but will introduce a large number in §5 to control
+quantum corrections.
+
+
+2.2       Conformal gauge
+For the most part, we will work in conformal gauge,
+                                                       +   −
+                                        ds2 = −e2ω(x ,x ) dx+ dx− ,                                       (2.6)
+   2
+     These could arise from fields localized on defect branes [14, 15], or in models where the dilaton is the
+string dilaton and the scalars are RR excitations [5]. In any event, we expect that the inclusion of the dilaton
+in the scalar field would not modify the results significantly, as the AdS2 dynamics is deep in the IR region
+where the dilaton approaches a constant.
+
+
+
+
+                                                       3
+with x± = t ± z. The action, transformed to λ = 0 and including boundary terms, is
+                       √                                                 √
+                Z                                                 Z
+            1        2         2             Ω(Φ)       2       1
+     S=            d x −g Φ R − U0 (Φ) −           (∇f ) +             dt −γΦ2 K    (2.7)
+         16πG                                   2            8πG
+                                        e2ω
+               Z                                                                 
+           1               2 2     2                 1               1
+       =          dt dz Φ (∂t − ∂z )ω −     U0 (Φ) − f ∂t (Ω∂t f ) + f ∂z (Ω∂z f )
+         8πG                             2           4               4
+                   Z                       
+                1                    Ω
+            +          dt −Φ2 ∂z ω + f ∂z f .                                       (2.8)
+              8πG                    4
+
+The normalization factor, proportional to the volume of X, enters in the quantum discussion
+of §5. The equations of motion are
+
+               2Ω−1 ∂+ (Ω∂− )f + 2Ω−1 ∂− (Ω∂+ )f = ∂t2 f − ∂z2 f − ∂z Ω∂z f = 0 ,        (2.9)
+                                    2        2ω
+                           4∂+ ∂− Φ − e U0 (Φ) = 0 ,                                   (2.10)
+                                    e2ω
+                         4∂+ ∂− ω −     ∂Φ2 U0 (Φ) = ∂Φ2 Ω(Φ)∂+ f ∂− f ,               (2.11)
+                                     2
+                                                  Ω
+                             −e2ω ∂+ e−2ω ∂+ Φ2 = ∂+ f ∂+ f ,                          (2.12)
+                                                     2
+                                                     Ω
+                             −e2ω ∂− e−2ω ∂− Φ2 = ∂− f ∂− f .
+                                                 
+                                                                                       (2.13)
+                                                     2
+
+2.3    Static vacuum solutions
+We now consider static solutions, depending only on z, with f = 0. The equations of motion
+become
+
+                                    (Φ2 )00 + e2ω U0 (Φ) = 0 ,                         (2.14)
+                                        00      2ω
+                                   2ω + e ∂Φ2 U0 (Φ) = 0 ,                             (2.15)
+                                                    0
+                                         e−2ω (Φ2 )0 = 0 .                             (2.16)
+
+    Let us first consider the special case that Φ(z) = Φ is constant. Eq. (2.14) requires that
+U0 (Φ) = 0, while Eq. (2.15) becomes
+
+                                    2ω 00 = −e2ω ∂Φ2 U0 (Φ) .                          (2.17)
+
+That is, the metric is of constant curvature. For ∂Φ2 U0 (Φ) = −2/R2 < 0, the curvature is
+negative and there are three static solutions
+
+                                         R2            R2          R2
+                               e2ω =        ,                ,          .              (2.18)
+                                         z2          sinh2 z     sin2 z
+
+
+                                                      4
+These are respectively the Poincaré patch of AdS2 , an AdS2 black hole with horizon at
+z = ∞ (or equivalently a Rindler subspace of the Poincaré patch), and global AdS2 . For
+∂Φ2 U0 (Φ) = 2/L2 < 0,
+                                              L2
+                                      e2ω =                                       (2.19)
+                                            cosh2 z
+is the static patch of dS2 .
+   For Φ0 not identically zero, we can integrate Eq. (2.16),
+
+                                            (Φ2 )0 = −c1 e2ω                            (2.20)
+
+with nonzero c1 . Defining a prepotential U0 (Φ) = ∂Φ2 W (Φ), Eq. (2.14) then becomes
+                                          0                             d(Φ2 )
+                        −c1 (Φ2 )0 + W (Φ) = 0 ⇒ dz = c1                          .     (2.21)
+                                                                       W (Φ) − c2
+
+Eq. (2.15) is then identically satisfied.
+    For the magnetic brane, W = −2B 2 /Φ − 2AΦ3 /3. At large Φ the integral of the RHS
+of (2.21) converges, giving a boundary at a finite point that we take to be z = 0, with the
+asymptotic behavior
+                                 Φ2 ∝ 1/z 2 , e2ω ∝ 1/z 3 .                          (2.22)
+The lift (2.4), including the shift back to e2ω(λ=2) = e2ω /Φ, gives an AdS4 geometry. The
+prepotential W has a maximum W = −8A1/4 |B|−3/2 /3 at Φ = |B|1/2 A−1/4 . For c2 = W , the
+solution flows from AdS4 to the AdS2 solution described above at large z (times a T 2 from the
+reduction). For c2 > W , Φ goes to zero at a finite value of z, producing a naked singularity.
+For c2 < W , z diverges logarithmically as the zero of the denominator is approached, and
+the solution is a black hole.
+    For the toy model the prepotential is W = CΦ2 − AΦ4 /2. Again Eq. (20) is integrable
+at large Φ, giving the z → 0 behavior
+
+                                    Φ2 ∝ 1/z ,         e2ω ∝ 1/z 2 .                    (2.23)
+
+The lift (2.2, 2.4) gives (after appropriate rescalings)
+                                              2      2      2      2
+                                                                    
+                              2     2λ     dt     dz   + dy 1 + dy2
+                           ds = z 4+λ − 16 +                           ,                (2.24)
+                                          z 4+λ           z2
+                      8
+conformal to a z = 4+λ   Lifshitz spacetime. The standard uplift to regular four dimensional
+gravity sets λ = 2 giving a dynamical exponent of z = 34 . The toy model has the same
+qualitative features as the magnetic brane model. The prepotential has a single maximum
+
+
+                                                   5
+W . For c2 = W , the geometry flows from conformal Lifshitz to AdS2 , for c2 > W there is a
+naked singularity, and for c2 < W the solution is a black hole.
+    The toy model arises from no known reduction, so the conformal Lifshitz geometry is a
+fiction. The important point is that for both the magnetic brane and toy models, the asymp-
+totic behavior regulates the backreaction so that the latter can be studied in a controlled
+way. As we have seen, the toy model model has the same qualitative features as the magnetic
+brane model, in particular a flow to an IR AdS2 geometry. As its dynamical equations are
+simpler we will focus our attention on it.
+
+
+3     The λ = 0, U (Φ) = C − AΦ2 model
+We consider in this section the λ = 0 model with the dilaton potential given by U (Φ) =
+C − AΦ2 , with A, C positive. By rescaling fields and coordinates we set the constants to
+the convenient values A = C = 2. We take the matter action be independent of the dilaton,
+Ω = 1. The equations of motions are
+
+                                           4∂+ ∂− f = 0 ,                               (3.1)
+                           2∂+ ∂− Φ2 + e2ω Φ2 − 1 = 0 ,
+                                                  
+                                                                                        (3.2)
+                                        4∂+ ∂− ω + e2ω = 0 ,                            (3.3)
+                                                      1
+                                  −e2ω ∂+ e−2ω ∂+ Φ2 = ∂+ f ∂+ f ,                      (3.4)
+                                                         2
+                                                         1
+                                  −e2ω ∂− e−2ω ∂− Φ2 = ∂− f ∂− f .
+                                                     
+                                                                                        (3.5)
+                                                         2
+
+3.1    Vacuum solutions
+Eq. (3.3) for ω decouples from Φ and f , and describes a spacetime of constant negative
+curvature. In Poincaré coordinates the solution is
+                                         1          4
+                                  e2ω = 2 = +             .                       (3.6)
+                                         z     (x − x− )2
+The general vacuum solution for Φ2 is then given by integrating the constraints (3.4,3.5) and
+then imposing the equation of motion (3.2):
+
+                              2   a + b(x+ + x− ) + cx+ x−
+                            Φ =1+                          .                            (3.7)
+                                          x+ − x−
+If ac − b2 6= 0, we can bring this by an SL(2, R) transformation to the form
+                                                1 − µx+ x−
+                                     Φ2 = 1 +              ,                            (3.8)
+                                                 x+ − x−
+
+                                                6
+where the coordinates are now dimensionless. More generally we will sometimes consider
+                                                            a − µx+ x−
+                                           Φ2 = 1 +                    ,                           (3.9)
+                                                             x+ − x−
+which allows us to continue to the pure AdS2 case a = 0; z = a is the transition between
+conformal Lifshitz and AdS2 behavior.
+   The most general vacuum solution is a conformal transformation of (3.8),
+                       4∂+ w+ (x+ )∂− w− (x− )                          1 − µw+ (x+ )w− (x− )
+              e2ω =                            ,             Φ2 = 1 +                         ,   (3.10)
+                       (w+ (x+ ) − w− (x− ))2                            w+ (x+ ) − w− (x− )
+for general monotonic w+ (x+ ), w− (x− ). For µ = 0 the solution (3.6,3.8) interpolates from
+conformal Lifshitz at z = 0 to AdS2 at large z, as described in §2. This can be converted to
+global coordinates via w± (x± ) = tan x± , giving
+                                          4                             cos x+ cos x−
+                        e2ω =                      ,         Φ2 = 1 +                 .           (3.11)
+                                   sin2 (x+ − x− )                      sin(x+ − x− )
+The extended geometry is shown in Fig. 1. The AdS2 behavior holds only in the neighborhood
+of the Poincaré horizons. The metric represents global AdS2 , but the dilaton is nonstatic
+and it goes to zero in the complementary Poincaré patch: in this patch the dilaton is simply
+given by z → −z̃, i.e. Φ = 1 − 1/2z̃. In the four dimensional lift this zero is a curvature
+singularity.
+   For positive µ the solution (3.8) is a black hole. Its mass is µ/8πG, as will be seen
+in Eq. (3.21) from the response to a matter pulse, and in Eq. (5.24) from a calculation of
+the ADM mass. The solution can be converted to the static form (2.18) by the conformal
+transformation w± (x± ) = µ−1/2 tanh µ1/2 x± , giving
+                                     4µ
+               e2ω =        2                       ,       Φ2 = 1 + µ1/2 coth µ1/2 (x+ − x− )    (3.12)
+                       sinh       µ1/2 (x+ − x− )
+The coordinates (3.8) cover the whole black hole geometry, while the coordinates (3.12) cover
+only the exterior. In (3.8), the horizon is the null line x+ = −µ−1/2 , while the singularity is
+at
+                             (x+ + 1/µ)(x− − 1/µ) = (µ − 1)/µ2 .                         (3.13)
+For µ < 1, the singularity remains timelike and a second timelike singularity appears near
+z = 0. For µ > 1 the singularity is spacelike. This is shown in Fig. 1. The singularity
+is naked in the global vacuum solution, but for any positive µ it is behind the black hole
+horizon. In Schwarzschild coordinates, the black hole solution is
+
+                              2           2 dρ2         2
+                         ds = −4(ρ − µ)dt + 2   ,                        Φ2 = 1 + ρ .             (3.14)
+                                           ρ −µ
+
+                                                            7
+Figure 1: The global spacetime for an ingoing matter pulse (z increases to the left). Before
+the pulse the solution is the vacuum geometry (3.11), with a singularity outside the Poincaré
+patch. After the pulse there is the black hole (3.8). For pulses of small amplitude, the
+singularity remains timelike and a second timelike singularity emerges from the boundary.
+For pulses of large amplitude, the singularity is spacelike. The orange shaded portion is the
+exterior of the blackhole.
+
+
+The Hawking temperature is
+                                                        √
+                                    1        gtt          µ
+                                          r
+                              T = − ∂ρ     −          =     .                          (3.15)
+                                   4π        gρρ ρ→√µ   π
+
+
+3.2    Solutions with matter
+One of the main attractions of this model is that the equations of motion are linear in Φ2 ,
+so it remains solvable with matter. In coordinates with metric (3.6), e2ω = 4/(x+ − x− )2 ,
+the constraints (3.4,3.5) can be written as
+
+                        ∂± ∂± M (x+ , x− ) = −(x+ − x− )8πGT±± (x± ) ,                 (3.16)
+
+                                              8
+where Φ2 = M/(x+ − x− ) and T±± = ∂± f ∂± f /16πG. The general solution, integrating from
+some reference point u, is then
+
+                                     M = M0 − I + + I − ,                               (3.17)
+
+where
+                                     Z x±
+                  ±       −
+                      +
+                I (x , x ) = 8πG            dx0± (x0± − x∓ )(x0± − x± )T±± (x0± ) ,     (3.18)
+                                      u±
+
+and M0 is any sourceless solution,
+
+                          M0 = a + bx+ + cx− + dx+ x− ,        b − c = 2.               (3.19)
+
+   For example, start with the Poincaré vacuum in the form (3.8) and throw in a pulse of
+energy E,
+                                    T−− = E δ(x− ) ,                               (3.20)
+which describes a shockwave traveling on the null curve x− = 0, emanating from the bound-
+ary. The solution is then
+                                  2      a − 8πGEθ(x− )x+ x−
+                                Φ =1+                         ,                         (3.21)
+                                               x+ − x−
+describing formation of a black hole with µ = 8πGE, as in Fig. 1. As above, after the pulse
+there are timelike singularities for E < Ec = 1/8πGa, and a spacelike singularity for E > Ec .
+
+
+3.3     Backreaction in AdS2
+For the solution (3.9), the black hole singularity reaches the boundary at t = ±(a/µ)1/2 .
+The boundary conditions in the exterior region −(a/µ)1/2 < t < (a/µ)1/2 remain conformal
+Lifshitz. However, for a = 0, where the vacuum solution is pure AdS2 , no region of the
+boundary remains: the past and future singularities meet at the boundary point t = 0.
+Similarly, when any pulse is thrown into the a = 0 AdS2 geometry, a singularity forms
+instantly on the boundary and no part of the AdS2 boundary survives. Thus AdS2 , with a
+finite volume transverse space admits no finite energy excitations [4].
+
+
+4     Scalar field holography
+We will use this model to investigate the effect of backreaction on boundary scalar correlation
+functions in both the vacuum and black hole backgrounds. Previous investigations of AdS2
+
+
+                                                 9
+holography [16] have studied either propagating fields or the gravitational sector separately,
+whereas we are interested in the coupling between the two.
+   We continue to Euclidean coordinates; the fields remain real. Working in this regime also
+avoids the singularity that appeared in the global picture, which is completely excised in the
+Euclidean geometry. We take the continuation
+
+                               x+ = t + z → −iτ + z ≡ x ,
+                               x− = t − z → −iτ − z ≡ −x̄ .                              (4.1)
+
+   The only propagating field is f , whose normalizable and nonnormalizable solutions scale
+respectively as z 1 and z 0 . We will introduce a boundary source for the nonnormalizable
+mode,
+                                      lim f (z, τ ) = j(τ ) ,                         (4.2)
+                                     z→0
+to produce a generating functional for correlators of the corresponding boundary operator.
+The metric is again unaffected by the source,
+                                               4dxdx̄
+                                      ds2 =             .                                (4.3)
+                                              (x + x̄)2
+For the dilaton we take the asymptotic behavior
+                                   large x                  a + µxx̄
+                          Φ2 (x, x̄) → Φ20 (x, x̄) = 1 +             .                   (4.4)
+                                                             x + x̄
+    The generating functional can be obtained by plugging the asymptotic solutions into the
+action boundary term. Using the equations of motion, the on-shell action (2.8) regulated at
+z =  is
+                                   Z               Z     2          
+                               1           2ω    1       Φ     1
+                    Sreg = −         dtdz e +        dt     + f ∂z f                  (4.5)
+                             8πG                8π           4
+                                         1 Φ2 1
+                                 Z                      
+                             1
+                         =         dt − +        + f ∂z f .                           (4.6)
+                           8πG                  4
+The divergences from removing the regulator are canceled by the following counterterms
+                                       Z
+                                    1
+                                          dt −eω Φ2 + eω
+                                                           
+                            Sct =                                                    (4.7)
+                                  8πG 
+                                                 Φ2 1
+                                       Z                
+                                    1
+                                =         dt −      +       .                        (4.8)
+                                  8πG                
+Thus the renormalized action is just the boundary term
+                                              Z
+                                           1
+                                 Sren =         dt f ∂z f .                              (4.9)
+                                         32πG
+
+                                              10
+To evaluate this, the bulk-to-boundary propagator with boundary condition (4.2) gives
+                                     Z ∞                          
+                                   1        0      1         1
+                      f (z, τ ) =        dτ             +            j(τ 0 ) .     (4.10)
+                                  2π −∞         x + iτ 0 x̄ − iτ 0
+
+where x = z − iτ . Then
+
+                              lim f (z, τ ) = j(τ ) ,
+                              z→0
+                                               1 ∞ 0 P
+                                                Z
+                            lim ∂z f (z, τ ) =        dτ      0
+                                                                ∂τ 0 j(τ 0 ) ,           (4.11)
+                            z→0                π −∞      τ −τ
+
+with P the principal part. The action (4.9) is then
+                                     Z ∞
+                                  1                  P
+                       Sren = −           dτ dτ 0             j(τ )j(τ 0 ) .             (4.12)
+                                32πG −∞           (τ − τ 0 )2
+
+    This result is superficially plausible. In the IR AdS2 region it corresponds to a conformal
+operator of dimension 1, and this behavior continues into the UV regime because f does
+not couple to the transverse metric Φ2 . However, it cannot be the whole story. First, it is
+insensitive to the black hole mass µ, which should break the conformal invariance. Second,
+the result is gaussian, there are no interactions, but we have argued in the previous section
+that backreaction has large effects.
+    The subtlety is that we must correctly relate the time τ to the time in the dual field
+theory. In the coordinates we have been using, the asymptotic behavior of Φ is deformed,
+and we must transform back to coordinates with standard asymptotics. This will introduce
+a dependence on the black hole mass, and also a highly nonlinear dependence on the scalar
+fields.
+   The Euclidean solution for Φ2 is
+                                                         I + I∗
+                                         Φ2 = Φ20 −             ,                        (4.13)
+                                                         x + x̄
+where
+                                            Z x
+                           I(x, x̄) = 8πG         dx0 (x0 + x̄)(x0 − x)T (x0 )           (4.14)
+                                              u
+
+and Φ0 is any sourceless solution. For j of compact support, the bulk f (4.10) falls as 1/|x|2 ,
+and so the integral I converges as |u| → ∞. It is convenient to set u = i∞ (i.e. τu = −∞),
+and let
+                                               a + µxx̄
+                                     Φ20 = 1 +          .                                (4.15)
+                                                x + x̄
+
+
+                                                    11
+Then the asymptotic behavior of Φ2 is
+                                                               Z τ
+                                2
+     M (τ ) ≡ lim (x + x̄)Φ = a + µτ + 16πG     2
+                                                    dτ 0 (τ 0 − τ )2 Im T (−iτ 0 )
+              z→0
+                                           Z ∞ −∞
+                            = a + µτ 2 + 4    dτ 0 dτ 00 H(τ, τ 0 , τ 00 )∂τ 0 j(τ 0 )∂τ 00 j(τ 00 ) ,   (4.16)
+                                                          −∞
+
+where
+                                            (τ 0 − τ )2 θ(τ − τ 0 ) − (τ 00 − τ )2 θ(τ − τ 00 )
+                      H(τ, τ 0 , τ 00 ) =                                                       .        (4.17)
+                                                               τ 0 − τ 00
+    In order to bring the dilaton back to fixed asymptotic behavior, while keeping the asymp-
+totic form of the metric, we need a new coordinate x̃(x) = z̃ − iτ̃ such that
+                                                    M (τ )      a
+                                                           ≈          .                                  (4.18)
+                                                    x + x̄   x̃ + x̃¯
+This implies the differential equation
+                                                     ∂ τ̃    a
+                                                          =        .                                     (4.19)
+                                                     ∂τ     M (τ )
+It is τ̃ that is to be identified with the time in the boundary field theory.
+    Let us illustrate this for the situation that the backreaction can be neglected compared
+to the effect of the black hole mass, so M = a + µτ 2 . Then τ = (a/µ)1/2 tan[(µ/a)1/2 τ̃ ]. The
+bulk field f is a scalar, so its boundary limit transforms
+
+                                                      ̃(τ̃ ) = j(τ ) .                                  (4.20)
+
+The renormalized action becomes
+                              Z ∞
+                           µ                          P
+               Sren = −           dτ̃ dτ̃ 0    2      1/2      0
+                                                                   ̃(τ̃ )̃(τ̃ 0 ) .                    (4.21)
+                        32πGa −∞            sin [(µ/a) (τ̃ − τ̃ )]
+Then e−Sren generates the correlators as functions of the field theory time τ̃ . These exhibit
+the expected nonconformality and thermal periodicity.
+    Now let us consider the effect of backreaction, letting µ = 0 for simplicity. The differential
+equation (4.19) can be integrated to give τ̃ as a function of τ , but this can be inverted only
+implicitly. We therefore expand in j. Thus
+                Z τ       Z ∞
+             1          0
+  τ̃ = τ −           dτ       dτ1 dτ2 H(τ 0 , τ1 , τ2 )∂1 j(τ1 )∂2 j(τ20 ) + O(j 4 )
+            2πa −∞         −∞
+                Z ∞
+             1               (τ − τ1 )3 θ(τ − τ1 ) − (τ − τ2 )3 θ(τ − τ2 )
+     =τ−             dτ1 dτ2                                                   ∂1 j(τ1 )∂2 j(τ2 ) + O(j 4 ) .
+            6πa −∞                               τ1 − τ2
+                                                                                                       (4.22)
+
+                                                            12
+To this same order,
+                 Z ∞
+             1                 (τ̃ − τ̃1 )3 θ(τ̃ − τ̃1 ) − (τ̃ − τ̃2 )3 θ(τ̃ − τ̃2 )
+   τ = τ̃ +          dτ̃1 dτ̃2                                                       ∂1̃ ̃(τ̃1 )∂2̃ ̃(τ̃2 ) + O(j 4 )
+            6πa −∞                                   τ̃1 − τ̃2
+     ≡ τ̃ + γ(τ ) + O(j 4 ) .                                                                                     (4.23)
+
+Then
+               Z ∞
+                                                                                   γ(τ̃ ) − γ(τ̃ 0 )
+                                                                                                    
+           1                0     P                                              0
+Sren = −            dτ̃ dτ̃                   1 + ∂τ γ(τ̃ ) + ∂τ 0 γ(τ̃ ) − 2                          ̃(τ̃ )̃(τ̃ 0 ) + O(j 6 )
+         32πG −∞              (τ̃ − τ̃ 0 )2                                            τ̃ − τ̃ 0
+          ∞        Z ∞
+         X     1
+     ≡−                  d2n τ̃ G(τ̃1 , . . . , τ̃2n )̃(τ̃1 ) . . . ̃(τ̃2n ) .                                        (4.24)
+         n=1
+             (2n)!  −∞
+
+Simplifying, we have
+                                 1       1
+           G(τ̃1 , τ̃2 ) =                        ,
+                               16πG (τ̃1 − τ̃2 )2
+                                    1    θ(τ̃13 ) 3           2
+                                                                                       
+   G(τ̃1 , τ̃2 , τ̃3 , τ̃4 ) = −    2      3 3
+                                                    τ̃13 − 3τ̃13 τ̃23 − 3τ̃23 τ̃13 τ̃34 + 23 permutations ,          (4.25)
+                                 24π Ga τ̃12 τ̃34
+where τ̃ij = τ̃i − τ̃j .
+    The expression for the four-point function can perhaps be simplified, but in any case the
+result is instructive. If the theory were scale-invariant, the connected four-point function
+would have the same 1/τ̃ 4 scaling as the disconnected one. Instead it scales as 1/τ̃ 3 . Thus
+we conclude that the backreaction is a relevant interaction and explicitly breaks the scale
+and conformal invariance of the theory. Indeed, the importance of backreaction at low
+energy was already reached in the early work [17]. The connected and disconnected pieces
+are comparable when τ̃ ∼ a/G ∝ aV , determining the scale where the conformal behavior
+breaks down to be Ebreaking ∼ 1/aV . In the present case where the dual is a field theory in
+finite volume, a breaking scale which decreases with volume is precisely what one expects.
+The breaking has the same scaling as a perturbation of dimension zero, but there is no
+candidate operator of this dimension, so evidently it cannot be interpreted, or canceled, in
+this way.
+    From another point of view, if we take a → 0, this has the effect of taking the UV-AdS2
+transition to infinite energy, producing a pure AdS2 theory. We see that the four-point
+function diverges in this limit, so there is no sensible AdS2 CFT. These results are plausible,
+given that the backreaction allows no finite energy states. They have been derived only
+in the solvable model, but we expect that they are a general property of AdS2 ×compact
+solutions. If we go beyond the classical limit to consider bulk loop corrections to the two-
+point functions, the relevant interactions will produce large corrections to the IR behavior;
+it would be interesting to study these.
+
+                                                             13
+5     The black hole and matter in equilibrium
+The main motivation for the CGHS model was the study of black hole evaporation through
+quantum production of f quanta [5]. We do not expect the models considered here to differ
+substantively in this regard. Our interest here is to study the contribution of the matter
+fields to thermodynamic properties, in connection with the effect of backreaction.
+
+
+5.1    Backreaction of matter
+For N scalar fields, the conformal anomaly is T µµ = N R/24π, or
+                                                N
+                                     T+− = −       ∂+ ∂− ω .                          (5.1)
+                                               12π
+This expression is not invariant under the Weyl transformation (2.2). The ambiguity cor-
+responds to the possible addition of a term R ln Φ to the Lagrangian. We define the model
+so that the form (5.1) holds in the frame in which λ = 0, which simplifies the equations
+of motion. Again, in the AdS2 region of interest the dilaton is constant and the different
+choices become equivalent.
+    Conservation of Tab implies that
+                                   N 2
+                          T±± =       (∂± ω − ∂± ω∂± ω) + τ±± (x± ) .                 (5.2)
+                                  12π
+The equations of motion become
+
+                           2∂+ ∂− Φ2 + e2ω Φ2 − 1 = 16πGT+− ,
+                                                 
+                                                                                      (5.3)
+                                      4∂+ ∂− ω + e2ω = 0 ,                            (5.4)
+                                −e2ω ∂+ e−2ω ∂+ Φ2 = 8πGT++ ,
+                                                   
+                                                                                      (5.5)
+                                −e2ω ∂− e−2ω ∂− Φ2 = 8πGT−− .
+                                                   
+                                                                                      (5.6)
+
+The equation for the metric is unaffected, so we take again the static black hole solution
+e2ω = 4µ/sinh2 2µ1/2 z. For a static solution the remaining equations become
+                                                 8µ
+                                  (Φ2 )00 =     2         (Φ2 − 1 − GN/3)             (5.7)
+                                             sinh 2µ1/2 z
+                   (sinh2 2µ1/2 z(Φ2 )0 )0 = 32πG(τ − N/12π) sinh2 2µ1/2 z ,          (5.8)
+
+where τ++ = τ−− = τ . If τ − N/12π 6= 0, the constraint (5.8) implies that Φ2 diverges ∝ z
+as we approach the horizon z → ∞. Thus τ = N/12π and T±± must vanish identically, a
+curious result. The solution is then
+                                       GN
+                              Φ2 = 1 +    + µ1/2 coth 2µ1/2 z .                       (5.9)
+                                        3
+                                               14
+The large-N quantum effect is just a constant shift of Φ2 .
+   The inclusion of the large-N quantum effects actually has no effect on the holographic
+correlators of §4. The metric equation (5.4) is unaffected, and the shift of Φ2 is only in the
+subleading term and so does not alter the time reparameterization. However, the thermo-
+dynamic properties depend on N , as we now show.
+
+
+5.2    The renormalized stress tensor
+In order to obtain the energy-temperature relation for the black hole, we will compute the
+boundary stress tensor. To convert this to a classical problem, we replace the f fields with
+an equivalent classical system. The coupling of a conformal system to gravity is determined
+only by the central charge, and so we replace the f fields with a single χ with action
+                                  √                                 √
+                             Z                                Z
+                         N      2            µ             N
+                Sχ = −         d x −g (∂µ χ∂ χ + χR) −           dt −γχK ,             (5.10)
+                        24π                               12π
+giving central charge N (we work in the large-N approximation, ignoring loops of χ). The
+full renormalized action is
+
+               SR = SG + Sχ + Sct ,
+                               √                          √
+                          Z                           Z
+                      1      2      2              1
+                                                        dt −γΦ2 K .
+                                               
+               SG =         d x −g Φ R − U0 (Φ) +                                      (5.11)
+                    16πG                          8πG
+The equations of motion in conformal gauge are again (5.3-5.6), where now
+                                    N
+                            T+− =      ∂+ ∂− χ ,
+                                   12π
+                                    N
+                                        −∂±2 χ + ∂± χ∂± χ + 2∂± ω∂± χ ,
+                                                                     
+                            T±± =
+                                   12π
+                   ∂+ ∂− (χ + ω) = 0 .                                                 (5.12)
+
+The solution
+
+                        e2ω = 4µ/sinh2 2µ1/2 z , χ = −ω − 2µ1/2 z ,
+                                  GN
+                        Φ2 = 1 +       + µ1/2 coth 2µ1/2 z .                           (5.13)
+                                   3
+reproduces that in §5.1, with χ going to a constant on the horizon.
+   We now obtain the counterterm action. In conformal gauge,
+          Z                                                                         
+                      1          2           2     2ω
+                                                       N                           
+ SG + Sχ = dz dt          −4∂(+ Φ ∂−) ω + (Φ − 1)e     +     ∂+ χ∂− χ + 2∂(+ χ∂−) ω    .
+                    8πG                                  6π
+                                                                                   (5.14)
+
+                                             15
+Inserting the asymptotic expansion of the solution (5.13),
+                                  1    4µ
+                            e2ω =  2
+                                     −    + O(z 2 ) ,
+                                 z      3
+                                  1        GN      2µz
+                            Φ2 =     +1+         +      + O(z 3 ) ,
+                                 2z          3        3
+                                                  2µz 2
+                             χ = ln z − 2µ1/2 z +       + O(z 4 ) ,                   (5.15)
+                                                    3
+the divergent part of the action is
+                                               1      N
+                            SG + Sχ =            2
+                                                   +      + finite .                  (5.16)
+                                            16πG    12π
+This is canceled by the local counterterms
+                                    √
+                                Z                            
+                                            1        2     N
+                         Sct = dt −γ           (1 − Φ ) −       .                     (5.17)
+                                           8πG            24π
+
+   Next we compute the boundary stress tensor following the approach of Ref. [18], varying
+with respect to the boundary metric. The prescription is given by
+
+                                         2 δSR             −2 δSR ()
+                         hT̂tt i = − √           tt
+                                                    = lim p                .          (5.18)
+                                         −γ̂ δγ̂      →0  −γ() δγ tt ()
+
+with SR is the renormalized action. Note that hats refer to the dual field theory, so that
+γ̂tt = lim→0 2 γtt () is the metric of the boundary theory. The Hamilton-Jacobi formalism
+gives the functional derivative as
+
+                                 δSR ()             δSct ()
+                                   tt
+                                         = −πtt () + tt      ,                       (5.19)
+                                 δγ ()              δγ ()
+
+where
+                                                 ∂(LG + Lχ )
+                                         πtt =                 .                      (5.20)
+                                                   ∂(∂z g tt )
+The relevant terms in the action are
+                                       √             √
+                                  Z            Z
+                                     2
+                      SG + Sχ ≈ d x −gXR + dt −γXK ,
+                                       √
+                                  Z
+                               = d2 x −g∂ µ X(gµρ ∂σ − gσρ ∂µ )g σρ ,                 (5.21)
+
+where X = Φ2 /16πG − N χ/24π. Thus we read off
+                                      √
+                               πtt = − −ggtt ∂ z X = e2ω ∂z X .                       (5.22)
+
+
+                                                   16
+Combining Eqs. (5.18,5.19,5.22), we have
+
+                                                              1 − Φ2
+                                                                            
+                                       ω             2ω                 N
+                           hT̂tt i = 2e ∂z X − e                   −           .             (5.23)
+                                                               8πG     24π
+
+Inserting the asymptotic expansions (5.15) then gives
+
+                                                   µ    N µ1/2
+                                      hT̂tt i =       +        .                               (5.24)
+                                                  8πG    6π
+
+5.3     Thermodynamic quantities
+The metric is unaffected by the coupling to matter, so the temperature (3.15) is as before,
+T = µ1/2 /π. The equation of state is then
+                                                   π 2 N
+                                        E=           T + T.                                    (5.25)
+                                                  8G    6
+From this we can compute the entropy, using dS = dE/T :
+                                            π    N
+                                     S=       T + ln T + c .                                   (5.26)
+                                           4G    6
+It is interesting to compare this with the Bekenstein-Hawking entropy.3
+    We can read off the effective gravitational constant from the coefficient of the Ricci scalar
+in the actions (2.8) and (5.10) as 1/Gef f = Φ2 /G − 2N χ/3, and with the horizon a point of
+area 1, we have
+                                           √
+                       Φ2      Nχ            µ     1    N     √      N
+                SBH =       −           =       +     + ln 4 µ +
+                       4G       6 z→∞       4G 4G        6           12
+                                           πT      1    N         N           N
+                                        =      +     + ln T + ln 4π +                      (5.27)
+                                           4G 4G        6         6           12
+We get agreement between the holographic (5.26) and Bekenstein-Hawking (5.27) entropies,
+with
+                                            1  N        N
+                                     c=       + ln 4π +    .                                   (5.28)
+                                           4G  6        12
+  In interpreting the holographic entropy, we should note that the closely related CGHS
+model describes remnants [21–23] . Since an arbitrarily large black hole can decay down
+to a Planck mass remnant, the number of states at low energy is unbounded above, and it
+is unrelated to the thermodynamic Bekenstein-Hawking entropy. Presumably the same is
+  3
+    The same (N/6) ln T term was previously found as an entanglement entropy in Ref. [19]. We thank N.
+Iqbal for bringing this to our attention.
+
+
+                                                    17
+true for the model that we are considering, taken on its own terms as a bulk quantum field
+theory. However, we are merely using this model as an approximation to the behavior of
+precise gauge/gravity duals such as those of Ref. [9]. For these, we can be fairly confident
+that the dual field theory dynamics do not allow an unbounded number of states at finite
+energy, and expect rather that the thermodynamic and statistical entropies agree. We will
+therefore interpret the holographic entropy as representing the true density of states.
+    Our work was motivated in part by a puzzle regarding the density of states in AdS2 /CF T1
+duals [3, 15]. Our result exhibits a related puzzle: the entropy (5.26) becomes negative at
+sufficiently low temperature, due to the log term. Our discussion of backreaction suggests
+that we cut this off where the theory becomes strongly coupled, at T ∼ G. Effectively we
+are using backreaction to provide the cutoff introduced by hand in Ref. [3].
+    Thus replace ln T with ln(T + G)/G, so that the log goes smoothly to zero as T → 0
+(for T  G this means that c ∼ −(N/6) ln G). However, this is not fully satisfactory as the
+entropy is no longer extensive: with G ∝ 1/V and N ∝ V , there is a V ln V term. We might
+cancel this by an additional term −(N/3) ln N but this seems rather ad hoc. Or it may be
+that our reduced model, which retains only the zero mode of the gravitational field, simply
+fails to incorporate extensivity.
+    One ingredient missing in this analysis is the effect of bulk loops on the backreaction
+scale. This includes processes with N scalars running in loops that have the potential of
+significantly ramping up the conformal symmetry breaking scale. Preliminary results [20]
+indicate that this is indeed the case and that the new backreaction scale is pushed up to
+T ∼ N G. Using this to cut-off the ln T as ln(T + N G)/N G gets the job done and preserves
+extensivity. Performing the full analysis to confirm this prediction will be an interesting
+problem to pursue.
+    Let us also reiterate the puzzle of Refs. [3, 15]. In the noncompact limit, one expects
+the conformal symmetry to be exact. However, in the far infrared, the only conformally
+invariant behavior for the entropy is T 0 , from the well-known zero-energy degeneracy. But
+if all states are at zero energy, how can there be any dynamics?
+   It may be that backreaction provides the resolution here. Namely, the sector of the theory
+that is probed by CFT n-point functions involves only finite numbers of excitations, whose
+backreaction is finite in the infinite volume limit. On the other hand, states of finite energy
+density will have the same singular backreaction as in the compact case. Thus there may be a
+sub-extensive set of finite energy states, whose entropy per unit volume vanishes as V → ∞
+but which realize the infinite-volume AdS2 symmetry. To investigate this would seem to
+require a more refined treatment of backreaction, going beyond the zero mode retained here.
+
+
+
+                                              18
+6    Discussion
+We have studied models of 1+1 dimensional gravity that flow to AdS2 times a compact
+space in the IR. The UV corresponds to the dimensional reduction of a higher dimensional
+scale invariant theory, which regulates the AdS2 backreaction. In particular, we have focused
+on a model in which the backreaction is solvable, as in the CGHS model. An interesting
+result was the calculation of holographic correlators, and the demonstration that the effect
+of backreaction is strongly relevant in the AdS2 region.
+    We have argued that the solvable model, although it does not result from any specific
+reduction, nevertheless captures universal behaviors. For more general models, it will be
+likely necessary to solve numerically.
+    Given the ubiquity of AdS2 spacetimes and the importance of their backreaction, we hope
+that our model will be useful. For applications to condensed matter systems, the transverse
+space is generally noncompact. Backreaction may still be important to understanding the
+density of states, as we have discussed. Also, in finite density states the backreaction will be
+as in the compact case.
+    If the bulk field theory can be consistently quantized, it defines a 1 + 1 dimensional con-
+formal theory holographically. This may be counterfactual, given the difficulty of assigning
+boundary conditions at the Φ2 = 0 singularity. But supposing that it can be done, it would
+describe a theory of remnants [21–23]. This would seem to conflict with the general lore
+that holography excludes remnants [24]. However, the latter is based on having an explicit
+field theory dual that is sufficiently well understood to expect that it has a finite density of
+states. Here, there is no independent definition of the dual CFT.
+    It would be interesting to extend the present work to include gravitational loop correc-
+tions, in particular to assess the magnitude of the corrections to our results. Also, it would
+be interesting to develop a more physical interpretation of the thermodynamic quantities
+that we have calculated.
+
+
+Acknowledgments
+We thank Nabil Iqbal, Hong Liu, Don Marolf, Ben Michel, and Eric Mintun for discussions.
+J.P. was supported in part through NSF grants PHY07-57035 and PHY13-16748 (summer)
+and PHY11-25915 (academic year).
+
+
+
+
+                                              19
+References
+ [1] T. Levi-Civita, R.C. Acad. Lincei 26, 519 (1917);
+    B. Bertotti, Phys. Rev. 116, 1331 (1959);
+    I. Robertson, Bull. Acad. Polon. 7, 351 (1959);
+    S. Ferrara and R. Kallosh, “Supersymmetry and attractors,” Phys. Rev. D 54, 1514
+    (1996) [hep-th/9602136].
+
+ [2] A. Chamblin, R. Emparan, C. V. Johnson and R. C. Myers, “Charged AdS black holes
+     and catastrophic holography,” Phys. Rev. D 60, 064018 (1999) [hep-th/9902170].
+
+ [3] N. Iqbal, H. Liu and M. Mezei, “Semi-local quantum liquids,” JHEP 1204, 086 (2012)
+     [arXiv:1105.4621 [hep-th]].
+
+ [4] J. M. Maldacena, J. Michelson and A. Strominger, “Anti-de Sitter fragmentation,”
+     JHEP 9902, 011 (1999) [hep-th/9812073].
+
+ [5] C. G. Callan, Jr., S. B. Giddings, J. A. Harvey and A. Strominger, “Evanescent black
+     holes,” Phys. Rev. D 45, 1005 (1992) [hep-th/9111056].
+
+ [6] S. A. Hartnoll and P. Kovtun, Phys. Rev. D 76, 066001 (2007) [arXiv:0704.1160 [hep-
+     th]].
+
+ [7] E. D’Hoker and P. Kraus, “Magnetic Brane Solutions in AdS,” JHEP 0910, 088 (2009)
+     [arXiv:0908.3875 [hep-th]].
+
+ [8] A. Donos, J. P. Gauntlett and C. Pantelidou, “Magnetic and Electric AdS Solutions
+     in String- and M-Theory,” Class. Quant. Grav. 29, 194006 (2012) [arXiv:1112.4195
+     [hep-th]];
+    A. Donos and J. P. Gauntlett, “Supersymmetric quantum criticality supported by bary-
+    onic charges,” JHEP 1210, 120 (2012) [arXiv:1208.1494 [hep-th]].
+
+ [9] A. Almheiri, “Magnetic AdS2 x R2 at Weak and Strong Coupling,” arXiv:1112.4820
+     [hep-th].
+
+[10] A. Sen, “Quantum Entropy Function from AdS(2)/CFT(1) Correspondence,” Int. J.
+     Mod. Phys. A 24, 4225 (2009) [arXiv:0809.3304 [hep-th]]; “State Operator Correspon-
+     dence and Entanglement in AdS2 /CF T1 ,” Entropy 13, 1305 (2011) [arXiv:1101.4254
+     [hep-th]].
+
+
+
+                                            20
+[11] S. P. de Alwis, “Quantum black holes in two-dimensions,” Phys. Rev. D 46, 5429 (1992)
+     [hep-th/9207095];
+    A. Bilal and C. G. Callan, Jr., “Liouville models of black hole evaporation,” Nucl. Phys.
+    B 394, 73 (1993) [hep-th/9205089];
+    S. B. Giddings and A. Strominger, “Quantum theories of dilaton gravity,” Phys. Rev.
+    D 47, 2454 (1993) [hep-th/9207034].
+
+[12] D. Grumiller, W. Kummer and D. V. Vassilevich, “Dilaton gravity in two-dimensions,”
+     Phys. Rept. 369, 327 (2002) [hep-th/0204253].
+
+[13] S. B. Giddings and A. Strominger, “Dynamics of extremal black holes,” Phys. Rev. D
+     46, 627 (1992) [hep-th/9202004].
+
+[14] S. Kachru, A. Karch and S. Yaida, “Holographic Lattices, Dimers, and Glasses,” Phys.
+     Rev. D 81, 026007 (2010) [arXiv:0909.2639 [hep-th]].
+
+[15] K. Jensen, S. Kachru, A. Karch, J. Polchinski and E. Silverstein, “Towards a holographic
+     marginal Fermi liquid,” Phys. Rev. D 84, 126002 (2011) [arXiv:1105.1772 [hep-th]].
+
+[16] A. Strominger, “AdS(2) quantum gravity and string theory,” JHEP 9901, 007 (1999)
+     [hep-th/9809027];
+    M. Cadoni and S. Mignemi, “Asymptotic symmetries of AdS(2) and conformal group
+    in d = 1,” Nucl. Phys. B 557, 165 (1999) [hep-th/9902040];
+    J. Navarro-Salas and P. Navarro, “AdS(2) / CFT(1) correspondence and near extremal
+    black hole entropy,” Nucl. Phys. B 579, 250 (2000) [hep-th/9910076];
+    T. Hartman and A. Strominger, “Central Charge for AdS(2) Quantum Gravity,” JHEP
+    0904, 026 (2009) [arXiv:0803.3621 [hep-th]];
+    D. Grumiller, M. Leston and D. Vassilevich, “Anti-de Sitter holography for gravity and
+    higher spin theories in two dimensions,” arXiv:1311.7413 [hep-th].
+
+[17] J. Preskill, P. Schwarz, A. D. Shapere, S. Trivedi and F. Wilczek, “Limitations on the
+     statistical description of black holes,” Mod. Phys. Lett. A 6, 2353 (1991).
+
+[18] V. Balasubramanian and P. Kraus, “A Stress tensor for Anti-de Sitter gravity,” Com-
+     mun. Math. Phys. 208 (1999) 413 [hep-th/9902121].
+
+[19] M. Spradlin and A. Strominger, “Vacuum states for AdS(2) black holes,” JHEP 9911,
+     021 (1999) [hep-th/9904143].
+
+[20] A. Almheiri and J. Polchinski, Work in progress.
+
+                                             21
+[21] T. Banks, A. Dabholkar, M. R. Douglas and M. O’Loughlin, “Are horned particles the
+     climax of Hawking evaporation?,” Phys. Rev. D 45, 3607 (1992) [hep-th/9201061].
+
+[22] S. B. Giddings and W. M. Nelson, “Quantum emission from two-dimensional black
+     holes,” Phys. Rev. D 46, 2486 (1992) [hep-th/9204072].
+
+[23] A. Almheiri and J. Sully, “An Uneventful Horizon in Two Dimensions,” arXiv:1307.8149
+     [hep-th].
+
+[24] A. Almheiri, D. Marolf, J. Polchinski, D. Stanford and J. Sully, “An Apologia for
+     Firewalls,” JHEP 1309, 018 (2013) [arXiv:1304.6483 [hep-th]].
+
+
+
+
+                                           22
+

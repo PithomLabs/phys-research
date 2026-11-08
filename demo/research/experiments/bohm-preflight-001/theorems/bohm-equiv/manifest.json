@@ -1,0 +1,122 @@
+{
+  "schema_version": "1",
+  "artifact_type": "derivation",
+  "derivation_id": "bohm_equivariance_1d",
+  "framework_id": "bohmian_mechanics",
+  "name": "Bohmian Equivariance 1D Evidence (fixture)",
+  "entry_points": {
+    "primary": "equivariance.Build",
+    "secondary": "Fixture.Verify"
+  },
+  "regime": "1D single-particle fragment in test units (hbar = m = 1); explicit test wave-function pairs; symmetry-reduced toy, not the general R^{3N} theory",
+  "coordinates": [
+    "q"
+  ],
+  "anomalies": [],
+  "conventions": {
+    "test_units": "hbar = m = 1 throughout (test input only; the audit keeps hbar, m_k explicit)",
+    "configuration": "1D line chart Q1 over coordinate q (fragment of the frozen R^{3N} configuration space)",
+    "differentiation": "DIFFERENTIATE-001 with respect to bound (t, q); staging via SIMPLIFY",
+    "node_policy": "every guidance quotient carries a recorded NEQ(rho,0) condition; node behavior itself is unrepresented",
+    "represented_claims": "flow ODE, pushforward transport, and (E-loc) exist only as represented relations with no targeting derivation"
+  },
+  "premises": [
+    {
+      "id": "test_pair_solution",
+      "statement": "R1 = 1, S1 = 2q satisfies the continuity residual (executed, residual zero)"
+    },
+    {
+      "id": "test_pair_nonsolution",
+      "statement": "R2 = t^2+q^2+1, S2 = t q gives a pinned nonzero continuity residual (executed, honest negative)"
+    },
+    {
+      "id": "test_pair_node",
+      "statement": "R3 = q, S3 = q has rho3 = q^2 vanishing at q = 0 (condition machinery only)"
+    },
+    {
+      "id": "test_pair_traveling",
+      "statement": "R4 = (q-3t)^2+1, S4 = 3q gives residual 0 with both terms generically nonzero (nontrivial cancellation; point-substitution verified)"
+    },
+    {
+      "id": "current_assembly",
+      "statement": "j = rho d_q S assembled per test pair (executed)"
+    },
+    {
+      "id": "product_rule",
+      "statement": "manual product-rule assembly pinned alongside the executed d_q j2 (linkage executed; EQ agreement hand-derived per audit doc 02, not engine-reduced)"
+    },
+    {
+      "id": "guidance_quotient",
+      "statement": "v = j rho^-1 constructed with recorded NEQ(rho,0) (executed construction, represented division semantics)"
+    },
+    {
+      "id": "chart_1d",
+      "statement": "coordinate_system/1 line chart over [q] (structural, validated)"
+    }
+  ],
+  "assumptions": [
+    "test_units",
+    "test_inputs_not_solutions",
+    "node_excluded_by_condition",
+    "local_scope",
+    "toy_model_disclaimer"
+  ],
+  "verification": {
+    "primary_derivation_trace": "every differential/simplification step carries a derivation/1 minted at construction and replayed by Verify",
+    "secondary_verification": "independent protocol tests re-derive partials, residuals, goldens, anti-goldens, condition binding, and represented-only status"
+  },
+  "limitations": [
+    {
+      "id": "no_flow_execution",
+      "statement": "Flow ODE existence is not executed; the flow relation is represented-only."
+    },
+    {
+      "id": "no_pushforward",
+      "statement": "Measure pushforward and transport are not executed or represented beyond the claim relation."
+    },
+    {
+      "id": "no_uniqueness_pde",
+      "statement": "The continuity-equation uniqueness lemma is not executed; it lives in the audit record only."
+    },
+    {
+      "id": "no_global_existence",
+      "statement": "Global trajectory existence is imported in the audit (B7) and wholly absent here."
+    },
+    {
+      "id": "no_node_behavior",
+      "statement": "Behavior at nodes is unrepresented; only the NEQ(rho,0) condition machinery is executed."
+    },
+    {
+      "id": "no_schrodinger_residual",
+      "statement": "The complex Schrodinger residual is unrepresentable (no complex arithmetic); continuity is tested standalone."
+    },
+    {
+      "id": "test_units_only",
+      "statement": "hbar = m = 1 test units; the hbar/m structure of the audit current is not executed."
+    },
+    {
+      "id": "fragment_1d",
+      "statement": "1D single-particle fragment only; the R^{3N} general case is unrepresented."
+    },
+    {
+      "id": "factored_normals",
+      "statement": "SIMPLIFY preserves factored structure (no distributivity, no x+x to 2x); goldens pin engine-normal forms."
+    },
+    {
+      "id": "source_mapping_structural_only",
+      "statement": "source_mapping.json asserts equation-to-fixture linkage structurally, never semantic equivalence."
+    },
+    {
+      "id": "no_empirical_claims",
+      "statement": "No claim about laboratory outcomes, detector records, or measured distributions is made or implied."
+    },
+    {
+      "id": "point_substitution_only",
+      "statement": "Nontrivial cancellation is verified by (t,q)=(1,1) substitution plus hand algebra, not by symbolic reduction of Res4 (SIMPLIFY cannot collect like terms)."
+    },
+    {
+      "id": "equality_not_decided",
+      "statement": "Canonical equality does not decide mathematical equality of rational trees (no distributivity, like-term collection, or const-folding); the product-rule EQ and the pair-4 cancellation rest on hand proof."
+    }
+  ]
+}

@@ -1,0 +1,1178 @@
+                                          An algebraic description of the Page transition
+
+
+
+
+                                          Haocheng Zhonga
+                                           a
+                                               Shing-Tung Yau Center and School of Physics, Southeast University, Nanjing 210096, China
+
+                                           E-mail: zhonghaocheng@seu.edu.cn
+arXiv:2601.11363v1 [hep-th] 16 Jan 2026
+
+
+
+
+                                          Abstract: In this work, we develop an algebraic description of the Page transition, a key
+                                          feature in black hole evaporation where the entropy of Hawking radiation follows a unitary
+                                          Page curve instead of monotonically increasing. By applying concepts from approximate
+                                          quantum error correction with complementary recovery, we characterize the Page transition
+                                          as a phase transition in channel recovery. We then generalize the description to infinite-
+                                          dimensional settings using algebraic relative entropy, which remains valid even in type III
+                                          factors. For type I/II factors, explicit probes based on relative entropy differences are
+                                          derived, serving as indicators for the transition at the Page time.
+Contents
+
+1 Introduction                                                                                 1
+
+2 Preliminary                                                                                  5
+  2.1 The reconstruction theorem with complementary recovery                                   5
+  2.2 Basics of von Neumann algebra                                                            6
+  2.3 Algebraic entropies                                                                      9
+
+3 Page transition via AQEC with complementary recovery                                        10
+
+4 An algebraic description in factors of type I/II                                            14
+
+5 Discussions                                                                                 17
+
+
+
+
+1   Introduction
+
+The Page curve [1, 2] is a theoretical prediction for how the fine-grained entropy of Hawking
+radiation should behave over the lifetime of an evaporating black hole if the evaporation
+process is unitary (i.e., if information is conserved), which is central to modern discussions
+of the black hole information paradox [3–6]. The paradox originates from Hawking’s cal-
+culations [7, 8] in 1970s which suggested that Hawking radiation is purely thermal and
+random. Therefore, the entropy of radiation should monotonically increase throughout the
+black hole evaporation. If this were true, when the black hole vanishes, the information
+about what fell into it would be irretrievably lost, violating the quantum mechanical princi-
+ple of unitarity. On the other hand, the Page cure suggested that the entropy should reach
+a maximum at a point known as the Page time, after which the entropy monotonically
+decreases and returns to zero. Recently, the island formula [5, 9–12] is proposed to resolve
+the paradox, which provides a method for calculating the fine-grained entropy of Hawking
+radiation in a way that preserves unitarity, resulting in the Page curve rather than the
+information-loss-inducing curve predicted by Hawking’s original calculation.
+     To illustrate, the Penrose diagram of a black hole during evaporation is depicted in
+Fig.1, where a Cauchy slice is factorized into three spacelike regions: (a) an interior “island”
+enclosed by a codimension-2 surface X, which we denote as ΣIsland ; (b) the region bounded
+by X and a cutoff surface near the asymptotic boundary, which is denoted as ΣX ; (c) the
+region between the cutoff surface and the spacelike infinity, and we denote it as ΣRad where
+external observers collects the black hole radiation. The entropy of the black hole for this
+Cauchy slice can be characterized by the following formula,
+                                                                  
+                                                AX
+                         SBH = minX extX            + Ssemi-cl (ΣX ) ,                      (1.1)
+                                                4G
+
+
+
+
+                                             –1–
+                                                  ΣX      ΣRad
+                                ΣIsland
+                                          X
+
+
+
+
+Figure 1: The Penrose diagram of an evaporating black hole. A Cauchy slice (blue solid
+curve) is divided into three regions ΣIsland , ΣX , ΣRad by a codimension-2 surface X (orange
+dot) and a cutoff surface (red dotted line).
+
+
+where AX is the area of the entangling surface X, and Ssemi-cl (ΣX ) is the von Neumann
+entropy of the quantum states on ΣX in the semi-classical description, by which we mean
+that the entropy is calculated by the standard methods of quantum field theory in curved
+spacetime. Meanwhile, SBH should be regarded as the von Neumann entropy in a complete
+quantum gravity description, which is yet to be well established. The condition “extX ”
+selects the saddle points of a generalized entropy insides the square bracket among all
+possible configurations of X, and if there exists several options, we choose the minimal one.
+    When the black hole is formed from an initially pure state, we expect that the evap-
+orating black hole itself and the radiation already emitted during the evaporation make a
+pure state, such that the entropy of Hawking radiation should be equal to the entropy of
+the black hole, giving a similar island formula,
+                                                                              
+                                              AX
+                SRad = minX        extX          + Ssemi-cl (ΣRad ∪ ΣIsland )        ,   (1.2)
+                                              4G
+
+where we have Ssemi-cl (ΣRad ∪ ΣIsland ) = Ssemi-cl (ΣX ) due to the fact that ΣRad ∪
+ΣIsland ∪ ΣX prepares a pure state over the Cauchy slice. The formula (1.2) solves the
+puzzle that the fine-grained entropy of black hole radiation should satisfy the Page curve,
+which states that the entropy should monotonically increase before the Page time tP , and
+monotonically decrease after tP , as depicted in Fig.2. The main feature of (1.2) is that, the
+entropy of radiation should be regarded as a competition of two saddle-point solutions of the
+extremal condition in the gravitational path integral description [5, 6, 10, 11]: the solution
+with the island vanishing (so as the boundary X), and the solution with a non-vanishing
+
+
+
+
+                                                 –2–
+island bounded by a non-vanishing X, i.e.
+                                                                                           (1.3)
+                                         island no-island
+                            SRad = min SRad     , SRad     ,
+where the two terms on the RHS behave differently, see also Fig.2. The solution SRadno-island
+
+with vanishing island, which coincides with Hawking’s calculation, monotonically increases
+during the whole evaporation process. Meanwhile, the solution SRadisland with non-vanishing
+
+island, which captures the thermodynamic properties of the black hole, monotonically de-
+creases. The two solutions are course-grained descriptions for the entropy, such that the
+fine-grained entropy should be upper-bounded by the two, hence giving a phase transition
+called the Page transition at the Page time tP .
+
+
+
+                                island
+                               SRad               no-island
+                                                 SRad
+
+
+
+
+                                                     SRad
+                                          tP                                   t
+
+Figure 2: A sketch of the Page curve (red line) for the entropy of Hawking radiation,
+which is upper bounded by the two saddle-point solutions: the vanishing island solution
+  no-island (blue line) and the non-vanishing solution S island (yellow line). The transition of
+SRad                                                    Rad
+the two dominant solutions happens at the Page time tP , which is call the Page transition.
+
+     It was recently shown that [13] the Page transition can be regarded as a phase tran-
+sition in approximate quantum error correction (AQEC). To be more specific, the island
+formula (1.2) implies that the external observers who collects the black hole radiation de-
+tects the emergence of an island region at the Page time. The island region is the black hole
+interior “accessible” to the external observers, which is related to the notion of reconstruc-
+tion insides the island. Such reconstruction can be well described by a series of theorems
+via quantum error correction [14–20]. We call them the reconstruction theorems, which
+were originally proved for explaining the problem of bulk reconstruction in the AdS/CFT
+correspondence [21–23]. See also [20, 24–33] for an incomplete list of related developments.
+In [13], the author applied the following version of the reconstruction theorem to the black
+hole evaporation,
+Theorem 1.1. Given a finite-dimensional Hilbert space H (called the physical space) which
+is decomposed into two parts H = HA ⊗HĀ and a code space Hcode with condition dimHcode ≤
+|A|, the isometric encoding V : Hcode → H induces a quantum channel:
+                                                                   
+                     N : s(Hcode ) → s(HA ), ρ̃ 7→ ρA ≡ TrĀ V ρ̃V † ,               (1.4)
+
+
+
+
+                                               –3–
+where s(H(·) ) denotes the set of all density operators in H(·) . Then the following statements
+are equivalent:
+
+  1. Given ρ̃ ∈ s(Hcode ), we have
+
+                                         S(ρA ) = LA + S(ρ̃)                               (1.5)
+
+      where LA is some constant.
+
+  2. Given two density matrices ρ̃, σ̃ ∈ s(Hcode ), we have
+
+                                       Srel (ρA |σA ) = Srel (ρ̃|σ̃).                      (1.6)
+
+  3. For any operator Õ ∈ L(Hcode ), there exists an operator OA ∈ L(HA ) such that
+
+                                OA V |ψ̃⟩ = V Õ|ψ̃⟩,      ∀|ψ̃⟩ ∈ Hcode .                 (1.7)
+
+     It has been argued that the quantum states on the island and the radiation region
+together form a code space in semi-classical description, and the radiation collected by the
+external observers forms a physical space in the complete quantum gravity description.
+Therefore, after identifying the statement 1 of the theorem 1.1 with the formula of entropy
+of radiation (1.2), the statement 3 states that one is able to manipulate the degrees of
+freedoms in the island by manipulating the the degrees of freedoms in the radiation only.
+In this sense, the channel N represents some kind of a tunnel for information transferring
+between the island and the exterior of the black hole. However, such channel N can only
+appear after the appearance of a non-vanishing island, so that the Page transition can also
+be regarded as the emergence of the channel N at the Page time. Then one may wonder
+whether we can have a probe for the emergence of the channel N to describe the Page
+transition. Interestingly, the statement 2 of the theorem 1.1, which involves the equality
+between two relative entropies, is closely related to the exactness of recovery for the channel.
+The related theorems are collectively shown as follows [34],
+
+Theorem 1.2. Let N be a quantum channel from system A to system B, then we have
+
+              (Monotonicity)     Srel (ρ|σ) ≥ Srel (N (ρ)|N (σ)),       ∀ρ, σ ∈ s(HA ),    (1.8)
+
+and the inequality is saturated if and only if N is exactly reversible, i.e. there exists another
+channel R (called the recovery channel) such that
+
+                  (Exact recovery)    ρ̃ ≡ (R ◦ N )(ρ) = ρ,        ∀ρ ∈ s(Hcode ).         (1.9)
+
+    In the language of quantum information, the channel during black hole evaporation is
+not exactly reversible before the Page time, but then becomes exactly reversible after the
+Page time. The intermediate period, which is the Page transition, should correspond to a
+“phase transition” of the recovery for the channel, and the channel should be approximately
+
+
+
+
+                                               –4–
+reversible during the period. The theorem 1.2 then helps to give a criteria that for some
+infinitesimal value δ which is related to the properties of the black hole, we have
+                                                                      
+                                                                      > δ, if t < tP
+                                                                      
+                                                                      
+              Srel (ρ̃I∪R (t)|σ̃I∪R (t)) − Srel (ρRad (t)|σRad (t))    = δ, if t = tP    (1.10)
+                                                                      
+                                                                      ≤ δ, if t > t
+                                                                      
+                                                                                     P
+
+
+which works as a probe for the Page transition.
+     In fact, whenever the channel between the island and the radiation exists, there exists
+a dual channel which relates the region ΣX to the black hole itself, which is due to the
+existence of the parallel formula (1.1) of the entropy of black hole. As we will show in
+the paper, the two channels are associated to an error-correcting code with complementary
+recovery. For the reconstruction theorem to be applicable in this case, we will apply an
+enhanced version of theorem 1.1, which we refer to as the reconstruction theorem with
+complementary recovery. Then following the same arguments, there also exists a similar
+probe as (1.10) for the dual channel to experience the phase transition during the Page
+transition.
+     Note the above arguments are only limited in the cases of finite-dimensional black
+holes, as we a priori assume that the central dogma [6, 35, 36] to hold in general. However,
+the reconstruction theorems themselves admit algebraic generalizations [17–20] which are
+capable of giving algebraic descriptions for infinite-dimensional Hilbert spaces, it is then
+plausible to generalize the above arguments for the infinite-dimensional evaporation black
+holes, which is one of the main tasks in the paper. We will give explicit calculations to
+show that, the algebraic versions of probes similar to (1.10) can be directly derived using
+the algebraic versions of the island formulae (1.1) and (1.2). Also we would like to point
+out that another interesting feature of (1.10) is that the relative entropy is well-defined
+for von Neumann algebras of general types, including algebras of type III where the von
+Neumann entropies in either (1.1) or (1.2) are ill-defined. In this sense, the probes using
+relative entropy are more general, and we will give more comments on these issues in the
+discussions.
+     The work is organized as follows. In section 2, we introduce the reconstruction theo-
+rems, and some basics of von Neumann algebras with algebraic generalizations for entropies.
+In section 3, we apply the reconstruction theorem with complementary recovery to the black
+hole evaporation. In section 4, we discuss how to generalize our arguments into algebraic
+description in factors of type I/II, and give a formal proof. We end with section 5 where
+we give some comments about related works.
+
+
+2     Preliminary
+
+2.1    The reconstruction theorem with complementary recovery
+
+The finite-dimensional reconstruction theorem based on an error-correcting code with com-
+plementary recovery is stated as follows [16],
+
+
+
+
+                                               –5–
+Theorem 2.1. Given a finite-dimensional system called the physical space Hphys = HA ⊗
+HĀ and a code space Hcode = Ha ⊗ Hā with conditions |a| ≤ |A| , |ā| ≤ Ā , the isometry1
+V : Hcode → Hphys induces two quantum channels:
+                                                                          
+                                       †      ′                            †
+           N : ρ̃a 7→ ρA ≡ TrĀ V ρ̃a V , N : ρ̃ā 7→ ρĀ ≡ TrA V ρ̃ā V ,
+
+      then the following statements are equivalent:
+
+   1. Given O
+            ea on Ha : ∃OA ∈ L(HA ) ⇒ OA V |ϕ̃⟩ = V O
+                                                    ea |ϕ̃⟩; likewise for O
+                                                                          eā .
+
+   2. Given ρ̃, σ̃ on Hcode : Srel (ρA |σA ) = Srel (ρ̃a |σ̃a ), Srel (ρĀ |σĀ ) = Srel (ρ̃ā |σ̃ā ).
+
+   3. Given O           ea , V † P V ] = 0, ∀P ∈ L(H ); likewise for O
+            ea on Ha : [O                                            eā .
+                                  Ā          Ā    Ā
+
+   4. Given ρ̃ on Hcode : S(ρA ) = LA + S(ρ̃a ), S(ρĀ ) = LĀ + S(ρ̃ā ) where LA = LĀ are
+      some constants.
+
+     The theorem can be proved without referring to any physical interpretation, see for
+example appendix A of [13]. The basic idea of the theorem states that whenever any one
+of the above statements holds, the degrees of freedom in Ha , Hā can be reconstructed from
+HA , HĀ respectively. By “reconstruction” of degrees of freedom we are actually referring
+to the statement 1 where there also exists a dual operator in the reconstructed space for
+an arbitrary operator in the code subspace, hence giving the name the “reconstruction
+theorem”. Compared to theorem 1.1, the reconstructions hold pair-wisely for HA and HĀ ,
+which we call the complementary recovery. In the language of quantum information, the
+statement 1 is also related to the notion of quantum error correction, in the sense that
+information in the code space is protected by enlarging the space (i.e. an isometry into the
+physical space) against the “erasure” (i.e. some extra degrees of freedom in the physical
+space are inaccessible to the operators acting on the code space). For more comments about
+the theorem and the quantum error correction, see [37].
+     The above statements are more comprehensive in some concrete examples, e.g. the
+AdS/CFT correspondence. In this case, the four statements respectively corresponds to
+(1) entanglement wedge reconstruction (or subregion duality) [15, 38–46]; (2) the Jafferis-
+Lewkowycz-Maldacena-Suh (JLMS) formula [46]; (3) radial commutativity [37, 47, 48]; (4)
+the Ryu-Takayanagi (RT) formula [49–55]. While in this work, we will apply the theorem
+2.1 to the black hole evaporation by examining whether the prerequisites of the theorem
+are satisfied. More explicitly, we will relate the statement 4 to the formulae (1.1) and (1.2),
+then argue that the statement 2 implies a probe for the Page transition.
+
+2.2    Basics of von Neumann algebra
+In this subsection, we introduce some basics of von Neumann algebra. The theorems and
+the statements listed here are demonstrated without proofs, one can consult [56–59] for
+more rigorous arguments, and also [18, 19, 24, 60] for relevant contents.
+  1
+    An isometry V : HA → HB (|A| ≤ |B|) satisfies V † V = IA and V V † = ΠB which is a projector onto
+V (HA ) ⊂ HB .
+
+
+
+
+                                                       –6–
+Definition 2.2. A linear operator on a Hilbert space H is a linear map from (a subspace
+of ) H into H. The set of all such operators is denoted by L(H).
+
+Definition 2.3. A bounded operator is a linear operator O which satisfies ||O|ψ⟩|| ≤
+K|||ψ⟩||, ∀|ψ⟩ ∈ H for some K ∈ R. The infimum of all such K is called the norm of
+O. The algebra of all bounded operators on H is denoted by B(H) ⊂ L(H).
+
+Definition 2.4. The commutant of a subset S ⊂ B(H) is a subset S ′ ⊂ B(H) defined by
+
+                           S ′ ≡ {O ∈ B(H)|[O, P] = 0, ∀P ∈ S}                            (2.1)
+
+i.e. every element in S ′ commutes with all elements in S.
+
+Definition 2.5. The hermitian conjugate (or adjoint) of an operator O is an operator O†
+satisfying ⟨ψ|Oξ⟩ = ⟨O† ψ|ξ⟩. A hermitian (or self-adjoint) operator O satisfies O = O† .
+
+Definition 2.6. A von Neumann algebra on H is a subalgebra A ⊂ B(H) satisfying
+
+   • 1 ∈ A,
+
+   • A is closed under hermitian conjugation,
+
+   • A′′ = A.
+
+Definition 2.7. A von Neumann algebra A is a factor if it has a trivial center Z:
+
+                                 Z ≡ A ∩ A′ = {λ1|λ ∈ C}                                  (2.2)
+
+otherwise A is called a non-factor.
+
+     A non-factor can always be “decomposed” into factors [16, 57] such that whenever we
+consider classifications of von Neumann algebra, we only need to consider factors, which
+are already classified into three types: type I/II/III. For factors of each types, some notions
+may be well-defined or not, as summarized as follows,
+
+                     Type H = HA ⊗ HB Tr ρψ S(ψ; A) Srel (ψ|ξ; A)
+                       I       ✓      ✓ ✓     ✓           ✓
+                      II       ×      ✓ ✓     ✓           ✓
+                      III      ×      × ×     ×           ✓
+where we write H = HA ⊗ HB to denote that the Hilbert space can be decomposed ac-
+cording to subregions. Note the relative entropy has an algebraic generalization denoted as
+Srel (ψ|ξ; A) for factors of any type, while the algebraic von Neumann entropy denoted as
+S(ψ; A) can only be well-defined in type I/II due to the lack of well-defined notions of the
+trace function and density operators in factors of type III. Before we introduce the algebraic
+definitions of these entropies, we need to learn some backgrounds about the Tomita-Takesaki
+theory (also called the modular theory).
+
+Definition 2.8. A subset H0 ⊂ H is dense in H if for every vector |ψ⟩ ∈ H and for every
+ϵ > 0, there exists a vector |ϕ⟩ ∈ H0 such that ∥|ψ⟩ − |ϕ⟩∥ < ϵ.
+
+
+
+
+                                            –7–
+Definition 2.9. |ψ⟩ ∈ H is cyclic with respect to a von Neumann algebra A if A|ψ⟩ ≡
+{O|ψ⟩|∀O ∈ A} is dense in H.
+
+Definition 2.10. |ψ⟩ ∈ H is separating with respect to a von Neumann algebra A if O|ψ⟩ =
+0 implies O = 0 for O ∈ A.
+
+Theorem 2.11. |ψ⟩ ∈ H is separating with respect to A if and only if |ψ⟩ ∈ H is cyclic
+with respect to A′ , and vice versa.
+
+    A direct consequence is that when we assume |ψ⟩ ∈ H is both cyclic and separating
+with respect to A, then |ψ⟩ ∈ H is also both cyclic and separating with respect to A′ .
+
+Definition 2.12. A relative Tomita operator on A is an anti-linear operator satisfying2
+
+                                     Sξ|ψ (O|ψ⟩) = O† |ξ⟩,     ∀O ∈ A.                                (2.3)
+
+     Notice that Sξ|ψ is densely defined, i.e. whose domain is a dense subset of H if and
+only if |ψ⟩ is cyclic and separating with respect to A. The cyclic condition ensures that
+the domain O|ψ⟩ is dense while the separating condition is to avoid the possibility that
+O|ψ⟩ = 0, O† |ξ⟩ ̸= 0. Hereafter we mostly assume the cyclic separating condition of |ψ⟩
+for Sξ|ψ .
+
+Proposition 2.13. Provided both |ψ⟩, |ξ⟩ are cyclic and separating with respect to A, we
+have
+                              −1              †       ′
+                             Sξ|ψ = Sψ|ξ , Sξ|ψ   = Sξ|ψ ,                          (2.4)
+       ′
+where Sξ|ψ is a relative Tomita operator on A′ .
+
+Definition 2.14. Provided |ψ⟩ is cyclic and separating with respect to A, the relative mod-
+ular operator on A is defined by3
+                                                     †
+                                             ∆ξ|ψ ≡ Sξ|ψ Sξ|ψ ,                                       (2.5)
+
+and the relative modular Hamiltonian on A is defined by
+
+                                             hξ|ψ ≡ − log ∆ξ|ψ .                                      (2.6)
+
+Proposition 2.15. The relative modular operator ∆ξ|ψ on A is Hermitian.
+
+Proposition 2.16. Provided both |ψ⟩, |ξ⟩ are cyclic and separating with respect to A, we
+have
+                         ∆−1       ′
+                           ψ|ξ = ∆ξ|ψ     ⇒ hψ|ξ = −h′ξ|ψ                           (2.7)
+
+where ∆′ξ|ψ and h′ξ|ψ are the relative modular operator and the relative modular Hamiltonian
+on A′ respectively.
+   2
+       Some literatures use the convention that interchanges the positions of ψ and ξ in the subscript of S.
+   3
+       There is an equivalent definition of the relative modular operator via the unique polar decomposition
+                1
+             2
+Sξ|ψ = Jξ|ψ ∆ξ|ψ with Jξ|ψ anti-unitary.
+
+
+
+
+                                                    –8–
+Theorem 2.17 (Splittable condition). In factors of type I/II, we have
+
+                                     ∆ϕ|ψ = ρϕ;A ⊗ ρ−1
+                                                    ψ;A′ .                                 (2.8)
+
+     Physically, (2.8) implies that the usual modular Hamiltonian of a physical system is
+splittable. The condition is crucial in deriving the generalized second law for the generalized
+entropy in gravitational background, see [61, 62].
+
+Definition 2.18. Provided |ψ⟩ is cyclic and separating with respect to A, we define the
+Tomita operator Sψ ≡ Sψ|ψ : O|ψ⟩ 7→ O† |ψ⟩; the modular operator ∆ψ ≡ ∆ψ|ψ = Sψ† Sψ ;
+the modular Hamiltonian hψ ≡ hψ|ψ = − log ∆ψ .
+
+2.3   Algebraic entropies
+In physics literatures, there exists three seemingly different definitions of “state”:
+
+   1. A state is a vector |ψ⟩ normalized as ⟨ψ|ψ⟩ = 1 in a Hilbert space H.
+
+   2. A state is a density operator (or density matrix) ρψ;A ∈ A satisfying
+
+                             ρψ;A = ρ†ψ;A ;    ρψ;A ≥ 0;     TrA ρψ;A = 1.                 (2.9)
+
+   3. A state is a linear functional ωψ : A → C satisfying
+
+                                        ωψ ≥ 0;     ωψ (1) = 1.                          (2.10)
+
+These three definitions are correlated to each other via the expectation value:
+
+                       ⟨ψ| O |ψ⟩ = TrA (ρψ;A O) = ωψ (O),         ∀O ∈ A.                (2.11)
+
+Note that the second definition based on density operators is not well-defined in factors of
+type III. Also note that, these three definitions are not completely equivalent. In the vector
+representation, one can always compute the expectation ⟨ψ| O |ψ⟩ , O ∈     / A which makes no
+sense for the other two definitions. To be specific, the expectation value TrA (ρψ;A O) , O ∈  /
+A is ill-defined since ρψ;A O may not belongs to A then it is not in the domain of the trace
+function of A. As for ωψ (O), O ∈ / A, it is ill-defined since ωψ is only a linear functional on
+A. Nevertheless, we can extend the last two definitions via (2.11) such that the expectation
+values of the last two definitions are well-defined for a larger class of operators. We can
+simply define that
+                         ωψ (O) = TrA (ρψ;A O) = ⟨ψ| O |ψ⟩ , O ∈   / A.                   (2.12)
+
+In the following discussions, we always assume the second and the third definitions are
+extended.
+    Recall that the quantum relative entropy is defined by
+
+                            Srel (ρψ |ρϕ ) ≡ Tr [ρψ (log ρψ − log ρϕ )]                  (2.13)
+
+
+
+
+                                              –9–
+which measures how much the state ψ differs from another state ϕ. Its algebraic general-
+ization is defined due to Araki [63, 64]:
+
+                            Srel (ψ|ϕ; A) ≡ ψ hϕ|ψ ψ = ωψ (hϕ|ψ )                      (2.14)
+
+with |ψ⟩ being cyclic and separating with respect to A. See [60] for details about how the
+algebraic relative entropy coincides with the quantum relative entropy in finite-dimensional
+cases.
+    The von Neumann entropy is defined by
+
+                                    S(ρψ ) ≡ −Tr (ρψ log ρψ )                          (2.15)
+
+whose algebraic generalization in factors of type I/II is given by [34, 65, 66]:
+
+                    S(ψ; A) ≡ −Srel (ψ|τ ; A) = − ψ hτ |ψ ψ = −ωψ (hτ |ψ )             (2.16)
+
+where |ψ⟩ is cyclic and separating with respect to A and τ is a tracial state. A tracial state
+is a state |τ ⟩ ∈ H satisfying
+
+                            ⟨τ | OP |τ ⟩ = ⟨τ | PO |τ ⟩ ,   ∀O, P ∈ A                  (2.17)
+
+and each tracial state defines a trace function on A:
+
+                                      TrA (O) ≡ ⟨τ | O |τ ⟩ .                          (2.18)
+
+The trace function is unique up to a rescaling which may contributes to the algebraic von
+Neumann entropy an additional constant. Such constant does not cause the ambiguity of
+the algebraic von Neumann entropy, since only the difference between entropies has physical
+meanings. The non-existence of algebraic von Neumann entropy in factors of type III is
+due to the non-existence of tracial state or trace function.
+    A useful property of the tracial state is
+
+Proposition 2.19. In factors of type I/II, we have a tracial state τ such that
+
+                                          ∆τ |ψ = ρ−1
+                                                   ψ;A .                               (2.19)
+
+For all states ψ.
+
+    We can substitute it into (2.16) and find that the algebraic von Neumann entropy
+coincides with the usual von Neumann entropy defined in (2.15).
+
+
+3   Page transition via AQEC with complementary recovery
+
+Let us give more details about the formulae (1.1) and (1.2). We first denote the Hilbert
+space over a Cauchy slice describing an evaporating black in the complete quantum gravity
+description as Hqg , and its semi-classical approximation is denoted as Hsc which excludes
+
+
+
+
+                                              – 10 –
+quantum gravitational effects, i.e. there exists no gravitational degrees of freedom in Hsc .
+As shown in Fig.1, Hsc is factorized as follows,
+
+                                     Hsc = HI∪R
+                                            sc     sc
+                                                ⊗ HX  ,                                   (3.1)
+
+where HI∪R
+         sc  ≡ HΣ  sc
+                     Rad ∪ΣIsland
+                                  , HX
+                                     sc ≡ Hsc are the Hilbert spaces of quantum fields on
+                                           ΣX
+ΣRad ∪ ΣIsland , ΣX in the semi-classical description, respectively. On the other hand, the
+complete quantum gravity description also admits a decomposition between the evaporating
+black hole and its Hawking radiation,
+                                           qg     qg
+                                    Hqg = HRad ⊗ HBH .                                    (3.2)
+
+     Now consider a state ρ̃ on Hsc as a semi-classical approximation of the true state ρ
+describing the black hole on Hqg , we use ρ̃I∪R to denote the reduced density operator of
+ρ̃ after tracing out the degrees of freedom in HX sc . Similarly, we can define ρ̃ , ρ
+                                                                                  X Rad , ρBH .
+Then the formulae (1.1) and (1.2) can be rewritten as
+                                                                                   
+                            AX                                              AX
+  S(ρRad ) = minX extX            + S(ρ̃I∪R ) , S(ρBH ) = minX extX             + S(ρ̃X ) ,
+                            4G                                              4G
+                                                                                          (3.3)
+where S(·) is the von Neumann entropy evaluated in the respective Hilbert space. One
+can compare the formulae (3.3) with the statement 4 in the theorem 2.1 and see that they
+share the same form when the solution with non-vanishing island is dominant, i.e. after
+the Page time, which instructs us to explore whether other statements in the theorem 2.1
+have their counterparts in the case of black hole evaporation. First of all, we can naturally
+                 qg      qg
+regard Hqg = HRad    ⊗ HBH   as the physical space and Hsc = HI∪R sc ⊗ Hsc as the code space.
+                                                                         X
+What follows is that there exists an isometry V : Hsc → Hqg which induces two quantum
+channels:                                                        
+                            N : ρ̃I∪R 7→ ρRad ≡ TrBH V ρ̃I∪R V † ,
+                                                                                        (3.4)
+                            N ′ : ρ̃X 7→ ρBH ≡ TrRad V ρ̃X V † ,
+
+then for the theorem 2.1 to be applicable, we need to argue that
+                                       qg                        qg
+                            sc
+                       dim HI∪R ≤ dim HRad ,           sc
+                                                  dim HX  ≤ dim HBH                       (3.5)
+
+should hold simultaneously. The first condition in (3.5) is already verified in [13]. The
+main argument is that, the island region and the radiation region are maximally entangled
+such that dim HI∪Rsc   should coincide with the dimension of Hawking radiation in the semi-
+classical description, which is less than the dimension of Hawking radiation in the complete
+                                       qg
+quantum gravity description dim HRad       since the former excludes gravitational degrees of
+freedom. As for the second condition in (3.5), we assume the central dogma [6, 35, 36]:
+
+   • for an external observer, a black hole can be treated as an ordinary quantum system
+     with a finite number of degrees of freedom Ah /(4G) where Ah is the area of black hole
+     horizon, and its evolution is unitary.
+
+
+
+
+                                            – 11 –
+Since the island boundary X is approximate to the black hole horizon, the central dogma
+implies that their areas are at the same order such that
+                                                     
+                                         qg        AX
+                                   dim HBH ∼ O           ,                          (3.6)
+                                                   4G
+
+which is expected to be large due to the gravitational effect of O(G−1 ). On the other hand,
+the semi-classical degrees of freedom on ΣX should be sub-leading at the order O(G0 ), so
+as the von Neumann entropy on ΣX , i.e.
+
+                                                           AX
+                          sc
+                     dim HX  ∼ O (Ssemi-cl (ΣX )) ,           ≫ Ssemi-cl (ΣX ) ,                 (3.7)
+                                                           4G
+then (3.6) together with (3.7) completes our verification for the condition (3.5) to be held
+in black hole evaporation.
+     Now we see that the theorem 2.1 can be applied to the case of black hole evaporation
+after the Page transition, which further implies by the statement 2 that we have equalities
+between relative entropies:
+
+  (After the Page time) Srel (ρ̃I∪R |σ̃I∪R ) = Srel (ρRad |σRad ), Srel (ρ̃X |σ̃X ) = Srel (ρBH |σBH )
+                                                                                                  (3.8)
+for all possible pairs of states ρ, σ. The equalities (3.8) is equivalent to the fact that the
+channels (3.4) are exactly reversible due to the theorem 1.2. However, we do not expect
+(3.8) to hold before the Page transition since during which the solution with vanishing
+island is dominant. Therefore, the Page transition should correspond to a transition of the
+exactness for channel recovery. Equivalently we use the theorem 1.2 to have
+                                                                 
+                                                                 > δ, if t < tP
+                                                                 
+                                                                 
+                Srel (ρ̃I∪R (t)|σ̃I∪R (t)) − Srel (ρRad (t)|σRad (t))    = δ, if t = tP ,
+                                                                        
+                                                                        ≤ δ, if t > t
+                                                                        
+                                                                                       P
+                                                                                                (3.9)
+                                                                        > ϵ, if t < tP
+                                                                        
+                                                                        
+                     Srel (ρ̃X (t)|σ̃X (t)) − Srel (ρBH (t)|σBH (t))     = ϵ, if t = tP .
+                                                                        
+                                                                        ≤ ϵ, if t > t
+                                                                        
+                                                                                       P
+
+
+for some infinitesimal values δ, ϵ as threshold values in approximate quantum error correc-
+tion. These values are related to the properties of the black hole, and the author in [13]
+has given an example of calculating these threshold values. Since they are not essential to
+our present discussions, we will simply assume that they vanish hereafter.
+     The above arguments by simply applying the reconstruction theorem 2.1 may not be
+convincing for some readers, so we take another detour to directly prove that (3.9) holds
+for the black hole evaporation. We start with the argument that the entropy of radiation
+is a competition between two saddle-point solutions,
+
+                                                                                                (3.10)
+                                               island no-island
+                                S(ρRad ) = min SRad   , SRad     ,
+
+
+
+
+                                                 – 12 –
+where
+                                                    AX
+                                        island
+                                       SRad    =       + S(ρ̃I∪R ),                              (3.11)
+                                                    4G
+for a non-vanishing island solution X. We define
+
+                                                island
+                                 ∆S1 (ρ̃(t)) ≡ SRad    (t) − S(ρRad (t)),                        (3.12)
+
+which is non-vanishing and monotonically decreasing before tP , then vanishes after tP :
+                              (                                           (
+                               > 0, if t < tP           d∆S1 (ρ̃(t))       < 0, if t < tP
+                ∆S1 (ρ̃(t))                         ,                                       ,    (3.13)
+                                 = 0, if t ≥ tP            dt              = 0, if t ≥ tP
+
+see also Fig.3. Our next step is to rewrite the difference between relative entropies in (3.9)
+in terms of ∆S1 (ρ(t)), which is already done in [13] and gives the following result,
+
+
+                                                                  Z ρ̃
+        Srel (ρ̃I∪R (t)|σ̃I∪R (t)) − Srel (ρRad (t)|σRad (t)) =           d∆1 S(σ̃) − ∆1 S(ρ̃)   (3.14)
+                                                                      0
+
+where d∆1 S(σ̃) ≡ ∆1 S(σ̃ + dσ̃) − ∆1 S(σ̃) and the first term is integrated for dσ̃. The
+positivity of the RHS is guaranteed by the monotonicity in the theorem 1.2. And due to
+the properties of (3.13), the RHS monotonically decreases and then vanishes after tP , which
+gives the proof of one half of (3.9). Similarly, one can define
+
+                                                 island
+                                  ∆S2 (ρ̃(t)) ≡ SBH     (t) − S(ρX (t)),                         (3.15)
+
+and then follow the same pattern to complete the proof of the other half of (3.9).
+
+
+
+
+                                    island
+                                   SRad                   no-island
+                                                         SRad
+
+
+
+
+                  ∆S
+
+                                                             SRad
+                         t1 t2                 tP                                           t
+
+Figure 3: ∆S (green line) is defined as the difference between SRad
+                                                                 island and S
+                                                                              Rad , which
+monotonically decreases until the Page time tP , i.e. we have ∆S(t2 ) ≤ ∆S(t1 ) for t1 ≤
+t2 ≤ tP .
+
+
+
+
+                                                    – 13 –
+4       An algebraic description in factors of type I/II
+
+Algebraically, we consider von Neumann factors of type I/II describing an evaporating black
+                                                         sc , Hsc , Hqg , Hqg respectively.
+hole, and we introduce AI∪R , AX , ARad , ABH to act on HI∪R    X    Rad    BH
+We can further assume
+                                     sc
+                           AI∪R = B(HI∪R ) ⊗ 1X ,           AX = 1I∪R ⊗ B(HX
+                                                                           sc
+                                                                              ),
+                                                                                                        (4.1)
+                                     qg
+                           ARad = B(HRad ) ⊗ 1BH ,          ABH = 1Rad ⊗ B(HBH
+                                                                            qg
+                                                                               ),
+
+such that
+                                        A′I∪R = AX ,       A′Rad = ABH ,                                (4.2)
+and the algebraic generalization of (3.9) is given by
+                                                                   
+                                                                   > δ, if t < tP
+                                                                   
+                                                                   
+                          Srel (Ψ| e AI∪R ) − Srel (Ψ|Φ; ARad )
+                                e Φ;                                = δ, if t = tP ,
+                                                                   
+                                                                   ≤ δ, if t > t
+                                                                   
+                                                                                  P
+                                                                                                       (4.3)
+                                                                   > ϵ, if t < tP
+                                                                   
+                                                                   
+                             Srel (Ψ| e AX ) − Srel (Ψ|Φ; ABH )
+                                   e Φ;                             = ϵ, if t = tP
+                                                                   
+                                                                   ≤ ϵ, if t > t
+                                                                   
+                                                                                  P
+
+
+for all states Ψ,
+               e Φe on Hsc and Ψ ≡ V Ψ,   e Φ ≡ VΦ  e on Hqg , where the relative entropy is
+promoted to be the algebraic relative entropy. We omit the time-dependence of the states
+for simplicity, e.g. we write Ψe to refer to Ψ(t).
+                                             e       The algebraic version (4.3) of the probe
+for the quantum channels to be exactly reversible can be similarly argued to hold when
+applying the algebraic version of the reconstruction theorem [18, 19]. Instead, here we
+will give explicit calculations as in the end of the last section. First, we promote the von
+Neumann entropy in (3.3) to be the algebraic von Neumann entropy, such that
+
+                                                                                         (4.4)
+                                                island no-island
+                            S(Ψ; ARad ) = min SRad     , SRad      ,
+
+where after the Page time we have4
+                                                   island
+                                    S(Ψ; ARad ) = SRad    ≡ S(Ψ;
+                                                              e AI∪R ),                                 (4.6)
+
+for a non-vanishing island solution X. We define
+                                                island
+                                  ∆S1 (Ψ(t)) ≡ SRad    (t) − S(Ψ(t); ARad ),                            (4.7)
+    4
+        Naively, we expect the algebraic version of the non-vanishing island solution is
+                                            island     AX     e AI∪R ).
+                                           SRad    =      + S(Ψ;                                         (4.5)
+                                                       4G
+However, the fact that the algebraic von Neumann entropy is well-defined in factors of type I/II is equivalent
+to saying the entropy does not diverge, while the area term on the RHS usually contributes the leading
+divergence. It is then expected that the algebraic von Neumann entropy should correspond to the usual
+von Neumann entropy after a subtraction of the area term, i.e. S(Ψ; ARad ) ∼ S(ρRad ) − A4G         X
+                                                                                                       for the
+non-vanishing island solution. See also discussions in [13, 61].
+
+
+
+
+                                                       – 14 –
+which is non-vanishing and monotonically decreasing before tP , then vanishes after tP :
+                         (                              (
+                          > 0, if t < tP    d∆S1 (Ψ(t)) < 0, if t < tP
+              ∆S1 (Ψ(t))                 ,                                 .          (4.8)
+                          = 0, if t ≥ tP         dt       = 0, if t ≥ tP
+
+Therefore,
+                            S(Ψ; ARad ) = S(Ψ;
+                                            e AI∪R ) − ∆S1 (Ψ).                            (4.9)
+Similarly, we define ∆S2 (Ψ(t)) by
+
+                             S(Ψ; ABH ) = S(Ψ;
+                                            e AX ) − ∆S2 (Ψ),                             (4.10)
+
+which shares the same property as in (4.8). Recall that the splittable condition 2.17 and
+the property of the trace in (2.19) give
+                                              −1
+                            ∆Φ|
+                             eΨ      e I∪R ⊗ ρ e ′
+                                e = ρΦ;A                   = ∆−1e ⊗ ∆′τe|Ψ
+                                                 Ψ;AI∪R         τe|Φ
+                                                                                          (4.11)
+                                                                         e
+                                                   ′
+                       ⇒    hΦ|
+                             eΨ e = − log ∆Φ|
+                                           eΨ         e − hτe|Φ
+                                              e = hτe|Ψ       e,
+
+where we define the tracial state τe on Hsc , and ∆Φ|
+                                                   eΨ e , hΦ|
+                                                           eΨ e are the relative modular operator
+and the relative modular Hamiltonian on AI∪R respectively. Note that ∆′ e and h′ e are
+                                                                                  τe|Ψ    τe|Ψ
+the relative modular operator and the relative modular Hamiltonian on AX respectively,
+due to (4.2). Similarly, we have
+
+                                     hΦ|Ψ = h′τ |Ψ − hτ |Φ ,                              (4.12)
+
+where τ is the tracial state on Hqg , and hΦ|Ψ , h′τ |Ψ are the relative modular Hamiltonians on
+ARad , ABH respectively. Therefore, according to the definitions (2.14) and (2.16) we have
+
+                   Srel (Ψ| e AI∪R ) − Srel (Ψ|Φ; ARad )
+                         e Φ;
+                   D            E
+                  = Ψe he e Ψ  e − Ψ hΦ|Ψ Ψ
+                          Φ|Ψ
+                                                        D           E
+                  =S(Ψ; ABH ) − S(Ψ;
+                                  e AX ) + Ψ hτ |Φ Ψ − Ψ  e h e Ψ
+                                                             τe|Φ
+                                                                  e                       (4.13)
+                   D                       E
+                           †
+                     e V hτ |Φ V − h e Ψ    e − ∆S2 (Ψ)
+                  = Ψ                 τe|Φ
+                                        
+                         †
+                    e V hτ |Φ V − hτe|Φ
+                  =ωΨ                  e − ∆S2 (Ψ)
+
+
+where in the third equality we use Ψ ≡ V Ψ e and (4.10). Next, we consider a variation of
+state Ψ
+      e along the direction of Φ
+                               e with an infinitesimal value ε:
+
+                                                    e − ωΦ
+                                   ωΦe ′ = ωΦe + ε(ωΨ    e ).                             (4.14)
+
+We can use such variation to represent a short period of the black hole evaporation, and
+we write Φ,  e ′ as the states at time t1 , t2 respectively, where t1 and t2 are expected to be
+           e Φ
+close, see Fig.3. Then the algebraic entropy difference for AI∪R is given by
+                    e ′ ; AI∪R ) − S(Φ;
+                  S(Φ                e AI∪R ) = ε(ω e − ω e )(h e )
+                                                   Ψ     Φ     τe|Φ
+                                                                                          (4.15)
+                                               = ε ωΨ      e ) + εS(Φ; AI∪R ).
+                                                    e (hτe|Φ
+                                                                    e
+
+
+
+
+                                             – 15 –
+On the other hand, we find that ωΦ ≡ ωV Φe implies for any operator O,
+
+                    ωΦ′ (O) = ωΦe ′ (V † OV )
+                                                   †
+                            = ωΦe + ε(ωΨ   e − ωΦ
+                                                e ) (V OV )
+                            = ωΦe (V † OV ) + ε(ωΨ   †
+                                                 e (V OV ) − ωΦ
+                                                                  †
+                                                              e (V OV ))                   (4.16)
+                            = ωΦ (O) + ε(ωΨ (O) − ωΦ (O))
+                            = [ωΦ + ε(ωΨ − ωΦ )] (O)
+
+i.e. we have
+                                    ωΦ′ = ωΦ + ε(ωΨ − ωΦ )                                 (4.17)
+
+such that the algebraic entropy difference for ARad is given by
+
+                  S(Φ′ ; ARad ) − S(Φ; ARad ) = ε(ωΨ − ωΦ )(hτ |Φ )
+                                                                                           (4.18)
+                                               = ε ωΨ (hτ |Φ ) + εS(Φ; ARad ).
+
+Note we also have (4.9) such that
+
+ S(Φ′ ; ARad ) − S(Φ; ARad ) = S(Φ
+                                 e ′ ; AI∪R ) − S(Φ;
+                                                  e AI∪R ) + ∆S1 (Φ(t1 )) − ∆S1 (Φ(t2 )). (4.19)
+
+Combining it with (4.15) and (4.18), we have
+
+ ε ωΨ (hτ |Φ ) + εS(Φ; ARad ) = ε ωΨ      e ) + εS(Φ; AI∪R ) + ∆S1 (Φ(t1 )) − ∆S1 (Φ(t2 )), (4.20)
+                                   e (hτe|Φ
+                                                   e
+
+which further implies
+                                                    
+          †
+ ⇒ ε ωΨ                 e = ε S(Φ; AI∪R ) − S(Φ; ARad ) + ∆S1 (Φ(t1 )) − ∆S1 (Φ(t2 ))
+      e V hτ |Φ V − hτe|Φ
+                                e
+
+                               = ε∆S1 (Φ(t1 )) + ∆S1 (Φ(t1 )) − ∆S1 (Φ(t2 ))
+                                                                                           (4.21)
+where we use (4.9) in the second equality. Finally, we continue (4.13) and arrive at
+
+               Srel (Ψ| e AI∪R ) − Srel (Ψ|Φ; ARad )
+                     e Φ;
+                                        
+                          †
+               = ωΨ  e V hτ |Φ V − hτe|Φe − ∆S2 (Ψ(t1 ))                                   (4.22)
+                 1
+                = [∆S1 (Φ(t1 )) − ∆S1 (Φ(t2 ))] + ∆S1 (Φ(t1 )) − ∆S2 (Ψ(t1 )).
+                 ε
+
+      As expected, the result is a sum of different ∆S1,2 with the property (4.8) that they
+are non-vanishing and monotonically decreasing before tP , then vanishes after tP . Mono-
+tonicity ensures that the term with coefficient 1/ε is non-negative (see also Fig.3), and it
+is comparably greater than the other terms due to ε → 0. Therefore, we conclude that
+Srel (Ψ| e AI∪R ) − Srel (Ψ|Φ; ARad ) satisfies (3.9). Similar calculations can be performed to
+      e Φ;
+show that the other half of (3.9) also holds, which completes our arguments.
+
+
+
+
+                                             – 16 –
+5   Discussions
+
+In the paper, we have argued an algebraic generalization of a probe for the Page transition
+for von Neumann factors of type I/II:
+                                                         
+                                                         > δ,
+                                                         
+                                                                if t < tP
+                    Srel (Ψ| e AI∪R ) − Srel (Ψ|Φ; ARad ) = δ,
+                          e Φ;                                   if t = tP ,
+                                                         
+                                                                 if t > tP
+                                                         
+                                                         ≤ δ,
+                                                                                          (5.1)
+                                                         > ϵ,
+                                                         
+                                                                if t < tP
+                      Srel (Ψ| e AX ) − Srel (Ψ|Φ; ABH ) = ϵ,
+                             e Φ;                                if t = tP
+                                                         
+                                                                 if t > tP
+                                                         
+                                                         ≤ ϵ,
+
+
+which can also be regarded as an algebraic generalization of the island formula describing
+the evaporating black hole. Similar ideas are also demonstrated in [30, 31], where the
+author have introduced a quantity called Murray von Neumann parameter to describe the
+algebraic version of the Page curve for type II black holes. The author has shown that, the
+Page curve describes a phase transition with the transfer of information as order parameter,
+which coincides with the fact that (5.1) describes a phase transition of the exactness for
+channel recovery between different regions of the black hole.
+     Note that for factors of type III, these are some issues regarding the definitions in
+describing the Page transition. Especially, the island formulae (1.1) and (1.2) are no longer
+valid due to the ill-defined von Neumann entropy in factors of type III. Technically, one
+may introduces the crossed product to construct type II factors from the original type III
+factors, see also discussions in [30, 31]. On the other hand, one main advantage of (5.1) is
+exactly that the algebraic relative entropy is well-defined in a generic factor, such that (5.1)
+is expected to hold in describing type III black holes. Although the direct proof of (5.1)
+in type III factors is yet to be established, there are hints for the transfer of information
+in such cases. For example, the authors in [32] have interpreted the Page transition as the
+transfer of an emergent type III subalgebra of high complexity operators from the black
+hole to radiation. We expect to investigate more formal discussions about (5.1) on these
+issues in the future.
+
+
+
+
+Acknowledgments
+
+HZ thanks Qiang Wen, Mingshuai Xu, Yiwei Zhong for helpful discussions. HZ is sup-
+ported by SEU Innovation Capability Enhancement Plan for Doctoral Students (Grant No.
+CXJH_SEU 24137). This work is respectfully dedicated to the memory of HZ’s grandfa-
+ther, who passed away peacefully in January of 2026.
+
+
+
+
+                                            – 17 –
+References
+ [1] D.N. Page, Information in black hole radiation, Phys. Rev. Lett. 71 (1993) 3743
+     [hep-th/9306083].
+ [2] D.N. Page, Time Dependence of Hawking Radiation Entropy, JCAP 09 (2013) 028
+     [1301.4995].
+ [3] S.D. Mathur, The Information paradox: A Pedagogical introduction, Class. Quant. Grav. 26
+     (2009) 224001 [0909.1038].
+ [4] A. Almheiri, D. Marolf, J. Polchinski and J. Sully, Black Holes: Complementarity or
+     Firewalls?, JHEP 02 (2013) 062 [1207.3123].
+ [5] G. Penington, Entanglement Wedge Reconstruction and the Information Paradox, JHEP 09
+     (2020) 002 [1905.08255].
+ [6] A. Almheiri, T. Hartman, J. Maldacena, E. Shaghoulian and A. Tajdini, The entropy of
+     Hawking radiation, Rev. Mod. Phys. 93 (2021) 035002 [2006.06872].
+ [7] S.W. Hawking, Particle Creation by Black Holes, Commun. Math. Phys. 43 (1975) 199.
+ [8] S.W. Hawking, Breakdown of Predictability in Gravitational Collapse, Phys. Rev. D 14
+     (1976) 2460.
+ [9] A. Almheiri, R. Mahajan, J. Maldacena and Y. Zhao, The Page curve of Hawking radiation
+     from semiclassical geometry, JHEP 03 (2020) 149 [1908.10996].
+[10] G. Penington, S.H. Shenker, D. Stanford and Z. Yang, Replica wormholes and the black hole
+     interior, JHEP 03 (2022) 205 [1911.11977].
+[11] A. Almheiri, T. Hartman, J. Maldacena, E. Shaghoulian and A. Tajdini, Replica Wormholes
+     and the Entropy of Hawking Radiation, JHEP 05 (2020) 013 [1911.12333].
+[12] A. Almheiri, N. Engelhardt, D. Marolf and H. Maxfield, The entropy of bulk quantum fields
+     and the entanglement wedge of an evaporating black hole, JHEP 12 (2019) 063 [1905.08762].
+[13] H. Zhong, Probing the Page transition via approximate quantum error correction, JHEP 01
+     (2025) 086 [2408.15104].
+[14] A. Almheiri, X. Dong and D. Harlow, Bulk Locality and Quantum Error Correction in
+     AdS/CFT, JHEP 04 (2015) 163 [1411.7041].
+[15] X. Dong, D. Harlow and A.C. Wall, Reconstruction of Bulk Operators within the
+     Entanglement Wedge in Gauge-Gravity Duality, Phys. Rev. Lett. 117 (2016) 021601
+     [1601.05416].
+[16] D. Harlow, The Ryu–Takayanagi Formula from Quantum Error Correction, Commun. Math.
+     Phys. 354 (2017) 865 [1607.03901].
+[17] H. Kamal and G. Penington, The Ryu-Takayanagi Formula from Quantum Error Correction:
+     An Algebraic Treatment of the Boundary CFT, 1912.02240.
+[18] M.J. Kang and D.K. Kolchmeyer, Holographic Relative Entropy in Infinite-Dimensional
+     Hilbert Spaces, Commun. Math. Phys. 400 (2023) 1665 [1811.05482].
+[19] M. Xu and H. Zhong, Adding the algebraic Ryu-Takayanagi formula to the algebraic
+     reconstruction theorem, 2411.06361.
+
+
+
+
+                                             – 18 –
+[20] J. Crann and M.J. Kang, Algebraic approach to spacetime bulk reconstruction, 2412.00298.
+[21] J.M. Maldacena, The Large N limit of superconformal field theories and supergravity, Adv.
+     Theor. Math. Phys. 2 (1998) 231 [hep-th/9711200].
+[22] E. Witten, Anti-de Sitter space and holography, Adv. Theor. Math. Phys. 2 (1998) 253
+     [hep-th/9802150].
+[23] S.S. Gubser, I.R. Klebanov and A.M. Polyakov, Gauge theory correlators from noncritical
+     string theory, Phys. Lett. B 428 (1998) 105 [hep-th/9802109].
+[24] M.J. Kang and D.K. Kolchmeyer, Entanglement wedge reconstruction of infinite-dimensional
+     von Neumann algebras using tensor networks, Phys. Rev. D 103 (2021) 126018 [1910.06328].
+[25] T. Faulkner, The holographic map as a conditional expectation, 2008.04810.
+[26] E. Gesteau and M.J. Kang, The infinite-dimensional HaPPY code: entanglement wedge
+     reconstruction and dynamics, 2005.05971.
+[27] E. Gesteau and M.J. Kang, Thermal states are vital: Entanglement Wedge Reconstruction
+     from Operator-Pushing, 2005.07189.
+[28] C. Akers and G. Penington, Quantum minimal surfaces from quantum error correction,
+     SciPost Phys. 12 (2022) 157 [2109.14618].
+[29] E. Gesteau, Large N von Neumann Algebras and the Renormalization of Newton’s Constant,
+     Commun. Math. Phys. 406 (2025) 40 [2302.01938].
+[30] C. Gomez, The Algebraic Page Curve, 2403.09165.
+[31] C. Gomez, Duality and Black Hole Evaporation, 2405.08435.
+[32] N. Engelhardt and H. Liu, Algebraic ER=EPR and complexity transfer, JHEP 07 (2024) 013
+     [2311.04281].
+[33] J. van der Heijden and E. Verlinde, An Operator Algebraic Approach To Black Hole
+     Information, 2408.00071.
+[34] M. Ohya and D. Petz, Quantum entropy and its use, Springer Science & Business Media
+     (2004).
+[35] A. Strominger and C. Vafa, Microscopic origin of the Bekenstein-Hawking entropy, Phys.
+     Lett. B 379 (1996) 99 [hep-th/9601029].
+[36] A. Dabholkar, J. Gomes and S. Murthy, Nonperturbative black hole entropy and Kloosterman
+     sums, JHEP 03 (2015) 074 [1404.0033].
+[37] D. Harlow, TASI Lectures on the Emergence of Bulk Physics in AdS/CFT, PoS TASI2017
+     (2018) 002 [1802.01040].
+[38] B. Czech, J.L. Karczmarek, F. Nogueira and M. Van Raamsdonk, The Gravity Dual of a
+     Density Matrix, Class. Quant. Grav. 29 (2012) 155009 [1204.1330].
+[39] A. Hamilton, D.N. Kabat, G. Lifschytz and D.A. Lowe, Holographic representation of local
+     bulk operators, Phys. Rev. D 74 (2006) 066009 [hep-th/0606141].
+[40] I.A. Morrison, Boundary-to-bulk maps for AdS causal wedges and the Reeh-Schlieder property
+     in holography, JHEP 05 (2014) 053 [1403.3426].
+[41] R. Bousso, S. Leichenauer and V. Rosenhaus, Light-sheets and AdS/CFT, Phys. Rev. D 86
+     (2012) 046009 [1203.6619].
+
+
+
+
+                                             – 19 –
+[42] R. Bousso, B. Freivogel, S. Leichenauer, V. Rosenhaus and C. Zukowski, Null Geodesics,
+     Local CFT Operators and AdS/CFT for Subregions, Phys. Rev. D 88 (2013) 064057
+     [1209.4641].
+[43] V.E. Hubeny and M. Rangamani, Causal Holographic Information, JHEP 06 (2012) 114
+     [1204.1698].
+[44] A.C. Wall, Maximin Surfaces, and the Strong Subadditivity of the Covariant Holographic
+     Entanglement Entropy, Class. Quant. Grav. 31 (2014) 225007 [1211.3494].
+[45] M. Headrick, V.E. Hubeny, A. Lawrence and M. Rangamani, Causality & holographic
+     entanglement entropy, JHEP 12 (2014) 162 [1408.6300].
+[46] D.L. Jafferis, A. Lewkowycz, J. Maldacena and S.J. Suh, Relative entropy equals bulk relative
+     entropy, JHEP 06 (2016) 004 [1512.06431].
+[47] J. Polchinski, L. Susskind and N. Toumbas, Negative energy, superluminosity and holography,
+     Phys. Rev. D 60 (1999) 084006 [hep-th/9903228].
+[48] A. Almheiri, X. Dong and D. Harlow, Bulk locality and quantum error correction in
+     AdS/CFT, Journal of High Energy Physics 2015 (2015) .
+[49] S. Ryu and T. Takayanagi, Holographic derivation of entanglement entropy from AdS/CFT,
+     Phys. Rev. Lett. 96 (2006) 181602 [hep-th/0603001].
+[50] V.E. Hubeny, M. Rangamani and T. Takayanagi, A Covariant holographic entanglement
+     entropy proposal, JHEP 07 (2007) 062 [0705.0016].
+[51] H. Casini, M. Huerta and R.C. Myers, Towards a derivation of holographic entanglement
+     entropy, Journal of High Energy Physics 2011 (2011) .
+[52] A. Lewkowycz and J. Maldacena, Generalized gravitational entropy, JHEP 08 (2013) 090
+     [1304.4926].
+[53] T. Nishioka, Entanglement entropy: holography and renormalization group, Rev. Mod. Phys.
+     90 (2018) 035007 [1801.10352].
+[54] T. Faulkner, A. Lewkowycz and J. Maldacena, Quantum corrections to holographic
+     entanglement entropy, JHEP 11 (2013) 074 [1307.2892].
+[55] N. Engelhardt and A.C. Wall, Quantum Extremal Surfaces: Holographic Entanglement
+     Entropy beyond the Classical Regime, JHEP 01 (2015) 073 [1408.3203].
+[56] V.F. Jones, “Von neumann algebras.” https://math.berkeley.edu/ vfr/MATH20909/
+     VonNeumann2009.pdf, 2009.
+[57] J. Sorce, Notes on the type classification of von Neumann algebras, Rev. Math. Phys. 36
+     (2024) 2430002 [2302.01958].
+[58] M. Reed, B. Simon, B. Simon and B. Simon, Methods of modern mathematical physics,
+     vol. 1, Academic press New York (1972).
+[59] M. Takesaki, Tomita’s theory of modular Hilbert algebras and its applications, vol. 128,
+     Springer (2006).
+[60] E. Witten, APS Medal for Exceptional Achievement in Research: Invited article on
+     entanglement properties of quantum field theory, Rev. Mod. Phys. 90 (2018) 045003
+     [1803.04993].
+
+
+
+
+                                              – 20 –
+[61] K. Jensen, J. Sorce and A.J. Speranza, Generalized entropy for general subregions in
+     quantum gravity, JHEP 12 (2023) 020 [2306.01837].
+[62] T. Faulkner and A.J. Speranza, Gravitational algebras and the generalized second law, JHEP
+     11 (2024) 099 [2405.00847].
+[63] H. Araki, Relative entropy of states of von neumann algebras, Publications of the Research
+     Institute for Mathematical Sciences 11 (1975) 809.
+[64] H. Araki, Inequalities in von neumann algebras, Les rencontres physiciens-mathématiciens de
+     Strasbourg-RCP25 22 (1975) 1.
+[65] I.E. Segal, A note on the concept of entropy, Journal of Mathematics and Mechanics (1960)
+     623.
+[66] R. Longo and E. Witten, A note on continuous entropy, Pure Appl. Math. Quart. 19 (2023)
+     2501 [2202.03357].
+
+
+
+
+                                             – 21 –
+

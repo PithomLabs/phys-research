@@ -1,0 +1,1235 @@
+                                                     Published for SISSA by        Springer
+                                                                     Received: April 22, 2020
+                                                                     Accepted: April 29, 2020
+                                                                     Published: May 20, 2020
+
+
+
+
+                                                                                                JHEP05(2020)091
+Page curve for an evaporating black hole
+
+
+
+Friðrik Freyr Gautason,a,b Lukas Schneiderbauer,b Watse Sybesmab
+and Lárus Thorlaciusb
+a
+  Instituut voor Theoretische Fysica, KU Leuven,
+  Celestijnenlaan 200D, 3001 Leuven, Belgium
+b
+  Science Institute University of Iceland,
+  Dunhaga 3, 107 Reykjavík, Iceland
+    E-mail: ffg@kuleuven.be, lukas.schneiderbauer@gmail.com, watse@hi.is,
+    lth@hi.is
+
+Abstract: A Page curve for an evaporating black hole in asymptotically flat spacetime
+is computed by adapting the Quantum Ryu-Takayanagi (QRT) proposal to an analytically
+solvable semi-classical two-dimensional dilaton gravity theory. The Page time is found to
+be one third of the black hole lifetime, at leading order in semi-classical corrections. A
+Page curve is also obtained for a semi-classical eternal black hole, where energy loss due to
+Hawking evaporation is balanced by an incoming energy flux.
+
+Keywords: 2D Gravity, Black Holes, AdS-CFT Correspondence
+
+ArXiv ePrint: 2004.00598
+
+
+
+
+Open Access, c The Authors.
+                                                    https://doi.org/10.1007/JHEP05(2020)091
+Article funded by SCOAP3 .
+Contents
+
+1 Introduction                                                                           1
+
+2 Page curve from QRT                                                                    3
+
+3 The model                                                                              5
+  3.1 Coupling to matter                                                                 6
+  3.2 Semi-classical black holes                                                         8
+
+
+
+
+                                                                                              JHEP05(2020)091
+4 Generalized entropy                                                                   11
+
+5 Page curves                                                                           12
+  5.1 Eternal black hole                                                                12
+  5.2 Dynamical black hole                                                              15
+      5.2.1 Island configuration                                                        16
+      5.2.2 No-island configuration                                                     18
+
+6 Discussion                                                                            19
+
+
+
+
+1       Introduction
+
+If black hole evaporation is a unitary process, the entanglement entropy between the out-
+going radiation and the quantum state associated to the remaining black hole is expected
+to follow the so-called Page curve as a function of time [1, 2]. Early on, the entanglement
+entropy is then a monotonically increasing function of time which closely tracks the coarse
+grained thermal entropy of the radiation that has been emitted up to that point. This
+changes when the coarse grained entropy of the radiation exceeds the coarse grained en-
+tropy associated to the remaining black hole, at which point the entanglement entropy is
+limited by the black hole entropy and becomes a decreasing function of time. The time
+when the entanglement entropy transitions from increasing to decreasing is referred to as
+the Page time. Reproducing the Page curve without explicitly assuming unitarity is an
+important step towards resolving Hawking’s black hole information paradox [3].
+     In a recent breakthrough, a Page curve was computed using semi-classical methods by
+studying black holes in asymptotically anti-de Sitter (AdS) spacetimes coupled to a con-
+formal field theory (CFT) reservoir [4, 5].1 The result hinges on the use of the Quantum
+Ryu-Takayanagi (QRT) formula [7–10] and the existence of extremal hypersurfaces termi-
+nating on so-called islands behind the event horizon [11]. A version of the Page curve can
+also be obtained for eternal AdS black holes, but in this case the islands extend outside
+    1
+        See e.g. [6] for further details on such a setup.
+
+
+
+
+                                                            –1–
+      2Sinit
+
+
+                                                                 nd
+                                                             isla
+                                                          no
+
+       Sinit
+
+
+
+
+                                                                                                  JHEP05(2020)091
+                                                          islan
+                                                               d
+
+
+          0
+
+                0                    tPage                                       tlifetime
+
+                    Figure 1. Page curve for an evaporating RST black hole.
+
+
+the horizon [12]. Explicit computations have for the most part been restricted to two-
+dimensional Jackiw-Teitelboim gravity [5, 11], but see [13] for a discussion of islands in
+higher dimensional AdS black hole spacetimes.
+     In the present paper we demonstrate that the QRT formula can also be applied in the
+context of an evaporating black hole in asymptotically flat spacetime. At leading semi-
+classical order in the model that we use, and for a large initial black hole mass, the Page
+time is found to be one third of the black hole lifetime. This main result is presented in
+figure 1, where the entanglement entropy of the outgoing Hawking radiation that has passed
+beyond a distant spatial reference point is plotted as a function of time registered at the
+reference point.
+     We work with a two-dimensional dilaton gravity model of the type introduced by Callan,
+Giddings, Harvey, and Strominger (CGHS) in [14]. More specifically, the dilaton gravity
+sector is that of the model introduced by Russo, Susskind, and Thorlacius (RST) in [15],
+which remains analytically solvable at the semi-classical level. For the matter sector, we take
+a two-dimensional CFT with a large central charge c  1, but rather than working with a
+large number of free scalar fields as in the CGHS-model, we assume that the conformal mat-
+ter is holographic. This allows us to take advantage of an insight put forward by Almheiri
+et al. [11] in the context of two-dimensional AdS gravity, and use a three-dimensional grav-
+itational dual description to calculate the contribution of the two-dimensional bulk matter
+to the generalized entropy in the QRT formula. In this model, the formation of a black hole
+from collapsing CFT matter into vacuum and its subsequent evaporation can be studied
+analytically. The Hawking radiation emitted in this process naturally propagates towards
+future null infinity. This is in contrast to the AdS setup, where the coupling to a heat
+bath is essential for letting the radiation escape. Our computation in asymptotically flat
+
+
+
+
+                                             –2–
+spacetime thus gives rise to a rather clean physical picture, both from a computational and
+conceptual point of view, and offers evidence that the QRT prescription applies beyond
+asymptotically AdS spacetimes.
+     The QRT prescription can be motivated via a replica trick involving Euclidean worm-
+holes, as explored in [16–20]. Furthermore, the Page curve has been computed from bound-
+ary conformal field theories in [21] and the effect of a quench protocol on the Page curve
+was studied in [22]. Outside the direct scope of black hole physics, Page curves are found to
+be connected to the eigenstate thermalization hypothesis [23] and the study of chaos [24].
+     The paper is organised as follows. In section 2 we review the main result of [4, 6, 11] and
+
+
+
+
+                                                                                                   JHEP05(2020)091
+argue for the validity of the QRT formula in our asymptotically flat spacetime model. Then
+in section 3 we introduce the two-dimensional dilaton gravity model and establish notation.
+Following that, in section 4 we derive the QRT formula for our model. Results for eternal
+black holes are presented in section 5.1 and for a dynamical black hole in section 5.2. In
+section 6 we present some conclusions and outlook.
+
+
+2   Page curve from QRT
+
+Our goal is to compute Page curves for black holes in asymptotically flat spacetime. We
+will do the computation both for an eternal black hole in an asymptotically linear dilaton
+spacetime and for a dynamical black hole formed by the gravitational collapse of matter
+into a linear dilaton vacuum. We follow the holographic approach of [4, 5], which uses the
+quantum Ryu-Takayanagi (QRT) formula
+
+                                         Area(I)
+                                Sgen =           + SBulk [SAI ] .                          (2.1)
+                                          4GN
+
+The first term on the right hand side is the standard Ryu-Takayanagi entropy associated
+to a given subregion A of the spatial manifold on which the CFT in question is defined.
+Here I denotes a codimension two region that penetrates into the dual bulk spacetime and
+is homologous to A. The second term is the von Neumann entropy of bulk quantum fields
+with support inside a spacelike region bounded by A ∪ I.
+     In [4] the system consists of a standard holographic CFT, with Hilbert space HCFT , at
+finite temperature T so that the dual geometry is an asymptotically AdS black hole. The
+CFT is assumed to be coupled to an auxiliary system, denoted by Hrad , where Hawking
+radiation emanating from the black hole is collected. The region A in (2.1) above is taken
+to be the entire boundary where the CFT is defined, i.e. HA = HCFT and HĀ = Hrad ,
+and one looks for regions I, homologous to A, for which the generalized entropy (2.1) takes
+extremal values. The QRT prescription for entanglement entropy between A and Ā, or
+in this case the entanglement entropy between the black hole and the Hawking radiation,
+is then given by the smallest extremal value of (2.1). At early times the minimum value
+corresponds to the “empty” surface I = ∅ and the generalized entropy Sgen is dominated by
+the von Neumann entropy of the Hawking radiation which grows monotonically with time.
+Eventually another extremum, involving an “island” I which lies just inside the horizon,
+
+
+
+
+                                              –3–
+takes over.2 For this latter extremum, Sgen is dominated by the area term in (2.1) and is
+therefore given approximately by the Bekenstein-Hawking entropy of the black hole. The
+end result is the Page curve,
+                                       Sgen = min(Srad , SBH ) ,                                   (2.2)
+
+and a Page time defined as the time when the two extrema trade places providing the
+smallest extremal value of Sgen .
+     In this paper we study black hole geometries in 1+1 dimensional dilaton gravity, which
+are asymptotically flat with an asymptotically linear dilaton field. Linear dilaton spacetimes
+are familiar from constructions in string theory where they arise as holographic duals to
+
+
+
+
+                                                                                                            JHEP05(2020)091
+some non-conformal theories. A prominent example is given by the near-horizon limit of
+NSNS fivebranes, which is a spacetime of the form
+
+                                          R1,5 × Rφ × S 3 ,                                        (2.3)
+
+where Rφ denotes the direction along which the string theory dilaton is linear. This back-
+ground is an α0 -exact solution of heterotic string theory [25]. The dual field theory in this
+case is N = (1, 1) supersymmetric Yang-Mills theory in six dimensions, which does not
+flow to a conventional QFT in the UV but rather to a non-local theory called little string
+theory [26]. The dilaton gravity models studied in the present paper are in fact closely
+related to the above fivebrane background, as explained for example in [27]. However, this
+will not play an important role in our discussion beyond exemplifying that linear dilaton
+spacetimes can serve as holographic backgrounds for a class of non-conformal theories.
+     The holographic dictionary for such linear dilaton backgrounds works in a similar way
+as in standard AdS/CFT, except the dual variables are defined in the asymptotic linear
+dilaton region instead of the AdS region in conventional holography (see [26] for details).
+In our computation we will place a timelike “anchor curve” at a fixed radial position far
+outside the black hole. In the gravitational theory the Hawking radiation emitted from the
+black hole will pass through the anchor curve as depicted in figure 2. Hence, we do not need
+to artificially split our system into a QFT dual to the black hole plus an auxiliary system
+where the Hawking quanta are collected as in an AdS background. Instead the split is
+taken care of in a natural way by the anchor curve dividing the system into an “inside” part
+containing the black hole and an “outside” region containing outgoing Hawking radiation.
+We will compute the entanglement entropy between the radiation that has passed through
+the anchor curve and all that remains inside, including the black hole itself, and see explicitly
+that it follows a Page curve as a function of time experienced by asymptotic observers who
+remain stationary with respect to the black hole. The challenging aspect of the computation
+is the evaluation of the second term in (2.1) for any given trial island I. To simplify this
+task, we follow [11] and use AdS3 /CFT2 duality to compute the von Neumann entropy of
+the bulk fields using a standard Ryu-Takayanagi prescription. We will come back to this
+in section 4.
+   2
+   More precisely, the island refers to the internal entanglement wedge defined by I [11]. In this paper,
+we will often neglect this distinction and refer to I itself as the island.
+
+
+
+
+                                                 –4–
+                             Island
+
+
+
+
+                                                                                                       JHEP05(2020)091
+                                                     Anchor
+                                                     Curve
+
+
+
+
+Figure 2. Penrose diagram of an evaporating RST black hole formed from collapsing matter
+(green). A timelike anchor curve separates the spacetime into interior and exterior regions. As time
+evolves along this curve, more and more Hawking radiation has passed through it on its way to
+future null infinity. The island moves with time along the purple curve inside the event horizon.
+
+
+3   The model
+
+We start with the classical CGHS dilaton gravity action [14],
+
+                                      √
+                                Z
+                              1
+                                  d2 x −g e−2φ R + 4(∇φ)2 + 4λ2 ,
+                                               
+                    Igrav =                                                                   (3.1)
+                             2π
+
+where φ is the dilaton field and λ is a characteristic length scale that can be set to λ = 1
+by a rescaling of the two-dimensional coordinates. The vacuum solution is given by flat
+spacetime with a linear dilaton profile,
+
+                                ds2 = −dσ + dσ − ,       φ = φ0 − σ ,                         (3.2)
+
+where φ0 is an arbitrary constant that can be absorbed by a constant shift of the spatial
+coordinate σ = 12 (σ + −σ − ). The strength of the gravitational coupling is controlled by
+the dilaton field and becomes large as σ tends to −∞. The two-dimensional model can
+be viewed as a spherical reduction of a four-dimensional theory. In this case, the scale λ
+is inherited from the parent theory and e−2φ is proportional to the area of the transverse
+2-sphere in four-dimensional Planck units.
+     We will find it useful to employ so-called Kruskal coordinates, for which the metric in
+conformal gauge takes the form
+                                                 +   −
+                                   ds2 = −e2ρ(x ,x ) dx+ dx− ,                                (3.3)
+
+
+
+
+                                               –5–
+with the conformal factor equal to the dilaton ρ = φ. In this coordinate system the equations
+of motion obtained from (3.1) reduce to
+
+                          ∂+ ∂− e−2φ + 1 = ∂+
+                                            2 −2φ
+                                              e      2 −2φ
+                                                  = ∂− e   = 0.                           (3.4)
+
+In the absence of matter fields, the dilaton gravity theory is non-dynamical and the general
+solution to the above field equations, up to constant shifts of the x± coordinates, is given by
+
+                                     e−2φ = M − x+ x− ,                                   (3.5)
+
+where M an integration constant. For M = 0 we get back the vacuum solution (3.2), writ-
+
+
+
+
+                                                                                                  JHEP05(2020)091
+ten in Kruskal coordinates. For M < 0 the solution exhibits a naked singularity analogous
+to the negative mass Schwarzschild solution in four dimensions. For M > 0, a rescaling of
+                       √                √
+the coordinates, x+ = M v and x− = M u, gives the well-known two-dimensional “cigar”
+solution in Lorentzian signature [28, 29],
+
+                                                dv du
+                                      ds2 = −          ,                                  (3.6)
+                                                1 − vu
+with a curvature singularity at vu = 1 and a bifurcate event horizon at vu = 0. The
+integration constant M is proportional to the black hole mass,
+                                                λM
+                                         M=        ,                                      (3.7)
+                                                 π
+where we have temporarily restored the characteristic mass scale λ. The temperature of a
+CGHS black hole is independent of its mass,
+                                                 λ
+                                          T =      .                                      (3.8)
+                                                2π
+The Bekenstein-Hawking entropy, given by one quarter of the horizon area in Planck units in
+the original four dimensional theory, can be expressed in terms of the dilaton field evaluated
+at the horizon,
+                                                         2πM
+                             S = 2e−2φ           = 2M =        .                          (3.9)
+                                         Horizon            λ
+A purely two-dimensional argument leading to the dilaton dependence in (3.9) is that while
+the area of the horizon is unity, the gravitational coupling constant is controlled by the
+dilaton as is apparent from (3.1), and this must be taken into account when evaluating the
+Bekenstein-Hawking entropy S = Area/4GN .
+
+3.1   Coupling to matter
+In the original CGHS model [14], the dilaton gravity sector is coupled to matter in the
+form of N minimally coupled free scalars, with N  24 so that semi-classical corrections
+are dominated by one-loop effects due to the matter fields. Here we will instead assume
+a strongly coupled matter sector described by a holographic two-dimensional CFT with
+large central charge c that has an AdS3 gravitational dual. This is an important technical
+assumption which allows us to simply evaluate the von Neumann entropy of the CFT fields
+
+
+
+
+                                            –6–
+on a spacelike section but does not affect the gravitational sector. In particular, the theory
+still has solutions describing dynamical black holes formed from incoming matter energy-
+momentum.3
+      Through the holographic dictionary, the two-dimensional central charge is related to
+three-dimensional gravitational quantities via the Brown-Henneaux formula,
+                                                   3L3
+                                            c=          .                                     (3.10)
+                                                  2G(3)
+
+As discussed in section 5.2 below, we can arrange our computation of the von Neumann
+entropy of the matter fields in such a way that we only have to deal with pure gravity in
+
+
+
+
+                                                                                                        JHEP05(2020)091
+AdS3 spacetime.
+     We are interested in semi-classical black holes with initial mass M large compared to
+the scale set by the central charge of the matter CFT, for which there is a natural expansion
+parameter given by
+                                              c
+                                        ≡         1.                                  (3.11)
+                                            48M
+In most of what follows we work to leading non-trivial order in , but to get started it
+is useful to consider the  → 0 limit where semi-classical effects are turned off. In this
+limit, the gravitational field equation is sourced by the energy-momentum tensor of the
+two-dimensional matter CFT,4
+                              h                              i
+                       4e−2φ ∇µ ∇ν φ − gµν φ − (∇φ)2 + 1 = Tµν ,                       (3.12)
+
+while the equation of motion of the dilaton field is unaffected by the coupling to matter.
+The CFT energy-momentum tensor has two non-trivial components T++ (x+ ) and T−− (x− ),
+each of which only depends on one of the light cone coordinates. The field equations take
+a particularly simple form in the Kruskal coordinates (3.3),
+
+                             − ∂+ ∂− e−2φ = 1 ,        2 −2φ
+                                                    −2∂± e   = T±± ,                          (3.13)
+
+and the response to arbitrary incoming matter energy flux is easily obtained,
+
+                           e−2φ = e−2ρ = F (x+ ) − x+ x− + G(x+ ) ,
+                                                                
+                                                                                              (3.14)
+
+where
+                                  1                             1
+                       F 0 (x+ ) = x+ T++ (x+ ) ,   G0 (x+ ) = T++ (x+ ) .              (3.15)
+                                  2                             2
+We take the energy-momentum tensor to have compact support in x+ corresponding to a
+thin shell of infalling matter energy incident on the linear dilaton vacuum. For our purposes,
+  3
+    When comparing to black holes in [14, 15] we make the identification N = c and κ = c/12.
+  4
+    Our conventions match those of [30] except we are dealing with Lorentzian CFT. In particular, the
+classical energy-momentum tensor is defined as
+                                                  4π δS
+                                        T µν = − √         ,
+                                                   −g δgµν
+and the normalization for the energy-momentum tensor therefore differs from the one used in [14] by a
+factor of 2.
+
+
+
+
+                                               –7–
+the detailed form of the solution (3.14) is not needed, only the behaviour at early and late
+times, and we can therefore consider an idealised solution where two static configurations
+are patched together across an infinitely thin null shock wave,
+                                               
+                −2φ(x+ ,x− )    −2ρ(x+ ,x− )
+                                               −x+ x−             if x+ < x+
+                                                                            0 ,
+              e              =e              =                                      (3.16)
+                                                      +   −
+                                               M − x x + +
+                                                            x
+                                                             M
+                                                                   if x > x+
+                                                                       +
+                                                                            0 .
+                                                                    0
+
+
+A rescaling of the coordinates,
+                                                            M
+                                  x+ = x+
+                                        0 v,        x− =       u,                       (3.17)
+
+
+
+
+                                                                                                  JHEP05(2020)091
+                                                            x+
+                                                             0
+
+brings the metric and dilaton into the following simple form,
+                                             (
+                               1               −vu            if v < 1 ,
+                   e−2ρ(v,u) =   e−2φ(v,u) =                                            (3.18)
+                               M               (1 − v(u + 1)) if v > 1 .
+
+In the v < 1 linear dilaton region, the change of coordinates,
+                                        +                     −
+                                  v = eω ,          u = −e−ω ,                          (3.19)
+
+brings the metric into manifestly flat form, ρ(ω + , ω − ) = 0, while a set of coordinates, for
+which the metric is asymptotically Minkowskian in the v > 1 region outside the shock wave,
+is given by
+                                     +                       −
+                              v = eσ ,       u = −1 − e−σ .                             (3.20)
+Time as measured by asymptotic observers at rest with respect to the black hole is
+                                          1
+                                       t = (σ + + σ − ) .                               (3.21)
+                                          2
+3.2   Semi-classical black holes
+On a curved spacetime background, the energy-momentum tensor of the matter CFT is no
+longer traceless due to the conformal anomaly,
+                                                     c
+                                        hT µµ i =      R,                               (3.22)
+                                                    12
+where R is the Ricci scalar of the background metric. In two spacetime dimensions the
+continuity equation expressing energy-momentum conservation can be integrated using
+only (3.22) as input [31] leading to the following expressions in conformal coordinates,
+                          c                           c   2
+                                                            ρ − 2(∂± ρ)2 − t± ,
+                                                                             
+                hT+− i = − ∂+ ∂− ρ ,    hT±± i =        2∂±                             (3.23)
+                          6                          12
+where t± (x± ) are functions of integration determined by physical boundary conditions that
+reflect the matter quantum state.
+     The boundary functions t± are sensitive to the choice of coordinate system. This is
+to be expected since notions of positive frequency and normal ordering depend on the
+
+
+
+
+                                             –8–
+choice of time variable. Under a conformal reparametrization of the light-cone coordinates,
+x± → y ± (x± ), the conformal factor of the metric transforms as
+
+                                                             1    dy + dy −
+                             ρ(y + , y − ) = ρ(x+ , x− ) −     log + − .                            (3.24)
+                                                             2    dx dx
+When inserted in (3.23) this leads to the usual anomalous transformation of the energy-
+momentum tensor involving a Schwarzian derivative,
+      ± 2
+       dy                               c                     y 000 3 (y 00 )2
+          ±
+               T±± (y ± ) = T±± (x± ) − {y ± , x± } , {y, x} = 0 −             . (3.25)
+       dx                              12                      y    2 (y 0 )2
+
+
+
+
+                                                                                                              JHEP05(2020)091
+In order to preserve the form (3.23) for the energy-momentum tensor in the new coordinates,
+we effectively obtain a new function t± (y ± ) related to the old one via
+                             ± 2
+                             dy
+                                      t± (y ± ) = t± (x± ) + {y ± , x± } .           (3.26)
+                             dx±
+As an example, consider a black hole formed by gravitational collapse as in (3.18). At
+early advanced time before the arrival of the collapsing matter (i.e. v < 1), we have a
+linear dilaton vacuum and vanishing energy-momentum tensor. The metric is manifestly
+flat in the (ω + , ω − ) coordinate system in (3.19) and it follows that t− (ω − ) = 0. Upon
+transforming to the (σ + , σ − ) coordinate system (3.20), in which the metric is manifestly
+asymptotically flat, one finds non-vanishing outgoing energy flux at σ + → ∞,
+                                                                      
+                              −        c    −      c            1
+                        T−− (σ ) = − t− (σ ) =         1−                .              (3.27)
+                                      12          24       (1 + eσ− )2
+In [14] this expression was interpreted as the energy flux of Hawking radiation from the
+black hole as observed by an asymptotic observer. Energy conservation implies that a black
+hole emitting Hawking radiation loses mass. When the semi-classical expansion parameter 
+in (3.11) has a small but finite value, the classical solution (3.14) is only valid on timescales
+that are short compared to the lifetime of the black hole, which is tlifetime = 1/ at leading
+order. The semi-classical back-reaction on the spacetime geometry due to Hawking emission
+matter can, however, be accounted for by adding to the classical action Igrav in (3.1) a non-
+local Polyakov term induced by matter quantum effects [14],
+                                            Z
+                                         c
+                               IQ = −          dx+ dx− ∂+ ρ∂− ρ ,                          (3.28)
+                                        12π
+written here in conformal coordinates.5 If we take c  24 then IQ should be dominant com-
+pared to semi-classical contributions from the dilaton gravity sector. Further modifications
+to the theory are needed in order to find analytic solutions to the semi-classical equations
+of motion. We will follow the approach of [15] and add the following term,
+                                                   √
+                                             Z
+                                          c
+                                IRST =         d2 x −gφR ,                            (3.29)
+                                         48π
+   5
+     While the non-local nature of IQ is not immediately apparent in the conformal gauge expression (3.28),
+it enters the formalism via the boundary functions t± in (3.23).
+
+
+
+
+                                                  –9–
+to the semi-classical action, which is allowed by general covariance and does not disturb
+the classical ( → 0) limit of the theory. The RST term IRST involves a factor of c and
+therefore enters at the same order as the Polyakov term IQ .
+     The resulting semi-classical field equations simplify dramatically when a new field vari-
+able is introduced,
+                                                     c
+                                         Ω = e−2φ + φ ,                                  (3.30)
+                                                    24
+but there are subtleties involved. In particular, the new field variable is bounded from
+                     c            c
+                                    
+below, Ω ≥ Ωcrit = 48    1 − log 48   , and when Ω → Ωcrit the gravitational coupling becomes
+strong in the semi-classical theory [15]. This has a suggestive physical interpretation, where
+
+
+
+
+                                                                                                  JHEP05(2020)091
+Ω → Ωcrit represents a boundary of spacetime, analogous to the boundary at the origin of ra-
+dial coordinates in the higher-dimensional theory from which the CGHS model is descended.
+     One benefit of including the RST term (3.29) is that semi-classical solutions of the full
+theory Igrav + IQ + IRST can be expressed in Kruskal coordinates (3.3), where the field
+equations reduce to
+                                                      2      c
+                              ∂+ ∂− Ω + 1 = 0 , −∂±     Ω = t± ,                         (3.31)
+                                                            24
+with t± the same boundary functions as before. The linear dilaton vacuum remains an
+exact solution of the semi-classical equations and takes the form
+                                                 c
+                                Ω = −x+ x− −       log(−x+ x− ) ,                        (3.32)
+                                                48
+in the new field variable. Notice that t± (x± ) 6= 0 even if this is the vacuum solution but
+this is because the metric is not manifestly flat in Kruskal coordinates. Transforming to a
+manifestly flat coordinate system σ ± renders the functions t± (σ ± ) = 0 as expected.
+     A two-sided eternal black hole solution is given by
+                                   Ω = M (1 − vu) + Ωcrit ,                             (3.33)
+where we have rescaled the coordinates as in (3.6). Here we find that in Kruskal coordinates
+that t± (x± ) = 0 but if we transform to coordinates for which the metric is manifestly
+asymptotically flat,
+                                      +                  −
+                                v = eσ ,       u = −e−σ ,                             (3.34)
+we find that t± (σ ± ) = 12 . This corresponds to a flat space energy-momentum tensor
+T±± (σ ± ) = 24c
+                   which is exactly the energy-momentum tensor of a thermal gas of tem-
+                 1
+perature T = 2π which is the temperature of the eternal black hole. The outgoing energy
+flux carried by the Hawking radiation is matched by an incoming flux of thermal radiation
+at the same temperature as the Hawking temperature of the black hole.
+     Finally, consider the formation and subsequent evaporation of a dynamical black hole.
+As in the classical case without back-reaction, we imagine a situation where a short burst
+of matter energy is injected into a linear dilaton vacuum described by (3.32). The solution
+describing the full evolution of such a black hole can be found in [15]. Here we are mainly
+interested in the geometry outside the collapsing matter shell, i.e. for v > 1, where it takes
+the form
+                 ds2 = −M e2φ dvdu , Ω = M 1 − v(u + 1) −  log(−M vu) ,
+                                                                             
+                                                                                        (3.35)
+with φ and Ω related via (3.30).
+
+
+
+
+                                            – 10 –
+4   Generalized entropy
+
+In order to derive a Page curve for these semi-classical black holes, we adapt the expression
+for the generalized entropy,
+                                          Area(I)
+                               Sgen =             + SBulk [SAI ] ,                        (4.1)
+                                           4GN
+to the two-dimensional setting at hand. The first term on the right hand side involves
+the area of the transverse two-sphere evaluated locally at an island, and gives zero in the
+absence of an island. Comparing with the black hole entropy in (3.9) yields 2e−2φ(I) as the
+
+
+
+
+                                                                                                  JHEP05(2020)091
+area contribution of an island in the classical limit. The natural semi-classical extension of
+this expression, which gives zero in the absence of an island, is given by
+                                 Area(I)                 
+                                         = 2 Ω(I) − Ωcrit .                               (4.2)
+                                  4GN
+     The second term on the right hand side in (4.1) is universal and is the main focus of this
+section. It is the von Neumann entropy of the CFT matter fields on a spacelike surface SAI
+that is bounded at one end by the island I and at the other end by a point A on a timelike
+anchor curve. We take the anchor curve to be a constant Ω curve with Ω = ΩA  M so
+that it is located well outside the black hole. For an eternal black hole (3.33) a curve of
+constant Ω is at a fixed spatial coordinate, σ = σA in the manifestly asymptotically flat
+coordinate system (3.34). For an evaporating black hole, the corresponding statement is no
+longer exact due to the log term in (3.35). The spatial location of the anchor curve drifts
+in the asymptotic coordinates (3.20) but for ΩA  M the drift is extremely slow and can
+be ignored on time scales of order the black hole lifetime. The final answer for SBulk does
+not depend on which SAI is chosen as long as it is a spacelike surface that connects A and
+I. In the absence of an island, the surface SAI is instead bounded by A at one end and a
+point on the boundary curve Ω = Ωcrit at the other.
+     Following [11], we compute the von Neumann entropy holographically by passing to
+a three-dimensional gravitational theory and evaluating the geodesic length between the
+points where A and I are embedded in the dual three-dimensional spacetime,
+                                                     Length
+                                    SBulk [SAI ] ≃          .                             (4.3)
+                                                      4G(3)
+The calculation is simplified if we arrange the embedding geometry to be pure AdS3 . This
+can be achieved in two steps. The first step is to identify a set of light-cone coordinates
+
+                                    ds2 = −e2ρ dy + dy − ,                                (4.4)
+
+where the integration functions t± (y ± ) are zero. The second step is to perform a Weyl
+rescaling of the two-dimensional metric that strips off the conformal factor e2ρ . Then both
+t± (y ± ) and the gravitational contribution the energy-momentum tensor in (3.23) vanish.
+In this case, the matter CFT is in a vacuum state and the dual three-dimensional geometry
+is empty AdS3 spacetime. In Poincare coordinates the metric is
+                                          L23
+                                 ds23 =       dz 2 − dy + dy − ,
+                                                              
+                                            2
+                                                                                          (4.5)
+                                          z
+
+
+
+                                              – 11 –
+and the geodesics are semi-circles centered on the holographic boundary. The Weyl trans-
+formation in step two above can be implemented as a coordinate transformation in three
+dimensions which maps the regulated holographic boundary to a surface,
+                                                   +   −
+                                       z = δ e−ρ(y ,y ) ,                                   (4.6)
+
+that depends on dynamical input from the two-dimensional matter theory. Here δ is a UV
+cutoff parameter.
+    A standard calculation involving AdS3 geodesics then leads to the following result for
+the holographic entropy,
+
+
+
+
+                                                                                                    JHEP05(2020)091
+                                    c   h                     i
+                      SBulk [SAI ] = log d(A, I)2 eρ(A) eρ(I)         ,              (4.7)
+                                    6                           t± =0
+
+where d(A, I) is the two-dimensional distance measured between the points A and I in the
+flat metric ds2flat = −dy + dy − and the subscript is a reminder that the formula should be
+evaluated in coordinates for which t± (y ± ) = 0. We have dropped the UV cutoff from the
+formula as it just contributes an additive constant.
+
+5     Page curves
+
+We now have everything in place to calculate generalized entropy in the RST model using
+the QRT prescription. Our primary goal is to obtain the Page curve of an evaporating black
+hole that has a finite lifetime but first we carry out the corresponding calculation for a semi-
+classical eternal black hole. This provides a first test involving a black hole in asymptotically
+flat spacetime which turns out to be considerably simpler than the evaporating case.
+
+5.1    Eternal black hole
+A semi-classical eternal black hole in asymptotically flat spacetime is supported by a thermal
+gas of incoming radiation that maintains the mass of the black hole against the energy loss
+to Hawking radiation. The two-dimensional black holes studied in this paper all have
+                    1
+temperature T = 2π    and the thermal gas must be at the same temperature. As was noted
+below (3.33), the energy flux outside an eternal semi-classical RST black hole is
+                                                        c
+                                        T±± (σ ± ) =      ,                                 (5.1)
+                                                       24
+when evaluated in manifestly asymptotically flat coordinates and this is precisely the energy-
+                                                                  1
+momentum tensor of a thermal CFT at a temperature of T = 2π         . It was also noted that
+t+ (v) = t− (u) = 0 for an eternal black hole and therefore (v, u) is the appropriate set of
+coordinates to use when evaluating SBulk in (4.7). The relevant matter CFT vacuum state
+is the Hartle-Hawking state where positive frequency modes are determined with respect
+to time in Kruskal coordinates rather than asymptotic Minkowski time.
+     The eternal black hole is two sided and we place a timelike anchor curve in each
+asymptotic region. For simplicity, we assume that our anchor points lie symmetrically on
+the anchor curves, as shown in figure 3. Then each anchor point has a mirror anchor point
+
+
+
+
+                                             – 12 –
+                                                                                                      JHEP05(2020)091
+Figure 3. A Penrose diagram of an eternal black hole. A pair of timelike anchor curves (blue
+curves) separates the spacetime into an interior and two exteriors. The two spatial hypersurfaces
+intersect the anchor curves at different times. On the late time surface the generalized entropy is
+dominated by the area term associated to the islands denoted by purple dots.
+
+
+(denoted by superscript m) in the other exterior region, which is related to the original
+point by (v, u)m = (u, v). We also take the black hole mass to be large compared to the
+                                                       c
+scale set by the matter central charge, so that  = 48M     1, and the anchor curves to be
+located in the linear dilaton region, so that ΩA  M . With these assumptions in place
+the semi-classical field variables are well approximated by their classical counterparts in all
+regions of interest and our calculations simplify.
+     Inspired by [4, 11], we now perform two calculations: one with no islands, and one
+with a single island on each side. Consider first the no-island scenario. In this case, the
+area term of the generalized entropy is by definition zero, as I is empty. The von Neumann
+entropy of the bulk fields is non-vanishing and given by the length of the geodesic in AdS3
+that connects the two mirrored anchor points. This means that we can directly apply (4.7)
+but with I replaced by Am , as indicated in figure 3,
+                        c     h                                                    i
+              Sbulk =     log (vA − vAm )2 (uA − uAm )2 e2ρ(vA ,uA ) e2ρ(vAm ,uAm ) ,     (5.2)
+                       12
+where (vA , uA ) denotes an anchor point on the curve on the right in the figure. The anchor
+curves are assumed to be located well outside the black hole where the conformal factor is
+well approximated by its classical value,
+                                                        1
+                                        e2ρ(v,u) ≈          .                                (5.3)
+                                                     1 − vu
+The bulk entropy then takes a simple form,
+                                         c      (vA − uA )4   c
+                              Sbulk =      log               ≈ tA ,                          (5.4)
+                                        12     (1 − vA uA )2  3
+where tA is asymptotic time, measured by an observer on the anchor curve, and the asymp-
+totically flat coordinates (t, σ) are related to the (v, u) coordinates via,
+
+                                  v = et+σ ,         u = −e−t+σ .                            (5.5)
+
+
+
+
+                                               – 13 –
+Corrections to this result are either exponentially suppressed (by factors of e−2tA or e−2σA )
+or subleading in powers of , or both. Our computation includes, by construction, the
+entropy of the radiation emitted on both sides of the black hole and we note that the
+entropy growth rate in (5.4) is precisely twice the rate that was obtained in [32] for the
+entanglement entropy of radiation emitted to one side.
+    We now repeat the calculation with symmetrically placed islands at I = (vI , uI ) and
+  m
+I = (uI , vI ), as indicated in figure 3. In this case, the area term in the generalized
+entropy (4.1) is non-vanishing and bulk term involves geodesics in AdS3 that connect the
+anchor point and corresponding island on each side of the black hole. The contributions
+from the two sides of the black hole are identical and add up to
+
+
+
+
+                                                                                                  JHEP05(2020)091
+                    island                       c     (vA − vI )2 (uA − uI )2
+                   Sgen    = 4M (1 − vI uI ) +     log                          ,         (5.6)
+                                                 6     (1 − vA uA )(1 − vI uI )
+
+where we have used (3.33) for the semi-classical area function Ω(I) − Ωcrit . Both the anchor
+point and the island are assumed to lie in a region where the classical approximation (5.3)
+can be used for the conformal factor. This is automatically satisfied for an anchor point
+outside a large mass black hole and we will check ex post facto that it also holds for the
+island. Extremizing over (vI , uI ) and working to leading order in   1, we obtain
+                                   uI   uA                 4
+                                      =    ,      vI ≈ −      .                           (5.7)
+                                   vI   vA                 uA
+This is a saddle point and not a minimum. However, the QRT prescription instructs us
+find all extrema and select the one that gives the lowest value for the generalized entropy.
+Inserting the leading order saddle point values for vI and uI into (5.6) gives
+                                  island            c
+                                 Sgen    = 4M +       σA + . . . .                        (5.8)
+                                                    3
+                                                                            1
+Comparing to the no-island result in (5.4) shows that for tA > σA + 4        the generalized
+entropy is dominated by the island configuration. The σA term accounts for the time it
+takes for the Hawking radiation to travel from the black hole to the anchor curve. Correcting
+for this, we obtain
+                                             1     12M
+                                    tPage =     =        ,                              (5.9)
+                                             4      c
+for the Page time of an eternal RST black hole. The Page curve is drawn in figure 4.
+     For a two-sided black hole in AdS2 gravity, the island and its mirror were found to be
+outside the event horizon [12]. This remains true here as well. The island saddle point (5.7)
+is outside the event horizon but inside the stretched horizon, with the proper distance
+between island and event horizon given by a tiny number,
+                                                r
+                                                  M
+                                       dI ≈ 4         .                               (5.10)
+                                                  ΩA
+The fact that the island is close to the event horizon justifies using the classical approxima-
+tion for the conformal factor in (5.6), as promised. For another perspective on the location
+of the island, consider an observer sitting on the anchor curve who sends an ingoing light
+
+
+
+
+                                            – 14 –
+                                                     island
+      2SBH
+
+
+
+
+                             d
+                             n
+                        isla
+       SBH             no-
+
+
+
+
+                                                                                                   JHEP05(2020)091
+          0
+
+                0                tPage
+
+Figure 4. Page curve for the eternal RST black hole with tPage = 6SBH /c. The graph plots
+Sgen − 3c σA as a function of retarded time on the anchor curve.
+
+
+signal to the island. A straightforward calculation shows that in order to be received at
+an island at (vI , uI ), that corresponds to an anchor point at time tA , the signal must be
+emitted from the anchor curve at an earlier time tobs
+                                                    A , such that
+
+                                         tA − tobs
+                                               A = 2σA + ts ,                            (5.11)
+
+                  1
+where ts = log ( 4  ) is the scrambling time. This is in line with a similar result in [12].
+However, because our black hole is in asymptotically flat spacetime and not AdS2 the time
+difference tA − tobs
+                 A explicitly depends on the location of the anchor curve.
+
+
+5.2   Dynamical black hole
+We now turn our attention to dynamical black holes and compute a Page curve for a black
+hole that is formed by gravitational collapse of matter and then gradually evaporates due to
+Hawking emission. The steps in the calculation are the same as before, i.e. to find extrema
+of the generalized entropy with and without an island and determine which one gives the
+minimum value. The area term in the generalized entropy can be read off directly from the
+semi-classical black hole solution but the remaining bulk term requires more work.
+     In the holographic evaluation of the bulk entropy term in (4.7) we are instructed to
+identify light-cone coordinates where the t± contribution to the two-dimensional matter
+energy momentum tensor is zero. The correct choice is the (ω + , ω − ) system in (3.19)
+where the metric is manifestly flat in the initial linear dilaton region before the matter shell
+collapses to form the black hole. These coordinates are suitable for the evaluation of (4.7)
+when calculating the generalized entropy on a trial surface in the linear dilaton vacuum
+where the CFT is manifestly in its vacuum state and the three-dimensional holographic
+
+
+
+
+                                                – 15 –
+                                                                                                      JHEP05(2020)091
+Figure 5. Penrose diagram of a dynamical RST black hole with two spacelike hypersurfaces
+indicated, one before the Page time and the other after, corresponding to the no-island and island
+configurations, respectively.
+
+
+dual is pure AdS3 . Of course, a dynamical black hole is not the linear dilaton vacuum and
+t+ (ω + ) is non-vanishing due to the incoming energy flux that forms the black hole. There
+is, however, a simple way around this problem. Following [32], we take the incoming matter
+to be described by a coherent state built on the vacuum state of inertial observers at past
+null infinity. As shown in [32], the von Neumann entropy of such a state is identical to
+the von Neumann entropy of the vacuum state. As a result, we can use the AdS3 /CFT2
+Ryu-Takayanagi prescription (4.7) to calculate the bulk term in the generalized entropy,
+provided we use the coordinate system that corresponds to the CFT in its vacuum state.
+This means in particular, that we are instructed to calculate the two-dimensional distance
+d(A, I) in (ω + , ω − ) coordinates.
+     The generalized entropy is to be computed for the two competing configurations, with
+and without an island, indicated in the Penrose diagram in figure 5. The final result is the
+one that gives a smaller value for the entropy.
+
+5.2.1   Island configuration
+Let us start by determining the generalized entropy for an island configuration,
+
+          island
+                                                           
+         Sgen    = 2M 1 − vI (1 + uI ) −  log (−M vI uI )                                   (5.12)
+                            "                                                         #
+                                          uA 2
+                                             
+                      c            vA                  v A uA             v I uI
+                   +    log    log    log                                                ,
+                     12            vI     uI     (1 − vA (1 + uA )) (1 − vI (1 + uI ))
+
+
+
+
+                                              – 16 –
+where we have used (3.35) for the area term 2(Ω(I) − Ωcrit ) and the coordinate distance
+            √
+d(A, I) = −∆ω + ∆ω − has been expressed in (v, u) coordinates. We are assuming that
+the island is located outside the infalling shell of matter and that both the anchor point
+and the island lie in a region where a classical approximation can be used for the conformal
+factor of the dynamical black hole metric. The anchor point is by assumption far outside
+the black hole where the classical approximation is always valid. It turns out to also be
+valid for the island for much of the lifetime of an evaporating black hole provided it starts
+out with a large enough mass but it will fail towards the end of the lifetime when the black
+hole has evaporated down to a small size.
+     Extremizing (5.13) over (vI , uI ) yields the following two conditions,
+
+
+
+
+                                                                                                 JHEP05(2020)091
+                                c         1 + uI          c            c
+            0 = −2M (1 + uI ) +                       +      −               ,        (5.13)
+                              12vI (1 − vI (1 + uI )) 24vI      6vI log vvAI
+                           c          vI            c           c
+            0 = −2M vI +                         +      −              .              (5.14)
+                         12uI (1 − vI (1 + uI )) 24uI     6uI log uuAI
+
+In order to solve for the location of the island we make the simplifying assumption
+log( vvAI )  1, which allows us to drop the last term on the right in the top equation, and
+later on we verify the self-consistency of this assumption. The resulting equations can be
+rearranged as
+                                                               
+                      2                                         uA
+        (vI (1 + uI )) − (1 − ) vI (1 + uI ) +  = 0 and log        = 4(1 + uI ) .    (5.15)
+                                                                uI
+
+One of the two solutions of the quadratic equation for vI (1 + uI ) corresponds to an island
+in the near horizon region,
+                                              
+                                 uI = −1 +      + O(2 ) .                            (5.16)
+                                             vI
+The other solution has the island near the black hole singularity and is unphysical. Inserting
+the island solution into the remaining equation in (5.15) we find
+                                                     3
+                                   uA = −1 −            + O(2 ) .                     (5.17)
+                                                     vI
+In terms of the asymptotic coordinates (3.20) we have
+
+                           uA = −1 − eσA −tA ,             vA = eσA +tA .              (5.18)
+
+The above relations imply that
+                                                             
+                                       vA                      1
+                             log                ≈ 2σA + log       1,                  (5.19)
+                                       vI                      
+
+so the simplifying assumption that we used to obtain the island solution is indeed justified.
+We also assumed in the calculation that the island is located at vI > 1 and this turns out
+to be valid when tA − σA & log(1/). The expression for the outgoing energy flux (3.27)
+reveals that the first Hawking radiation passes through the anchor curve at tA − σA ≈ 0 and
+the island solution is already valid within a time of order the scrambling time after that.
+
+
+
+
+                                                  – 17 –
+    We can again probe the location of the island by considering an observer sitting on the
+anchor curve who sends an ingoing light signal. The relation between vI and vA in (5.19)
+implies that in order to be received at an island at (vI , uI ), the signal must be emitted
+from the anchor curve at a time tobs                      obs
+                                    A , such that tA − tA = 2σA + ts with ts the black
+hole scrambling time. Earlier, we found the same result for an island just outside the event
+horizon of an eternal black hole. Here the island is inside the black hole but still located
+very close to the event horizon.
+    Finally, inserting the leading order saddle point values for vI and uI into (5.13) gives
+                              island           c
+                             Sgen    = 2M −      (tA − σA ) + . . . ,                   (5.20)
+
+
+
+
+                                                                                                  JHEP05(2020)091
+                                              24
+as a function of the retarded time at the anchor curve. Although the time-dependent
+contribution is initially of order , compared to the leading order area term, it is important
+to keep in mind that this contribution grows with time, and eventually becomes comparable
+to the leading order result. This expression for the generalized entropy, which is valid when
+a time of order the scrambling time has passed after the first Hawking radiation emerges
+into the outside region beyond the anchor curve, is to be compared to the contribution from
+a no-island configuration that we now turn our attention to.
+
+5.2.2   No-island configuration
+In the absence of an island, the spacelike surface SAI extends from the anchor curve to
+the semi-classical boundary at Ω = Ωcrit . The gravitational coupling becomes strong at
+the semi-classical boundary and it is not a priori clear how to proceed. The validity of
+the semi-classical black hole solution indeed breaks down near the boundary but from a
+higher dimensional perspective this has a simple interpretation in terms of the area of the
+transverse two-sphere going to zero. We are primarily interested in the dependence of the
+bulk entropy (4.7) on asymptotic time and this will not be greatly affected by the detailed
+conditions imposed at the origin. This can be seen by adopting a simple prescription for
+the strong coupling region and then checking that a change in the prescription does not
+change the leading order result at late times on the anchor curve.
+    In the following we let the spacelike surface SAI end at a fixed reference point (v0 , u0 )
+on the boundary curve for all anchor points. In other words, we will simply ignore any
+adjustment of the endpoint at the semi-classical boundary in response to changing the
+anchor point. We take the reference point to be in the v < 1 linear dilaton region inside
+the matter shock wave, i.e. with u0 = −/v0 for some v0 < 1. The generalized entropy is
+given by
+                                      "                 2                    #
+                   no-island    c            v A     u A          v A u A
+                 Sgen        =    log    log     log
+                               12            v0      u0     (1 − vA (1 + uA ))
+                                c
+                             = (tA − σA ) + . . . ,                                   (5.21)
+                               12
+up to logarithmic correction terms. In particular, all dependence on v0 is contained in the
+sub-leading terms that we have dropped. This expression is valid for retarded time of order
+the scrambling time and onwards.
+
+
+
+
+                                            – 18 –
+      Comparing the island and no-island results in (5.20) and (5.21), respectively, shows
+                                 1
+that for retarded time tA − σA > 3 the generalized entropy will be dominated by the island
+configuration. The Page time for a dynamical RST black hole is one third of the black hole
+lifetime,
+                                            1     16M
+                                    tPage =    =       .                             (5.22)
+                                            3      c
+The corresponding Page curve is drawn in figure 1.
+
+6   Discussion
+
+
+
+
+                                                                                                JHEP05(2020)091
+By assuming a QRT formula we have explicitly obtained Page curves for semi-classical
+black holes in asymptotically flat spacetime in a two-dimensional dilaton gravity model.
+This includes both an eternal black hole, supported by an incoming energy flux matching
+the outgoing Hawking flux, and a black hole formed by gravitational collapse that gradually
+evaporates. In both cases, the generalized entropy is minimised at early times by the bulk
+von Neumann entropy of the two-dimensional matter CFT but at a Page time the system
+crosses over to a configuration where the minimum generalized entropy includes a non-
+trivial Ryu-Takayanagi area term associated with an island near the black hole horizon.
+This is consistent with earlier results obtained for AdS2 black holes but our computation
+offers a rather clean physical picture and offers evidence that the QRT prescription applies
+beyond asymptotically AdS spacetimes.
+     For the eternal black hole we confirm the appearance of an island outside the horizon,
+whereas for an evaporating black hole the island is always inside the horizon. Towards the
+end of evaporation the island appears to melt together with both singularity and horizon
+at the black hole endpoint. Our semi-classical calculation is, however, only reliable as long
+as the black hole mass remains large compared to the scale set by the central charge of the
+matter CFT.
+     For the evaporating black hole the Page time comes out to be 1/3 of the black hole life-
+time. This fits with the following simple reasoning [33]. Radiating into a cold surrounding
+space is an irreversible process and the entropy of the radiation grows at twice the evapo-
+ration rate of the black hole. This can be seen more explicitly by considering the relation
+between internal energy and entropy of the gas emitted by a black body in two dimensions,
+                                              2U
+                                         S=      .                                      (6.1)
+                                               T
+We can compute the ratio of the entropy of the gas that the black hole emits compared to
+the entropy lost by the black hole. The black hole satisfies the first law ∆SBH = −∆M/T
+where ∆M is the mass lost by the black hole in a given time interval. The entropy increase
+of the gas radiated is ∆Sgas = 2∆U/T where ∆U is the energy of the emitted gas, which
+must equal ∆M , and we get ∆Sgas = −2∆SBH .
+     Our results rely on two dimensional conformal methods. On a technical level this is
+reflected in the fact that we can conveniently obtain the bulk contribution to the entropy
+via a AdS3 /CFT2 computation. It is furthermore convenient that in two dimensions there
+are no grey body factors. On a more fundamental level, we are able to account for radiation
+
+
+
+
+                                           – 19 –
+and back-reaction in the RST model by working in a conformal gauge and explicitly using
+the conformal anomaly in two dimensions. Although there is no known analogue of the
+RST model in higher dimensions, our result suggests that a QRT like prescription may also
+work for other non-AdS black holes, especially ones that can be embedded into a boundary
+theory with a higher-dimensional AdS dual.
+
+Acknowledgments
+
+We thank Valentina Giangreco M. Puletti for stimulating discussions. LT would like to
+thank the Kavli Institute for Theoretical Physics at UC Santa Barbara for hospitality dur-
+
+
+
+
+                                                                                                 JHEP05(2020)091
+ing the completion of this work. This research was supported in part by the Icelandic
+Research Fund under grants 185371-051 and 195970-051, by the University of Iceland Re-
+search Fund, and by the National Science Foundation under grant NSF PHY-1748958.
+FFG is a Postdoctoral Fellow of the Research Foundation — Flanders (FWO). FFG is also
+supported by the KU Leuven C1 grant ZKD1118 C16/16/005.
+
+Open Access. This article is distributed under the terms of the Creative Commons
+Attribution License (CC-BY 4.0), which permits any use, distribution and reproduction in
+any medium, provided the original author(s) and source are credited.
+
+References
+
+ [1] D.N. Page, Information in black hole radiation, Phys. Rev. Lett. 71 (1993) 3743
+     [hep-th/9306083] [INSPIRE].
+ [2] D.N. Page, Time Dependence of Hawking Radiation Entropy, JCAP 09 (2013) 028
+     [arXiv:1301.4995] [INSPIRE].
+ [3] S.W. Hawking, Breakdown of Predictability in Gravitational Collapse, Phys. Rev. D 14
+     (1976) 2460 [INSPIRE].
+ [4] G. Penington, Entanglement Wedge Reconstruction and the Information Paradox,
+     arXiv:1905.08255 [INSPIRE].
+ [5] A. Almheiri, N. Engelhardt, D. Marolf and H. Maxfield, The entropy of bulk quantum fields
+     and the entanglement wedge of an evaporating black hole, JHEP 12 (2019) 063
+     [arXiv:1905.08762] [INSPIRE].
+ [6] J.V. Rocha, Evaporation of large black holes in AdS: Coupling to the evaporon, JHEP 08
+     (2008) 075 [arXiv:0804.0055] [INSPIRE].
+ [7] S. Ryu and T. Takayanagi, Holographic derivation of entanglement entropy from AdS/CFT,
+     Phys. Rev. Lett. 96 (2006) 181602 [hep-th/0603001] [INSPIRE].
+ [8] V.E. Hubeny, M. Rangamani and T. Takayanagi, A Covariant holographic entanglement
+     entropy proposal, JHEP 07 (2007) 062 [arXiv:0705.0016] [INSPIRE].
+ [9] T. Faulkner, A. Lewkowycz and J. Maldacena, Quantum corrections to holographic
+     entanglement entropy, JHEP 11 (2013) 074 [arXiv:1307.2892] [INSPIRE].
+[10] N. Engelhardt and A.C. Wall, Quantum Extremal Surfaces: Holographic Entanglement
+     Entropy beyond the Classical Regime, JHEP 01 (2015) 073 [arXiv:1408.3203] [INSPIRE].
+
+
+
+
+                                             – 20 –
+[11] A. Almheiri, R. Mahajan, J. Maldacena and Y. Zhao, The Page curve of Hawking radiation
+     from semiclassical geometry, JHEP 03 (2020) 149 [arXiv:1908.10996] [INSPIRE].
+[12] A. Almheiri, R. Mahajan and J. Maldacena, Islands outside the horizon, arXiv:1910.11077
+     [INSPIRE].
+[13] A. Almheiri, R. Mahajan and J.E. Santos, Entanglement islands in higher dimensions,
+     arXiv:1911.09666 [INSPIRE].
+[14] C.G. Callan Jr., S.B. Giddings, J.A. Harvey and A. Strominger, Evanescent black holes,
+     Phys. Rev. D 45 (1992) R1005 [hep-th/9111056] [INSPIRE].
+[15] J.G. Russo, L. Susskind and L. Thorlacius, The Endpoint of Hawking radiation, Phys. Rev.
+
+
+
+
+                                                                                                   JHEP05(2020)091
+     D 46 (1992) 3444 [hep-th/9206070] [INSPIRE].
+[16] A. Almheiri, T. Hartman, J. Maldacena, E. Shaghoulian and A. Tajdini, Replica Wormholes
+     and the Entropy of Hawking Radiation, JHEP 05 (2020) 013 [arXiv:1911.12333] [INSPIRE].
+[17] G. Penington, S.H. Shenker, D. Stanford and Z. Yang, Replica wormholes and the black hole
+     interior, arXiv:1911.11977 [INSPIRE].
+[18] C. Akers, N. Engelhardt and D. Harlow, Simple holographic models of black hole evaporation,
+     arXiv:1910.00972 [INSPIRE].
+[19] V. Balasubramanian, A. Kar, O. Parrikar, G. Sárosi and T. Ugajin, Geometric secret sharing
+     in a model of Hawking radiation, arXiv:2003.05448 [INSPIRE].
+[20] A. Bhattacharya, Multipartite Purification, Multiboundary Wormholes and Islands in
+     AdS3 /CF T2 , arXiv:2003.11870 [INSPIRE].
+[21] M. Rozali, J. Sully, M. Van Raamsdonk, C. Waddell and D. Wakeham, Information radiation
+     in BCFT models of black holes, JHEP 05 (2020) 004 [arXiv:1910.12836] [INSPIRE].
+[22] H.Z. Chen, Z. Fisher, J. Hernandez, R.C. Myers and S.-M. Ruan, Information Flow in Black
+     Hole Evaporation, JHEP 03 (2020) 152 [arXiv:1911.03402] [INSPIRE].
+[23] J. Pollack, M. Rozali, J. Sully and D. Wakeham, Eigenstate Thermalization and Disorder
+     Averaging in Gravity, arXiv:2002.02971 [INSPIRE].
+[24] H. Liu and S. Vardhan, A dynamical mechanism for the Page curve from quantum chaos,
+     arXiv:2002.05734 [INSPIRE].
+[25] C.G. Callan Jr., J.A. Harvey and A. Strominger, Supersymmetric string solitons,
+     hep-th/9112030 [INSPIRE].
+[26] O. Aharony, M. Berkooz, D. Kutasov and N. Seiberg, Linear dilatons, NS five-branes and
+     holography, JHEP 10 (1998) 004 [hep-th/9808149] [INSPIRE].
+[27] J.M. Maldacena and A. Strominger, Semiclassical decay of near extremal five-branes, JHEP
+     12 (1997) 008 [hep-th/9710014] [INSPIRE].
+[28] G. Mandal, A.M. Sengupta and S.R. Wadia, Classical solutions of two-dimensional string
+     theory, Mod. Phys. Lett. A 6 (1991) 1685 [INSPIRE].
+[29] E. Witten, On string theory and black holes, Phys. Rev. D 44 (1991) 314 [INSPIRE].
+[30] J. Polchinski, String theory. Vol. 1: An introduction to the bosonic string, Cambridge
+     Monographs on Mathematical Physics, Cambridge University Press (1998) [ INSPIRE].
+[31] S.M. Christensen and S.A. Fulling, Trace Anomalies and the Hawking Effect, Phys. Rev. D
+     15 (1977) 2088 [INSPIRE].
+
+
+
+
+                                             – 21 –
+[32] T.M. Fiola, J. Preskill, A. Strominger and S.P. Trivedi, Black hole thermodynamics and
+     information loss in two-dimensions, Phys. Rev. D 50 (1994) 3987 [hep-th/9403137]
+     [INSPIRE].
+[33] W.H. Zurek, Entropy Evaporated by a Black Hole, Phys. Rev. Lett. 49 (1982) 1683 [INSPIRE].
+
+
+
+
+                                                                                                  JHEP05(2020)091
+
+
+
+
+                                            – 22 –
+
